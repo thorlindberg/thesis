@@ -1,0 +1,87 @@
+\documentclass[10pt, twocolumn, letterpaper]{article}
+
+%% Packages
+
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[a4paper, margin=2.5cm]{geometry}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage[colorlinks=true, allcolors=black]{hyperref}
+\usepackage{natbib}
+\usepackage{subcaption}
+\usepackage{subfiles}
+\usepackage{titlesec}
+\usepackage[english]{babel}
+\usepackage{csvsimple}
+
+%% Customisation
+
+\graphicspath{{figures/}}
+\bibliographystyle{unsrt}
+\titleformat*{\section}{\centering\small}
+\titleformat*{\subsection}{\textit\small}
+\renewcommand{\thesection}{\Roman{section}} 
+\renewcommand{\thesubsection}{\alph{subsection}}
+\newcommand{\charactercount}[1]{\immediate\write18{expr `texcount -1 -sum -merge #1.tex` + `texcount -1 -sum -merge -char #1.tex` - 1 > chars.txt}\input{chars.txt}characters}
+\raggedbottom
+
+%% Title
+
+\title{
+    \includegraphics[height=0.75cm]{logo.jpg} \\
+    \vspace{1.25cm}
+    \LARGE \textbf{Architectual Impact of Data Serialisation} \\
+}
+\usepackage{authblk}
+\author{Thor Wessel Lindberg (17858, mawl@itu.dk)}
+\date{\charactercount{main} (incl. spaces)}
+
+%% Content
+
+\begin{document}
+
+\maketitle
+
+\subfile{sections/preface}
+
+\section{INTRODUCTION}
+\subfile{sections/introduction}
+
+\section{DISTRIBUTED SYSTEMS}
+\subfile{sections/distributedsystems}
+
+\section{LAYERS OF DATA TRANSMISSION}
+\subfile{sections/layers}
+
+\section{CHALLENGES IN DATA PARSING}
+\subfile{sections/challenges}
+
+\section{RELATED WORK}
+\subfile{sections/relatedwork}
+
+\section{EXPERIMENT SETUP}
+\subfile{sections/experimentsetup}
+
+\section{RESULTS}
+\subfile{sections/results}
+
+\section{DISCUSSION}
+\subfile{sections/discussion}
+
+\section{CONCLUSION}
+\subfile{sections/conclusion}
+
+\pagebreak
+
+\bibliography{bibliography}
+
+\onecolumn
+\centering
+\pagebreak
+
+\section{APPENDICES}
+\subfile{sections/appendices}
+
+\end{document}

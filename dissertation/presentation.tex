@@ -1,0 +1,55 @@
+\documentclass[12pt, a4paper, landscape]{article}
+
+%% Packages
+
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[a4paper, margin=3cm]{geometry}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage[colorlinks=true, allcolors=black]{hyperref}
+\usepackage{natbib}
+\usepackage{subcaption}
+\usepackage{subfiles}
+\usepackage{titlesec}
+\usepackage[english]{babel}
+\usepackage{csvsimple}
+\usepackage{float}
+\usepackage{fancyhdr}
+\usepackage{tabularx}
+\usepackage{authblk}
+
+%% Customisation
+
+\graphicspath{{figures/}}
+\bibliographystyle{unsrt}
+\setlength{\parindent}{0pt}
+\renewcommand{\baselinestretch}{1.5}
+\pagestyle{fancy}
+\fancyhf{}
+\large
+
+%% Title
+
+\title{
+    \includegraphics[height=0.75cm]{logo.jpg} \\
+    \vspace{2cm}
+    \LARGE \textbf{Architectual Impact of Data Serialisation} \\
+}
+\author{Thor Wessel Lindberg (17858, \href{mailto:mawl@itu.dk}{mawl@itu.dk})}
+
+%% Content
+
+\begin{document}
+\fancyhead[R]{\rule[-2ex]{0pt}{2ex}\small Architecting Data Parse}
+\fancyfoot[C]{\rule[-2ex]{0pt}{2ex}\small \thepage}
+
+\maketitle
+\pagebreak
+
+\fancyhead[L]{\rule[-2ex]{0pt}{2ex}\small Slide} 
+\subfile{slides/slide}
+\pagebreak
+
+\end{document}
