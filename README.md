@@ -13,6 +13,6 @@ _What do we want to know?_
 | Components of Distributed Systems | Layers of Data Communication | Challenges in Data Parsing | Experiment        |
 | --------------------------------- | ---------------------------- | -------------------------- | ----------------- |
 | Data                              | OSI model                    | Type Safety                | Organisation      |
-| Technology                        | Libraries                    | Defensive Coding           | Architectur       |
+| Technology                        | Libraries                    | Defensive Coding           | Architecture      |
 | Developers                        | Protocols                    | Noise                      | Mapping Libraries |
 | Users                             | Models                       | Human Readability          | Testing           |
