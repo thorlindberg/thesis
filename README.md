@@ -16,3 +16,15 @@ _What do we want to know?_
 | Technology            | Libraries                    | Defensive Coding           | Architecture      |
 | Developers            | Protocols                    | Noise                      | Mapping Libraries |
 | Users                 | Models                       | Human Readability          | Testing           |
+
+----------
+
+https://thenewstack.io/c-creator-bjarne-stroustrup-weighs-in-on-distributed-systems-type-safety-and-rust/
+
+https://www.cs.cmu.edu/~rwh/papers/ml5/tgc.pdf
+
+https://theory.stanford.edu/~aiken/publications/papers/sas03.pdf
+
+https://arxiv.org/abs/2002.06184
+
+https://programming-group.com/assets/pdf/papers/2020_Implementing-a-Language-for-Distributed-Systems.pdf
