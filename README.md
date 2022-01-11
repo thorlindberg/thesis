@@ -19,6 +19,12 @@ _What do we want to know?_
 
 ----------
 
+Centralisation vs. Decentralisation.
+**Centralisation** results in a more rapid pace of advancements.
+**Decentralisation** (i.e. protocols) results in rigid standards with unchanging advantages and disadvantages.
+
+----------
+
 https://thenewstack.io/c-creator-bjarne-stroustrup-weighs-in-on-distributed-systems-type-safety-and-rust/
 
 https://www.cs.cmu.edu/~rwh/papers/ml5/tgc.pdf
