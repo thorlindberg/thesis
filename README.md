@@ -3,14 +3,18 @@
 ### Software Architectural Implications of Type-Safe Data Serialisation
 ### Software Architectural Implications of Type Safety in Data Serialisation
 
+----------
+
 _What do we know?_
 
-* Limitations
-* Architecture Models
+* Limitations in data validity
+* Architecture / models
+* Current practices
+* Case: JSON
 
 _What do we want to know?_
 
-* Advantages / disadvantages of implementing libraries
+* Advantages / disadvantages of implementing the different libraries
 
 ----------
 
