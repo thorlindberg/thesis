@@ -24,6 +24,7 @@
 \titleformat*{\subsection}{\textit\small}
 \renewcommand{\thesection}{\Roman{section}} 
 \renewcommand{\thesubsection}{\alph{subsection}}
+\renewcommand{\bibsection}{\null \\ \centerline{\small{REFERENCES}}}
 \newcommand{\charactercount}[1]{\immediate\write18{expr `texcount -1 -sum -merge #1.tex` + `texcount -1 -sum -merge -char #1.tex` - 1 > chars.txt}\input{chars.txt}characters}
 \raggedbottom
 
@@ -58,6 +59,9 @@
 \section{CHALLENGES IN DATA PARSING}
 \subfile{sections/challenges}
 
+\section{ARCHITECTURE AND TYPE SAFETY}
+\subfile{sections/architecture}
+
 \section{RELATED WORK}
 \subfile{sections/relatedwork}
 
@@ -73,7 +77,6 @@
 \section{CONCLUSION}
 \subfile{sections/conclusion}
 
-\pagebreak
 \bibliography{bibliography}
 
 \end{document}
