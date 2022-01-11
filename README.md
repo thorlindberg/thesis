@@ -38,3 +38,5 @@ https://arxiv.org/abs/2002.06184
 https://programming-group.com/assets/pdf/papers/2020_Implementing-a-Language-for-Distributed-Systems.pdf
 
 https://medium.com/swiftcommmunity/codables-a-better-way-parse-data-in-swift-e08015f4ee4e
+
+https://arxiv.org/abs/1401.7372
