@@ -20,7 +20,9 @@ _What do we want to know?_
 ----------
 
 Centralisation vs. Decentralisation.
+
 **Centralisation** results in a more rapid pace of advancements.
+
 **Decentralisation** (i.e. protocols) results in rigid standards with unchanging advantages and disadvantages.
 
 ----------
