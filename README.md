@@ -1,4 +1,4 @@
-# Architecting Type Safety in Distributed Data
+# Architecting Software for Type-Safe Distributed Data
 
 _What do we know?_
 
