@@ -1,7 +1,4 @@
-### Architecting Software for Type-Safe Distributed Data
-### Software Architecture for Type-Safe Data Serialisation
-### Software Architectural Implications of Type-Safe Data Serialisation
-### Software Architectural Implications of Type Safety in Data Serialisation
+### Usability and Type Safety of Data Serialisation Formats Serialisation
 
 ----------
 
