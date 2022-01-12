@@ -50,3 +50,7 @@ https://medium.com/swiftcommmunity/codables-a-better-way-parse-data-in-swift-e08
 https://arxiv.org/abs/1401.7372
 
 https://www.cse.iitb.ac.in/~comad/2000/COMAD2KonLineProc/Papers/Res-1-1.pdf
+
+http://www.jfdc.cnic.cn/EN/10.11871/jfdc.issn.2096-742X.2020.04.013
+
+https://dl.acm.org/doi/abs/10.1145/2184751.2184810?casa_token=bdZ6IE8_tAEAAAAA:JrS60mJemsuBluBQN4YVQsskxRLo-Ve14ljG4bwtIkaPtBJ-V-TE3QFLKlNBcu2LuVjxptSo_wh_
