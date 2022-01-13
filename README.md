@@ -1,4 +1,4 @@
-### Usability and Type Safety of Data Serialisation Formats
+### Assessment of Usability and Type Safety in Implementation of Human-readable and Binary Data Serialisation Formats
 
 ----------
 
@@ -51,3 +51,7 @@ https://www.cse.iitb.ac.in/~comad/2000/COMAD2KonLineProc/Papers/Res-1-1.pdf
 http://www.jfdc.cnic.cn/EN/10.11871/jfdc.issn.2096-742X.2020.04.013
 
 https://dl.acm.org/doi/abs/10.1145/2184751.2184810?casa_token=bdZ6IE8_tAEAAAAA:JrS60mJemsuBluBQN4YVQsskxRLo-Ve14ljG4bwtIkaPtBJ-V-TE3QFLKlNBcu2LuVjxptSo_wh_
+
+https://www.semanticscholar.org/paper/Perfomance-Evaluation-of-Java%2C-JavaScript-and-PHP-Vanura-Kriz/cb4595484f544ffffd0954dc4f2fa011fad3038d
+
+https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.472.5744&rep=rep1&type=pdf
