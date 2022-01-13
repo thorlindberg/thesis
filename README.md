@@ -1,4 +1,4 @@
-### Usability and Type Safety of Data Serialisation Formats Serialisation
+### Usability and Type Safety of Data Serialisation Formats
 
 ----------
 
