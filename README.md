@@ -1,4 +1,5 @@
-### Assessment of Usability and Type Safety in Implementation of Human-readable and Binary Data Serialisation Formats
+### Mapping Distributed Software Architectures for
+### Plaintext and Binary Object Serialisation Formats
 
 ----------
 
@@ -57,3 +58,7 @@ https://www.semanticscholar.org/paper/Perfomance-Evaluation-of-Java%2C-JavaScrip
 https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.472.5744&rep=rep1&type=pdf
 
 https://www.back4app.com/parse
+
+https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.685.1077&rep=rep1&type=pdf
+
+https://publications.waset.org/15057/comparative-survey-of-object-serialization-techniques-and-the-programming-supports
