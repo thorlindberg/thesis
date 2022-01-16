@@ -1,4 +1,4 @@
-### Mapping Software Architectures for Plaintext and Binary Object Serialisation
+### Mapping Server-Client Architecture for Plaintext and Binary Object Serialisation
 
 ----------
 
