@@ -1,4 +1,4 @@
-### Mapping Distributed Architecture for Plaintext and Binary Object Serialisation
+### Mapping Software Architecture for Plaintext and Binary Object Serialisation
 
 ----------
 
