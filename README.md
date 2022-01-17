@@ -1,4 +1,4 @@
-### Modelling Software Architecture for Plaintext and Binary Object Serialisation
+### Modelling Architectural Properties of Plaintext and Binary Object Serialisation
 
 ----------
 

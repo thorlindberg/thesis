@@ -26,14 +26,13 @@
 \renewcommand{\thesection}{\Roman{section}} 
 \renewcommand{\thesubsection}{\alph{subsection}}
 \renewcommand{\bibsection}{\null \\ \centerline{\small{REFERENCES}}}
-\newcommand{\charactercount}[1]{\immediate\write18{expr `texcount -1 -sum -merge #1.tex` + `texcount -1 -sum -merge -char #1.tex` - 1 > chars.txt}\input{chars.txt}characters}
 \raggedbottom
 
 %% Title
 
 \title{
     \vspace{-0.5cm}
-    \huge \textbf{Modelling Software Architecture for}  \\
+    \huge \textbf{Modelling Architectural Properties of}  \\
     \huge \textbf{Plaintext and Binary Object Serialisation}  \\
 }
 \author{Thor Wessel Lindberg (17858, mawl@itu.dk)}
