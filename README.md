@@ -2,35 +2,28 @@
 
 ----------
 
-_What do we know?_
+Repository structure
 
-* Limitations in data validity
-* Architecture / models
-* Current practices
-* Case: JSON
-
-_What do we want to know?_
-
-* Advantages / disadvantages of implementing the different libraries
+| Folder        | Description                                                       |
+| :------------ | :---------------------------------------------------------------- |
+| Dissertation  | LaTeX exam report and presentation                                |
+| Meeting notes | Date-enumerated notes from supervision                            |
+| Code          | Code samples demonstrating object serialisation format properties |
+| Models        | Illustrations of systems and processes                            |
 
 ----------
 
-| Distributed Computing | Layers of Data Communication | Challenges in Data Parsing | Experiment        |
-| --------------------- | ---------------------------- | -------------------------- | ----------------- |
-| Data                  | OSI model                    | Type Safety                | Organisation      |
-| Technology            | Libraries                    | Defensive Coding           | Architecture      |
-| Developers            | Protocols                    | Noise                      | Mapping Libraries |
-| Users                 | Models                       | Human Readability          | Testing           |
+Project plan
+
+| Day | Month    | Year | Description                      |
+| :-- | :------- | :--- | :------------------------------- |
+| 20  | January  | 2022 | Preliminary project hand-in.     |
+| 1   | February | 2022 | Project begins                   |
+| 4   | February | 2022 | Deadline for project description |
 
 ----------
 
-Centralisation vs. Decentralisation.
-
-**Centralisation** results in a more rapid pace of advancements.
-
-**Decentralisation** (i.e. protocols) results in rigid standards with unchanging advantages and disadvantages.
-
-----------
+Literature and sources
 
 https://thenewstack.io/c-creator-bjarne-stroustrup-weighs-in-on-distributed-systems-type-safety-and-rust/
 
