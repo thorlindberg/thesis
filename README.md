@@ -23,7 +23,13 @@ Project plan
 
 ----------
 
-Literature and sources
+Literature
+
+*Clean Architecture* by Robert C. Martin (https://blog.cleancoder.com)
+
+----------
+
+Sources
 
 https://thenewstack.io/c-creator-bjarne-stroustrup-weighs-in-on-distributed-systems-type-safety-and-rust/
 
