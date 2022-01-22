@@ -1,4 +1,4 @@
-### Modelling Software Architectures for Plaintext and Binary Object Serialisation
+### Modelling System Homogeneity through Plaintext and Binary Object Serialisation
 
 ----------
 
