@@ -19,6 +19,11 @@ Feature & XML & JSON & Proto \\
 ... & Yes & No & Yes \\ 
 ... & No & Yes & Yes \\ 
 ... & Yes & No & Yes \\ 
+... & No & Yes & Yes \\ 
+... & Yes & No & Yes \\ 
+... & Yes & No & Yes \\ 
+... & No & Yes & Yes \\ 
+... & Yes & No & Yes \\ 
 \hline
 \end{tabular}
 \end{figure}
@@ -29,9 +34,11 @@ JSON: https://www.json.org/json-en.html
 
 Proto: https://developers.google.com/protocol-buffers
 
+\pagebreak
+
 \subsection{Declaration}
 
-\begin{Verbatim}[frame=single,numbers=left,framesep=5mm,label=XML Object]
+\begin{Verbatim}[frame=single,numbers=right,framesep=5mm,label=XML Object]
 <Object>
     <Property>Content</Property>
 </Object>
@@ -39,7 +46,7 @@ Proto: https://developers.google.com/protocol-buffers
 
 \vspace{1mm}
 
-\begin{Verbatim}[frame=single,numbers=left,framesep=5mm,label=JSON Object]
+\begin{Verbatim}[frame=single,numbers=right,framesep=5mm,label=JSON Object]
 {
     Object : {
         Property : Content
@@ -49,7 +56,7 @@ Proto: https://developers.google.com/protocol-buffers
 
 \vspace{1mm}
 
-\begin{Verbatim}[frame=single,numbers=left,framesep=5mm,label=Proto Object]
+\begin{Verbatim}[frame=single,numbers=right,framesep=5mm,label=Proto Object]
 message Object {
     Optional Type Property = Content;
 }
