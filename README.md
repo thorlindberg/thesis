@@ -1,4 +1,4 @@
-### Modelling System Homogeneity with Plaintext and Binary Object Serialisation
+### Modelling Homogeneity in Distributed Systems with Plaintext and Binary Object Serialisation
 
 ----------
 
