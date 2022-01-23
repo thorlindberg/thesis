@@ -17,7 +17,6 @@ Project plan
 
 | Day | Month    | Year | Description                      |
 | :-- | :------- | :--- | :------------------------------- |
-| 20  | January  | 2022 | Preliminary project hand-in.     |
 | 1   | February | 2022 | Project begins                   |
 | 4   | February | 2022 | Deadline for project description |
 
