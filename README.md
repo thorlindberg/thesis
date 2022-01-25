@@ -1,4 +1,4 @@
-### Type Safety of Object Serialisation Formats in Heterogeneous Distributed Systems
+### Type Safety in Object-Oriented Data Serialisation
 
 ----------
 
