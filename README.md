@@ -1,4 +1,4 @@
-### Type Safety in Object-Oriented Data Serialisation
+### TypeScript Object Notation (TSON): JSON with Syntax for Types
 
 ----------
 
