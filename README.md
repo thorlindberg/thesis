@@ -1,4 +1,4 @@
-### TypeScript Object Notation (TSON): JSON with Syntax for Types
+### Type Extensible Object Notation: JSON with Syntax for Types
 
 ----------
 
