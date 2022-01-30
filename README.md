@@ -1,5 +1,7 @@
 ### Type-Extensible Object Notation: JSON with Syntax for Types
 
+<br>
+
 Project description
 
 | Section          | Paragraphs |
