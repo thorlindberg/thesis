@@ -1,6 +1,4 @@
-### Type-Extensible Object Notation: JSON with Syntax for Types
-
-<br>
+## Type-Extensible Object Notation: JSON with Syntax for Types
 
 Project description
 
