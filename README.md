@@ -1,5 +1,3 @@
-<br>
-
 ### Type-Extensible Object Notation: JSON with Syntax for Types
 
 <br>
@@ -14,11 +12,7 @@ Project description
 | Idea             | <br> Inspired by the [TypeScript language](https://www.typescriptlang.org), a backwards-compatible type-extensible abstraction of JavaScript, this project aims to introduce type declarations to the JSON format by adding syntax for types. The Type-Extensible Object Notation (TEON) format is phrased as a language-neutral serialisation library with full backwards-compatibility to JSON. <br><br> TypeScript's extensibility over enforcement is a heavily emphasised value in this project. In other words, it is important that the proposed solution does not enforce strong typing, but rather provides extensibility to JSON, allowing developers to type as few or as many of their properties.<br><br> |
 | Methods and Deliverables | <br> ... <br><br> |
 
-<br>
-
 ----------
-
-<br>
 
 Repository structure
 
@@ -29,11 +23,7 @@ Repository structure
 | Code          | Code samples demonstrating object serialisation format properties |
 | Models        | Illustrations of systems and processes                            |
 
-<br>
-
 ----------
-
-<br>
 
 Project plan
 
@@ -42,21 +32,13 @@ Project plan
 | 1   | February | 2022 | Project begins                   |
 | 4   | February | 2022 | Deadline for project description |
 
-<br>
-
 ----------
-
-<br>
 
 Literature
 
 *Clean Architecture* by Robert C. Martin (https://blog.cleancoder.com)
 
-<br>
-
 ----------
-
-<br>
 
 Sources
 
@@ -89,5 +71,3 @@ https://www.back4app.com/parse
 https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.685.1077&rep=rep1&type=pdf
 
 https://publications.waset.org/15057/comparative-survey-of-object-serialization-techniques-and-the-programming-supports
-
-<br>
