@@ -8,19 +8,7 @@ Project description
 | Problem          | <br> Exchange of serialised data requires coordination to avoid incosistency between expectations and the actual received data. This can be guarded against through strong type-safety, but the JSON serialisation format provides limited capabilities. <br><br> |
 | State-of-the-Art | <br> There are several approaches to guarding against inconsistencies in serialised data. These include full-stack end-to-end implementations, back-end or front-end validation through defensive coding, declaring types as a property of the serialised objects, and including type declarations in properties. <br><br> The [TSON library](https://github.com/miou-gh/tson) embeds C# type declarations into JSON properties, allowing objects to be parsed with type declarations. This approach retains the readability of the JSON format while extending the available types, but transforms the data and makes it incompatible with other languages than C# and standard JSON deserialisers. <br><br> |
 | Idea             | <br> Inspired by the [TypeScript language](https://www.typescriptlang.org), a backwards-compatible type-extensible abstraction of JavaScript, this project aims to introduce type declarations to the JSON format by adding syntax for types. The Type-Extensible Object Notation (TEON) format is phrased as a language-neutral serialisation library with full backwards-compatibility to JSON. <br><br> TypeScript's extensibility over enforcement is a heavily emphasised value in this project. In other words, it is important that the proposed solution does not enforce strong typing, but rather provides extensibility to JSON, allowing developers to type as few or as many of their properties.<br><br> Another important aspect is ... <br><br> |
-| Methods          | <br> ... <br><br> |
-
-1–3 paragraphs of context. What is the general setting you are working in?
-
-1 paragraph outlining the specific problem you are interested in.
-
-1–2 paragraphs of state-of-the-art: what is the closest anybody has gotten to solving this problem?
-
-1–3 paragraphs outlining your specific idea for solving this problem.
-
-1 paragraph on method and deliverables: What are you specifically going to do and what will you submit?
-(Interviews, case study, literature study, informal survey, prototype implementation, explorative programming,
-proving theorems, constructing algorithms)
+| Methods and Deliverables | <br> ... <br><br> |
 
 ----------
 
