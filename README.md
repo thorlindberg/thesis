@@ -2,13 +2,33 @@
 
 Project description
 
-| Section          | Paragraphs |
-| :--------------- | :--------- |
-| Context          | <br> As mobile and internet of things (IoT) devices continue to dominate the computing space, software development increasingly centers around building clients that receive, exchange and present data. This system of connected devices is known as distributed computing, consisting of multiple heterogeneous or homogeneous bodies. <br><br> JSON is a lightweight, human-readable, and language-neutral data-interface format, making it easy to exchange, read, debug, and parse across languages. Exchanging data across hetereogenous distributed systems is accomplished through data serialisation, which requires coordination of expectations for the format of the deserialised data. This can be guarded against through strong type-safety, but JSON does not support explicitly typed data, and limits data to six inferred types: _string, number, object, array, boolean, and null_. <br><br> |
-| Problem          | <br> The limitations of the JSON format are driven by its design philosophy and the balance between readability and capability. Human-readability is an important advantage of JSON over other data formats such as Markup Languages, and by omitting explicit typesetting the data becomes highly interoperable between programming languages. However, these choices make the data fragile and prone to human-errors, failing to provide developers with the necessary capabilities to properly guard against parse errors without extra layers of validation and substitution. <br><br> |
-| State-of-the-Art | <br> There are several approaches to guarding against inconsistencies in serialised data. These include full-stack end-to-end implementations, back-end or front-end validation through defensive coding, declaring types as an additional object value, and declaring types as part of the existing object values. <br><br> The [TSON library](https://github.com/miou-gh/tson) embeds C# type declarations into JSON values, allowing objects to be parsed with type declarations. This approach retains the readability of the JSON format while extending the available types, but also transforms the data, making it incompatible with other languages and JSON deserialisers. <br><br> |
-| Idea             | <br> Inspired by the [TypeScript language](https://www.typescriptlang.org), a backwards-compatible type-extensible abstraction of JavaScript, this project aims to introduce type declarations to the JSON format by adding syntax for types. The Type-eXtensible Object Notation (TXON) format is phrased as a language-neutral serialisation layer that is fully compatible with JSON. <br><br> TypeScript's extensibility over enforcement is a heavily emphasised value in this project. In other words, it is important that the proposed solution does not enforce strong typing, but rather provides extensibility to JSON, allowing developers to type as few or as many of their object values. <br><br> |
-| Methods and Deliverables | <br> 1. Building data validation tests to illustrate the limitation and breaking points of the JSON format. <br> 2. Formulating an interoperable approach to syntax for types. <br> 3. Writing an extensibility layer into JSON serialisation/deserialisation to extend its type-setting capabilities. <br><br> A critical evaluation of the proposed solution will be part of the project report. <br><br> |
+#### Context
+
+As mobile and internet of things (IoT) devices continue to dominate the computing space, software development increasingly centers around building clients that receive, exchange and present data. This system of connected devices is known as distributed computing, consisting of multiple heterogeneous or homogeneous bodies. <br><br> JSON is a lightweight, human-readable, and language-neutral data-interface format, making it easy to exchange, read, debug, and parse across languages. Exchanging data across hetereogenous distributed systems is accomplished through data serialisation, which requires coordination of expectations for the format of the deserialised data. This can be guarded against through strong type-safety, but JSON does not support explicitly typed data, and limits data to six inferred types: _string, number, object, array, boolean, and null_.
+
+#### Problem
+
+The limitations of the JSON format are driven by its design philosophy and the balance between readability and capability. Human-readability is an important advantage of JSON over other data formats such as Markup Languages, and by omitting explicit typesetting the data becomes highly interoperable between programming languages. However, these choices make the data fragile and prone to human-errors, failing to provide developers with the necessary capabilities to properly guard against parse errors without extra layers of validation and substitution.
+
+#### State-of-the-Art
+
+There are several approaches to guarding against inconsistencies in serialised data. These include full-stack end-to-end implementations, back-end or front-end validation through defensive coding, declaring types as an additional object value, and declaring types as part of the existing object values.
+
+The [TSON library](https://github.com/miou-gh/tson) embeds C# type declarations into JSON values, allowing objects to be parsed with type declarations. This approach retains the readability of the JSON format while extending the available types, but also transforms the data, making it incompatible with other languages and JSON deserialisers.
+
+#### Idea
+
+Inspired by the [TypeScript language](https://www.typescriptlang.org), a backwards-compatible type-extensible abstraction of JavaScript, this project aims to introduce type declarations to the JSON format by adding syntax for types. The Type-eXtensible Object Notation (TXON) format is phrased as a language-neutral serialisation layer that is fully compatible with JSON.
+
+TypeScript's extensibility over enforcement is a heavily emphasised value in this project. In other words, it is important that the proposed solution does not enforce strong typing, but rather provides extensibility to JSON, allowing developers to type as few or as many of their object values.
+
+#### Methods and Deliverables
+
+1. Building data validation tests to illustrate the limitation and breaking points of the JSON format.
+2. Formulating an interoperable approach to syntax for types.
+3. Writing an extensibility layer into JSON serialisation/deserialisation to extend its type-setting capabilities.
+
+A critical evaluation of the proposed solution will be part of the project report.
 
 ----------
 
