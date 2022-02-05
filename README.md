@@ -48,14 +48,16 @@ Repository structure
 
 Project plan
 
-| Thread | Start        | End          | Description                                         | Deliverable[s]         |
-| :----- | :----------- | :----------- | :-------------------------------------------------- | :--------------------- |
-| _Int_  | _dd-mm-yyyy_ | _dd-mm-yyyy_ | _String_                                            | _String_               |
-| 1      | 07-02-2022   | 27-02-2022   | Data in Heterogeneous Distributed Computing Systems | 8-10 x 2400 characters |
-| 2      | 28-02-2022   | 20-03-2022   | Interoperable Typesetting in Data Formats           | 8-10 x 2400 characters |
-| 3      | 21-03-2022   | 10-04-2022   | Design Philosophy of Language Extensibility         | 8-10 x 2400 characters |
-| 4      | 11-04-2022   | 01-05-2022   | Type Validity in JSON Serialisation                 | 8-10 x 2400 characters |
-| 5      | 02-05-2022   | 22-05-2022   | Extensibility Layer for JSON Typesetting            | 8-10 x 2400 characters |
+Each 'thread' stretches across all section types in the report (_introduction, experiment, discussion etc._) and consists of a topic/concept that is described, tested, critically evaluated, discussed and concluded upon, to varying degrees. The latter half are more experimental and explorative, in providing a majority of the research produced through this project.
+
+| Thread | Start        | End          | Description                                         | Deliverable[s]          |
+| :----- | :----------- | :----------- | :-------------------------------------------------- | :---------------------- |
+| _Int_  | _dd-mm-yyyy_ | _dd-mm-yyyy_ | _String_                                            | _String_                |
+| 1      | 07-02-2022   | 27-02-2022   | Data in Heterogeneous Distributed Computing Systems | 8 x 2400 characters     |
+| 2      | 28-02-2022   | 20-03-2022   | Interoperable Typesetting in Data Formats           | 8 x 2400 characters     |
+| 3      | 21-03-2022   | 10-04-2022   | Design Philosophy of Language Extensibility         | 8-10 x 2400 characters  |
+| 4      | 11-04-2022   | 01-05-2022   | Type Validity in JSON Serialisation                 | 10-12 x 2400 characters |
+| 5      | 02-05-2022   | 22-05-2022   | Extensibility Layer for JSON Typesetting            | 10-12 x 2400 characters |
 
 ----------
 
