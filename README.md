@@ -70,6 +70,8 @@ Literature
 <details>
 <summary>Sources</summary>
 
+<br>
+
 https://thenewstack.io/c-creator-bjarne-stroustrup-weighs-in-on-distributed-systems-type-safety-and-rust/
 
 https://www.cs.cmu.edu/~rwh/papers/ml5/tgc.pdf
