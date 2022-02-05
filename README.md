@@ -1,6 +1,7 @@
 ## Type-Extensible Object Notation: JSON with Syntax for Types
 
-Project description
+<details>
+<summary>Project description</summary>
 
 #### Context
 
@@ -29,6 +30,8 @@ TypeScript's extensibility over enforcement is a heavily emphasised value in thi
 3. Writing an extensibility layer into JSON serialisation/deserialisation to extend its typesetting capabilities.
 
 A critical evaluation of the proposed solution will be part of the project report.
+  
+</details>
 
 ----------
 
@@ -62,7 +65,8 @@ Literature
 
 ----------
 
-Sources
+<details>
+<summary>Sources</summary>
 
 https://thenewstack.io/c-creator-bjarne-stroustrup-weighs-in-on-distributed-systems-type-safety-and-rust/
 
@@ -93,3 +97,5 @@ https://www.back4app.com/parse
 https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.685.1077&rep=rep1&type=pdf
 
 https://publications.waset.org/15057/comparative-survey-of-object-serialization-techniques-and-the-programming-supports
+  
+</details>
