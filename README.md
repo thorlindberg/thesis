@@ -26,7 +26,7 @@ TypeScript's extensibility over enforcement is a heavily emphasised value in thi
 
 1. Building data validation tests to illustrate the limitation and breaking points of the JSON format.
 2. Formulating an interoperable approach to syntax for types.
-3. Writing an extensibility layer into JSON serialisation/deserialisation to extend its type-setting capabilities.
+3. Writing an extensibility layer into JSON serialisation/deserialisation to extend its typesetting capabilities.
 
 A critical evaluation of the proposed solution will be part of the project report.
 
@@ -45,10 +45,13 @@ Repository structure
 
 Project plan
 
-| Day | Month    | Year | Description                      |
-| :-- | :------- | :--- | :------------------------------- |
-| 1   | February | 2022 | Project begins                   |
-| 4   | February | 2022 | Deadline for project description |
+| Thread (#) | Start (dd-mm-yyyy) | End (dd-mm-yyyy) | Description                                         | Deliverable[s]         |
+| :--------- | :----------------- | :--------------- | :-------------------------------------------------- | :--------------------- |
+| 1          | 07-02-2022         | 27-02-2022       | Data in Heterogeneous Distributed Computing Systems | 8-10 x 2400 characters |
+| 2          | 28-02-2022         | 20-03-2022       | Interoperable Typesetting in Data Formats           | 8-10 x 2400 characters |
+| 3          | 21-03-2022         | 10-04-2022       | Design Philosophy of Language Extensibility         | 8-10 x 2400 characters |
+| 4          | 11-04-2022         | 01-05-2022       | Type Validity in JSON Serialisation                 | 8-10 x 2400 characters |
+| 5          | 02-05-2022         | 22-05-2022       | Extensibility Layer for JSON Typesetting            | 8-10 x 2400 characters |
 
 ----------
 
