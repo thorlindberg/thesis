@@ -4,7 +4,17 @@
 
 \section{INTRODUCTION}
 
+As the internet increasingly dictates human life, connectivity and mobility becomes the focal point of personal technologies. This is evident from a consumer perspective but also in software development, where applications predominantly act as clients awaiting and receiving transmitted data from centralised and distributed systems. These computing systems consist of multiple bodies, often of heterogeneous types, which introduces the potential for conflicts in translation between programming languages and data formats. \\
 
+Translation between bodies is accomplished through a process of object/data serialisation (and inversely deserialisation). Validation is typically performed after deserialisation, to align expectations with the received data, and to correct any conflicts before parsing. Heterogeneity indicates a inconsistency in architecture, language, data representation, instruction set and hardware capabilities. As a result, the data transmitted is serialised and deserialised to a homogeneous format shareable across heterogeneous bodies. \\
+
+... \\
+
+Existing research has already compared formats on syntax, performance, and efficiency, but has not addressed the architectural differences. As serialisation does not exist in a vacuum, the shortcomings of a format have to be guarded against through the development of defensive mechanisms. The popular programming language TypeScript inspired this project, as its design philosophy of extensible typesetting allows developers to improve their code without a larger implementation or system architectural changes.
+
+The contribution of this paper is to provide an extensible syntax for typesetting in JSON, while maintaining full backwards compatibility. This is accomplished by abstracting the format to a translation layer during serialisation and parsing, to guard against validation conflicts and to reduce resources spent on debugging.
+
+%%%
 
 % As mobile and internet of things (IoT) devices continue to dominate the computing space, software development increasingly centers around clients receiving transmitted data. This system of connected devices is known as distributed computing, consisting of multiple heterogeneous or homogeneous bodies.
 
