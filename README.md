@@ -54,8 +54,8 @@ Each 'thread' stretches across all section types in the report (_introduction, e
 | :----- | :----------- | :----------- | :----------------------------------------------------------- | :---------------------- |
 | _Int_  | _dd-mm-yyyy_ | _dd-mm-yyyy_ | _String_                                                     | _String_                |
 | 1      | 07-02-2022   | 27-02-2022   | Data Validity in Heterogeneous Distributed Computing Systems | 8 x 2400 characters     |
-| 2      | 28-02-2022   | 20-03-2022   | Data Parsing and Interoperability of Typed Languages         | 8 x 2400 characters     |
-| 3      | 21-03-2022   | 10-04-2022   | Design Philosophy of Language and Data Extensibility         | 8-10 x 2400 characters  |
+| 2      | 28-02-2022   | 20-03-2022   | Parsing, Debugging and Interoperability of Typed Data        | 8 x 2400 characters     |
+| 3      | 21-03-2022   | 10-04-2022   | Defensive Mechanisms and Architectural Constraints           | 8-10 x 2400 characters  |
 | 4      | 11-04-2022   | 01-05-2022   | Type Specification and Validation in JSON Serialisation      | 10-12 x 2400 characters |
 | 5      | 02-05-2022   | 22-05-2022   | Transpiler Extensibility Layer for JSON Typesetting          | 10-12 x 2400 characters |
 
