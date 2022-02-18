@@ -4,45 +4,56 @@
 
 \section{DISTRIBUTED COMPUTING}
 
-\cite{kshemkalyani2011distributed} define \textit{distributed computing} as "characterized as a collection of mostly autonomous processors communicating over a communication network". They identify common features of distributed systems, notably a lack of shared resources which necessitates communication, autonomy and heterogeneity. \\
+\cite{kshemkalyani2011distributed} define \textit{distributed systems} as "a collection of independent entities that cooperate to solve a problem that cannot be individually solved." They characterise distributed computing as  "a collection of mostly autonomous processors communicating over a communication network". They identify common features of distributed systems, notably a lack of shared resources which necessitates communication, autonomy and heterogeneity. \\
+
+In characterising distributed systems, \cite{kshemkalyani2011distributed} raise the notion that the physical differences of entities, and variation in their resources, creates a reliance on distributed communication. Distributed resources, particularly the absence of shared memory, implies an inherent asynchrony between entities. This means that each individual entity must act autonomously, while collaborating with and distributing tasks among the entities within the system. \\
+
+As seen in figure \ref{fig:networkcomms}, a distributed system achieves asynchronous collaboration through a communication network, either a wide (WAN) or local (LAN) are network, depending on the geography of the system. Each entity in the system consists of at least one processor (P) with its own solitary memory (M), providing the entity computational autonomy. This network structure creates the potential for both hardware and software heterogeneity, which necessitates coordination and distribution of tasks and responsibilities.
+
 
 \begin{figure}[h!]
 \centering
 \includegraphics[width=0.8\linewidth]{figures/networkcomms.pdf}
-\caption{A distributed system connects processors by a communication network. P = processor(s). M = memory bank(s). \cite[2]{kshemkalyani2011distributed}}
+\caption{A distributed system connects processors by a communication network \cite[2]{kshemkalyani2011distributed}.}
 \label{fig:networkcomms}
 \end{figure}
+
+\textit{Hardware heterogeneity} manifests as a variation in physical resources and thus implicitly a variation in computational capability. This necessitates a variance in entity responsibilities, as each individual entity is... This can of course be a cognitive decision made by system architects and engineers, facilitating a more efficient distribution, as computational tasks are inherently varied in requirements.
+
+\textit{Software heterogeneity} manifests as a variation in programming languages and frameworks, necessitating the application of middle layers, the so-called "middleware." As data flows in a heterogeneous distributed system, it must adhere to a standardised and yet interoperable format, modelled on the software systems used in the network.
 
 \begin{figure}[h!]
 \centering
 \includegraphics[width=0.8\linewidth]{figures/processinteraction.pdf}
-\caption{Interaction of the software components at each processor. \cite[3]{kshemkalyani2011distributed}}
+\caption{Interaction of the software components at each processor \cite[3]{kshemkalyani2011distributed}.}
 \label{fig:processinteraction}
 \end{figure}
 
-\textbf{Distributed computing} (or distributed processing) is the technique of linking together multiple computer servers over a network into a cluster, to share data and to coordinate processing power. Such a cluster is referred to as a “distributed system.” Distributed computing offers advantages in scalability (through a “scale-out architecture”), performance (via parallelism), resilience (via redundancy), and cost-effectiveness (through the use of low-cost, commodity hardware).
+...
 
-As data volumes have exploded and application performance demands have increased, distributed computing has become extremely common in database and application design. This is why it is especially valuable for scaling so that as data volumes grow, that extra load can be handled by simply adding more hardware to the system. Contrast this to traditional “big iron” environments consisting of powerful computer servers, in which load growth must be handled by upgrading and replacing the hardware.
+% \textbf{Distributed computing} (or distributed processing) is the technique of linking together multiple computer servers over a network into a cluster, to share data and to coordinate processing power. Such a cluster is referred to as a “distributed system.” Distributed computing offers advantages in scalability (through a “scale-out architecture”), performance (via parallelism), resilience (via redundancy), and cost-effectiveness (through the use of low-cost, commodity hardware).
 
-\subsection{Distributed Computing in Cloud Computing}
+% As data volumes have exploded and application performance demands have increased, distributed computing has become extremely common in database and application design. This is why it is especially valuable for scaling so that as data volumes grow, that extra load can be handled by simply adding more hardware to the system. Contrast this to traditional “big iron” environments consisting of powerful computer servers, in which load growth must be handled by upgrading and replacing the hardware.
 
-The growth of cloud computing options and vendors has made distributed computing even more accessible. Although cloud computing instances themselves do not automatically enable distributed computing, there are many different types of distributed computing software that run in the cloud to take advantage of the quickly available computing resources.
+%  \subsection{Distributed Computing in Cloud Computing}
 
-Previously, organisations relied on database administrators (DBAs) or technology vendors to link computing resources across networks within and across data centers to be able to share resources. Now, the leading cloud vendors make it easier to add servers to a cluster for additional storage capacity or computing performance.
+% The growth of cloud computing options and vendors has made distributed computing even more accessible. Although cloud computing instances themselves do not automatically enable distributed computing, there are many different types of distributed computing software that run in the cloud to take advantage of the quickly available computing resources.
 
-With the ease and speed in which new computing resources can be provisioned, distributed computing enables greater levels of agility when handling growing workloads. This enables “elasticity,” in which a cluster of computers can be expanded or contracted easily depending on the immediate workload requirements.
+% Previously, organisations relied on database administrators (DBAs) or technology vendors to link computing resources across networks within and across data centers to be able to share resources. Now, the leading cloud vendors make it easier to add servers to a cluster for additional storage capacity or computing performance.
 
-\subsection{Key Advantages}
+% With the ease and speed in which new computing resources can be provisioned, distributed computing enables greater levels of agility when handling growing workloads. This enables “elasticity,” in which a cluster of computers can be expanded or contracted easily depending on the immediate workload requirements.
 
-Distributed computing makes all computers in the cluster work together as if they were one computer. While there is some complexity in this multi-computer model, there are greater benefits around:
+% \subsection{Key Advantages}
 
-\textbf{Scalability.} Distributed computing clusters are easy to scale through a “scale-out architecture” in which higher loads can be handled by simply adding new hardware (versus replacing existing hardware).
+% Distributed computing makes all computers in the cluster work together as if they were one computer. While there is some complexity in this multi-computer model, there are greater benefits around:
 
-\textbf{Performance.} Through parallelism in which each computer in the cluster simultaneously handles a subset of an overall task, the cluster can achieve high levels of performance through a divide-and-conquer approach.
+% \textbf{Scalability.} Distributed computing clusters are easy to scale through a “scale-out architecture” in which higher loads can be handled by simply adding new hardware (versus replacing existing hardware).
 
-\textbf{Resilience.} Distributed computing clusters typically copy or “replicate” data across all computer servers to ensure there is no single point of failure. Should a computer fail, copies of the data on that computer are stored elsewhere so that no data is lost.
+% \textbf{Performance.} Through parallelism in which each computer in the cluster simultaneously handles a subset of an overall task, the cluster can achieve high levels of performance through a divide-and-conquer approach.
 
-\textbf{Cost-effectiveness.} Distributed computing typically leverages low-cost, commodity hardware, making initial deployments as well as cluster expansions very economical.
+% \textbf{Resilience.} Distributed computing clusters typically copy or “replicate” data across all computer servers to ensure there is no single point of failure. Should a computer fail, copies of the data on that computer are stored elsewhere so that no data is lost.
+
+% \textbf{Cost-effectiveness.} Distributed computing typically leverages low-cost, commodity hardware, making initial deployments as well as cluster expansions very economical.
 
 % Data, Technology, Developers, Users
 
