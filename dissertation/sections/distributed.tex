@@ -31,9 +31,9 @@ As seen in figure \ref{fig:networkcomms}, a distributed system achieves asynchro
 
 At this point, you're probably wondering \textit{why distribution is relevant} to this project, and \textit{how it pertains to data serialisation.} \cite{kshemkalyani2011distributed} define various potential requirements of a system, that would motivate heterogeneous distribution. As data serialisation is typically utilised for distributed communication, it is not inherently performance- or scalability-oriented, but it is inherently distributed and geographically remote. The implication is that the inherent distributed nature of serialised data exchange necessitates the use of a distributed system, and not vice versa. \\
 
-Design challenges...
+Given the inherent nature of serialised data exchange, and the ubiquity of distributed computing systems, the design of such systems informs our approach to communicating across them. It should be noted that systems do not exist in a vacuum, and thus system should be contextually designed based on market forces. System designers must balance or choose between industry standard protocols, which maximise interoperability, and the technically best solutions, which require more control and closed source development.
 
-APIs... \\
+\cite{kshemkalyani2011distributed} identify a set of design challenges applicable to the traditional server-client model. The \textit{Applications Programming Interface (API)} enables the distributed system to communicate internally and more importantly externally, maximising the adoption of system services by outside forces. This introduces the challenge of \textit{transparency}, as the system needs to be accessible without revealing its internal operations (resource [re]location, replication, concurrency, failure handling etc.) and implementation policies. \\
 
 Applications...
 
