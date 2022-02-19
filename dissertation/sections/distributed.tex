@@ -20,7 +20,7 @@ As seen in figure \ref{fig:networkcomms}, a distributed system achieves asynchro
 
 \textit{Hardware heterogeneity} manifests as a variation in physical resources and thus implicitly a variation in computational capability. This necessitates a variance in entity responsibilities, as each individual entity is... This can of course be a cognitive decision made by system architects and engineers, facilitating a more efficient distribution, as computational tasks are inherently varied in requirements.
 
-\textit{Software heterogeneity} manifests as a variation in programming languages and frameworks, necessitating the application of middle layers, the so-called "middleware." As data flows in a heterogeneous distributed system, it must adhere to a standardised and yet interoperable format, modelled on the software systems used in the network.
+\textit{Software heterogeneity} manifests as a variation in programming languages and frameworks. Distributed systems use a layered architecture, with a middle layer driving the software distribution, the so-called "middleware." As seen in figure \ref{fig:processinteraction}, the middleware layer exists as an addition to the protocol-oriented application layer, which handles the communication protocols such as \textit{http}. Additionally, as data flows in a heterogeneous distributed system, it must adhere to a standardised and yet interoperable format, modelled on the software systems used in the network.
 
 \begin{figure}[h!]
 \centering
@@ -29,7 +29,17 @@ As seen in figure \ref{fig:networkcomms}, a distributed system achieves asynchro
 \label{fig:processinteraction}
 \end{figure}
 
-Motivating requirements are...
+At this point, you're probably wondering \textit{why distribution is relevant} to this project, and \textit{how it pertains to data serialisation.} \cite{kshemkalyani2011distributed} define various potential requirements of a system, that would motivate heterogeneous distribution. As data serialisation is typically utilised for distributed communication, it is not inherently performance- or scalability-oriented, but it is inherently distributed and geographically remote. The implication is that the inherent distributed nature of serialised data exchange necessitates the use of a distributed system, and not vice versa. \\
+
+Design challenges...
+
+APIs... \\
+
+Applications...
+
+Mobile systems...
+
+Publish-subscribe model...
 
 % \textbf{Distributed computing} (or distributed processing) is the technique of linking together multiple computer servers over a network into a cluster, to share data and to coordinate processing power. Such a cluster is referred to as a “distributed system.” Distributed computing offers advantages in scalability (through a “scale-out architecture”), performance (via parallelism), resilience (via redundancy), and cost-effectiveness (through the use of low-cost, commodity hardware).
 
