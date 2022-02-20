@@ -4,6 +4,8 @@
 
 \section{DISTRIBUTED COMPUTING}
 
+This section explores fundamental principles of the system architectures that support distribution of serialised data. It serves as background knowledge on how data becomes distributed, and why this is relevant to the landscape of data serialisation. \\
+
 \cite{kshemkalyani2011distributed} define \textit{distributed systems} as "a collection of independent entities that cooperate to solve a problem that cannot be individually solved." They characterise distributed computing as  "a collection of mostly autonomous processors communicating over a communication network". They identify common features of distributed systems, notably a lack of shared resources which necessitates communication, autonomy and heterogeneity. \\
 
 In characterising distributed systems, \cite{kshemkalyani2011distributed} raise the notion that the physical differences of entities, and variation in their resources, creates a reliance on distributed communication. Distributed resources, particularly the absence of shared memory, implies an inherent asynchrony between entities. This means that each individual entity must act autonomously, while collaborating with and distributing tasks among the entities within the system. \\
@@ -33,13 +35,11 @@ At this point, you're probably wondering \textit{why distribution is relevant} t
 
 Given the inherent nature of serialised data exchange, and the ubiquity of distributed computing systems, the design of such systems informs our approach to communicating across them. It should be noted that systems do not exist in a vacuum, and thus system should be contextually designed based on market forces. System designers must balance or choose between industry standard protocols, which maximise interoperability, and the technically best solutions, which require more control and closed source development.
 
-\cite{kshemkalyani2011distributed} identify a set of design challenges applicable to the traditional server-client model. An \textit{Applications Programming Interface (API)} enables the distributed system to communicate internally and more importantly externally, maximising the adoption of system services by outside forces. It introduces the challenge of \textit{transparency}, as the system needs to be accessible without revealing its internal operations (resource [re]location, replication, concurrency, failure handling etc.) and implementation policies. \\
+\cite{kshemkalyani2011distributed} identify a set of design challenges applicable to the traditional server-client model of distributed systems. An \textit{Applications Programming Interface (API)} enables the distributed system to communicate internally and more importantly externally, maximising the adoption of system services by outside forces. It introduces the challenge of \textit{transparency}, as the system needs to be accessible without revealing its internal operations (resource [re]location, replication, concurrency, failure handling etc.) and implementation policies. \\
 
-Applications...
+\cite{kshemkalyani2011distributed} describe several applications of distributed computing, of which the publish-subscribe model of content distribution is particularly relevant to this project, because it is the most prominent server-client system. In this model, information is filtered by relevancy, meaning the server distributes only the requested information. As argued by \cite{kshemkalyani2011distributed}, information distribution requires three types of mechanisms: distribution (publishing), specific requests (subscribe), and the ability to manipulate information based on a request before publishing. \\
 
-Mobile systems...
-
-Publish-subscribe model...
+In the following section on \textit{the transmission of data in distributed computing systems}, I outline how publish-subscribe models/patterns are relevant to data serialisation.
 
 % \textbf{Distributed computing} (or distributed processing) is the technique of linking together multiple computer servers over a network into a cluster, to share data and to coordinate processing power. Such a cluster is referred to as a “distributed system.” Distributed computing offers advantages in scalability (through a “scale-out architecture”), performance (via parallelism), resilience (via redundancy), and cost-effectiveness (through the use of low-cost, commodity hardware).
 
@@ -67,9 +67,9 @@ Publish-subscribe model...
 
 % Data, Technology, Developers, Users
 
-\pagebreak
-
 \subsection{Data Transmission} % REST APIs
+
+This section explores the standards and methods for transmitting data across distributed systems built on the client-server and publish-subscribe model. It serves as background knowledge on how serialised data is exchanged at both ends of the systems, as well as how this affects our choice of data serialisation libraries. \\
 
 The OSI Model (Open Systems Interconnection Model) is a conceptual framework used to describe the functions of a networking system. The OSI model characterises computing functions into a universal set of rules and requirements in order to support interoperability between different products and software. In the OSI reference model, the communications between a computing system are split into seven different abstraction layers: Physical, Data Link, Network, Transport, Session, Presentation, and Application.
 
