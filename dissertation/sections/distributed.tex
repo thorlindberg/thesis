@@ -1,3 +1,5 @@
+
+
 \documentclass[../report.tex]{subfiles}
 
 \begin{document}
@@ -39,7 +41,7 @@ Given the inherent nature of serialised data exchange, and the ubiquity of distr
 
 \cite{kshemkalyani2011distributed} describe several applications of distributed computing, of which the publish-subscribe model of content distribution is particularly relevant to this project, because it is the most prominent server-client system. In this model, information is filtered by relevancy, meaning the server distributes only the requested information. As argued by \cite{kshemkalyani2011distributed}, information distribution requires three types of mechanisms: distribution (publishing), specific requests (subscribe), and the ability to manipulate information based on a request before publishing. \\
 
-In the following section on \textit{the transmission of data in distributed computing systems}, I outline how publish-subscribe models/patterns are relevant to data serialisation.
+In the following section on \textit{the transmission of data in distributed computing systems}, I present an in-depth illustration of how publish-subscribe models facilitate distribution of data-driven systems.
 
 % \textbf{Distributed computing} (or distributed processing) is the technique of linking together multiple computer servers over a network into a cluster, to share data and to coordinate processing power. Such a cluster is referred to as a “distributed system.” Distributed computing offers advantages in scalability (through a “scale-out architecture”), performance (via parallelism), resilience (via redundancy), and cost-effectiveness (through the use of low-cost, commodity hardware).
 
@@ -69,49 +71,66 @@ In the following section on \textit{the transmission of data in distributed comp
 
 \subsection{Data Transmission} % REST APIs
 
-This section explores the standards and methods for transmitting data across distributed systems built on the client-server and publish-subscribe model. It serves as background knowledge on how serialised data is exchanged at both ends of the systems, as well as how this affects our choice of data serialisation libraries. \\
+This section explores the standards and methods for transmitting data across distributed systems built on the publish-subscribe model type for client-server distribution. It serves as background knowledge on how serialised data is distributed, to illustrate how our choice of data serialisation library is informed by back-end systems. \\
 
-The OSI Model (Open Systems Interconnection Model) is a conceptual framework used to describe the functions of a networking system. The OSI model characterises computing functions into a universal set of rules and requirements in order to support interoperability between different products and software. In the OSI reference model, the communications between a computing system are split into seven different abstraction layers: Physical, Data Link, Network, Transport, Session, Presentation, and Application.
+\cite{tarkoma2012publish} defines the \textit{publish-subscribe (pub/sub) paradigm} as the efficient and timely selective communication of events between sourceless participating components. He relates his definition to how humans selectively focus on (or "subscribe" to) probable sources of interesting events.
 
-Created at a time when network computing was in its infancy, the OSI was published in 1984 by the International Organisation for Standardisation (ISO). Though it does not always map directly to specific systems, the OSI Model is still used today as a means to describe Network Architecture. \\
+Notably the participants in such a distributed system would appear sourceless to each other, and thus they publish without direction. This introduces the crucial element of time beyond asynchrony, as participants subscribe based on the probability that information will be communicated, even if no such data yet exists at any future publishing participant. He contrasts this with database systems, wherein information is retrieved through queries for data communicated in the past, rather than expectations for the future. \\
 
-\textbf{The 7 Layers of the OSI Model} \\
+As seen in figure \ref{fig:pubsubsystem}, ...
 
-\textbf{Physical Layer.} The lowest layer of the OSI Model is concerned with electrically or optically transmitting raw unstructured data bits across the network from the physical layer of the sending device to the physical layer of the receiving device. It can include specifications such as voltages, pin layout, cabling, and radio frequencies. At the physical layer, one might find “physical” resources such as network hubs, cabling, repeaters, network adapters or modems.
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.8\linewidth]{figures/pubsubsystem.pdf}
+\caption{Components of a pub/sub system. \cite[]{tarkoma2012publish}.}
+\label{fig:pubsubsystem}
+\end{figure}
 
-\textbf{Data Link Layer.} At the data link layer, directly connected nodes are used to perform node-to-node data transfer where data is packaged into frames. The data link layer also corrects errors that may have occurred at the physical layer. The data link layer encompasses two sub-layers of its own. The first, media access control (MAC), provides flow control and multiplexing for device transmissions over a network. The second, the logical link control (LLC), provides flow and error control over the physical medium as well as identifies line protocols.
+OSI model... \\
 
-\textbf{Network Layer.} The network layer is responsible for receiving frames from the data link layer, and delivering them to their intended destinations among based on the addresses contained inside the frame. The network layer finds the destination by using logical addresses, such as IP (internet protocol). At this layer, routers are a crucial component used to quite literally route information where it needs to go between networks.
+RESTful state APIs... \\
 
-\textbf{Transport Layer.} The transport layer manages the delivery and error checking of data packets. It regulates the size, sequencing, and ultimately the transfer of data between systems and hosts. One of the most common examples of the transport layer is TCP or the Transmission Control Protocol.
+% The OSI Model (Open Systems Interconnection Model) is a conceptual framework used to describe the functions of a networking system. The OSI model characterises computing functions into a universal set of rules and requirements in order to support interoperability between different products and software. In the OSI reference model, the communications between a computing system are split into seven different abstraction layers: Physical, Data Link, Network, Transport, Session, Presentation, and Application.
 
-\textbf{Session Layer.} The session layer controls the conversations between different computers. A session or connection between machines is set up, managed, and termined at layer 5. Session layer services also include authentication and reconnections.
+% Created at a time when network computing was in its infancy, the OSI was published in 1984 by the International Organisation for Standardisation (ISO). Though it does not always map directly to specific systems, the OSI Model is still used today as a means to describe Network Architecture. \\
 
-\textbf{Presentation Layer.} The presentation layer formats or translates data for the application layer based on the syntax or semantics that the application accepts. Because of this, it at times also called the syntax layer. This layer can also handle the encryption and decryption required by the application layer.
+% \textbf{The 7 Layers of the OSI Model} \\
 
-\textbf{Application Layer.} At this layer, both the end user and the application layer interact directly with the software application. This layer sees network services provided to end-user applications such as a web browser or Office 365. The application layer identifies communication partners, resource availability, and synchronises communication.
+% \textbf{Physical Layer.} The lowest layer of the OSI Model is concerned with electrically or optically transmitting raw unstructured data bits across the network from the physical layer of the sending device to the physical layer of the receiving device. It can include specifications such as voltages, pin layout, cabling, and radio frequencies. At the physical layer, one might find “physical” resources such as network hubs, cabling, repeaters, network adapters or modems.
+
+% \textbf{Data Link Layer.} At the data link layer, directly connected nodes are used to perform node-to-node data transfer where data is packaged into frames. The data link layer also corrects errors that may have occurred at the physical layer. The data link layer encompasses two sub-layers of its own. The first, media access control (MAC), provides flow control and multiplexing for device transmissions over a network. The second, the logical link control (LLC), provides flow and error control over the physical medium as well as identifies line protocols.
+
+% \textbf{Network Layer.} The network layer is responsible for receiving frames from the data link layer, and delivering them to their intended destinations among based on the addresses contained inside the frame. The network layer finds the destination by using logical addresses, such as IP (internet protocol). At this layer, routers are a crucial component used to quite literally route information where it needs to go between networks.
+
+% \textbf{Transport Layer.} The transport layer manages the delivery and error checking of data packets. It regulates the size, sequencing, and ultimately the transfer of data between systems and hosts. One of the most common examples of the transport layer is TCP or the Transmission Control Protocol.
+
+% \textbf{Session Layer.} The session layer controls the conversations between different computers. A session or connection between machines is set up, managed, and termined at layer 5. Session layer services also include authentication and reconnections.
+
+% \textbf{Presentation Layer.} The presentation layer formats or translates data for the application layer based on the syntax or semantics that the application accepts. Because of this, it at times also called the syntax layer. This layer can also handle the encryption and decryption required by the application layer.
+
+% \textbf{Application Layer.} At this layer, both the end user and the application layer interact directly with the software application. This layer sees network services provided to end-user applications such as a web browser or Office 365. The application layer identifies communication partners, resource availability, and synchronises communication.
 
 % Formats, Protocols, Blockchain (Git)?
 
 \subsection{Object Serialisation} % why, state, formats, advantages and disadvantages
 
-\textbf{Serialisation} is the process of converting a data object—a combination of code and data represented within a region of data storage—into a series of bytes that saves the state of the object in an easily transmittable form. In this serialised form, the data can be delivered to another data store (such as an in-memory computing platform), application, or some other destination. The reverse process—constructing a data structure or object from a series of bytes—is \textbf{deserialisation}. The deserialisation process recreates the object, thus making the data easier to read and modify as a native structure in a programming language.
+% \textbf{Serialisation} is the process of converting a data object—a combination of code and data represented within a region of data storage—into a series of bytes that saves the state of the object in an easily transmittable form. In this serialised form, the data can be delivered to another data store (such as an in-memory computing platform), application, or some other destination. The reverse process—constructing a data structure or object from a series of bytes—is \textbf{deserialisation}. The deserialisation process recreates the object, thus making the data easier to read and modify as a native structure in a programming language.
 
-serialisation enables us to save the state of an object and recreate the object in a new location. serialisation encompasses both the storage of the object and exchange of data. Since objects are composed of several components, saving or delivering all the parts typically requires significant coding effort, so serialisation is a standard way to capture the object into a sharable format. With serialisation, we can transfer objects:
+% Serialisation enables us to save the state of an object and recreate the object in a new location. serialisation encompasses both the storage of the object and exchange of data. Since objects are composed of several components, saving or delivering all the parts typically requires significant coding effort, so serialisation is a standard way to capture the object into a sharable format. With serialisation, we can transfer objects:
 
-\textbf{Over the wire} for messaging use cases
+% \textbf{Over the wire} for messaging use cases
 
-\textbf{From application to application} via web services such as REST APIs
+% \textbf{From application to application} via web services such as REST APIs
 
-\textbf{Through firewalls} (as JSON or XML strings)
+% \textbf{Through firewalls} (as JSON or XML strings)
 
-\textbf{Across domains}
+% \textbf{Across domains}
 
-\textbf{To other data stores}
+% \textbf{To other data stores}
 
-\textbf{To identify changes in data} over time
+% \textbf{To identify changes in data} over time
 
-\textbf{While honoring security} and user-specific details across applications \\
+% \textbf{While honoring security} and user-specific details across applications \\
 
 \textbf{JavaScript Object Notation (JSON)} \\
 

@@ -18,7 +18,7 @@
 \bibliographystyle{apalike}
 \titleformat*{\section}{\centering\small}
 \titleformat*{\subsection}{\textit\small}
-\renewcommand{\thesection}{\Roman{section}}
+\renewcommand{\thesection}{\Roman{section} }
 \renewcommand{\thesubsection}{\alph{subsection}}
 \renewcommand{\bibsection}{\null \\ \centerline{\small{REFERENCES}}}
 \raggedbottom
@@ -56,7 +56,7 @@
 \subfile{sections/extensibility}            % trans-compilation, full backwards-compatibility                                   (library: TXON)
 
 \subfile{sections/relatedwork}              % serialisation performance
-\subfile{sections/experiment}               % API calls, defensive code, XML specification, validation script, extensibility transpiler
+\subfile{sections/experiment}               % API calls, defensive code, JSON/XML specification, validation script, extensibility transpiler
 \subfile{sections/results}
 \subfile{sections/discussion}
 \subfile{sections/conclusion}
