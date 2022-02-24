@@ -4,7 +4,7 @@
 
 \begin{document}
 
-\section{VOCABULARY}
+\section{SYSTEM VOCABULARY}
 
 This section explores fundamental principles of the system architectures that support distribution of serialised data. It serves to establish a vocabulary for communication in computing, as well as to provide background knowledge on how data becomes distributed, and motivate my choices of systems. 
 
@@ -90,7 +90,7 @@ He notes that participants in this type of distributed system would appear sourc
 
 The nature of this relationship between publishers and subscribers introduces coordination challenges, as publishers and subscribers must agree on event expectations before a situation occurs. The pub/sub system does not take responsibility for these challenges, as it can only set expectations but not solve conflicts. The system is only responsible for delivering the communicated event between publishers and their subscribers. \\
 
-The pub/sub system's approach to transmitting events is referred to as a \textit{communication primitive}, and it is informed by...
+The pub/sub system's approach to transmitting events is referred to as a \textit{communication primitive}, and determines to which degree the publisher or service is responsible for transmission. These primitives are...
 
 OSI model... \\
 
