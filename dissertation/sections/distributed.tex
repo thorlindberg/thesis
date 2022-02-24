@@ -6,7 +6,7 @@
 
 \section{SYSTEM VOCABULARY}
 
-This section explores fundamental principles of the system architectures that support distribution of serialised data. It serves to establish a vocabulary for communication in computing, as well as to provide background knowledge on how data becomes distributed, and motivate my choices of systems. 
+This section explores fundamental principles of the system architectures that support distribution of serialised data. It serves to establish a vocabulary for communication in computing, as well as to provide background knowledge on how data becomes distributed, and motivate my choices of systems.
 
 \subsection{Distributed Computing}
 
@@ -90,7 +90,9 @@ He notes that participants in this type of distributed system would appear sourc
 
 The nature of this relationship between publishers and subscribers introduces coordination challenges, as publishers and subscribers must agree on event expectations before a situation occurs. The pub/sub system does not take responsibility for these challenges, as it can only set expectations but not solve conflicts. The system is only responsible for delivering the communicated event between publishers and their subscribers. \\
 
-The pub/sub system's approach to transmitting events is referred to as a \textit{communication primitive}, and determines to which degree the publisher or service is responsible for transmission. These primitives are...
+The system can take different approaches to communicating events between entities over a network. In the simplest form, a pub/sub system can communicate directly from publishers to subscribers, with publishers taking on responsibility for the transmission of events. As the network scales and increasingly more entities subscribe this approach become untenable, and responsibilities are instead delegated to an intermediary type of entity, referred to as \textit{brokers} or \textit{pub/sub routers}.
+
+In a \textit{centralised} pub/sub system, publishers either utilise a \textit{one-to-one message protocol}, typically the TCP/IP protocol, or they communicate events to a \textit{broker server}, which forwards messages to its subscribers. In a \textit{distribued} pub/sub system events are never communicated directly between publishers and subscribers, and brokers are deployed as an \textit{overlay network} for routing. This overlay is an additional layer on-top of the network, allowing the brokers to collaboratively transmit events between entities, gaining the aforementioned advantages of a distributed system. \\
 
 OSI model... \\
 
