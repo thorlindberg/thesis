@@ -14,6 +14,8 @@
 \usepackage{fancyvrb}
 \usepackage{float}
 
+\newcommand{\charactercount}[1]{\immediate\write18{expr `texcount -1 -sum -merge #1.tex` + `texcount -1 -sum -merge -char #1.tex` - 1 > chars.txt}\input{chars.txt}characters}
+
 \graphicspath{{figures/}}
 \bibliographystyle{apalike}
 \titleformat*{\section}{\centering\small}
@@ -40,7 +42,7 @@
     \small{IT-University of Copenhagen, Denmark} \\
     \small{\href{mailto:jst@itu.dk}{jst@itu.dk}}
 }
-\date{}
+\date{\vspace{0.5cm} \\ \color{red}There are \charactercount{report} (incl. spaces) in this document.} % should be empty in production
 
 \begin{document}
 
