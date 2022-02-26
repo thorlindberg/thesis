@@ -14,8 +14,7 @@ This section explores fundamental principles of the system architectures that su
 
 In characterising distributed systems, \cite{kshemkalyani2011distributed} raise the notion that the physical differences of entities, and variation in their resources, creates a reliance on distributed communication. Distributed resources, particularly the absence of shared memory, implies an inherent asynchrony between entities. This means that each individual entity must act autonomously, while collaborating with and distributing tasks among the entities within the system. \\
 
-As seen in figure \ref{fig:networkcomms}, a distributed system achieves asynchronous collaboration through a communication network, either a wide (WAN) area or local (LAN) area network, depending on the geography of the system. Each entity in the system consists of at least one processor (P) with its own solitary memory (M), providing the entity computational autonomy. This network structure creates the potential for both hardware and software heterogeneity, which necessitates coordination and distribution of tasks and responsibilities.
-
+As seen in figure \ref{fig:networkcomms}, a distributed system achieves asynchronous collaboration through a communication network, either a wide (WAN) area or local (LAN) area network, depending on the geography of the system. Each entity in the system consists of at least one processor (P) with its own solitary memory (M), providing the entity computational autonomy. This network structure creates the potential for both hardware and software heterogeneity, which necessitates coordination and distribution of tasks and responsibilities. \\
 
 \begin{figure}[h!]
 \centering
@@ -26,7 +25,7 @@ As seen in figure \ref{fig:networkcomms}, a distributed system achieves asynchro
 
 \textit{Hardware heterogeneity} manifests as a variation in physical resources and thus implicitly a variation in computational capability. This necessitates a variance in entity responsibilities, as each individual entity is... This can of course be a cognitive decision made by system architects and engineers, facilitating a more efficient distribution, as computational tasks are inherently varied in requirements.
 
-\textit{Software heterogeneity} manifests as a variation in programming languages and frameworks. Distributed systems use a layered architecture, with a middle layer driving the software distribution, the so-called "middleware." As seen in figure \ref{fig:processinteraction}, the middleware layer exists as an addition to the protocol-oriented application layer, which handles the communication protocols such as \textit{http}. Additionally, as data flows in a heterogeneous distributed system, it must adhere to a standardised and yet interoperable format, modelled on the software systems used in the network.
+\textit{Software heterogeneity} manifests as a variation in programming languages and frameworks. Distributed systems use a layered architecture, with a middle layer driving the software distribution, the so-called "middleware." As seen in figure \ref{fig:processinteraction}, the middleware layer exists as an addition to the protocol-oriented application layer, which handles the communication protocols such as \textit{http}. Additionally, as data flows in a heterogeneous distributed system, it must adhere to a standardised and yet interoperable format, modelled on the software systems used in the network. \\
 
 \begin{figure}[h!]
 \centering
@@ -39,14 +38,14 @@ At this point, you are probably wondering \textit{why distribution is relevant} 
 
 Given the inherent nature of serialised data exchange, and the ubiquity of distributed computing systems, the design of such systems informs our approach to communicating across them. It should be noted that systems do not exist in a vacuum, and thus system should be contextually designed based on market forces. System designers must balance or choose between industry standard protocols, which maximise interoperability, and the technically best solutions, which require more control and closed source development.
 
-\cite{kshemkalyani2011distributed} identify a set of design challenges applicable to the traditional server-client model of distributed systems. An \textit{Applications Programming Interface (API)} enables the distributed system to communicate internally and more importantly externally, maximising the adoption of system services by outside forces. It introduces the challenge of \textit{transparency}, as the system should be accessible without revealing its internal operations (resource [re]location, replication, concurrency, failure handling etc.) and implementation policies.
-
 \begin{figure*}
 \centering
 \includegraphics[width=0.8\linewidth]{figures/pubsubsystem.pdf}
 \caption{Components of a \textit{publish-subscribe} system. \cite[9]{tarkoma2012publish}.}
 \label{fig:pubsubsystem}
 \end{figure*}
+
+\cite{kshemkalyani2011distributed} identify a set of design challenges applicable to the traditional server-client model of distributed systems. An \textit{Applications Programming Interface (API)} enables the distributed system to communicate internally and more importantly externally, maximising the adoption of system services by outside forces. It introduces the challenge of \textit{transparency}, as the system should be accessible without revealing its internal operations (resource [re]location, replication, concurrency, failure handling etc.) and implementation policies.
 
 \cite{kshemkalyani2011distributed} describe several applications of distributed computing, of which the publish-subscribe model of content distribution is particularly relevant to this project, because it is the most prominent server-client system. In this model, information is filtered by relevancy, meaning the server distributes only the requested information. As argued by \cite{kshemkalyani2011distributed}, information distribution requires three types of mechanisms: distribution (publishing), specific requests (subscribe), and the ability to manipulate information based on a request before publishing. \\
 
@@ -68,7 +67,18 @@ The system can take different approaches to communicating events between entitie
 
 In a \textit{centralised} pub/sub system, publishers either utilise a \textit{one-to-one message protocol}, or they communicate events to a \textit{broker server}, which forwards messages to its subscribers. In a \textit{distributed} pub/sub system events are never communicated directly between publishers and subscribers, and brokers are deployed as an \textit{overlay network} for routing. This overlay is an additional layer on-top of the network, allowing the brokers to collaboratively transmit events between entities, gaining the aforementioned advantages of a distributed system. \\
 
-The network layer is one of multiple layers typical of networking systems. The OSI model abstracts networking systems into a conceptual framework, describing the functional relationships necessary for communication. \cite{alani2014guide} outlines the layers... \\
+The network layer is one of multiple layers typical of networking systems. \cite{alani2014guide} presents the 7 layers of the \textit{Open Systems Interconnection} (OSI) model, as seen in table \ref{fig:ositcilayers}. The OSI model abstracts networking systems into a conceptual framework, to describe and standardise the functional relationship between these layers. \\
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.8\linewidth]{figures/ositcilayers.pdf}
+\caption{Comparison between layers in the OSI model and TCI/IP model, providing a standard communication architecture for distributed processing systems \cite[21]{alani2014guide}.}
+\label{fig:ositcilayers}
+\end{figure}
+
+As data travels across layers it is transformed and adapted by the unique protocol[s] of each layer, which add additional information to the data. In a distributed system, data travels from the application to the physical layer, referred to as \textit{capsulation}, and back to another application layer, referred to as \textit{decapsulation}. \\
+
+TCI/IP.. \\
 
 REST state and APIs...
 
