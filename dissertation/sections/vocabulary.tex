@@ -67,7 +67,7 @@ The system can take different approaches to communicating events between entitie
 
 In a \textit{centralised} pub/sub system, publishers either utilise a \textit{one-to-one message protocol}, or they communicate events to a \textit{broker server}, which forwards messages to its subscribers. In a \textit{distributed} pub/sub system events are never communicated directly between publishers and subscribers, and brokers are deployed as an \textit{overlay network} for routing. This overlay is an additional layer on-top of the network, allowing the brokers to collaboratively transmit events between entities, gaining the aforementioned advantages of a distributed system. \\
 
-The network layer is one of multiple layers typical of networking systems. \cite{alani2014guide} presents the 7 layers of the \textit{Open Systems Interconnection} (OSI) model, as seen in table \ref{fig:ositcilayers}. The OSI model abstracts networking systems into a conceptual framework, to describe and standardise the functional relationship between these layers. \\
+The network layer is one of multiple layers typical of networking systems. \cite{alani2014guide} presents the 7 layers of the \textit{Open Systems Interconnection} (OSI) model, as seen in figure \ref{fig:ositcilayers}. The OSI model abstracts networking systems into a conceptual framework, to describe and standardise the functional relationship between these layers. TCI/IP... \\
 
 \begin{figure}[h!]
 \centering
@@ -76,11 +76,20 @@ The network layer is one of multiple layers typical of networking systems. \cite
 \label{fig:ositcilayers}
 \end{figure}
 
-As data travels across layers it is transformed and adapted by the unique protocol[s] of each layer, which add additional information to the data. In a distributed system, data travels from the application to the physical layer, referred to as \textit{capsulation}, and back to another application layer, referred to as \textit{decapsulation}. \\
+As data in a distributed systems flows from the software (\textit{application}) layer to the hardware (\textit{physical}) layer, it is transformed by protocols which add additional information to the data. This process is referred to as \textit{encapsulation}, and consists of \textit{capsulation} from the source host and \textit{decapsulation} towards the destination host. As data flows from source host's application layer and towards the physical layer, protocols prepend headers (leading information) and append trailers (trailing information) to the data. This additional information indicates the purpose of communicating the data and how it should be interpreted by the next layer. \\
 
-TCI/IP.. \\
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.8\linewidth]{figures/encapsulation.pdf} \\
+\vspace{0.5cm}
+\includegraphics[width=0.8\linewidth]{figures/endtoendflow.pdf}
+\caption{End-to-end data flow and encapsulation with headers and trailers \cite[15]{alani2014guide}.}
+\label{fig:dataflow}
+\end{figure}
 
-REST state and APIs...
+The take away from the OSI model is that as data flows through a distributed system, it is transformed by protocols utilised in the layers. These protocols inform the state of the data...
+
+REST state and APIs... \cite{tarkoma2012publish}
 
 % The OSI Model (Open Systems Interconnection Model) is a conceptual framework used to describe the functions of a networking system. The OSI model characterises computing functions into a universal set of rules and requirements in order to support interoperability between different products and software. In the OSI reference model, the communications between a computing system are split into seven different abstraction layers: Physical, Data Link, Network, Transport, Session, Presentation, and Application.
 
