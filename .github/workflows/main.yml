@@ -8,8 +8,9 @@ jobs:
         uses: actions/checkout@v2
       - name: Compile LaTeX document
         uses: xu-cheng/latex-action@v2
+        working_directory: dissertation
         with:
-          root_file: dissertation/report.tex
+          root_file: report.tex
       - uses: actions/upload-artifact@v2
         with:
           name: PDF
