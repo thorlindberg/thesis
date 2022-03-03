@@ -9,9 +9,8 @@ jobs:
       - name: Compile LaTeX document
         uses: xu-cheng/latex-action@v2
         with:
-          working_directory: dissertation
-          root_file: report.tex
+          root_file: dissertation/report.tex
       - uses: actions/upload-artifact@v2
         with:
           name: PDF
-          path: report.pdf
+          path: dissertation/report.pdf
