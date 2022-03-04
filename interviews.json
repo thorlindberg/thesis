@@ -1,0 +1,42 @@
+{
+    "name": {
+        "job role": [null],
+        "years employed": null,
+        "current project": [null],
+        "experience with data": [null],
+        "workflow derived from data": [null],
+        "experience with debugging data": [null],
+        "experience with defensive mechanisms": [null],
+        "human readability or safety of data": [null],
+        "satisfaction with data format (1 to 5)": null,
+        "interest in new data format (1 to 5)": null,
+        "other comments": [null]
+    },
+    "Emil": {
+        "job role": ["ux designer", "ios developer"],
+        "years employed": 2,
+        "current project": ["clever"],
+        "experience with data": ["messages to API are highly segmented, which creates a large variation in results. clever could have more documentation of their data format, since developers can't validate the data types."],
+        "workflow derived from data": ["data-driven user interface is affected by null data because it is optional. Edge cases."],
+        "experience with debugging data": ["swagger service with clever"],
+        "experience with test environment": ["charles app, used to fake API responses with data values that don't exist yet on the backend. the test environment is shared between clever and developer, which means clever might make changes that negatively impact the developer."],
+        "experience with defensive mechanisms": ["Non-nullable data sometimes still contains null. This is a contract issue, and can be seen with dates."],
+        "human readability or safety of data": ["depends on the context, and safety is more important if the consequence is that everything crashes."],
+        "satisfaction with data format (1 to 5)": 3,
+        "interest in data format changes (1 to 5)": 3,
+        "other comments": ["Charles app is a proxy. Clever API is heavily segmented, which has its benefits, but they would also like the flexibility of consolidated calls."]
+    },
+    "Christian": {
+        "job role": ["android developer"],
+        "years employed": 1,
+        "current project": ["clever"],
+        "experience with data": ["would like clever backend to handle more of the relational data / calculations, e.g. date changed from future to now but status remains postponed. this is a state issue caused by hardware distribution/fragmentation."],
+        "workflow derived from data": ["ideally the backend should deliver what developers/designers need. they don't start working on a feature until they are assured that the backend can provide for it."],
+        "experience with debugging data": ["not useful error messages responding to string where should be int. this was especially confusing because they were testing a payment system, not their data or backend.", "app crashing because of invalid HTML relative to a library used.", "more dates than expected because of time zones, which was debugged by using a try-catch."],
+        "experience with defensive mechanisms": ["input validation"],
+        "human readability or safety of data": ["it is the responsibility of the backend. from a frontend perspective, they need to ensure both android and ios compatibility, and if they handle something in the frontend it requires them to send out an app update. we want to avoid hardcoding information into the app, and instead get it from an API."],
+        "satisfaction with data format (1 to 5)": null,
+        "interest in new data format (1 to 5)": null,
+        "other comments": ["distributed systems often result in information that is not relevant to frontend developers.", "the flexibility provided by highly segmented API calls allows designers to add or remove elements, as well as to re-use the same API calls for different purposes.", "don't change the data format once the app has been published."]
+    }
+}
