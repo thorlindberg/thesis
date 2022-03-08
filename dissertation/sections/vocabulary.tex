@@ -16,7 +16,7 @@ In characterising distributed systems, \cite{kshemkalyani2011distributed} raise 
 
 As seen in figure \ref{fig:networkcomms}, a distributed system achieves asynchronous collaboration through a communication network, either a wide (WAN) area or local (LAN) area network, depending on the geography of the system. Each entity in the system consists of at least one processor (P) with its own solitary memory (M), providing the entity computational autonomy. This network structure creates the potential for both hardware and software heterogeneity, which necessitates coordination and distribution of tasks and responsibilities. \\
 
-\begin{figure}[h!]
+\begin{figure}[H]
 \centering
 \includegraphics[width=0.8\linewidth]{figures/networkcomms.pdf}
 \caption{A distributed system connects processors by a communication network \cite[2]{kshemkalyani2011distributed}.}
@@ -27,7 +27,7 @@ As seen in figure \ref{fig:networkcomms}, a distributed system achieves asynchro
 
 \textit{Software heterogeneity} manifests as a variation in programming languages and frameworks. Distributed systems use a layered architecture, with a middle layer driving the software distribution, the so-called "middleware." As seen in figure \ref{fig:processinteraction}, the middleware layer exists as an addition to the protocol-oriented application layer, which handles the communication protocols such as \textit{http}. Additionally, as data flows in a heterogeneous distributed system, it must adhere to a standardised and yet interoperable format, modelled on the software systems used in the network. \\
 
-\begin{figure}[h!]
+\begin{figure}[H]
 \centering
 \includegraphics[width=0.8\linewidth]{figures/processinteraction.pdf}
 \caption{Interaction of the software components at each processor \cite[3]{kshemkalyani2011distributed}.}
@@ -71,7 +71,7 @@ The network layer is one of multiple layers typical of networking systems. As se
 
 % The transport layer manages the delivery and error checking of data packets. It regulates the size, sequencing, and ultimately the transfer of data between systems and hosts. One of the most common examples of the transport layer is TCP or the Transmission Control Protocol.
 
-\begin{figure}[h!]
+\begin{figure}[H]
 \centering
 \includegraphics[width=0.8\linewidth]{figures/ositcilayers.pdf}
 \caption{Comparison between layers in the OSI model and TCI/IP model, providing a standard communication architecture for distributed processing systems \cite[21]{alani2014guide}.}
@@ -80,7 +80,7 @@ The network layer is one of multiple layers typical of networking systems. As se
 
 As data in a distributed systems flows from the software (\textit{application layer}) to the hardware (\textit{physical layer}), it is transformed by protocols which add additional information to the data. This process is referred to as \textit{encapsulation}, and consists of \textit{capsulation} from the source host and \textit{decapsulation} towards the destination host. As data flows from source host's application layer and towards the physical layer, protocols prepend headers (leading information) and append trailers (trailing information) to the data. This additional information indicates the purpose of communicating the data and how it should be interpreted by the next layer. \\
 
-\begin{figure}[h!]
+\begin{figure}[H]
 \centering
 \includegraphics[width=0.8\linewidth]{figures/encapsulation.pdf} \\
 \vspace{0.5cm}

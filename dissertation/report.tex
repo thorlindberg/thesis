@@ -1,4 +1,4 @@
-\documentclass[10pt, twocolumn, letterpaper]{article}
+\documentclass[10pt, onecolumn, letterpaper]{article}
 
 \usepackage[utf8x]{inputenc}
 \usepackage[T1]{fontenc}
@@ -12,6 +12,7 @@
 \usepackage{titlesec}
 \usepackage{csvsimple}
 \usepackage{fancyvrb}
+\usepackage{multicol}
 \usepackage{float}
 
 \newcommand{\charactercount}[1]{\immediate\write18{expr `texcount -1 -sum -merge #1.tex` + `texcount -1 -sum -merge -char #1.tex` - 1 > chars.txt}\input{chars.txt}characters}
@@ -42,12 +43,15 @@
     \small{IT-University of Copenhagen, Denmark} \\
     \small{\href{mailto:jst@itu.dk}{jst@itu.dk}}
 }
-\date{\vspace{0.5cm}\color{red}\charactercount{report} (incl. spaces)}
+\date{}
 
 \begin{document}
 
 \maketitle
 \subfile{sections/preface}
+
+\begin{multicols}{2}
+\color{red}\centerline{\charactercount{report} (incl. spaces)}\color{black}
 \subfile{sections/introduction}
 \subfile{sections/case}
 % levels of architecture: system -> data -> information. Benjamin says ETL is the data engineering component of data architecture
@@ -64,7 +68,7 @@
 \subfile{sections/discussion}
 \subfile{sections/conclusion}
 \subfile{sections/futurework}
-
-% \bibliography{bibliography}
+\bibliography{bibliography}
+\end{multicols}
 
 \end{document}
