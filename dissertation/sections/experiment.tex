@@ -8,7 +8,8 @@
 
 \begin{figure}[H]
 \def\arraystretch{1.5}
-\begin{tabular}{|p{0.35\linewidth}|p{0.15\linewidth}|p{0.15\linewidth}|p{0.15\linewidth}|}
+\centering
+\begin{tabular}{|p{0.35\linewidth}|p{0.1\linewidth}|p{0.1\linewidth}|p{0.1\linewidth}|}
 \hline
 Feature & XML & JSON & Proto \\
 \hline
@@ -38,43 +39,56 @@ Proto: https://developers.google.com/protocol-buffers
 
 \subsection{Declaration}
 
-\begin{Verbatim}[frame=single,numbers=right,framesep=5mm,label=XML Object]
+\begin{figure}[H]
+\begin{lstlisting}[language=XML, numbers=none]
 <Object>
     <Property>Content</Property>
 </Object>
-\end{Verbatim}
+\end{lstlisting}
+\caption{XML object declaration.}
+\end{figure}
 
 \vspace{1mm}
 
-\begin{Verbatim}[frame=single,numbers=right,framesep=5mm,label=JSON Object]
+\begin{figure}[H]
+\begin{lstlisting}[language=JavaScript, numbers=none]
 {
     Object : {
         Property : Content
     }
 }
-\end{Verbatim}
+\end{lstlisting}
+\caption{JavaScript object notation.}
+\end{figure}
 
 \vspace{1mm}
 
-\begin{Verbatim}[frame=single,numbers=right,framesep=5mm,label=Proto Object]
+\begin{figure}[H]
+\begin{lstlisting}[language=JavaScript, numbers=none]
 message Object {
     Optional Type Property = Content;
 }
-\end{Verbatim}
+\end{lstlisting}
+\caption{Protocol Buffers object declaration.}
+\end{figure}
 
 \subsection{Syntax}
 
-\begin{Verbatim}[frame=single,numbers=left,framesep=5mm,label=XML Object]
+\begin{figure}[H]
+\begin{lstlisting}[language=XML, numbers=none]
 <Person>
     <name>1</name>
     <id>2</id>
     <email>3</email>
 </Person>
-\end{Verbatim}
+\end{lstlisting}
+\caption{XML object properties.}
+\end{figure}
 
 \vspace{1mm}
 
-\begin{Verbatim}[frame=single,numbers=left,framesep=5mm,label=JSON Object]
+\begin{figure}[H]
+\begin{lstlisting}[language=JavaScript, numbers=none]
 {
     "Person": {
         "name":     "1",
@@ -82,17 +96,22 @@ message Object {
         "email":    "3"
     }
 }
-\end{Verbatim}
+\end{lstlisting}
+\caption{JavaScript object properties.}
+\end{figure}
 
 \vspace{1mm}
 
-\begin{Verbatim}[frame=single,numbers=left,framesep=5mm,label=Proto Object]
+\begin{figure}[H]
+\begin{lstlisting}[language=JavaScript, numbers=none]
 message Person {
     required string name =  1;
     required int32 id =     2;
     optional string email = 3;
 }
-\end{Verbatim}
+\end{lstlisting}
+\caption{Protocol Buffers object properties.}
+\end{figure}
 
 \subsection{Serialisation}
 
