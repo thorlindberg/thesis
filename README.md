@@ -61,14 +61,8 @@ Each 'thread' stretches across all section types in the report (_introduction, e
 
 ----------
 
-Literature
-
-*Clean Architecture* by Robert C. Martin (https://blog.cleancoder.com)
-
-----------
-
 <details>
-<summary>Sources</summary>
+<summary>Potential sources</summary>
 
 <br>
 
