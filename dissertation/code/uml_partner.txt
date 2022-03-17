@@ -1,0 +1,15 @@
+// yUML diagram
+
+// Objects
+
+[*Partner: Company*|Service provider;Customer-oriented {bg:honeydew}]
+[*Partner: Back-end*|Databases;API maintenance {bg:honeydew}]
+[*Partner: CEO*|Negotiation with developers {bg:honeydew}]
+
+[*Case*|Requirement specifications;Goals and needs;Resources]
+
+// Connections
+
+[*Partner: Company*]1-1[*Partner: Back-end*]
+[*Partner: Company*]1-1[*Partner: CEO*]
+[*Partner: CEO*]1->1[*Case*]

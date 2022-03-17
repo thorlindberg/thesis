@@ -1,0 +1,17 @@
+// yUML diagram
+
+// Objects
+
+[*Developer: Company*|Case-based work;Application development;Front-end maintenance {bg:aliceblue}]
+[*Developer: Designers*|Product branding;User experience {bg:aliceblue}]
+[*Developer: Front-end*|Software architecture;User Interfaces {bg:aliceblue}]
+[*Developer: CEO*|Negotiation with partners {bg:aliceblue}]
+
+[*Deliverables*|Native software;Design;UX research;SaaS updates]
+
+// Connections
+
+[*Developer: Company*]1-*[*Developer: Designers*]
+[*Developer: Company*]1-*[*Developer: Front-end*]
+[*Developer: Company*]1-1[*Developer: CEO*]
+[*Developer: CEO*]1->1[*Deliverables*]
