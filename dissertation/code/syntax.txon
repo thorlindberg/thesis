@@ -45,6 +45,12 @@ private var items: [Item] = [
 // json derivative
 
 json = {
+    //
+}
+
+// txon proposal
+
+txon = {
     properties: {
         name: {
             type: "string",
