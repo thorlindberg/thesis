@@ -1,17 +1,27 @@
-
-
-
 function Item(name, category) {
 
+    const types = {
+        undefined: "undefined",
+        string: "string",
+        number: "number",
+        boolean: "boolean",
+        object: "object",
+        nil: "null"
+    }
+
     this.name = new function() {
-        this.type = "string"
+        this.type = types.string
         this.enum = null
-        this.value = name
+        if (typeof name == this.type) {
+            this.value = name
+        } else {
+            throw new TypeError(`type mismatch between value: ${name} and type: ${this.type}`)
+        }
     }
 
     this.category = new function() {
 
-        this.type = "string"
+        this.type = types.string
         this.enum = items
 
         const hasProperty = this.enum.hasOwnProperty(category)
@@ -22,7 +32,7 @@ function Item(name, category) {
         } else if (hasValue) {
             this.value = category
         } else {
-            throw new Error(`case "${category}" not found in enum`)
+            throw new Error(`case: ${category} not found in enum: ${this.enum}`)
         }
 
     }
