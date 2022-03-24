@@ -22,7 +22,7 @@ function Item(name, category) {
     this.category = new function() {
 
         this.type = types.string
-        this.enum = items
+        this.enum = categories
 
         const hasProperty = this.enum.hasOwnProperty(category)
         const hasValue = Object.values(this.enum).includes(category)
@@ -39,7 +39,7 @@ function Item(name, category) {
 
 }
 
-const items = {
+const categories = {
     largeDrink: "🍺",
     smallDrink: "🥤",
     meat: "🥩",
@@ -56,9 +56,9 @@ const itemsByKey = [
 ]
 
 const itemsByValue = [
-    new Item("Diet Coke (1.5L)", items.largeDrink),
-    new Item("Fanta (0.5L)", items.smallDrink),
-    new Item("Olives", items.plant)
+    new Item("Diet Coke (1.5L)", categories.largeDrink),
+    new Item("Fanta (0.5L)", categories.smallDrink),
+    new Item("Olives", categories.plant)
 ]
 
 console.log(itemsByKey)
