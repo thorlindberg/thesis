@@ -32,7 +32,7 @@ function Item(name, category) {
         } else if (hasValue) {
             this.value = category
         } else {
-            throw new Error(`case: ${category} not found in enum: ${this.enum}`)
+            throw new Error(`case: ${category} not found in enum`)
         }
 
     }
@@ -52,13 +52,15 @@ const items = {
 const itemsByKey = [
     new Item("Diet Coke (1.5L)", "largeDrink"),
     new Item("Fanta (0.5L)", "smallDrink"),
-    new Item("Olives", "plant"),
-    // new Item("Tomatoes", "error")
+    new Item("Olives", "plant")
 ]
 
 const itemsByValue = [
     new Item("Diet Coke (1.5L)", items.largeDrink),
     new Item("Fanta (0.5L)", items.smallDrink),
-    new Item("Olives", items.plant),
-    // new Item("Olives", items.error)
+    new Item("Olives", items.plant)
 ]
+
+console.log(itemsByKey)
+console.log(itemsByValue)
+console.log(itemsByKey == itemsByValue)
