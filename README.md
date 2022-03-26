@@ -31,6 +31,29 @@ Curabitur in viverra eros, ac aliquam velit. Sed eget efficitur diam. Aenean mol
 
 <br>
 
+Table of Contents
+---
+
+[Introduction](#introduction)
+<br>
+[Implementation](#implementation)
+<br>
+[Vocabulary](#vocabulary)
+<br>
+[Related Work](#related-work)
+<br>
+[Experiment Setup](#experiment-setup)
+<br>
+[Results](#results)
+<br>
+[Discussion](#discussion)
+<br>
+[Conclusion](#conclusion)
+<br>
+[Future Work](#future-work)
+
+<br>
+
 Introduction
 ---
 
