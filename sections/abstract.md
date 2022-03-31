@@ -1,0 +1,8 @@
+<b><i>Abstract—</i></b>Object-oriented programming allows developers to logically segment code, but as data is transmitted between languages and distributed across heterogeneous systems, these objects need to be serialised and deserialised. Heterogeneity creates a multitude of potential validation conflicts, as data formats must balance human readability with safety. This report builds on existing research into data formats for object serialisation, by suggesting an extensible syntax on top of the JavaScript Object Notation (JSON), with an additional backwards-compatibility layer.
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce ac consequat neque, in ultrices magna. Aliquam ultricies metus quis sem consequat faucibus. Pellentesque vestibulum ut mi nec cursus. Donec lobortis, elit vitae scelerisque accumsan, neque orci suscipit metus, sit amet placerat ligula massa et neque. Duis fringilla lectus ut ex pharetra aliquam. Aliquam lobortis ligula sed sem ullamcorper elementum. Phasellus porta ultricies tincidunt. Phasellus mattis metus eu turpis blandit, non posuere arcu ultrices. Vivamus gravida posuere bibendum. Suspendisse placerat dolor nulla, auctor consectetur dolor lacinia vitae.
+
+Curabitur in viverra eros, ac aliquam velit. Sed eget efficitur diam. Aenean mollis dolor non augue elementum, quis sagittis elit condimentum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Proin quis ipsum dui. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum eget semper quam. Mauris bibendum eros faucibus velit blandit, quis tristique lacus sollicitudin.
+
+<br>
+
