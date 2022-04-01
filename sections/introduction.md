@@ -31,7 +31,7 @@ JavaScript Object Notation (JSON) is...
 
 {"cite":"buley2013user"} defines a methodological approach to researching users and designing from a user-centered perspective. Her framework of _personas_ is a tool for quantitatively assessing potential users, and then deriving profiles for user evaluation during design ideation. A persona is at a surface level analogous to a stakeholder in a stakeholder analysis, which describes the organisational hierarchy and relationship between participants. The difference is that personas are less relationship-centered, as they emphasise how differing backgrounds and perspectives can inform usage, and the experience derived from interaction. Personas are created by identifying, for each type of user, their needs, values, goals, frustrations, and desires {"citep":"buley2013user","page":"132"}.
 
-{"fig":"persona","url":"./figures/persona.pdf","caption":"A complete persona."}
+{"fig":"persona","url":"./figures/persona.png","caption":"A complete persona."}
 
 As seen in figure {"ref":"persona"}, the persona represents a fictive person derived from real information on users. It is crucial that the persona does not represent a real person, as the goal is not to design for a specific person, but for personas to represent multiple and potentially conflicting perspectives.
 
