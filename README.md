@@ -74,7 +74,7 @@ Design philosophy extends to software development, as human-readable code become
 
 Figure 1: The clean architecture.
 
-As seen in figure [Figure 1](#cleanarchitecture),?,?,?,?,?,?,?, this division results in four types of layers, guided by the various types of business rules and internal or external dependencies. This fragmentation of components facilitates the independent development, testing and evolution of the software layers. This philosophical perspective on software illustrates the importance of design in software, as system architecture can either motivate or inhibit developers from achieving their desired design goals.
+As seen in figure [Figure 1](#cleanarchitecture), this division results in four types of layers, guided by the various types of business rules and internal or external dependencies. This fragmentation of components facilitates the independent development, testing and evolution of the software layers. This philosophical perspective on software illustrates the importance of design in software, as system architecture can either motivate or inhibit developers from achieving their desired design goals.
 
 XML (eXtensible Markup Language) is...
 
@@ -91,7 +91,7 @@ JavaScript Object Notation (JSON) is...
 
 Figure 2: A complete persona.
 
-As seen in figure ?,[Figure 2](#persona),?,?,?,?,?,?, the persona represents a fictive person derived from real information on users. It is crucial that the persona does not represent a real person, as the goal is not to design for a specific person, but for personas to represent multiple and potentially conflicting perspectives.
+As seen in figure [Figure 2](#persona), the persona represents a fictive person derived from real information on users. It is crucial that the persona does not represent a real person, as the goal is not to design for a specific person, but for personas to represent multiple and potentially conflicting perspectives.
 
 The following [implementation section](#implementation) presents the company I collaborate with and their _implementation case_, which lays the foundation for this project. Through organisation and system hierarchies and structures, as well as personas, this section explores perspectives on working with serialised data, in relation to the proposal in this project.
 
@@ -112,7 +112,7 @@ In the following I illustrate the relationship between this company (_developmen
 
 **Organisational structure and stakeholders**
 
-As seen in figure ?,?,[Figure 3](#organisation),?,?,?,?,?, there are two identifiable hierarchies that form a relationship between case partner and development. The top half of this diagram flows from partner to a formulated case. The bottom half of this diagram flows from developer to a product delivery.
+As seen in figure [Figure 3](#organisation), there are two identifiable hierarchies that form a relationship between case partner and development. The top half of this diagram flows from partner to a formulated case. The bottom half of this diagram flows from developer to a product delivery.
 
 <span id="organisation"></span>
 ![](./figures/organisation.pdf)
@@ -148,7 +148,7 @@ This section explores fundamental principles of the system architectures that su
 
 In characterising distributed systems, [Kshemkalyani, A. and Singhal, M. (2011)](#kshemkalyani2011distributed) raise the notion that the physical differences of entities, and variation in their resources, creates a reliance on distributed communication. Distributed resources, particularly the absence of shared memory, implies an inherent asynchrony between entities. This means that each individual entity must act autonomously, while collaborating with and distributing tasks among the entities within the system.
 
-As seen in figure ?,?,?,[Figure 4](#networkcomms),?,?,?,?, a distributed system achieves asynchronous collaboration through a communication network, either a wide (WAN) area or local (LAN) area network, depending on the geography of the system. Each entity in the system consists of at least one processor (P) with its own solitary memory (M), providing the entity computational autonomy. This network structure creates the potential for both hardware and software heterogeneity, which necessitates coordination and distribution of tasks and responsibilities.
+As seen in figure [Figure 4](#networkcomms), a distributed system achieves asynchronous collaboration through a communication network, either a wide (WAN) area or local (LAN) area network, depending on the geography of the system. Each entity in the system consists of at least one processor (P) with its own solitary memory (M), providing the entity computational autonomy. This network structure creates the potential for both hardware and software heterogeneity, which necessitates coordination and distribution of tasks and responsibilities.
 
 <span id="networkcomms"></span>
 ![](./figures/networkcomms.pdf)
@@ -157,7 +157,7 @@ Figure 4: A distributed system connects processors by a communication network.
 
 _Hardware heterogeneity_ manifests as a variation in physical resources and thus implicitly a variation in computational capability. This necessitates a variance in entity responsibilities, as each individual entity is... This can of course be a cognitive decision made by system architects and engineers, facilitating a more efficient distribution, as computational tasks are inherently varied in requirements.
 
-_Software heterogeneity_ manifests as a variation in programming languages and frameworks. Distributed systems use a layered architecture, with a middle layer driving the software distribution, the so-called "middleware." As seen in figure ?,?,?,?,[Figure 5](#processinteraction),?,?,?, the middleware layer exists as an addition to the protocol-oriented application layer, which handles the communication protocols such as _HTTP_. Additionally, as data flows in a heterogeneous distributed system, it must adhere to a standardised and yet interoperable format, modelled on the software systems used in the network.
+_Software heterogeneity_ manifests as a variation in programming languages and frameworks. Distributed systems use a layered architecture, with a middle layer driving the software distribution, the so-called "middleware." As seen in figure [Figure 5](#processinteraction), the middleware layer exists as an addition to the protocol-oriented application layer, which handles the communication protocols such as _HTTP_. Additionally, as data flows in a heterogeneous distributed system, it must adhere to a standardised and yet interoperable format, modelled on the software systems used in the network.
 
 <span id="processinteraction"></span>
 ![](./figures/processinteraction.pdf)
@@ -187,7 +187,7 @@ This section explores the standards and methods for distributed communication th
 
 He notes that participants in this type of distributed system would appear sourceless to each other, and thus they publish without direction. This introduces the crucial element of time beyond the typical asynchrony, as participants subscribe based on the probability that information will be communicated, even if no information yet exists. He contrasts this with database systems, wherein information is retrieved through queries, aimed at previously communicated information, rather than aimed at future communication.
 
-[Tarkoma, S. (2012)](#tarkoma2012publish) illustrates the structural components of a pub/sub system through figure ?,?,?,?,?,[Figure 6](#pubsubsystem),?,?, as well as how the participants interact through events and notifications. Publishers and subscribers are referred to as the _main entities_, and publishers are the starting point for the chain of events in the system. As a situation occurs, referred to as an _event_, the publisher detects it and publishes a notification to the service, also referred to as the _event message_. Events denote _discrete_ measurable changes in the _state_ of a situation. The pub/sub service handles the communication infrastructure, and subscribers must express interest in a publisher before an event.
+[Tarkoma, S. (2012)](#tarkoma2012publish) illustrates the structural components of a pub/sub system through figure [Figure 6](#pubsubsystem), as well as how the participants interact through events and notifications. Publishers and subscribers are referred to as the _main entities_, and publishers are the starting point for the chain of events in the system. As a situation occurs, referred to as an _event_, the publisher detects it and publishes a notification to the service, also referred to as the _event message_. Events denote _discrete_ measurable changes in the _state_ of a situation. The pub/sub service handles the communication infrastructure, and subscribers must express interest in a publisher before an event.
 
 The nature of this relationship between publishers and subscribers introduces coordination challenges, as publishers and subscribers must agree on event expectations before a situation occurs. The pub/sub system does not take responsibility for these challenges, as it can only set expectations but not solve conflicts. The system is only responsible for delivering the communicated event between publishers and their subscribers.
 
@@ -195,7 +195,7 @@ The system can take different approaches to communicating events between entitie
 
 In a _centralised_ pub/sub system, publishers either utilise a _one-to-one message protocol_, or they communicate events to a _broker server_, which forwards messages to its subscribers. In a _distributed_ pub/sub system events are never communicated directly between publishers and subscribers, and brokers are deployed as an _overlay network_ for routing. This overlay is an additional layer on-top of the network, allowing the brokers to collaboratively transmit events between entities, gaining the aforementioned advantages of a distributed system.
 
-The network layer is one of multiple layers typical of networking systems. As seen in figure ?,?,?,?,?,?,[Figure 7](#ositcilayers),?, [Alani, M.M. (2014)](#alani2014guide) presents the 7 layers of the _Open Systems Interconnection_ (OSI) model relative to the 4 layers of the _Transmission Control Protocol_ (TCP). The OSI model abstracts networking systems into a conceptual framework, to describe and standardise the functional relationship between these layers. The TCI/IP model maps to the OSI model, but  
+The network layer is one of multiple layers typical of networking systems. As seen in figure [Figure 7](#ositcilayers), [Alani, M.M. (2014)](#alani2014guide) presents the 7 layers of the _Open Systems Interconnection_ (OSI) model relative to the 4 layers of the _Transmission Control Protocol_ (TCP). The OSI model abstracts networking systems into a conceptual framework, to describe and standardise the functional relationship between these layers. The TCI/IP model maps to the OSI model, but  
 
 <span id="ositcilayers"></span>
 ![](./figures/ositcilayers.pdf)
