@@ -253,15 +253,25 @@ Figure 7: Comparison between layers in the OSI model and TCI/IP model, providing
 
 As data in a distributed systems flows from the software (_application layer_) to the hardware (_physical layer_), it is transformed by protocols which add additional information to the data. This process is referred to as _encapsulation_, and consists of _capsulation_ from the source host and _decapsulation_ towards the destination host. As data flows from source host's application layer and towards the physical layer, protocols prepend headers (leading information) and append trailers (trailing information) to the data. This additional information indicates the purpose of communicating the data and how it should be interpreted by the next layer.
 
-![](./figures/encapsulation.png)
-<br>
 <span id="dataflow"></span>
 
 <br>
 
 ![](./figures/endtoendflow.png)
 
-Figure 8: End-to-end data flow and encapsulation with headers and trailers.
+Figure 8: End-to-end data flow.
+
+<br>
+
+
+
+<span id="encapsulation"></span>
+
+<br>
+
+![](./figures/encapsulation.png)
+
+Figure 9: Encapsulation with headers and trailers.
 
 <br>
 

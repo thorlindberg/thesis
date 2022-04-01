@@ -53,9 +53,9 @@ The network layer is one of multiple layers typical of networking systems. As se
 
 As data in a distributed systems flows from the software (_application layer_) to the hardware (_physical layer_), it is transformed by protocols which add additional information to the data. This process is referred to as _encapsulation_, and consists of _capsulation_ from the source host and _decapsulation_ towards the destination host. As data flows from source host's application layer and towards the physical layer, protocols prepend headers (leading information) and append trailers (trailing information) to the data. This additional information indicates the purpose of communicating the data and how it should be interpreted by the next layer.
 
-![](./figures/encapsulation.png)
-<br>
-{"fig":"dataflow","url":"./figures/endtoendflow.png","caption":"End-to-end data flow and encapsulation with headers and trailers."}
+{"fig":"dataflow","url":"./figures/endtoendflow.png","caption":"End-to-end data flow."}
+
+{"fig":"encapsulation","url":"./figures/encapsulation.png","caption":"Encapsulation with headers and trailers."}
 
 This transformation of distributed data has consequences for...
 
