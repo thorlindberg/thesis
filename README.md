@@ -73,9 +73,9 @@ Design philosophy extends to software development, as human-readable code become
 
 <br>
 
-<div align="center"><img style="width:50%" src="./figures/cleanarchitecture.jpg"/></div>
+<div align="center"><img style="width:50%" src="./figures/cleanarchitecture.jpg"/>
 
-<div style="text-align:center">Figure 1: The clean architecture.</div>
+Figure 1: The clean architecture.</div>
 
 <br>
 
@@ -97,9 +97,9 @@ JavaScript Object Notation (JSON) is...
 
 <br>
 
-<div align="center"><img style="width:50%" src="./figures/persona.png"/></div>
+<div align="center"><img style="width:50%" src="./figures/persona.png"/>
 
-<div style="text-align:center">Figure 2: A complete persona.</div>
+Figure 2: A complete persona.</div>
 
 <br>
 
@@ -132,9 +132,9 @@ As seen in figure [Figure 3](#organisation), there are two identifiable hierarch
 
 <br>
 
-<div align="center"><img style="width:50%" src="./figures/organisation.png"/></div>
+<div align="center"><img style="width:50%" src="./figures/organisation.png"/>
 
-<div style="text-align:center">Figure 3: Hierarchical and structural relationship between development company and case partners.</div>
+Figure 3: Hierarchical and structural relationship between development company and case partners.</div>
 
 <br>
 
@@ -175,9 +175,9 @@ As seen in figure [Figure 4](#networkcomms), a distributed system achieves async
 
 <br>
 
-<div align="center"><img style="width:50%" src="./figures/networkcomms.png"/></div>
+<div align="center"><img style="width:50%" src="./figures/networkcomms.png"/>
 
-<div style="text-align:center">Figure 4: A distributed system connects processors by a communication network.</div>
+Figure 4: A distributed system connects processors by a communication network.</div>
 
 <br>
 
@@ -191,9 +191,9 @@ _Software heterogeneity_ manifests as a variation in programming languages and f
 
 <br>
 
-<div align="center"><img style="width:50%" src="./figures/processinteraction.png"/></div>
+<div align="center"><img style="width:50%" src="./figures/processinteraction.png"/>
 
-<div style="text-align:center">Figure 5: Interaction of the software components at each processor.</div>
+Figure 5: Interaction of the software components at each processor.</div>
 
 <br>
 
@@ -207,9 +207,9 @@ Given the inherent nature of serialised data exchange, and the ubiquity of distr
 
 <br>
 
-<div align="center"><img style="width:50%" src="./figures/pubsubsystem.png"/></div>
+<div align="center"><img style="width:50%" src="./figures/pubsubsystem.png"/>
 
-<div style="text-align:center">Figure 6: Components of a _publish-subscribe_ system.</div>
+Figure 6: Components of a _publish-subscribe_ system.</div>
 
 <br>
 
@@ -243,9 +243,9 @@ The network layer is one of multiple layers typical of networking systems. As se
 
 <br>
 
-<div align="center"><img style="width:50%" src="./figures/ositcilayers.png"/></div>
+<div align="center"><img style="width:50%" src="./figures/ositcilayers.png"/>
 
-<div style="text-align:center">Figure 7: Comparison between layers in the OSI model and TCI/IP model, providing a standard communication architecture for distributed processing systems.</div>
+Figure 7: Comparison between layers in the OSI model and TCI/IP model, providing a standard communication architecture for distributed processing systems.</div>
 
 <br>
 
@@ -257,9 +257,9 @@ As data in a distributed systems flows from the software (_application layer_) t
 
 <br>
 
-<div align="center"><img style="width:50%" src="./figures/endtoendflow.png"/></div>
+<div align="center"><img style="width:50%" src="./figures/endtoendflow.png"/>
 
-<div style="text-align:center">Figure 8: End-to-end data flow.</div>
+Figure 8: End-to-end data flow.</div>
 
 <br>
 
@@ -269,9 +269,9 @@ As data in a distributed systems flows from the software (_application layer_) t
 
 <br>
 
-<div align="center"><img style="width:50%" src="./figures/encapsulation.png"/></div>
+<div align="center"><img style="width:50%" src="./figures/encapsulation.png"/>
 
-<div style="text-align:center">Figure 9: Encapsulation with headers and trailers.</div>
+Figure 9: Encapsulation with headers and trailers.</div>
 
 <br>
 
