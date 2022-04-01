@@ -25,32 +25,6 @@ The structure of the development company informs how they plan and execute on a 
 
 This section presents the personas derived from interviews with each development team at the company, for the purpose of taking value-oriented design decisions derived from their perspectives. As these employees are coworkers, their perspectives are grounded in shared experiences, yet their unique deviations highlight how serialised data has varying implications on work practices.
 
-\begin{figure*}
-\def\arraystretch{1.5}
-\centering
-\begin{tabular}{|p{0.3\linewidth}|p{0.5\linewidth}|}
-\hline
-Feature & Description
-\hline
-... & ... 
-... & ... 
-... & ... 
-\hline
-\end{tabular}
-\vspace{0.5cm}
-\begin{tabular}{|p{0.3\linewidth}|p{0.5\linewidth}|}
-\hline
-Feature & Description
-\hline
-... & ... 
-... & ... 
-... & ... 
-\hline
-\end{tabular}
-\caption{Personas.}
-\label{fig:personas}
-\end{figure*}
-
 **How-might-we**
 
 ...
