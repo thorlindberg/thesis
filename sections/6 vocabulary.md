@@ -11,19 +11,19 @@ In characterising distributed systems, {"cite":"kshemkalyani2011distributed"} ra
 
 As seen in figure {"ref":"networkcomms"}, a distributed system achieves asynchronous collaboration through a communication network, either a wide (WAN) area or local (LAN) area network, depending on the geography of the system. Each entity in the system consists of at least one processor (P) with its own solitary memory (M), providing the entity computational autonomy. This network structure creates the potential for both hardware and software heterogeneity, which necessitates coordination and distribution of tasks and responsibilities.
 
-{"fig":"networkcomms","url":"./figures/networkcomms.png","caption":"A distributed system connects processors by a communication network.","width":"80"}
+{"fig":"networkcomms","url":"./figures/networkcomms.png","caption":"A distributed system connects processors by a communication network.","width":"50"}
 
 _Hardware heterogeneity_ manifests as a variation in physical resources and thus implicitly a variation in computational capability. This necessitates a variance in entity responsibilities, as each individual entity is... This can of course be a cognitive decision made by system architects and engineers, facilitating a more efficient distribution, as computational tasks are inherently varied in requirements.
 
 _Software heterogeneity_ manifests as a variation in programming languages and frameworks. Distributed systems use a layered architecture, with a middle layer driving the software distribution, the so-called "middleware." As seen in figure {"ref":"processinteraction"}, the middleware layer exists as an addition to the protocol-oriented application layer, which handles the communication protocols such as _HTTP_. Additionally, as data flows in a heterogeneous distributed system, it must adhere to a standardised and yet interoperable format, modelled on the software systems used in the network.
 
-{"fig":"processinteraction","url":"./figures/processinteraction.png","caption":"Interaction of the software components at each processor.","width":"80"}
+{"fig":"processinteraction","url":"./figures/processinteraction.png","caption":"Interaction of the software components at each processor.","width":"50"}
 
 At this point, you are probably wondering _why distribution is relevant_ to this project, and _how it pertains to data serialisation_. {"cite":"kshemkalyani2011distributed"} define various potential requirements of a system, that would motivate heterogeneous distribution. As data serialisation is typically utilised for distributed communication, it is not inherently performance- or scalability-oriented, but it is inherently distributed and geographically remote. The implication is that the inherent distributed nature of serialised data exchange necessitates the use of a distributed system, and not vice versa.
 
 Given the inherent nature of serialised data exchange, and the ubiquity of distributed computing systems, the design of such systems informs our approach to communicating across them. It should be noted that systems do not exist in a vacuum, and thus system should be contextually designed based on market forces. System designers must balance or choose between industry standard protocols, which maximise interoperability, and the technically best solutions, which require more control and closed source development.
 
-{"fig":"pubsubsystem","url":"./figures/pubsubsystem.png","caption":"Components of a _publish-subscribe_ system.","width":"80"}
+{"fig":"pubsubsystem","url":"./figures/pubsubsystem.png","caption":"Components of a _publish-subscribe_ system.","width":"50"}
 
 {"cite":"kshemkalyani2011distributed"} identify a set of design challenges applicable to the traditional server-client model of distributed systems. An _Applications Programming Interface (API)_ enables the distributed system to communicate internally and more importantly externally, maximising the adoption of system services by outside forces. It introduces the challenge of _transparency_, as the system should be accessible without revealing its internal operations (resource [re]location, replication, concurrency, failure handling etc.) and implementation policies.
 
@@ -49,13 +49,13 @@ In a _centralised_ pub/sub system, publishers either utilise a _one-to-one messa
 
 The network layer is one of multiple layers typical of networking systems. As seen in figure {"ref":"ositcilayers"}, {"cite":"alani2014guide"} presents the 7 layers of the _Open Systems Interconnection_ (OSI) model relative to the 4 layers of the _Transmission Control Protocol_ (TCP). The OSI model abstracts networking systems into a conceptual framework, to describe and standardise the functional relationship between these layers. The TCI/IP model maps to the OSI model, but  
 
-{"fig":"ositcilayers","url":"./figures/ositcilayers.png","caption":"Comparison between layers in the OSI model and TCI/IP model, providing a standard communication architecture for distributed processing systems.","width":"80"}
+{"fig":"ositcilayers","url":"./figures/ositcilayers.png","caption":"Comparison between layers in the OSI model and TCI/IP model, providing a standard communication architecture for distributed processing systems.","width":"50"}
 
 As data in a distributed systems flows from the software (_application layer_) to the hardware (_physical layer_), it is transformed by protocols which add additional information to the data. This process is referred to as _encapsulation_, and consists of _capsulation_ from the source host and _decapsulation_ towards the destination host. As data flows from source host's application layer and towards the physical layer, protocols prepend headers (leading information) and append trailers (trailing information) to the data. This additional information indicates the purpose of communicating the data and how it should be interpreted by the next layer.
 
-{"fig":"dataflow","url":"./figures/endtoendflow.png","caption":"End-to-end data flow.","width":"80"}
+{"fig":"dataflow","url":"./figures/endtoendflow.png","caption":"End-to-end data flow.","width":"50"}
 
-{"fig":"encapsulation","url":"./figures/encapsulation.png","caption":"Encapsulation with headers and trailers.","width":"80"}
+{"fig":"encapsulation","url":"./figures/encapsulation.png","caption":"Encapsulation with headers and trailers.","width":"50"}
 
 This transformation of distributed data has consequences for...
 
