@@ -87,7 +87,7 @@ JavaScript Object Notation (JSON) is...
 [Buley, L. (2013)](#buley2013user) defines a methodological approach to researching users and designing from a user-centered perspective. Her framework of _personas_ is a tool for quantitatively assessing potential users, and then deriving profiles for user evaluation during design ideation. A persona is at a surface level analogous to a stakeholder in a stakeholder analysis, which describes the organisational hierarchy and relationship between participants. The difference is that personas are less relationship-centered, as they emphasise how differing backgrounds and perspectives can inform usage, and the experience derived from interaction. Personas are created by identifying, for each type of user, their needs, values, goals, frustrations, and desires [(Buley, L., 2013, p. 132)](#buley2013user).
 
 <span id="persona"></span>
-![](./figures/persona.pdf)
+![](./figures/persona.png)
 
 Figure 2: A complete persona.
 
@@ -115,7 +115,7 @@ In the following I illustrate the relationship between this company (_developmen
 As seen in figure [Figure 3](#organisation), there are two identifiable hierarchies that form a relationship between case partner and development. The top half of this diagram flows from partner to a formulated case. The bottom half of this diagram flows from developer to a product delivery.
 
 <span id="organisation"></span>
-![](./figures/organisation.pdf)
+![](./figures/organisation.png)
 
 Figure 3: Hierarchical and structural relationship between development company and case partners.
 
@@ -151,7 +151,7 @@ In characterising distributed systems, [Kshemkalyani, A. and Singhal, M. (2011)]
 As seen in figure [Figure 4](#networkcomms), a distributed system achieves asynchronous collaboration through a communication network, either a wide (WAN) area or local (LAN) area network, depending on the geography of the system. Each entity in the system consists of at least one processor (P) with its own solitary memory (M), providing the entity computational autonomy. This network structure creates the potential for both hardware and software heterogeneity, which necessitates coordination and distribution of tasks and responsibilities.
 
 <span id="networkcomms"></span>
-![](./figures/networkcomms.pdf)
+![](./figures/networkcomms.png)
 
 Figure 4: A distributed system connects processors by a communication network.
 
@@ -160,7 +160,7 @@ _Hardware heterogeneity_ manifests as a variation in physical resources and thus
 _Software heterogeneity_ manifests as a variation in programming languages and frameworks. Distributed systems use a layered architecture, with a middle layer driving the software distribution, the so-called "middleware." As seen in figure [Figure 5](#processinteraction), the middleware layer exists as an addition to the protocol-oriented application layer, which handles the communication protocols such as _HTTP_. Additionally, as data flows in a heterogeneous distributed system, it must adhere to a standardised and yet interoperable format, modelled on the software systems used in the network.
 
 <span id="processinteraction"></span>
-![](./figures/processinteraction.pdf)
+![](./figures/processinteraction.png)
 
 Figure 5: Interaction of the software components at each processor.
 
@@ -169,7 +169,7 @@ At this point, you are probably wondering _why distribution is relevant_ to this
 Given the inherent nature of serialised data exchange, and the ubiquity of distributed computing systems, the design of such systems informs our approach to communicating across them. It should be noted that systems do not exist in a vacuum, and thus system should be contextually designed based on market forces. System designers must balance or choose between industry standard protocols, which maximise interoperability, and the technically best solutions, which require more control and closed source development.
 
 <span id="pubsubsystem"></span>
-![](./figures/pubsubsystem.pdf)
+![](./figures/pubsubsystem.png)
 
 Figure 6: Components of a _publish-subscribe_ system.
 
@@ -198,16 +198,16 @@ In a _centralised_ pub/sub system, publishers either utilise a _one-to-one messa
 The network layer is one of multiple layers typical of networking systems. As seen in figure [Figure 7](#ositcilayers), [Alani, M.M. (2014)](#alani2014guide) presents the 7 layers of the _Open Systems Interconnection_ (OSI) model relative to the 4 layers of the _Transmission Control Protocol_ (TCP). The OSI model abstracts networking systems into a conceptual framework, to describe and standardise the functional relationship between these layers. The TCI/IP model maps to the OSI model, but  
 
 <span id="ositcilayers"></span>
-![](./figures/ositcilayers.pdf)
+![](./figures/ositcilayers.png)
 
 Figure 7: Comparison between layers in the OSI model and TCI/IP model, providing a standard communication architecture for distributed processing systems.
 
 As data in a distributed systems flows from the software (_application layer_) to the hardware (_physical layer_), it is transformed by protocols which add additional information to the data. This process is referred to as _encapsulation_, and consists of _capsulation_ from the source host and _decapsulation_ towards the destination host. As data flows from source host's application layer and towards the physical layer, protocols prepend headers (leading information) and append trailers (trailing information) to the data. This additional information indicates the purpose of communicating the data and how it should be interpreted by the next layer.
 
-![](./figures/encapsulation.pdf)
+![](./figures/encapsulation.png)
 <br>
 <span id="dataflow"></span>
-![](./figures/endtoendflow.pdf)
+![](./figures/endtoendflow.png)
 
 Figure 8: End-to-end data flow and encapsulation with headers and trailers.
 
