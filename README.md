@@ -73,13 +73,11 @@ Design philosophy extends to software development, as human-readable code become
 
 <br>
 
-<div align="center"><img style="width:50%" src="./figures/cleanarchitecture.jpg"/>
+<img style="width:50%" src="./figures/cleanarchitecture.jpg"/>
 
-Figure 1: The clean architecture.</div>
+Figure 1: The clean architecture.
 
 <br>
-
-
 
 As seen in figure [Figure 1](#cleanarchitecture), this division results in four types of layers, guided by the various types of business rules and internal or external dependencies. This fragmentation of components facilitates the independent development, testing and evolution of the software layers. This philosophical perspective on software illustrates the importance of design in software, as system architecture can either motivate or inhibit developers from achieving their desired design goals.
 
@@ -97,13 +95,11 @@ JavaScript Object Notation (JSON) is...
 
 <br>
 
-<div align="center"><img style="width:50%" src="./figures/persona.png"/>
+<img style="width:50%" src="./figures/persona.png"/>
 
-Figure 2: A complete persona.</div>
+Figure 2: A complete persona.
 
 <br>
-
-
 
 As seen in figure [Figure 2](#persona), the persona represents a fictive person derived from real information on users. It is crucial that the persona does not represent a real person, as the goal is not to design for a specific person, but for personas to represent multiple and potentially conflicting perspectives.
 
@@ -132,13 +128,11 @@ As seen in figure [Figure 3](#organisation), there are two identifiable hierarch
 
 <br>
 
-<div align="center"><img style="width:50%" src="./figures/organisation.png"/>
+<img style="width:50%" src="./figures/organisation.png"/>
 
-Figure 3: Hierarchical and structural relationship between development company and case partners.</div>
+Figure 3: Hierarchical and structural relationship between development company and case partners.
 
 <br>
-
-
 
 The structure of the partner company informs how they formulate the case offered to the developers. They are also responsible for maintenance of a back-end, delivering customer data to the client developed in the delivery.
 
@@ -175,13 +169,11 @@ As seen in figure [Figure 4](#networkcomms), a distributed system achieves async
 
 <br>
 
-<div align="center"><img style="width:50%" src="./figures/networkcomms.png"/>
+<img style="width:50%" src="./figures/networkcomms.png"/>
 
-Figure 4: A distributed system connects processors by a communication network.</div>
+Figure 4: A distributed system connects processors by a communication network.
 
 <br>
-
-
 
 _Hardware heterogeneity_ manifests as a variation in physical resources and thus implicitly a variation in computational capability. This necessitates a variance in entity responsibilities, as each individual entity is... This can of course be a cognitive decision made by system architects and engineers, facilitating a more efficient distribution, as computational tasks are inherently varied in requirements.
 
@@ -191,13 +183,11 @@ _Software heterogeneity_ manifests as a variation in programming languages and f
 
 <br>
 
-<div align="center"><img style="width:50%" src="./figures/processinteraction.png"/>
+<img style="width:50%" src="./figures/processinteraction.png"/>
 
-Figure 5: Interaction of the software components at each processor.</div>
+Figure 5: Interaction of the software components at each processor.
 
 <br>
-
-
 
 At this point, you are probably wondering _why distribution is relevant_ to this project, and _how it pertains to data serialisation_. [Kshemkalyani, A. and Singhal, M. (2011)](#kshemkalyani2011distributed) define various potential requirements of a system, that would motivate heterogeneous distribution. As data serialisation is typically utilised for distributed communication, it is not inherently performance- or scalability-oriented, but it is inherently distributed and geographically remote. The implication is that the inherent distributed nature of serialised data exchange necessitates the use of a distributed system, and not vice versa.
 
@@ -207,13 +197,11 @@ Given the inherent nature of serialised data exchange, and the ubiquity of distr
 
 <br>
 
-<div align="center"><img style="width:50%" src="./figures/pubsubsystem.png"/>
+<img style="width:50%" src="./figures/pubsubsystem.png"/>
 
-Figure 6: Components of a _publish-subscribe_ system.</div>
+Figure 6: Components of a _publish-subscribe_ system.
 
 <br>
-
-
 
 [Kshemkalyani, A. and Singhal, M. (2011)](#kshemkalyani2011distributed) identify a set of design challenges applicable to the traditional server-client model of distributed systems. An _Applications Programming Interface (API)_ enables the distributed system to communicate internally and more importantly externally, maximising the adoption of system services by outside forces. It introduces the challenge of _transparency_, as the system should be accessible without revealing its internal operations (resource [re]location, replication, concurrency, failure handling etc.) and implementation policies.
 
@@ -243,13 +231,11 @@ The network layer is one of multiple layers typical of networking systems. As se
 
 <br>
 
-<div align="center"><img style="width:50%" src="./figures/ositcilayers.png"/>
+<img style="width:50%" src="./figures/ositcilayers.png"/>
 
-Figure 7: Comparison between layers in the OSI model and TCI/IP model, providing a standard communication architecture for distributed processing systems.</div>
+Figure 7: Comparison between layers in the OSI model and TCI/IP model, providing a standard communication architecture for distributed processing systems.
 
 <br>
-
-
 
 As data in a distributed systems flows from the software (_application layer_) to the hardware (_physical layer_), it is transformed by protocols which add additional information to the data. This process is referred to as _encapsulation_, and consists of _capsulation_ from the source host and _decapsulation_ towards the destination host. As data flows from source host's application layer and towards the physical layer, protocols prepend headers (leading information) and append trailers (trailing information) to the data. This additional information indicates the purpose of communicating the data and how it should be interpreted by the next layer.
 
@@ -257,25 +243,21 @@ As data in a distributed systems flows from the software (_application layer_) t
 
 <br>
 
-<div align="center"><img style="width:50%" src="./figures/endtoendflow.png"/>
+<img style="width:50%" src="./figures/endtoendflow.png"/>
 
-Figure 8: End-to-end data flow.</div>
+Figure 8: End-to-end data flow.
 
 <br>
-
-
 
 <span id="encapsulation"></span>
 
 <br>
 
-<div align="center"><img style="width:50%" src="./figures/encapsulation.png"/>
+<img style="width:50%" src="./figures/encapsulation.png"/>
 
-Figure 9: Encapsulation with headers and trailers.</div>
+Figure 9: Encapsulation with headers and trailers.
 
 <br>
-
-
 
 This transformation of distributed data has consequences for...
 
