@@ -123,6 +123,7 @@ As seen in figure [Figure 1](#organisation),,,,,,,, there are two identifiable h
 
 <span id="organisation"></span>
 ![](./figures/organisation.pdf)
+
 Figure 1: Hierarchical and structural relationship between development company and case partners.
 
 The structure of the partner company informs how they formulate the case offered to the developers. They are also responsible for maintenance of a back-end, delivering customer data to the client developed in the delivery.
@@ -164,6 +165,7 @@ Design philosophy extends to software development, as human-readable code become
 
 <span id="cleanarchitecture"></span>
 ![](./figures/cleanarchitecture.jpg)
+
 Figure 2: The clean architecture.
 
 As seen in figure ,[Figure 2](#cleanarchitecture),,,,,,, this division results in four types of layers, guided by the various types of business rules and internal or external dependencies. This fragmentation of components facilitates the independent development, testing and evolution of the software layers. This philosophical perspective on software illustrates the importance of design in software, as system architecture can either motivate or inhibit developers from achieving their desired design goals.
@@ -180,6 +182,7 @@ JavaScript Object Notation (JSON) is...
 
 <span id="persona"></span>
 ![](./figures/persona.pdf)
+
 Figure 3: A complete persona.
 
 As seen in figure ,,[Figure 3](#persona),,,,,, the persona represents a fictive person derived from real information on users. It is crucial that the persona does not represent a real person, as the goal is not to design for a specific person, but for personas to represent multiple and potentially conflicting perspectives.
@@ -280,6 +283,7 @@ As seen in figure ,,,[Figure 4](#networkcomms),,,,, a distributed system achieve
 
 <span id="networkcomms"></span>
 ![](./figures/networkcomms.pdf)
+
 Figure 4: A distributed system connects processors by a communication network.
 
 _Hardware heterogeneity_ manifests as a variation in physical resources and thus implicitly a variation in computational capability. This necessitates a variance in entity responsibilities, as each individual entity is... This can of course be a cognitive decision made by system architects and engineers, facilitating a more efficient distribution, as computational tasks are inherently varied in requirements.
@@ -288,6 +292,7 @@ _Software heterogeneity_ manifests as a variation in programming languages and f
 
 <span id="processinteraction"></span>
 ![](./figures/processinteraction.pdf)
+
 Figure 5: Interaction of the software components at each processor.
 
 At this point, you are probably wondering _why distribution is relevant_ to this project, and _how it pertains to data serialisation_. [Kshemkalyani, A., Singhal, M. (2011)](#kshemkalyani2011distributed),,,,,,,,,,,, define various potential requirements of a system, that would motivate heterogeneous distribution. As data serialisation is typically utilised for distributed communication, it is not inherently performance- or scalability-oriented, but it is inherently distributed and geographically remote. The implication is that the inherent distributed nature of serialised data exchange necessitates the use of a distributed system, and not vice versa.
@@ -296,6 +301,7 @@ Given the inherent nature of serialised data exchange, and the ubiquity of distr
 
 <span id="pubsubsystem"></span>
 ![](./figures/pubsubsystem.pdf)
+
 Figure 6: Components of a _publish-subscribe_ system.
 
 [Kshemkalyani, A., Singhal, M. (2011)](#kshemkalyani2011distributed),,,,,,,,,,,, identify a set of design challenges applicable to the traditional server-client model of distributed systems. An _Applications Programming Interface (API)_ enables the distributed system to communicate internally and more importantly externally, maximising the adoption of system services by outside forces. It introduces the challenge of _transparency_, as the system should be accessible without revealing its internal operations (resource [re]location, replication, concurrency, failure handling etc.) and implementation policies.
@@ -324,6 +330,7 @@ The network layer is one of multiple layers typical of networking systems. As se
 
 <span id="ositcilayers"></span>
 ![](./figures/ositcilayers.pdf)
+
 Figure 7: Comparison between layers in the OSI model and TCI/IP model, providing a standard communication architecture for distributed processing systems.
 
 As data in a distributed systems flows from the software (_application layer_) to the hardware (_physical layer_), it is transformed by protocols which add additional information to the data. This process is referred to as _encapsulation_, and consists of _capsulation_ from the source host and _decapsulation_ towards the destination host. As data flows from source host's application layer and towards the physical layer, protocols prepend headers (leading information) and append trailers (trailing information) to the data. This additional information indicates the purpose of communicating the data and how it should be interpreted by the next layer.
@@ -332,6 +339,7 @@ As data in a distributed systems flows from the software (_application layer_) t
 <br>
 <span id="dataflow"></span>
 ![](./figures/endtoendflow.pdf)
+
 Figure 8: End-to-end data flow and encapsulation with headers and trailers.
 
 This transformation of distributed data has consequences for...
