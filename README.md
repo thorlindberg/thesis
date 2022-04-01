@@ -70,9 +70,16 @@ Design philosophy extends to software development, as human-readable code become
 [Martin, R.C. (2018)](#martin2018clean) provides instructions on _architecting clean software_. His approach is grounded in a shared historical perspective of software segmentation. He defines _clean code_ as concise communication of purpose and flexibility to modifications [(Martin, R.C., 2018, p. 310)](#martin2018clean). He defines _clean architecture_ as division into autonomous layers and independence within the system. The layers should include at least one for business rules and another for user/system interfaces. The system should be independent and testable without frameworks, user interfaces, database choice, and external agencies [(Martin, R.C., 2018, p. 196)](#martin2018clean).
 
 <span id="cleanarchitecture"></span>
+
+<br>
+
 ![](./figures/cleanarchitecture.jpg)
 
 Figure 1: The clean architecture.
+
+<br>
+
+
 
 As seen in figure [Figure 1](#cleanarchitecture), this division results in four types of layers, guided by the various types of business rules and internal or external dependencies. This fragmentation of components facilitates the independent development, testing and evolution of the software layers. This philosophical perspective on software illustrates the importance of design in software, as system architecture can either motivate or inhibit developers from achieving their desired design goals.
 
@@ -87,9 +94,16 @@ JavaScript Object Notation (JSON) is...
 [Buley, L. (2013)](#buley2013user) defines a methodological approach to researching users and designing from a user-centered perspective. Her framework of _personas_ is a tool for quantitatively assessing potential users, and then deriving profiles for user evaluation during design ideation. A persona is at a surface level analogous to a stakeholder in a stakeholder analysis, which describes the organisational hierarchy and relationship between participants. The difference is that personas are less relationship-centered, as they emphasise how differing backgrounds and perspectives can inform usage, and the experience derived from interaction. Personas are created by identifying, for each type of user, their needs, values, goals, frustrations, and desires [(Buley, L., 2013, p. 132)](#buley2013user).
 
 <span id="persona"></span>
+
+<br>
+
 ![](./figures/persona.png)
 
 Figure 2: A complete persona.
+
+<br>
+
+
 
 As seen in figure [Figure 2](#persona), the persona represents a fictive person derived from real information on users. It is crucial that the persona does not represent a real person, as the goal is not to design for a specific person, but for personas to represent multiple and potentially conflicting perspectives.
 
@@ -115,9 +129,16 @@ In the following I illustrate the relationship between this company (_developmen
 As seen in figure [Figure 3](#organisation), there are two identifiable hierarchies that form a relationship between case partner and development. The top half of this diagram flows from partner to a formulated case. The bottom half of this diagram flows from developer to a product delivery.
 
 <span id="organisation"></span>
+
+<br>
+
 ![](./figures/organisation.png)
 
 Figure 3: Hierarchical and structural relationship between development company and case partners.
+
+<br>
+
+
 
 The structure of the partner company informs how they formulate the case offered to the developers. They are also responsible for maintenance of a back-end, delivering customer data to the client developed in the delivery.
 
@@ -151,27 +172,48 @@ In characterising distributed systems, [Kshemkalyani, A. and Singhal, M. (2011)]
 As seen in figure [Figure 4](#networkcomms), a distributed system achieves asynchronous collaboration through a communication network, either a wide (WAN) area or local (LAN) area network, depending on the geography of the system. Each entity in the system consists of at least one processor (P) with its own solitary memory (M), providing the entity computational autonomy. This network structure creates the potential for both hardware and software heterogeneity, which necessitates coordination and distribution of tasks and responsibilities.
 
 <span id="networkcomms"></span>
+
+<br>
+
 ![](./figures/networkcomms.png)
 
 Figure 4: A distributed system connects processors by a communication network.
+
+<br>
+
+
 
 _Hardware heterogeneity_ manifests as a variation in physical resources and thus implicitly a variation in computational capability. This necessitates a variance in entity responsibilities, as each individual entity is... This can of course be a cognitive decision made by system architects and engineers, facilitating a more efficient distribution, as computational tasks are inherently varied in requirements.
 
 _Software heterogeneity_ manifests as a variation in programming languages and frameworks. Distributed systems use a layered architecture, with a middle layer driving the software distribution, the so-called "middleware." As seen in figure [Figure 5](#processinteraction), the middleware layer exists as an addition to the protocol-oriented application layer, which handles the communication protocols such as _HTTP_. Additionally, as data flows in a heterogeneous distributed system, it must adhere to a standardised and yet interoperable format, modelled on the software systems used in the network.
 
 <span id="processinteraction"></span>
+
+<br>
+
 ![](./figures/processinteraction.png)
 
 Figure 5: Interaction of the software components at each processor.
+
+<br>
+
+
 
 At this point, you are probably wondering _why distribution is relevant_ to this project, and _how it pertains to data serialisation_. [Kshemkalyani, A. and Singhal, M. (2011)](#kshemkalyani2011distributed) define various potential requirements of a system, that would motivate heterogeneous distribution. As data serialisation is typically utilised for distributed communication, it is not inherently performance- or scalability-oriented, but it is inherently distributed and geographically remote. The implication is that the inherent distributed nature of serialised data exchange necessitates the use of a distributed system, and not vice versa.
 
 Given the inherent nature of serialised data exchange, and the ubiquity of distributed computing systems, the design of such systems informs our approach to communicating across them. It should be noted that systems do not exist in a vacuum, and thus system should be contextually designed based on market forces. System designers must balance or choose between industry standard protocols, which maximise interoperability, and the technically best solutions, which require more control and closed source development.
 
 <span id="pubsubsystem"></span>
+
+<br>
+
 ![](./figures/pubsubsystem.png)
 
 Figure 6: Components of a _publish-subscribe_ system.
+
+<br>
+
+
 
 [Kshemkalyani, A. and Singhal, M. (2011)](#kshemkalyani2011distributed) identify a set of design challenges applicable to the traditional server-client model of distributed systems. An _Applications Programming Interface (API)_ enables the distributed system to communicate internally and more importantly externally, maximising the adoption of system services by outside forces. It introduces the challenge of _transparency_, as the system should be accessible without revealing its internal operations (resource [re]location, replication, concurrency, failure handling etc.) and implementation policies.
 
@@ -198,18 +240,32 @@ In a _centralised_ pub/sub system, publishers either utilise a _one-to-one messa
 The network layer is one of multiple layers typical of networking systems. As seen in figure [Figure 7](#ositcilayers), [Alani, M.M. (2014)](#alani2014guide) presents the 7 layers of the _Open Systems Interconnection_ (OSI) model relative to the 4 layers of the _Transmission Control Protocol_ (TCP). The OSI model abstracts networking systems into a conceptual framework, to describe and standardise the functional relationship between these layers. The TCI/IP model maps to the OSI model, but  
 
 <span id="ositcilayers"></span>
+
+<br>
+
 ![](./figures/ositcilayers.png)
 
 Figure 7: Comparison between layers in the OSI model and TCI/IP model, providing a standard communication architecture for distributed processing systems.
+
+<br>
+
+
 
 As data in a distributed systems flows from the software (_application layer_) to the hardware (_physical layer_), it is transformed by protocols which add additional information to the data. This process is referred to as _encapsulation_, and consists of _capsulation_ from the source host and _decapsulation_ towards the destination host. As data flows from source host's application layer and towards the physical layer, protocols prepend headers (leading information) and append trailers (trailing information) to the data. This additional information indicates the purpose of communicating the data and how it should be interpreted by the next layer.
 
 ![](./figures/encapsulation.png)
 <br>
 <span id="dataflow"></span>
+
+<br>
+
 ![](./figures/endtoendflow.png)
 
 Figure 8: End-to-end data flow and encapsulation with headers and trailers.
+
+<br>
+
+
 
 This transformation of distributed data has consequences for...
 
@@ -310,14 +366,14 @@ Discussion
 
 <br>
 
-Conclusion
+Future Work
 ---
 
 ...
 
 <br>
 
-Future Work
+Conclusion
 ---
 
 ...
