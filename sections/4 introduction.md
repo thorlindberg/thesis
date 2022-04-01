@@ -17,7 +17,7 @@ Design philosophy extends to software development, as human-readable code become
 
 {"cite":"martin2018clean"} provides instructions on _architecting clean software_. His approach is grounded in a shared historical perspective of software segmentation. He defines _clean code_ as concise communication of purpose and flexibility to modifications {"citep":"martin2018clean","page":"310"}. He defines _clean architecture_ as division into autonomous layers and independence within the system. The layers should include at least one for business rules and another for user/system interfaces. The system should be independent and testable without frameworks, user interfaces, database choice, and external agencies {"citep":"martin2018clean","page":"196"}.
 
-{"fig":"cleanarchitecture","url":"./figures/cleanarchitecture.jpg","caption":"The clean architecture."}
+{"fig":"cleanarchitecture","url":"./figures/cleanarchitecture.jpg","caption":"The clean architecture.","width":"80"}
 
 As seen in figure {"ref":"cleanarchitecture"}, this division results in four types of layers, guided by the various types of business rules and internal or external dependencies. This fragmentation of components facilitates the independent development, testing and evolution of the software layers. This philosophical perspective on software illustrates the importance of design in software, as system architecture can either motivate or inhibit developers from achieving their desired design goals.
 
@@ -31,7 +31,7 @@ JavaScript Object Notation (JSON) is...
 
 {"cite":"buley2013user"} defines a methodological approach to researching users and designing from a user-centered perspective. Her framework of _personas_ is a tool for quantitatively assessing potential users, and then deriving profiles for user evaluation during design ideation. A persona is at a surface level analogous to a stakeholder in a stakeholder analysis, which describes the organisational hierarchy and relationship between participants. The difference is that personas are less relationship-centered, as they emphasise how differing backgrounds and perspectives can inform usage, and the experience derived from interaction. Personas are created by identifying, for each type of user, their needs, values, goals, frustrations, and desires {"citep":"buley2013user","page":"132"}.
 
-{"fig":"persona","url":"./figures/persona.png","caption":"A complete persona."}
+{"fig":"persona","url":"./figures/persona.png","caption":"A complete persona.","width":"80"}
 
 As seen in figure {"ref":"persona"}, the persona represents a fictive person derived from real information on users. It is crucial that the persona does not represent a real person, as the goal is not to design for a specific person, but for personas to represent multiple and potentially conflicting perspectives.
 
