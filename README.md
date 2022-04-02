@@ -32,24 +32,67 @@ Table of Contents
 
 [Introduction](#introduction)
 
+&emsp;[Problem statement](#problemstatement)
+
 [Implementation](#implementation)
+
+&emsp;[Organisational structure and stakeholders](#organisationalstructure and stakeholders)
+
+&emsp;[Data provided to me](#dataprovided to me)
+
+&emsp;[Perspectives on serialised data](#perspectiveson serialised data)
+
+&emsp;[How-might-we](#how-might-we)
 
 [Vocabulary](#vocabulary)
 
-[Related Work](#related-work)
+&emsp;[Distributed Computing](#distributedcomputing)
 
-[Experiment Setup](#experiment-setup)
+&emsp;[Data Transmission](#datatransmission)
+
+&emsp;[Data Parsing](#dataparsing)
+
+&emsp;[Typesetting](#typesetting)
+
+&emsp;[Backwards Compatibility](#backwardscompatibility)
+
+&emsp;[Language Extensibility](#languageextensibility)
+
+[Related Work](#relatedwork)
+
+[Experiment Setup](#experimentsetup)
+
+&emsp;[Information](#information)
+
+&emsp;[Features](#features)
+
+&emsp;[Declaration](#declaration)
+
+&emsp;[Serialisation](#serialisation)
+
+&emsp;[Transmission](#transmission)
+
+&emsp;[Readability](#readability)
+
+&emsp;[Type safety](#typesafety)
+
+&emsp;[Language support](#languagesupport)
+
+&emsp;[Documentation](#documentation)
 
 [Results](#results)
 
 [Discussion](#discussion)
 
+[Future Work](#futurework)
+
 [Conclusion](#conclusion)
 
-[Future Work](#future-work)
+[Bibliography](#bibliography)
 
 <br>
 
+<span id="introduction"></span>
 Introduction
 ---
 
@@ -69,10 +112,9 @@ Design philosophy extends to software development, as human-readable code become
 
 [Martin, R.C. (2018)](#martin2018clean) provides instructions on _architecting clean software_. His approach is grounded in a shared historical perspective of software segmentation. He defines _clean code_ as concise communication of purpose and flexibility to modifications [(Martin, R.C., 2018, p. 310)](#martin2018clean). He defines _clean architecture_ as division into autonomous layers and independence within the system. The layers should include at least one for business rules and another for user/system interfaces. The system should be independent and testable without frameworks, user interfaces, database choice, and external agencies [(Martin, R.C., 2018, p. 196)](#martin2018clean).
 
-<span id="cleanarchitecture"></span>
-
 <br>
 
+<span id="cleanarchitecture"></span>
 <img style="width:50%" src="./figures/cleanarchitecture.jpg"/>
 
 Figure 1: The clean architecture.
@@ -91,10 +133,9 @@ JavaScript Object Notation (JSON) is...
 
 [Buley, L. (2013)](#buley2013user) defines a methodological approach to researching users and designing from a user-centered perspective. Her framework of _personas_ is a tool for quantitatively assessing potential users, and then deriving profiles for user evaluation during design ideation. A persona is at a surface level analogous to a stakeholder in a stakeholder analysis, which describes the organisational hierarchy and relationship between participants. The difference is that personas are less relationship-centered, as they emphasise how differing backgrounds and perspectives can inform usage, and the experience derived from interaction. Personas are created by identifying, for each type of user, their needs, values, goals, frustrations, and desires [(Buley, L., 2013, p. 132)](#buley2013user).
 
-<span id="persona"></span>
-
 <br>
 
+<span id="persona"></span>
 <img style="width:50%" src="./figures/persona.png"/>
 
 Figure 2: A complete persona.
@@ -105,12 +146,14 @@ As seen in figure [Figure 2](#persona), the persona represents a fictive person 
 
 The following [implementation section](#implementation) presents the company I collaborate with and their _implementation case_, which lays the foundation for this project. Through organisation and system hierarchies and structures, as well as personas, this section explores perspectives on working with serialised data, in relation to the proposal in this project.
 
+<span id="problemstatement"></span>
 **Problem statement**
 
 Based on this information...
 
 <br>
 
+<span id="implementation"></span>
 Implementation
 ---
 
@@ -120,14 +163,14 @@ This company holds a unique perspective relative to the landscape of software de
 
 In the following I illustrate the relationship between this company (_development company_) and their partners. This serves as a starting point for deducing which perspectives are held on working with data.
 
+<span id="organisationalstructure and stakeholders"></span>
 **Organisational structure and stakeholders**
 
 As seen in figure [Figure 3](#organisation), there are two identifiable hierarchies that form a relationship between case partner and development. The top half of this diagram flows from partner to a formulated case. The bottom half of this diagram flows from developer to a product delivery.
 
-<span id="organisation"></span>
-
 <br>
 
+<span id="organisation"></span>
 <img style="width:50%" src="./figures/organisation.png"/>
 
 Figure 3: Hierarchical and structural relationship between development company and case partners.
@@ -138,25 +181,30 @@ The structure of the partner company informs how they formulate the case offered
 
 The structure of the development company informs how they plan and execute on a case. They are not responsible for the back-end, and thus have to negotiate infrastructure plans and changes with their partners. This presents challenges to their autonomy, hierarchy and responsibilities.
 
+<span id="dataprovided to me"></span>
 **Data provided to me**
 
 ...
 
+<span id="perspectiveson serialised data"></span>
 **Perspectives on serialised data**
 
 This section presents the personas derived from interviews with each development team at the company, for the purpose of taking value-oriented design decisions derived from their perspectives. As these employees are coworkers, their perspectives are grounded in shared experiences, yet their unique deviations highlight how serialised data has varying implications on work practices.
 
+<span id="how-might-we"></span>
 **How-might-we**
 
 ...
 
 <br>
 
+<span id="vocabulary"></span>
 Vocabulary
 ---
 
 This section explores fundamental principles of the system architectures that support distribution of serialised data. It serves to establish a vocabulary for communication in computing, as well as to provide background knowledge on how data becomes distributed, and motivate my choices of systems.
 
+<span id="distributedcomputing"></span>
 **Distributed Computing**
 
 [Kshemkalyani, A. and Singhal, M. (2011)](#kshemkalyani2011distributed) define _distributed systems_ as "a collection of independent entities that cooperate to solve a problem that cannot be individually solved." They characterise distributed computing as  "a collection of mostly autonomous processors communicating over a communication network". They identify common features of distributed systems, notably a lack of shared resources which necessitates communication, autonomy and heterogeneity.
@@ -165,10 +213,9 @@ In characterising distributed systems, [Kshemkalyani, A. and Singhal, M. (2011)]
 
 As seen in figure [Figure 4](#networkcomms), a distributed system achieves asynchronous collaboration through a communication network, either a wide (WAN) area or local (LAN) area network, depending on the geography of the system. Each entity in the system consists of at least one processor (P) with its own solitary memory (M), providing the entity computational autonomy. This network structure creates the potential for both hardware and software heterogeneity, which necessitates coordination and distribution of tasks and responsibilities.
 
-<span id="networkcomms"></span>
-
 <br>
 
+<span id="networkcomms"></span>
 <img style="width:50%" src="./figures/networkcomms.png"/>
 
 Figure 4: A distributed system connects processors by a communication network.
@@ -179,10 +226,9 @@ _Hardware heterogeneity_ manifests as a variation in physical resources and thus
 
 _Software heterogeneity_ manifests as a variation in programming languages and frameworks. Distributed systems use a layered architecture, with a middle layer driving the software distribution, the so-called "middleware." As seen in figure [Figure 5](#processinteraction), the middleware layer exists as an addition to the protocol-oriented application layer, which handles the communication protocols such as _HTTP_. Additionally, as data flows in a heterogeneous distributed system, it must adhere to a standardised and yet interoperable format, modelled on the software systems used in the network.
 
-<span id="processinteraction"></span>
-
 <br>
 
+<span id="processinteraction"></span>
 <img style="width:50%" src="./figures/processinteraction.png"/>
 
 Figure 5: Interaction of the software components at each processor.
@@ -193,10 +239,9 @@ At this point, you are probably wondering _why distribution is relevant_ to this
 
 Given the inherent nature of serialised data exchange, and the ubiquity of distributed computing systems, the design of such systems informs our approach to communicating across them. It should be noted that systems do not exist in a vacuum, and thus system should be contextually designed based on market forces. System designers must balance or choose between industry standard protocols, which maximise interoperability, and the technically best solutions, which require more control and closed source development.
 
-<span id="pubsubsystem"></span>
-
 <br>
 
+<span id="pubsubsystem"></span>
 <img style="width:50%" src="./figures/pubsubsystem.png"/>
 
 Figure 6: Components of a _publish-subscribe_ system.
@@ -209,6 +254,7 @@ Figure 6: Components of a _publish-subscribe_ system.
 
 In the following section on _the transmission of data in distributed computing systems_, I present an in-depth illustration of how publish-subscribe models facilitate distribution of data-driven systems.
 
+<span id="datatransmission"></span>
 **Data Transmission**
 
 This section explores the standards and methods for distributed communication through a publish-subscribe service. It serves as background knowledge on how serialised data is distributed, to illustrate how our choice of data serialisation library is informed by the system model.
@@ -227,10 +273,9 @@ In a _centralised_ pub/sub system, publishers either utilise a _one-to-one messa
 
 The network layer is one of multiple layers typical of networking systems. As seen in figure [Figure 7](#ositcilayers), [Alani, M.M. (2014)](#alani2014guide) presents the 7 layers of the _Open Systems Interconnection_ (OSI) model relative to the 4 layers of the _Transmission Control Protocol_ (TCP). The OSI model abstracts networking systems into a conceptual framework, to describe and standardise the functional relationship between these layers. The TCI/IP model maps to the OSI model, but  
 
-<span id="ositcilayers"></span>
-
 <br>
 
+<span id="ositcilayers"></span>
 <img style="width:50%" src="./figures/ositcilayers.png"/>
 
 Figure 7: Comparison between layers in the OSI model and TCI/IP model, providing a standard communication architecture for distributed processing systems.
@@ -239,20 +284,18 @@ Figure 7: Comparison between layers in the OSI model and TCI/IP model, providing
 
 As data in a distributed systems flows from the software (_application layer_) to the hardware (_physical layer_), it is transformed by protocols which add additional information to the data. This process is referred to as _encapsulation_, and consists of _capsulation_ from the source host and _decapsulation_ towards the destination host. As data flows from source host's application layer and towards the physical layer, protocols prepend headers (leading information) and append trailers (trailing information) to the data. This additional information indicates the purpose of communicating the data and how it should be interpreted by the next layer.
 
-<span id="dataflow"></span>
-
 <br>
 
+<span id="dataflow"></span>
 <img style="width:50%" src="./figures/endtoendflow.png"/>
 
 Figure 8: End-to-end data flow.
 
 <br>
 
-<span id="encapsulation"></span>
-
 <br>
 
+<span id="encapsulation"></span>
 <img style="width:50%" src="./figures/encapsulation.png"/>
 
 Figure 9: Encapsulation with headers and trailers.
@@ -267,24 +310,29 @@ The take away from the OSI model is that as data flows through a distributed sys
 
 ...
 
+<span id="dataparsing"></span>
 **Data Parsing**
 
 ...
 
+<span id="typesetting"></span>
 **Typesetting**
 
 ...
 
+<span id="backwardscompatibility"></span>
 **Backwards Compatibility**
 
 ...
 
+<span id="languageextensibility"></span>
 **Language Extensibility**
 
 ...
 
 <br>
 
+<span id="relatedwork"></span>
 Related Work
 ---
 
@@ -303,9 +351,22 @@ Previous research provides a baseline for building upon existing knowledge throu
 
 <br>
 
+<span id="experimentsetup"></span>
 Experiment Setup
 ---
 
+<span id="information"></span>
+**Information**
+
+2D matrix -> Objects -> Data structure?
+
+```
+Hello
+```
+
+---
+
+<span id="features"></span>
 **Features**
 
 XML: https://www.w3.org/XML/ https://www.w3.org/TR/2008/REC-xml-20081126/
@@ -314,36 +375,44 @@ JSON: https://www.json.org/json-en.html
 
 Proto: https://developers.google.com/protocol-buffers
 
+<span id="declaration"></span>
 **Declaration**
 
 ...
 
+<span id="serialisation"></span>
 **Serialisation**
 
 ...
 
+<span id="transmission"></span>
 **Transmission**
 
 ...
 
+<span id="readability"></span>
 **Readability**
 
 ...
 
+<span id="typesafety"></span>
 **Type safety**
 
 ...
 
+<span id="languagesupport"></span>
 **Language support**
 
 ...
 
+<span id="documentation"></span>
 **Documentation**
 
 ...
 
 <br>
 
+<span id="results"></span>
 Results
 ---
 
@@ -351,6 +420,7 @@ Results
 
 <br>
 
+<span id="discussion"></span>
 Discussion
 ---
 
@@ -358,6 +428,7 @@ Discussion
 
 <br>
 
+<span id="futurework"></span>
 Future Work
 ---
 
@@ -365,6 +436,7 @@ Future Work
 
 <br>
 
+<span id="conclusion"></span>
 Conclusion
 ---
 
@@ -372,6 +444,7 @@ Conclusion
 
 <br>
 
+<span id="bibliography"></span>
 Bibliography
 ---
 
