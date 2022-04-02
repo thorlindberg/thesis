@@ -32,53 +32,53 @@ Table of Contents
 
 [1 Introduction](#introduction)
 
-&emsp;&emsp;[Problem statement](#problemstatement)
+&emsp;&emsp;[0.0 Problem statement](#problemstatement)
 
 [2 Implementation](#implementation)
 
-&emsp;&emsp;[Organisational structure and stakeholders](#organisationalstructureandstakeholders)
+&emsp;&emsp;[0.0 Organisational structure and stakeholders](#organisationalstructureandstakeholders)
 
-&emsp;&emsp;[Data provided to me](#dataprovidedtome)
+&emsp;&emsp;[0.0 Data provided to me](#dataprovidedtome)
 
-&emsp;&emsp;[Perspectives on serialised data](#perspectivesonserialiseddata)
+&emsp;&emsp;[0.0 Perspectives on serialised data](#perspectivesonserialiseddata)
 
-&emsp;&emsp;[How-might-we](#how-might-we)
+&emsp;&emsp;[0.0 How-might-we](#how-might-we)
 
 [3 Vocabulary](#vocabulary)
 
-&emsp;&emsp;[Distributed Computing](#distributedcomputing)
+&emsp;&emsp;[0.0 Distributed Computing](#distributedcomputing)
 
-&emsp;&emsp;[Data Transmission](#datatransmission)
+&emsp;&emsp;[0.0 Data Transmission](#datatransmission)
 
-&emsp;&emsp;[Data Parsing](#dataparsing)
+&emsp;&emsp;[0.0 Data Parsing](#dataparsing)
 
-&emsp;&emsp;[Typesetting](#typesetting)
+&emsp;&emsp;[0.0 Typesetting](#typesetting)
 
-&emsp;&emsp;[Backwards Compatibility](#backwardscompatibility)
+&emsp;&emsp;[0.0 Backwards Compatibility](#backwardscompatibility)
 
-&emsp;&emsp;[Language Extensibility](#languageextensibility)
+&emsp;&emsp;[0.0 Language Extensibility](#languageextensibility)
 
 [4 Related Work](#relatedwork)
 
 [5 Experiment Setup](#experimentsetup)
 
-&emsp;&emsp;[Information](#information)
+&emsp;&emsp;[0.0 Information](#information)
 
-&emsp;&emsp;[Features](#features)
+&emsp;&emsp;[0.0 Features](#features)
 
-&emsp;&emsp;[Declaration](#declaration)
+&emsp;&emsp;[0.0 Declaration](#declaration)
 
-&emsp;&emsp;[Serialisation](#serialisation)
+&emsp;&emsp;[0.0 Serialisation](#serialisation)
 
-&emsp;&emsp;[Transmission](#transmission)
+&emsp;&emsp;[0.0 Transmission](#transmission)
 
-&emsp;&emsp;[Readability](#readability)
+&emsp;&emsp;[0.0 Readability](#readability)
 
-&emsp;&emsp;[Type safety](#typesafety)
+&emsp;&emsp;[0.0 Type safety](#typesafety)
 
-&emsp;&emsp;[Language support](#languagesupport)
+&emsp;&emsp;[0.0 Language support](#languagesupport)
 
-&emsp;&emsp;[Documentation](#documentation)
+&emsp;&emsp;[0.0 Documentation](#documentation)
 
 [6 Results](#results)
 
@@ -93,7 +93,7 @@ Table of Contents
 <br>
 
 <span id="introduction"></span>
-1 Introduction
+1&emsp;Introduction
 ---
 
 As the prevalence of smartphones and internet of things (IoT) devices increasingly dictate the human experience, the software industry has pivoted towards connectivity-centered development. The common mobile software application is fully reliant on an internet connection, acting almost exclusively as a recipient (client) for transmitted data. These clients typically serve purposes such as social media communication, content consumption, user account access etc.
@@ -154,7 +154,7 @@ Based on this information...
 <br>
 
 <span id="implementation"></span>
-2 Implementation
+2&emsp;Implementation
 ---
 
 In this project I've chosen to collaborate with a company that specialises in native mobile application development. Their identity is kept anonymous, so rather than include confidential data or code samples, I have chosen to derive generic examples from the material they have provided me.
@@ -199,7 +199,7 @@ This section presents the personas derived from interviews with each development
 <br>
 
 <span id="vocabulary"></span>
-3 Vocabulary
+3&emsp;Vocabulary
 ---
 
 This section explores fundamental principles of the system architectures that support distribution of serialised data. It serves to establish a vocabulary for communication in computing, as well as to provide background knowledge on how data becomes distributed, and motivate my choices of systems.
@@ -333,7 +333,7 @@ The take away from the OSI model is that as data flows through a distributed sys
 <br>
 
 <span id="relatedwork"></span>
-4 Related Work
+4&emsp;Related Work
 ---
 
 Previous research provides a baseline for building upon existing knowledge through this project. This research typically focuses on documenting the object serialisation process or comparing serialisation formats in terms of features, efficiency, performance, file size, and programming language support.
@@ -352,7 +352,7 @@ Previous research provides a baseline for building upon existing knowledge throu
 <br>
 
 <span id="experimentsetup"></span>
-5 Experiment Setup
+5&emsp;Experiment Setup
 ---
 
 <span id="information"></span>
@@ -413,7 +413,7 @@ Proto: https://developers.google.com/protocol-buffers
 <br>
 
 <span id="results"></span>
-6 Results
+6&emsp;Results
 ---
 
 ...
@@ -421,7 +421,7 @@ Proto: https://developers.google.com/protocol-buffers
 <br>
 
 <span id="discussion"></span>
-7 Discussion
+7&emsp;Discussion
 ---
 
 ...
@@ -429,7 +429,7 @@ Proto: https://developers.google.com/protocol-buffers
 <br>
 
 <span id="futurework"></span>
-8 Future Work
+8&emsp;Future Work
 ---
 
 ...
@@ -437,7 +437,7 @@ Proto: https://developers.google.com/protocol-buffers
 <br>
 
 <span id="conclusion"></span>
-9 Conclusion
+9&emsp;Conclusion
 ---
 
 ...
@@ -445,7 +445,7 @@ Proto: https://developers.google.com/protocol-buffers
 <br>
 
 <span id="bibliography"></span>
-10 Bibliography
+10&emsp;Bibliography
 ---
 
 <br>
