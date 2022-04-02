@@ -8,7 +8,7 @@ In the following I illustrate the relationship between this company (_developmen
 
 {"sub":"Organisational structure and stakeholders"}
 
-As seen in figure {"ref":"organisation"}, there are two identifiable hierarchies that form a relationship between case partner and development. The top half of this diagram flows from partner to a formulated case. The bottom half of this diagram flows from developer to a product delivery.
+As seen in {"ref":"organisation"}, there are two identifiable hierarchies that form a relationship between case partner and development. The top half of this diagram flows from partner to a formulated case. The bottom half of this diagram flows from developer to a product delivery.
 
 {"fig":"organisation","url":"./figures/organisation.png","caption":"Hierarchical and structural relationship between development company and case partners.","width":"50%"}
 

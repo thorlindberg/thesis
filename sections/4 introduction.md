@@ -18,7 +18,7 @@ Design philosophy extends to software development, as human-readable code become
 
 {"fig":"cleanarchitecture","url":"./figures/cleanarchitecture.jpg","caption":"The clean architecture.","width":"50%"}
 
-As seen in figure {"ref":"cleanarchitecture"}, this division results in four types of layers, guided by the various types of business rules and internal or external dependencies. This fragmentation of components facilitates the independent development, testing and evolution of the software layers. This philosophical perspective on software illustrates the importance of design in software, as system architecture can either motivate or inhibit developers from achieving their desired design goals.
+As seen in {"ref":"cleanarchitecture"}, this division results in four types of layers, guided by the various types of business rules and internal or external dependencies. This fragmentation of components facilitates the independent development, testing and evolution of the software layers. This philosophical perspective on software illustrates the importance of design in software, as system architecture can either motivate or inhibit developers from achieving their desired design goals.
 
 XML (eXtensible Markup Language) is...
 
@@ -32,7 +32,7 @@ JavaScript Object Notation (JSON) is...
 
 {"fig":"persona","url":"./figures/persona.png","caption":"A complete persona.","width":"50%"}
 
-As seen in figure {"ref":"persona"}, the persona represents a fictive person derived from real information on users. It is crucial that the persona does not represent a real person, as the goal is not to design for a specific person, but for personas to represent multiple and potentially conflicting perspectives.
+As seen in {"ref":"persona"}, the persona represents a fictive person derived from real information on users. It is crucial that the persona does not represent a real person, as the goal is not to design for a specific person, but for personas to represent multiple and potentially conflicting perspectives.
 
 The following [implementation section](#implementation) presents the company I collaborate with and their _implementation case_, which lays the foundation for this project. Through organisation and system hierarchies and structures, as well as personas, this section explores perspectives on working with serialised data, in relation to the proposal in this project.
 
