@@ -30,65 +30,65 @@ IT-University of Copenhagen, Denmark
 Table of Contents
 ---
 
-[1 Introduction](#introduction)
+[1&emsp;Introduction](#introduction)
 
-&emsp;&emsp;[0.0 Problem statement](#problemstatement)
+&emsp;[0.0&emsp;Problem statement](#problemstatement)
 
-[2 Implementation](#implementation)
+[2&emsp;Implementation](#implementation)
 
-&emsp;&emsp;[0.0 Organisational structure and stakeholders](#organisationalstructureandstakeholders)
+&emsp;[0.0&emsp;Organisational structure and stakeholders](#organisationalstructureandstakeholders)
 
-&emsp;&emsp;[0.0 Data provided to me](#dataprovidedtome)
+&emsp;[0.0&emsp;Data provided to me](#dataprovidedtome)
 
-&emsp;&emsp;[0.0 Perspectives on serialised data](#perspectivesonserialiseddata)
+&emsp;[0.0&emsp;Perspectives on serialised data](#perspectivesonserialiseddata)
 
-&emsp;&emsp;[0.0 How-might-we](#how-might-we)
+&emsp;[0.0&emsp;How-might-we](#how-might-we)
 
-[3 Vocabulary](#vocabulary)
+[3&emsp;Vocabulary](#vocabulary)
 
-&emsp;&emsp;[0.0 Distributed Computing](#distributedcomputing)
+&emsp;[0.0&emsp;Distributed Computing](#distributedcomputing)
 
-&emsp;&emsp;[0.0 Data Transmission](#datatransmission)
+&emsp;[0.0&emsp;Data Transmission](#datatransmission)
 
-&emsp;&emsp;[0.0 Data Parsing](#dataparsing)
+&emsp;[0.0&emsp;Data Parsing](#dataparsing)
 
-&emsp;&emsp;[0.0 Typesetting](#typesetting)
+&emsp;[0.0&emsp;Typesetting](#typesetting)
 
-&emsp;&emsp;[0.0 Backwards Compatibility](#backwardscompatibility)
+&emsp;[0.0&emsp;Backwards Compatibility](#backwardscompatibility)
 
-&emsp;&emsp;[0.0 Language Extensibility](#languageextensibility)
+&emsp;[0.0&emsp;Language Extensibility](#languageextensibility)
 
-[4 Related Work](#relatedwork)
+[4&emsp;Related Work](#relatedwork)
 
-[5 Experiment Setup](#experimentsetup)
+[5&emsp;Experiment Setup](#experimentsetup)
 
-&emsp;&emsp;[0.0 Information](#information)
+&emsp;[0.0&emsp;Information](#information)
 
-&emsp;&emsp;[0.0 Features](#features)
+&emsp;[0.0&emsp;Features](#features)
 
-&emsp;&emsp;[0.0 Declaration](#declaration)
+&emsp;[0.0&emsp;Declaration](#declaration)
 
-&emsp;&emsp;[0.0 Serialisation](#serialisation)
+&emsp;[0.0&emsp;Serialisation](#serialisation)
 
-&emsp;&emsp;[0.0 Transmission](#transmission)
+&emsp;[0.0&emsp;Transmission](#transmission)
 
-&emsp;&emsp;[0.0 Readability](#readability)
+&emsp;[0.0&emsp;Readability](#readability)
 
-&emsp;&emsp;[0.0 Type safety](#typesafety)
+&emsp;[0.0&emsp;Type safety](#typesafety)
 
-&emsp;&emsp;[0.0 Language support](#languagesupport)
+&emsp;[0.0&emsp;Language support](#languagesupport)
 
-&emsp;&emsp;[0.0 Documentation](#documentation)
+&emsp;[0.0&emsp;Documentation](#documentation)
 
-[6 Results](#results)
+[6&emsp;Results](#results)
 
-[7 Discussion](#discussion)
+[7&emsp;Discussion](#discussion)
 
-[8 Future Work](#futurework)
+[8&emsp;Future Work](#futurework)
 
-[9 Conclusion](#conclusion)
+[9&emsp;Conclusion](#conclusion)
 
-[10 Bibliography](#bibliography)
+[10&emsp;Bibliography](#bibliography)
 
 <br>
 
