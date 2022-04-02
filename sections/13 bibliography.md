@@ -1,5 +1,4 @@
-Bibliography
----
+{"sec":"Bibliography"}
 
 <br>
 

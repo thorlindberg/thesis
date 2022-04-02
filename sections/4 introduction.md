@@ -1,5 +1,4 @@
-Introduction
----
+{"sec":"Introduction"}
 
 As the prevalence of smartphones and internet of things (IoT) devices increasingly dictate the human experience, the software industry has pivoted towards connectivity-centered development. The common mobile software application is fully reliant on an internet connection, acting almost exclusively as a recipient (client) for transmitted data. These clients typically serve purposes such as social media communication, content consumption, user account access etc.
 
@@ -37,7 +36,7 @@ As seen in figure {"ref":"persona"}, the persona represents a fictive person der
 
 The following [implementation section](#implementation) presents the company I collaborate with and their _implementation case_, which lays the foundation for this project. Through organisation and system hierarchies and structures, as well as personas, this section explores perspectives on working with serialised data, in relation to the proposal in this project.
 
-**Problem statement**
+{"sub":"Problem statement"}
 
 Based on this information...
 

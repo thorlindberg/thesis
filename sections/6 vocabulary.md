@@ -1,9 +1,8 @@
-Vocabulary
----
+{"sec":"Vocabulary"}
 
 This section explores fundamental principles of the system architectures that support distribution of serialised data. It serves to establish a vocabulary for communication in computing, as well as to provide background knowledge on how data becomes distributed, and motivate my choices of systems.
 
-**Distributed Computing**
+{"sub":"Distributed Computing"}
 
 {"cite":"kshemkalyani2011distributed"} define _distributed systems_ as "a collection of independent entities that cooperate to solve a problem that cannot be individually solved." They characterise distributed computing as  "a collection of mostly autonomous processors communicating over a communication network". They identify common features of distributed systems, notably a lack of shared resources which necessitates communication, autonomy and heterogeneity.
 
@@ -31,7 +30,7 @@ Given the inherent nature of serialised data exchange, and the ubiquity of distr
 
 In the following section on _the transmission of data in distributed computing systems_, I present an in-depth illustration of how publish-subscribe models facilitate distribution of data-driven systems.
 
-**Data Transmission**
+{"sub":"Data Transmission"}
 
 This section explores the standards and methods for distributed communication through a publish-subscribe service. It serves as background knowledge on how serialised data is distributed, to illustrate how our choice of data serialisation library is informed by the system model.
 
@@ -65,19 +64,19 @@ The take away from the OSI model is that as data flows through a distributed sys
 
 ...
 
-**Data Parsing**
+{"sub":"Data Parsing"}
 
 ...
 
-**Typesetting**
+{"sub":"Typesetting"}
 
 ...
 
-**Backwards Compatibility**
+{"sub":"Backwards Compatibility"}
 
 ...
 
-**Language Extensibility**
+{"sub":"Language Extensibility"}
 
 ...
 

@@ -1,5 +1,4 @@
-Related Work
----
+{"sec":"Related Work"}
 
 Previous research provides a baseline for building upon existing knowledge through this project. This research typically focuses on documenting the object serialisation process or comparing serialisation formats in terms of features, efficiency, performance, file size, and programming language support.
 

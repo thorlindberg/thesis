@@ -1,5 +1,4 @@
-Implementation
----
+{"sec":"Implementation"}
 
 In this project I've chosen to collaborate with a company that specialises in native mobile application development. Their identity is kept anonymous, so rather than include confidential data or code samples, I have chosen to derive generic examples from the material they have provided me.
 
@@ -7,7 +6,7 @@ This company holds a unique perspective relative to the landscape of software de
 
 In the following I illustrate the relationship between this company (_development company_) and their partners. This serves as a starting point for deducing which perspectives are held on working with data.
 
-**Organisational structure and stakeholders**
+{"sub":"Organisational structure and stakeholders"}
 
 As seen in figure {"ref":"organisation"}, there are two identifiable hierarchies that form a relationship between case partner and development. The top half of this diagram flows from partner to a formulated case. The bottom half of this diagram flows from developer to a product delivery.
 
@@ -17,15 +16,15 @@ The structure of the partner company informs how they formulate the case offered
 
 The structure of the development company informs how they plan and execute on a case. They are not responsible for the back-end, and thus have to negotiate infrastructure plans and changes with their partners. This presents challenges to their autonomy, hierarchy and responsibilities.
 
-**Data provided to me**
+{"sub":"Data provided to me"}
 
 ...
 
-**Perspectives on serialised data**
+{"sub":"Perspectives on serialised data"}
 
 This section presents the personas derived from interviews with each development team at the company, for the purpose of taking value-oriented design decisions derived from their perspectives. As these employees are coworkers, their perspectives are grounded in shared experiences, yet their unique deviations highlight how serialised data has varying implications on work practices.
 
-**How-might-we**
+{"sub":"How-might-we"}
 
 ...
 
