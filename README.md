@@ -30,70 +30,70 @@ IT-University of Copenhagen, Denmark
 Table of Contents
 ---
 
-[Introduction](#introduction)
+[1 Introduction](#introduction)
 
-&emsp;[Problem statement](#problemstatement)
+&emsp;&emsp;[Problem statement](#problemstatement)
 
-[Implementation](#implementation)
+[2 Implementation](#implementation)
 
-&emsp;[Organisational structure and stakeholders](#organisationalstructure and stakeholders)
+&emsp;&emsp;[Organisational structure and stakeholders](#organisationalstructureandstakeholders)
 
-&emsp;[Data provided to me](#dataprovided to me)
+&emsp;&emsp;[Data provided to me](#dataprovidedtome)
 
-&emsp;[Perspectives on serialised data](#perspectiveson serialised data)
+&emsp;&emsp;[Perspectives on serialised data](#perspectivesonserialiseddata)
 
-&emsp;[How-might-we](#how-might-we)
+&emsp;&emsp;[How-might-we](#how-might-we)
 
-[Vocabulary](#vocabulary)
+[3 Vocabulary](#vocabulary)
 
-&emsp;[Distributed Computing](#distributedcomputing)
+&emsp;&emsp;[Distributed Computing](#distributedcomputing)
 
-&emsp;[Data Transmission](#datatransmission)
+&emsp;&emsp;[Data Transmission](#datatransmission)
 
-&emsp;[Data Parsing](#dataparsing)
+&emsp;&emsp;[Data Parsing](#dataparsing)
 
-&emsp;[Typesetting](#typesetting)
+&emsp;&emsp;[Typesetting](#typesetting)
 
-&emsp;[Backwards Compatibility](#backwardscompatibility)
+&emsp;&emsp;[Backwards Compatibility](#backwardscompatibility)
 
-&emsp;[Language Extensibility](#languageextensibility)
+&emsp;&emsp;[Language Extensibility](#languageextensibility)
 
-[Related Work](#relatedwork)
+[4 Related Work](#relatedwork)
 
-[Experiment Setup](#experimentsetup)
+[5 Experiment Setup](#experimentsetup)
 
-&emsp;[Information](#information)
+&emsp;&emsp;[Information](#information)
 
-&emsp;[Features](#features)
+&emsp;&emsp;[Features](#features)
 
-&emsp;[Declaration](#declaration)
+&emsp;&emsp;[Declaration](#declaration)
 
-&emsp;[Serialisation](#serialisation)
+&emsp;&emsp;[Serialisation](#serialisation)
 
-&emsp;[Transmission](#transmission)
+&emsp;&emsp;[Transmission](#transmission)
 
-&emsp;[Readability](#readability)
+&emsp;&emsp;[Readability](#readability)
 
-&emsp;[Type safety](#typesafety)
+&emsp;&emsp;[Type safety](#typesafety)
 
-&emsp;[Language support](#languagesupport)
+&emsp;&emsp;[Language support](#languagesupport)
 
-&emsp;[Documentation](#documentation)
+&emsp;&emsp;[Documentation](#documentation)
 
-[Results](#results)
+[6 Results](#results)
 
-[Discussion](#discussion)
+[7 Discussion](#discussion)
 
-[Future Work](#futurework)
+[8 Future Work](#futurework)
 
-[Conclusion](#conclusion)
+[9 Conclusion](#conclusion)
 
-[Bibliography](#bibliography)
+[10 Bibliography](#bibliography)
 
 <br>
 
 <span id="introduction"></span>
-Introduction
+1 Introduction
 ---
 
 As the prevalence of smartphones and internet of things (IoT) devices increasingly dictate the human experience, the software industry has pivoted towards connectivity-centered development. The common mobile software application is fully reliant on an internet connection, acting almost exclusively as a recipient (client) for transmitted data. These clients typically serve purposes such as social media communication, content consumption, user account access etc.
@@ -154,7 +154,7 @@ Based on this information...
 <br>
 
 <span id="implementation"></span>
-Implementation
+2 Implementation
 ---
 
 In this project I've chosen to collaborate with a company that specialises in native mobile application development. Their identity is kept anonymous, so rather than include confidential data or code samples, I have chosen to derive generic examples from the material they have provided me.
@@ -163,7 +163,7 @@ This company holds a unique perspective relative to the landscape of software de
 
 In the following I illustrate the relationship between this company (_development company_) and their partners. This serves as a starting point for deducing which perspectives are held on working with data.
 
-<span id="organisationalstructure and stakeholders"></span>
+<span id="organisationalstructureandstakeholders"></span>
 **Organisational structure and stakeholders**
 
 As seen in figure [Figure 3](#organisation), there are two identifiable hierarchies that form a relationship between case partner and development. The top half of this diagram flows from partner to a formulated case. The bottom half of this diagram flows from developer to a product delivery.
@@ -181,12 +181,12 @@ The structure of the partner company informs how they formulate the case offered
 
 The structure of the development company informs how they plan and execute on a case. They are not responsible for the back-end, and thus have to negotiate infrastructure plans and changes with their partners. This presents challenges to their autonomy, hierarchy and responsibilities.
 
-<span id="dataprovided to me"></span>
+<span id="dataprovidedtome"></span>
 **Data provided to me**
 
 ...
 
-<span id="perspectiveson serialised data"></span>
+<span id="perspectivesonserialiseddata"></span>
 **Perspectives on serialised data**
 
 This section presents the personas derived from interviews with each development team at the company, for the purpose of taking value-oriented design decisions derived from their perspectives. As these employees are coworkers, their perspectives are grounded in shared experiences, yet their unique deviations highlight how serialised data has varying implications on work practices.
@@ -199,7 +199,7 @@ This section presents the personas derived from interviews with each development
 <br>
 
 <span id="vocabulary"></span>
-Vocabulary
+3 Vocabulary
 ---
 
 This section explores fundamental principles of the system architectures that support distribution of serialised data. It serves to establish a vocabulary for communication in computing, as well as to provide background knowledge on how data becomes distributed, and motivate my choices of systems.
@@ -333,7 +333,7 @@ The take away from the OSI model is that as data flows through a distributed sys
 <br>
 
 <span id="relatedwork"></span>
-Related Work
+4 Related Work
 ---
 
 Previous research provides a baseline for building upon existing knowledge through this project. This research typically focuses on documenting the object serialisation process or comparing serialisation formats in terms of features, efficiency, performance, file size, and programming language support.
@@ -352,7 +352,7 @@ Previous research provides a baseline for building upon existing knowledge throu
 <br>
 
 <span id="experimentsetup"></span>
-Experiment Setup
+5 Experiment Setup
 ---
 
 <span id="information"></span>
@@ -413,7 +413,7 @@ Proto: https://developers.google.com/protocol-buffers
 <br>
 
 <span id="results"></span>
-Results
+6 Results
 ---
 
 ...
@@ -421,7 +421,7 @@ Results
 <br>
 
 <span id="discussion"></span>
-Discussion
+7 Discussion
 ---
 
 ...
@@ -429,7 +429,7 @@ Discussion
 <br>
 
 <span id="futurework"></span>
-Future Work
+8 Future Work
 ---
 
 ...
@@ -437,7 +437,7 @@ Future Work
 <br>
 
 <span id="conclusion"></span>
-Conclusion
+9 Conclusion
 ---
 
 ...
@@ -445,7 +445,7 @@ Conclusion
 <br>
 
 <span id="bibliography"></span>
-Bibliography
+10 Bibliography
 ---
 
 <br>
