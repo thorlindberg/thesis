@@ -169,38 +169,41 @@ The txon.min.js library can 'handshake' and 'initialise' TXON objects.
 Handshaking...
 
 ```
-handshake: (json) => {
+const TXON = {
+    handshake: (json) => {
 
-    const obj = JSON.parse(json)
-    const contract = obj.init
-    const data = obj.data
+        const obj = JSON.parse(json)
+        const contract = obj.init
+        const data = obj.data
 
-    Object.values(data).forEach(prop => {
-        if (contract.hasOwnProperty(prop.type)) { // .init has type "item"
-            prop.values.forEach(val => {
-                console.log(
-                    Object.getOwnPropertyNames(contract[prop.type]),
-                    Object.getOwnPropertyNames(val)
-                )
-                Object.getOwnPropertyNames(val).forEach(c => {
-                    console.log(c)
+        Object.values(data).forEach(prop => {
+            if (contract.hasOwnProperty(prop.type)) { // .init has type "item"
+                prop.values.forEach(val => {
+                    console.log(
+                        Object.getOwnPropertyNames(contract[prop.type]),
+                        Object.getOwnPropertyNames(val)
+                    )
+                    Object.getOwnPropertyNames(val).forEach(c => {
+                        console.log(c)
+                    })
                 })
-            })
-        }
-    })
+            }
+        })
 
-    return true
-
+        return true
+    }
 }
 ```
 
 Initialising...
 
 ```
-initialise: (json) => {
-    const obj = JSON.parse(json)
-    // init objs as JS objets, see enumJS
-    return obj
+const TXON = {
+    initialise: (json) => {
+        const obj = JSON.parse(json)
+        // init objs as JS objets, see enumJS
+        return obj
+    }
 }
 ```
 
