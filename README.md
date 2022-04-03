@@ -141,7 +141,7 @@ As seen in [figure 2](#persona), the persona represents a fictive person derived
 The following [implementation section](#implementation) presents the company I collaborate with and their _implementation case_, which lays the foundation for this project. Through organisation and system hierarchies and structures, as well as personas, this section explores perspectives on working with serialised data, in relation to the proposal in this project.
 
 <span id="problemstatement"></span>
-**Problem statement**
+**0.0 Problem statement**
 
 Based on this information...
 
@@ -158,7 +158,7 @@ This company holds a unique perspective relative to the landscape of software de
 In the following I illustrate the relationship between this company (_development company_) and their partners. This serves as a starting point for deducing which perspectives are held on working with data.
 
 <span id="organisationalstructureandstakeholders"></span>
-**Organisational structure and stakeholders**
+**0.0 Organisational structure and stakeholders**
 
 As seen in [figure 3](#organisation), there are two identifiable hierarchies that form a relationship between case partner and development. The top half of this diagram flows from partner to a formulated case. The bottom half of this diagram flows from developer to a product delivery.
 
@@ -176,17 +176,17 @@ The structure of the partner company informs how they formulate the case offered
 The structure of the development company informs how they plan and execute on a case. They are not responsible for the back-end, and thus have to negotiate infrastructure plans and changes with their partners. This presents challenges to their autonomy, hierarchy and responsibilities.
 
 <span id="dataprovidedtome"></span>
-**Data provided to me**
+**0.0 Data provided to me**
 
 ...
 
 <span id="perspectivesonserialiseddata"></span>
-**Perspectives on serialised data**
+**0.0 Perspectives on serialised data**
 
 This section presents the personas derived from interviews with each development team at the company, for the purpose of taking value-oriented design decisions derived from their perspectives. As these employees are coworkers, their perspectives are grounded in shared experiences, yet their unique deviations highlight how serialised data has varying implications on work practices.
 
 <span id="how-might-we"></span>
-**How-might-we**
+**0.0 How-might-we**
 
 ...
 
@@ -199,7 +199,7 @@ This section presents the personas derived from interviews with each development
 This section explores fundamental principles of the system architectures that support distribution of serialised data. It serves to establish a vocabulary for communication in computing, as well as to provide background knowledge on how data becomes distributed, and motivate my choices of systems.
 
 <span id="distributedcomputing"></span>
-**Distributed Computing**
+**0.0 Distributed Computing**
 
 [Kshemkalyani, A. and Singhal, M. (2011)](#kshemkalyani2011distributed) define _distributed systems_ as "a collection of independent entities that cooperate to solve a problem that cannot be individually solved." They characterise distributed computing as  "a collection of mostly autonomous processors communicating over a communication network". They identify common features of distributed systems, notably a lack of shared resources which necessitates communication, autonomy and heterogeneity.
 
@@ -249,7 +249,7 @@ Figure 6: Components of a _publish-subscribe_ system.
 In the following section on _the transmission of data in distributed computing systems_, I present an in-depth illustration of how publish-subscribe models facilitate distribution of data-driven systems.
 
 <span id="datatransmission"></span>
-**Data Transmission**
+**0.0 Data Transmission**
 
 This section explores the standards and methods for distributed communication through a publish-subscribe service. It serves as background knowledge on how serialised data is distributed, to illustrate how our choice of data serialisation library is informed by the system model.
 
@@ -305,22 +305,22 @@ The take away from the OSI model is that as data flows through a distributed sys
 ...
 
 <span id="dataparsing"></span>
-**Data Parsing**
+**0.0 Data Parsing**
 
 ...
 
 <span id="typesetting"></span>
-**Typesetting**
+**0.0 Typesetting**
 
 ...
 
 <span id="backwardscompatibility"></span>
-**Backwards Compatibility**
+**0.0 Backwards Compatibility**
 
 ...
 
 <span id="languageextensibility"></span>
-**Language Extensibility**
+**0.0 Language Extensibility**
 
 ...
 
@@ -356,21 +356,21 @@ Success is defined by the reduction in percentage of lines of defensive mechanis
 <br>
 
 <span id="information"></span>
-**Information**
+**0.0 Information**
 
 2D matrix -> Objects -> Data structure?
 
 <br>
 
 <span id="serialisation"></span>
-**Serialisation**
+**0.0 Serialisation**
 
 Objects from information -> serialisation -> deserialisation.
 
 <br>
 
 <span id="transmission"></span>
-**Transmission**
+**0.0 Transmission**
 
 ...
 
@@ -381,7 +381,7 @@ Objects from information -> serialisation -> deserialisation.
 <br>
 
 <span id="defensivemechanisms"></span>
-**Defensive mechanisms**
+**0.0 Defensive mechanisms**
 
 ...
 
@@ -392,7 +392,7 @@ Objects from information -> serialisation -> deserialisation.
 <br>
 
 <span id="type-extensibility"></span>
-**Type-extensibility**
+**0.0 Type-extensibility**
 
 JavaScript object
 
@@ -517,45 +517,48 @@ TXON enumeration
 <br>
 
 <span id="translationlayer"></span>
-**Translation layer**
+**0.0 Translation layer**
 
 The txon.min.js library can 'handshake' and 'initialise' TXON objects.
 
 Handshaking...
 
 ```
-handshake: (json) => {
+const TXON = {
+    handshake: (json) => {
 
-    const obj = JSON.parse(json)
-    const contract = obj.init
-    const data = obj.data
+        const obj = JSON.parse(json)
+        const contract = obj.init
+        const data = obj.data
 
-    Object.values(data).forEach(prop => {
-        if (contract.hasOwnProperty(prop.type)) { // .init has type "item"
-            prop.values.forEach(val => {
-                console.log(
-                    Object.getOwnPropertyNames(contract[prop.type]),
-                    Object.getOwnPropertyNames(val)
-                )
-                Object.getOwnPropertyNames(val).forEach(c => {
-                    console.log(c)
+        Object.values(data).forEach(prop => {
+            if (contract.hasOwnProperty(prop.type)) { // .init has type "item"
+                prop.values.forEach(val => {
+                    console.log(
+                        Object.getOwnPropertyNames(contract[prop.type]),
+                        Object.getOwnPropertyNames(val)
+                    )
+                    Object.getOwnPropertyNames(val).forEach(c => {
+                        console.log(c)
+                    })
                 })
-            })
-        }
-    })
+            }
+        })
 
-    return true
-
+        return true
+    }
 }
 ```
 
 Initialising...
 
 ```
-initialise: (json) => {
-    const obj = JSON.parse(json)
-    // init objs as JS objets, see enumJS
-    return obj
+const TXON = {
+    initialise: (json) => {
+        const obj = JSON.parse(json)
+        // init objs as JS objets, see enumJS
+        return obj
+    }
 }
 ```
 
