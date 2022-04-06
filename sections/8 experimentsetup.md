@@ -4,15 +4,82 @@ This section presents the conditions defined to determine the advantages and dis
 
 The success of this experiment is measured by the reduction in lines of code necessary in guarding data validity through defensive mechanisms. The criteria for success with this project is a reduction of at least 10%.
 
-<br>
-
----
+The examples presented in this section represent fetched temperature measurements. This decision was taken because weather data has direction, spatial/geographical localisation, and various representational states, in addition to general relevance for server-driven applications.
 
 <br>
 
 {"sub":"Information"}
 
-2D matrix -> Objects -> Data structure?
+Data records information by structuring it for hierarchy and relativity. Directional data can be represented through a 1, 2 or 3-dimensional matrix, or mapped to an object or n-dimensional matrix of objects. This subsection presents various data structures and compares them for serialisation.
+
+<br>
+
+1-dimensional matrix
+
+```
+// hourly temperature on given day and location
+
+temperatures = [-1, -1, -2, -2, -1, -1, 0, 0, 1, 2, 4, 4, 5, 5, 6, 7, 8, 8, 7, 5, 4, 3, 1, 0]
+```
+
+<br>
+
+2-dimensional matrix
+
+```
+// hourly temperature by day on given week and location
+
+temperatures = [
+    [-1, -1, -2, -2, -1, -1, 0, 0, 1, 2, 4, 4, 5, 5, 6, 7, 8, 8, 7, 5, 4, 3, 1, 0],
+    [-1, -1, -2, -2, -1, -1, 0, 0, 1, 2, 4, 4, 5, 5, 6, 7, 8, 8, 7, 5, 4, 3, 1, 0],
+    [-1, -1, -2, -2, -1, -1, 0, 0, 1, 2, 4, 4, 5, 5, 6, 7, 8, 8, 7, 5, 4, 3, 1, 0],
+    [-1, -1, -2, -2, -1, -1, 0, 0, 1, 2, 4, 4, 5, 5, 6, 7, 8, 8, 7, 5, 4, 3, 1, 0],
+    [-1, -1, -2, -2, -1, -1, 0, 0, 1, 2, 4, 4, 5, 5, 6, 7, 8, 8, 7, 5, 4, 3, 1, 0],
+    [-1, -1, -2, -2, -1, -1, 0, 0, 1, 2, 4, 4, 5, 5, 6, 7, 8, 8, 7, 5, 4, 3, 1, 0],
+    [-1, -1, -2, -2, -1, -1, 0, 0, 1, 2, 4, 4, 5, 5, 6, 7, 8, 8, 7, 5, 4, 3, 1, 0]
+]
+```
+
+<br>
+
+3-dimensional matrix
+
+```
+// three weeks of hourly temperature by day on given week and location
+
+temperatures = [
+    [
+        [-1, -1, -2, -2, -1, -1, 0, 0, 1, 2, 4, 4, 5, 5, 6, 7, 8, 8, 7, 5, 4, 3, 1, 0],
+        [-1, -1, -2, -2, -1, -1, 0, 0, 1, 2, 4, 4, 5, 5, 6, 7, 8, 8, 7, 5, 4, 3, 1, 0],
+        [-1, -1, -2, -2, -1, -1, 0, 0, 1, 2, 4, 4, 5, 5, 6, 7, 8, 8, 7, 5, 4, 3, 1, 0],
+        [-1, -1, -2, -2, -1, -1, 0, 0, 1, 2, 4, 4, 5, 5, 6, 7, 8, 8, 7, 5, 4, 3, 1, 0],
+        [-1, -1, -2, -2, -1, -1, 0, 0, 1, 2, 4, 4, 5, 5, 6, 7, 8, 8, 7, 5, 4, 3, 1, 0],
+        [-1, -1, -2, -2, -1, -1, 0, 0, 1, 2, 4, 4, 5, 5, 6, 7, 8, 8, 7, 5, 4, 3, 1, 0],
+        [-1, -1, -2, -2, -1, -1, 0, 0, 1, 2, 4, 4, 5, 5, 6, 7, 8, 8, 7, 5, 4, 3, 1, 0]
+    ],
+    [
+        [-1, -1, -2, -2, -1, -1, 0, 0, 1, 2, 4, 4, 5, 5, 6, 7, 8, 8, 7, 5, 4, 3, 1, 0],
+        [-1, -1, -2, -2, -1, -1, 0, 0, 1, 2, 4, 4, 5, 5, 6, 7, 8, 8, 7, 5, 4, 3, 1, 0],
+        [-1, -1, -2, -2, -1, -1, 0, 0, 1, 2, 4, 4, 5, 5, 6, 7, 8, 8, 7, 5, 4, 3, 1, 0],
+        [-1, -1, -2, -2, -1, -1, 0, 0, 1, 2, 4, 4, 5, 5, 6, 7, 8, 8, 7, 5, 4, 3, 1, 0],
+        [-1, -1, -2, -2, -1, -1, 0, 0, 1, 2, 4, 4, 5, 5, 6, 7, 8, 8, 7, 5, 4, 3, 1, 0],
+        [-1, -1, -2, -2, -1, -1, 0, 0, 1, 2, 4, 4, 5, 5, 6, 7, 8, 8, 7, 5, 4, 3, 1, 0],
+        [-1, -1, -2, -2, -1, -1, 0, 0, 1, 2, 4, 4, 5, 5, 6, 7, 8, 8, 7, 5, 4, 3, 1, 0]
+    ],
+    [
+        [-1, -1, -2, -2, -1, -1, 0, 0, 1, 2, 4, 4, 5, 5, 6, 7, 8, 8, 7, 5, 4, 3, 1, 0],
+        [-1, -1, -2, -2, -1, -1, 0, 0, 1, 2, 4, 4, 5, 5, 6, 7, 8, 8, 7, 5, 4, 3, 1, 0],
+        [-1, -1, -2, -2, -1, -1, 0, 0, 1, 2, 4, 4, 5, 5, 6, 7, 8, 8, 7, 5, 4, 3, 1, 0],
+        [-1, -1, -2, -2, -1, -1, 0, 0, 1, 2, 4, 4, 5, 5, 6, 7, 8, 8, 7, 5, 4, 3, 1, 0],
+        [-1, -1, -2, -2, -1, -1, 0, 0, 1, 2, 4, 4, 5, 5, 6, 7, 8, 8, 7, 5, 4, 3, 1, 0],
+        [-1, -1, -2, -2, -1, -1, 0, 0, 1, 2, 4, 4, 5, 5, 6, 7, 8, 8, 7, 5, 4, 3, 1, 0],
+        [-1, -1, -2, -2, -1, -1, 0, 0, 1, 2, 4, 4, 5, 5, 6, 7, 8, 8, 7, 5, 4, 3, 1, 0]
+    ]
+]
+```
+
+<br>
+
 Objects from information -> serialisation -> deserialisation.
 
 <br>
