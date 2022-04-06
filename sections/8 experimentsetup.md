@@ -1,50 +1,27 @@
 {"sec":"Experiment Setup"}
 
-This section presents the conditions defined to determine the advantages and disadvantages of the TXON superset JSON format. It provides examples of data, code and infrastructure necessary to construct an environment wherein the TXON syntax and features can be tested.
+This section presents the conditions defined to determine the advantages and disadvantages of the proposed superset JSON format. I provide examples of data, code and infrastructure necessary to construct an environment wherein the TXON syntax and features can be tested.
 
-Success is defined by the reduction in percentage of lines of defensive mechanisms code. In order to succeed, this project must reduce the defensive mechanisms from the implementation case by at least 10%.
+The success of this experiment is measured by the reduction in lines of code necessary in guarding data validity through defensive mechanisms. The criteria for success with this project is a reduction of at least 10%.
+
+<br>
+
+---
 
 <br>
 
 {"sub":"Information"}
 
 2D matrix -> Objects -> Data structure?
-
-<br>
-
-{"sub":"Serialisation"}
-
 Objects from information -> serialisation -> deserialisation.
 
 <br>
 
-{"sub":"Transmission"}
-
-...
-
-```
-...
-```
+- Structure as Matrix vs Object (JS)
+- Serialisation to JSON
+- Parsing to Object (JS) vs Codable (S)
 
 <br>
-
-{"sub":"Defensive mechanisms"}
-
-...
-
-```
-...
-```
-
-<br>
-
-{"sub":"Type-extensibility"}
-
-JavaScript object
-
-```
-...
-```
 
 JavaScript enumeration
 
@@ -113,11 +90,41 @@ const itemsByValue = [
 ]
 ```
 
-JSON object
+<br>
+
+---
+
+<br>
+
+{"sub":"Guarding"}
+
+<br>
+
+- Defensive mechanisms
+- Validation of types
+- Casting in languages
+
+<br>
 
 ```
-...
+foo = Int(12)
 ```
+
+<br>
+
+---
+
+<br>
+
+{"sub":"Proposal"}
+
+<br>
+
+- Format with JSON
+- Syntax for enums
+- Translation layer
+
+<br>
 
 TXON enumeration
 
@@ -162,9 +169,9 @@ TXON enumeration
 
 <br>
 
-{"sub":"Translation layer"}
-
 The txon.min.js library can 'handshake' and 'initialise' TXON objects.
+
+<br>
 
 Handshaking...
 
@@ -194,6 +201,8 @@ const TXON = {
     }
 }
 ```
+
+<br>
 
 Initialising...
 
