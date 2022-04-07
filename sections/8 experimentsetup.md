@@ -8,6 +8,10 @@ The examples presented in this section represent fetched temperature measurement
 
 <br>
 
+---
+
+<br>
+
 {"sub":"Information"}
 
 Data records information by structuring it for hierarchy and relativity. Directional data can be represented through a 1, 2 or 3-dimensional matrix, or mapped to an object or n-dimensional matrix of objects. This subsection presents various data structures and compares them for serialisation.
@@ -226,6 +230,19 @@ foo = Int(12)
 
 <br>
 
+Non-readable syntax
+
+```
+{
+    "type": "date",
+    "date": "28-10-05",
+    "default": "00-00-00",
+    "nullable": "false"
+}
+```
+
+<br>
+
 TXON enumeration
 
 ```
@@ -269,7 +286,7 @@ TXON enumeration
 
 <br>
 
-The txon.min.js library can 'handshake' and 'initialise' TXON objects.
+The txon.min.js library can 'handshake' to JSON and 'initialise' TXON objects in JavaScript.
 
 <br>
 
