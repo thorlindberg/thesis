@@ -109,7 +109,7 @@ Design philosophy extends to software development, as human-readable code become
 <br>
 
 <span id="cleanarchitecture"></span>
-<img style="width:50%" src="./figures/cleanarchitecture.jpg"/>
+<img style="width:100%" src="./figures/cleanarchitecture.jpg"/>
 
 Figure 1: The clean architecture.
 
@@ -130,7 +130,7 @@ JavaScript Object Notation (JSON) is...
 <br>
 
 <span id="persona"></span>
-<img style="width:50%" src="./figures/persona.png"/>
+<img style="width:100%" src="./figures/persona.png"/>
 
 Figure 2: A complete persona.
 
@@ -165,7 +165,7 @@ As seen in [figure 3](#organisation), there are two identifiable hierarchies tha
 <br>
 
 <span id="organisation"></span>
-<img style="width:50%" src="./figures/organisation.png"/>
+<img style="width:100%" src="./figures/organisation.png"/>
 
 Figure 3: Hierarchical and structural relationship between development company and case partners.
 
@@ -210,7 +210,7 @@ As seen in [figure 4](#networkcomms), a distributed system achieves asynchronous
 <br>
 
 <span id="networkcomms"></span>
-<img style="width:50%" src="./figures/networkcomms.png"/>
+<img style="width:100%" src="./figures/networkcomms.png"/>
 
 Figure 4: A distributed system connects processors by a communication network.
 
@@ -223,7 +223,7 @@ _Software heterogeneity_ manifests as a variation in programming languages and f
 <br>
 
 <span id="processinteraction"></span>
-<img style="width:50%" src="./figures/processinteraction.png"/>
+<img style="width:100%" src="./figures/processinteraction.png"/>
 
 Figure 5: Interaction of the software components at each processor.
 
@@ -236,7 +236,7 @@ Given the inherent nature of serialised data exchange, and the ubiquity of distr
 <br>
 
 <span id="pubsubsystem"></span>
-<img style="width:50%" src="./figures/pubsubsystem.png"/>
+<img style="width:100%" src="./figures/pubsubsystem.png"/>
 
 Figure 6: Components of a _publish-subscribe_ system.
 
@@ -270,7 +270,7 @@ The network layer is one of multiple layers typical of networking systems. As se
 <br>
 
 <span id="ositcilayers"></span>
-<img style="width:50%" src="./figures/ositcilayers.png"/>
+<img style="width:100%" src="./figures/ositcilayers.png"/>
 
 Figure 7: Comparison between layers in the OSI model and TCI/IP model, providing a standard communication architecture for distributed processing systems.
 
@@ -281,7 +281,7 @@ As data in a distributed systems flows from the software (_application layer_) t
 <br>
 
 <span id="dataflow"></span>
-<img style="width:50%" src="./figures/endtoendflow.png"/>
+<img style="width:100%" src="./figures/endtoendflow.png"/>
 
 Figure 8: End-to-end data flow.
 
@@ -290,7 +290,7 @@ Figure 8: End-to-end data flow.
 <br>
 
 <span id="encapsulation"></span>
-<img style="width:50%" src="./figures/encapsulation.png"/>
+<img style="width:100%" src="./figures/encapsulation.png"/>
 
 Figure 9: Encapsulation with headers and trailers.
 
