@@ -7,11 +7,18 @@
     <style>html{background-color:black}</style>
     <script src="txon.js"></script>
     <script>
-    console.log(
-        TXON.handshake(
-            TXON.sample
+        const validation = TXON.handshake(TXON.sample)
+        console.log(
+            validation.result ? validation.result : validation.error
         )
-    )
+        /*
+        TXON.tests.forEach(test => {
+            const validation = TXON.handshake(test)
+            console.log(
+                validation.result ? validation.result : validation.error
+            )
+        })
+        */
     </script>
 </head>
 </html>

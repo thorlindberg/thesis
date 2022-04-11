@@ -1,0 +1,26 @@
+{
+    "init": {
+        "item": {
+            "name": {
+                "type": "string"
+            },
+            "category": {
+                "type": "string",
+                "enum": {
+                    "largeDrink": "🍺"
+                }
+            }
+        }
+    },
+    "data": {
+        "items": {
+            "type": "item",
+            "values": [
+                {
+                    "name": "Diet Coke (1.5L)",
+                    "category": "largeDrink"
+                }
+            ]
+        }
+    }
+}
