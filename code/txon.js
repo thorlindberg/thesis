@@ -1,13 +1,11 @@
-function isJsonString(str) {
-    try {
-        JSON.parse(str);
-    } catch (e) {
-        return false;
-    }
-    return true;
-}
-
 const TXON = {
+
+    documentation: [
+        "HOW TO USE:",
+        "›\tValidation:\t\t\t\t\tTXON.handshake(json)",
+        "›\tValidation (sample):\tTXON.handshake(TXON.sample)",
+        "›\tValidation (tests):\t\tTXON.tests.forEach(test => TXON.handshake(test))"
+    ].join("\n"),
 
     handshake: (json) => {
 
