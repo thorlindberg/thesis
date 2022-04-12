@@ -224,13 +224,13 @@ foo = Int(12)
 
 <br>
 
-- Format with JSON
-- Syntax for enums
-- Translation layer
+- Syntax for extended type
+- Syntax for type extension
+- Validation library
 
 <br>
 
-Non-readable syntax
+Current syntax (JSON)
 
 ```
 {
@@ -243,7 +243,20 @@ Non-readable syntax
 
 <br>
 
-TXON enumeration
+Non-readable syntax (XML-style)
+
+```
+{
+    "type": "date",
+    "date": "28-10-05",
+    "default": "00-00-00",
+    "nullable": "false"
+}
+```
+
+<br>
+
+Extended type declaration and conformance. The init property defines an extended type, that is how the type should be initialised. The data property defines values conforming to and initialising an extended type.
 
 ```
 {
@@ -286,51 +299,125 @@ TXON enumeration
 
 <br>
 
-The txon.min.js library can 'handshake' to JSON and 'initialise' TXON objects in JavaScript.
+The txon.js library 'handshakes' a JSON file, validating conformance of extended types in its data property to declarations in its init property.
 
 <br>
 
-Handshaking...
+Handshaking consists of several steps...
 
 ```
 const TXON = {
+
     handshake: (json) => {
 
-        const obj = JSON.parse(json)
-        const contract = obj.init
-        const data = obj.data
+        ...
 
-        Object.values(data).forEach(prop => {
-            if (contract.hasOwnProperty(prop.type)) { // .init has type "item"
-                prop.values.forEach(val => {
-                    console.log(
-                        Object.getOwnPropertyNames(contract[prop.type]),
-                        Object.getOwnPropertyNames(val)
-                    )
-                    Object.getOwnPropertyNames(val).forEach(c => {
-                        console.log(c)
-                    })
+    }
+
+}
+```
+
+<br>
+
+...
+
+```
+let object, initialiser, data
+let error = []
+```
+
+<br>
+
+...
+
+```
+// check: parsing JSON to JS
+const hasJSON = true
+if (hasJSON) {
+    object = JSON.parse(json)
+} else {
+    error.push("ERROR: could not parse JSON")
+    return { result: false, error: error }
+}
+
+// check: has .init prop
+const hasInit = object.hasOwnProperty("init")
+if (hasInit) {
+    initialiser = object.init
+} else {
+    error.push("ERROR: .init property not found in JSON")
+    return { result: false, error: error }
+}
+
+// check: has .data prop
+const hasData = object.hasOwnProperty("data")
+if (hasData) {
+    data = object.data
+} else {
+    error.push("ERROR: .data property not found in JSON")
+    return { result: false, error: error }
+}
+```
+
+<br>
+
+Recursive...
+
+```
+// check: .data contains object[s] conforming to extended type[s] defined in .init
+const checkConformance = (property) => {
+    if (typeof property === "object") {
+        Object.values(property).forEach(n => checkConformance(n))
+    }
+    if (typeof property === "array") {
+        property.forEach(n => checkConformance(n))
+    }
+    const isExtendedType = property.hasOwnProperty("type") && property.hasOwnProperty("values") && initialiser.hasOwnProperty(property.type)
+    if (isExtendedType) {
+        property.values.forEach(value => {
+            const objprops = Object.getOwnPropertyNames(value)
+            const initprops = Object.getOwnPropertyNames(initialiser[property.type])
+            const propsConform = objprops.toString() === initprops.toString() 
+            if (!propsConform) {
+                error.push(
+                    `ERROR: properties of extended type do not conform to init. ${objprops} and ${initprops}`
+                )
+            } else {
+                objprops.forEach(prop => {
+                    const valuetype = typeof value[prop]
+                    const inittype = initialiser[property.type][prop].type
+                    const typesConform = valuetype === inittype
+                    if (!typesConform) {
+                        error.push(
+                            `ERROR: value type does not conform to init. ${valuetype} and ${inittype}`
+                        )
+                    } else {
+                        const hasEnum = initialiser[property.type][prop].hasOwnProperty("enum")
+                        if (hasEnum) {
+                            const objenum = Object.getOwnPropertyNames(initialiser[property.type][prop].enum)
+                            const enumsConform = objenum.includes(value[prop])
+                            if (!enumsConform) {
+                                error.push(
+                                    `ERROR: enum value does not conform to init. ${value[prop]} not in ${objenum}`
+                                )
+                            }
+                        }
+                    }
                 })
             }
         })
-
-        return true
     }
 }
+checkConformance(data)
 ```
 
 <br>
 
-Initialising...
+...
 
 ```
-const TXON = {
-    initialise: (json) => {
-        const obj = JSON.parse(json)
-        // init objs as JS objets, see enumJS
-        return obj
-    }
-}
+// return: false, error || true
+return error.length ? { result: false, error: error } : { result: true }
 ```
 
 <br>
