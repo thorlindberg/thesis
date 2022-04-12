@@ -224,39 +224,108 @@ foo = Int(12)
 
 <br>
 
-- Syntax for extended type
-- Syntax for type extension
-- Validation library
+This subsection constitutes my proposal for an extensible JSON superset format, and presents the following:
+
+- Syntax for extended types
+- Syntax for type extensions
+- Validation library and tests
+- Implementation and evaluation strategy
 
 <br>
 
-Current syntax (JSON)
+The JSON format specification allows the types: *string, number, object, array, boolean, and null*. It explicitly precludes the types: *function, date, and undefined*. Inspired by type restrictions/facets in the XML/XSD format, it has become common to explictly embed the intended type as a string-value property in a JSON object. This approach to type annotation enables the recipient to validate the content type based on its intended type, but not beyond the types available in JSON.
 
 ```
+<xs:restriction base="xs:string"></xs:restriction>
+```
+```
 {
-    "type": "date",
-    "date": "28-10-05",
-    "default": "00-00-00",
-    "nullable": "false"
+    "type": "string",
+    "date": "28-10-2005"
 }
 ```
 
 <br>
 
-Non-readable syntax (XML-style)
+The type limitations of JSON can be circumvented by deconstructing a property value into its components. A date property with a string-value could instead be represented as an object with properties for month, day, and year. Representing these properties with integer-values would further clarify the intended values, but does not define a range of valid values. This limitation could be mitigated through properties further specifying a range of integers.
+
+As evidenced, embedding these restrictions in the data results in more specification properties than useful data. As the amount of information scales linearly, so too does the restrictions, while increasing the chance of syntax errors.
 
 ```
 {
-    "type": "date",
-    "date": "28-10-05",
-    "default": "00-00-00",
-    "nullable": "false"
+    "type": "int",
+    "date": {
+        "month": 28,
+        "day": 10,
+        "year": 2005
+    }
+}
+```
+```
+{
+    "type": "int",
+    "date": {
+        "month": {
+            "min": 1,
+            "max": 31,
+            "value": 28
+        },
+        "day": {
+            "min": 1,
+            "max": 31,
+            "value": 10
+        },
+        "year": {
+            "value": 2005
+        }
+    }
 }
 ```
 
 <br>
 
-Extended type declaration and conformance. The init property defines an extended type, that is how the type should be initialised. The data property defines values conforming to and initialising an extended type.
+As it turns out, this is not a unique problem, and thus the solution already exists: enumerations. This user-defined data type allows us to declare a specification once, and then instantiate it without repetition of requirements.
+
+As enum (enumeration) is not a type allowed in the JSON format, I have chosen to leverage existing JSON types to construct an enum syntax. This decision informs the phrasing of TXON as an optional extension that could be ignored by JSON parsers, rather than an alternative format.
+
+The enumerated date type is its own object, declaring the required properties and conformance instructions for property values. Notably these instructions do not have to be exhaustive, as properties can fit within strict value ranges or have no values at all (null). Instantiating a user-defined type is indifferent from providing the intended type as a string-value property, with the property name and value matching the corresponding specification.
+
+```
+{
+    "type": "date",
+    "enum": {
+        "month": {
+            "type": "int",
+            "min": 1,
+            "max": 12
+        },
+        "day": {
+            "type": "int",
+            "min": 1,
+            "max": 31
+        },
+        "year": {
+            "type": "int
+        }
+    }
+}
+```
+```
+{
+    "type": "date",
+    "month": 28,
+    "day": 10,
+    "year": 2005
+}
+```
+
+<br>
+
+---
+
+<br>
+
+... Extended type declaration and conformance. The init property defines an extended type, that is how the type should be initialised. The data property defines values conforming to and initialising an extended type.
 
 ```
 {
