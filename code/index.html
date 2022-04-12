@@ -8,25 +8,20 @@
     <script src="txon.js"></script>
     <script>
 
-        console.log(
-            TXON.documentation
-        )
-
-        const validation = TXON.handshake(TXON.sample)
-        console.log(
-            validation.result,
-            validation.feedback
-        )
-
         /*
-        TXON.tests.forEach(test => {
-            const validation = TXON.handshake(test)
-            console.log(
-                validation.result,
-                validation.feedback
-            )
-        })
+        console.log(
+            TXON.docs
+        )
         */
+
+        TXON.tests.forEach(test => {
+            const valid = TXON.handshake(test)
+            if (valid.result) {
+                console.log(valid.result)
+            } else {
+                console.log(valid.error)
+            }
+        })
 
     </script>
 </head>

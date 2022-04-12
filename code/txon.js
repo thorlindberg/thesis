@@ -1,26 +1,21 @@
 const TXON = {
 
-    documentation: [
-        "HOW TO USE:",
-        "›\tValidate JSON:\t\tTXON.handshake(json)",
-        "›\tValidate sample:\t\tTXON.handshake(TXON.sample)",
-        "›\tValidate tests:\t\tTXON.tests.forEach(test => TXON.handshake(test))"
+    docs: [
+        "How to validate with TXON..."
     ].join("\n"),
 
     handshake: (json) => {
 
         let object, initialiser, data
-        let withExtendedType = []
+        let error = []
 
         // check: parsing JSON to JS
         const hasJSON = true
         if (hasJSON) {
             object = JSON.parse(json)
         } else {
-            return {
-                result: false,
-                feedback: "ERROR: could not parse JSON"
-            }
+            error.push("ERROR: could not parse JSON")
+            return { result: false, error: error }
         }
 
         // check: has .init prop
@@ -28,10 +23,8 @@ const TXON = {
         if (hasInit) {
             initialiser = object.init
         } else {
-            return {
-                result: false,
-                feedback: "ERROR: .init property not found in JSON"
-            }
+            error.push("ERROR: .init property not found in JSON")
+            return { result: false, error: error }
         }
 
         // check: has .data prop
@@ -39,19 +32,17 @@ const TXON = {
         if (hasData) {
             data = object.data
         } else {
-            return {
-                result: false,
-                feedback: "ERROR: .data property not found in jSON"
-            }
+            error.push("ERROR: .data property not found in JSON")
+            return { result: false, error: error }
         }
 
         // check: .data contains object[s] conforming to extended type[s] defined in .init
-        const getExtendedType = (property) => {
+        const checkConformance = (property) => {
             if (typeof property === "object") {
-                Object.values(property).forEach(n => getExtendedType(n))
+                Object.values(property).forEach(n => checkConformance(n))
             }
             if (typeof property === "array") {
-                property.forEach(n => getExtendedType(n))
+                property.forEach(n => checkConformance(n))
             }
             const isExtendedType = property.hasOwnProperty("type") && property.hasOwnProperty("values") && initialiser.hasOwnProperty(property.type)
             if (isExtendedType) {
@@ -59,110 +50,60 @@ const TXON = {
                     const objprops = Object.getOwnPropertyNames(value)
                     const initprops = Object.getOwnPropertyNames(initialiser[property.type])
                     const propsConform = objprops.toString() === initprops.toString() 
-                    if (propsConform) {
+                    if (!propsConform) {
+                        error.push(
+                            `ERROR: properties of extended type do not conform to init. ${objprops} and ${initprops}`
+                        )
+                    } else {
                         objprops.forEach(prop => {
-                            const inittype = initialiser[property.type][prop].type
                             const valuetype = typeof value[prop]
-                            const typesConform = inittype === valuetype
-                            if (typesConform) {
-                                console.log( // remove
-                                    `ERROR: value › ${value[prop]} ‹ does not conform to init type › ${initialiser[property.type][prop].type} ‹`
+                            const inittype = initialiser[property.type][prop].type
+                            const typesConform = valuetype === inittype
+                            if (!typesConform) {
+                                error.push(
+                                    `ERROR: value type does not conform to init. ${valuetype} and ${inittype}`
                                 )
+                            } else {
+                                const hasEnum = initialiser[property.type][prop].hasOwnProperty("enum")
+                                if (hasEnum) {
+                                    const objenum = Object.getOwnPropertyNames(initialiser[property.type][prop].enum)
+                                    const enumsConform = objenum.includes(value[prop])
+                                    if (!enumsConform) {
+                                        error.push(
+                                            `ERROR: enum value does not conform to init. ${value[prop]} not in ${objenum}`
+                                        )
+                                    }
+                                }
                             }
-                            const hasEnum = initialiser[property.type][prop].hasOwnProperty("enum")
-                            if (hasEnum) {
-                                const objenum = Object.getOwnPropertyNames(initialiser[property.type][prop].enum)
-                                console.log(
-                                    objenum.includes(value[prop])
-                                )
-                            }
-        
                         })
                     }
                 })
-                withExtendedType.push(property)
             }
         }
-        getExtendedType(data) // rewrite to be recursively created array rather than using .push()
-        const hasExtendedType = withExtendedType.length
-        console.log(
-            withExtendedType,
-            hasExtendedType
-        )
-        if (hasExtendedType) {
-            // process extended objects?
-        } else {
-            return {
-                result: true,
-                feedback: "NOTE: .data property contains no extended type from .init"
-            }
-        }
+        checkConformance(data)
 
-        // all checks passed succesfully
-        return {
-            result: true,
-            feedback: "SUCCESS: .data property conforms to .init property"
-        }
-
-        // --- OLD CODE ---
-
-        /*
-
-        const object = JSON.parse(json)
-        const initialiser = object.init
-        const data = object.data
-
-        Object.values(data).forEach(prop => { // items
-
-            console.log(
-                initialiser.hasOwnProperty(prop.type) // .init has type "item"
-            )
-
-            prop.values.forEach(obj => {
-
-                const objprops = Object.getOwnPropertyNames(obj)
-                const initprops = Object.getOwnPropertyNames(initialiser[prop.type])
-
-                console.log(
-                    objprops.toString() === initprops.toString() // value obj has same properties as init obj definition
-                )
-                
-                objprops.forEach(n => {
-
-                    const inittype = initialiser[prop.type][n].type
-                    const valuetype = typeof obj[n]
-
-                    console.log(
-                        inittype === valuetype
-                    )
-
-                    if (initialiser[prop.type][n].hasOwnProperty("enum")) {
-
-                        const objenum = Object.getOwnPropertyNames(initialiser[prop.type][n].enum)
-
-                        console.log(
-                            objenum.includes(obj[n])
-                        )
-
-                    }
-
-                })
-            })
-
-        })
-
-        return true
-        */
+        // return: false, error || true
+        return error.length ? { result: false, error: error } : { result: true }
 
     },
 
-    sample: '{"init":{"item":{"name":{"type":"string"},"category":{"type":"string","enum":{"largeDrink":"🍺","smallDrink":"🥤","plant":"🌱"}}}},"data":{"items":{"type":"item","values":[{"name":"Diet Coke (1.5L)","category":"largeDrink"},{"name":"Fanta (0.5L)","category":"smallDrink"},{"name":"Olives","category":"plant"}]}}}',
-
     tests: [
-        '...',      // parseable JSON
-        '...',      // extended type in init
-        '...',      // extended type not in init
-        '...'       // extended type not in data
+        // parseable JSON
+        '{"init":{"item":{"name":{"type":"string"},"category":{"type":"string","enum":{"largeDrink":"🍺","smallDrink":"🥤","plant":"🌱"}}}},"data":{"items":{"type":"item","values":[{"name":"Diet Coke (1.5L)","category":"largeDrink"},{"name":"Fanta (0.5L)","category":"smallDrink"},{"name":"Olives","category":"plant"}]}}}',
+        // properties mismatch between data and init
+        '{"init":{"item":{"name":{"type":"string"},"category":{"type":"string","enum":{"largeDrink":"🍺","smallDrink":"🥤","plant":"🌱"}}}},"data":{"items":{"type":"item","values":[{"product":"Diet Coke (1.5L)","category":"largeDrink"},{"name":"Fanta (0.5L)","category":"smallDrink"},{"name":"Olives","category":"plant"}]}}}',
+        // type mismatch with property in extended type
+        '{"init":{"item":{"name":{"type":"string"},"category":{"type":"string","enum":{"largeDrink":"🍺","smallDrink":"🥤","plant":"🌱"}}}},"data":{"items":{"type":"item","values":[{"name":12,"category":"largeDrink"},{"name":"Fanta (0.5L)","category":"smallDrink"},{"name":"Olives","category":"plant"}]}}}',
+        // value mismatch with enum
+        '{"init":{"item":{"name":{"type":"string"},"category":{"type":"string","enum":{"largeDrink":"🍺","smallDrink":"🥤","plant":"🌱"}}}},"data":{"items":{"type":"item","values":[{"name":"Diet Coke (1.5L)","category":"product"},{"name":"Fanta (0.5L)","category":"smallDrink"},{"name":"Olives","category":"plant"}]}}}',
+        // combined three errors above this
+        '{"init":{"item":{"name":{"type":"string"},"category":{"type":"string","enum":{"largeDrink":"🍺","smallDrink":"🥤","plant":"🌱"}}}},"data":{"items":{"type":"item","values":[{"product":"Diet Coke (1.5L)","category":"largeDrink"},{"name":12,"category":"smallDrink"},{"name":"Olives","category":"product"}]}}}',
+        // extended type in init and data
+        '{"init":{"item":{"name":{"type":"string"},"category":{"type":"string","enum":{"largeDrink":"🍺","smallDrink":"🥤","plant":"🌱"}}}},"data":{"items":{"type":"item","values":[{"name":"Diet Coke (1.5L)","category":"largeDrink"},{"name":"Fanta (0.5L)","category":"smallDrink"},{"name":"Olives","category":"plant"}]}}}',
+        // extended type not in init
+        '{"init":{"product":{"name":{"type":"string"},"category":{"type":"string","enum":{"largeDrink":"🍺","smallDrink":"🥤","plant":"🌱"}}}},"data":{"items":{"type":"item","values":[{"name":"Diet Coke (1.5L)","category":"largeDrink"},{"name":"Fanta (0.5L)","category":"smallDrink"},{"name":"Olives","category":"plant"}]}}}',
+        // extended type not in data
+        '{"init":{"item":{"name":{"type":"string"},"category":{"type":"string","enum":{"largeDrink":"🍺","smallDrink":"🥤","plant":"🌱"}}}},"data":{"items":{"type":"product","values":[{"name":"Diet Coke (1.5L)","category":"largeDrink"},{"name":"Fanta (0.5L)","category":"smallDrink"},{"name":"Olives","category":"plant"}]}}}',
     ]
 
 }

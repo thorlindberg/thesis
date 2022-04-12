@@ -9,7 +9,7 @@
                 "enum": {
                     "largeDrink": "🍺",
                     "smallDrink": "🥤",
-                    "plant": "🌱"
+                    "plant": null
                 }
             }
         }
