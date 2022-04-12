@@ -14,14 +14,16 @@
 
         const validation = TXON.handshake(TXON.sample)
         console.log(
-            validation.result ? validation.result : validation.error
+            validation.result,
+            validation.feedback
         )
 
         /*
         TXON.tests.forEach(test => {
             const validation = TXON.handshake(test)
             console.log(
-                validation.result ? validation.result : validation.error
+                validation.result,
+                validation.feedback
             )
         })
         */

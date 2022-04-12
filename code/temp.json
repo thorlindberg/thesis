@@ -1,0 +1,36 @@
+{
+    "init": {
+        "item": {
+            "name": {
+                "type": "string"
+            },
+            "category": {
+                "type": "string",
+                "enum": {
+                    "largeDrink": "🍺",
+                    "smallDrink": "🥤",
+                    "plant": "🌱"
+                }
+            }
+        }
+    },
+    "data": {
+        "items": {
+            "type": "item",
+            "values": [
+                {
+                    "name": "Diet Coke (1.5L)",
+                    "category": "largeDrink"
+                },
+                {
+                    "name": "Fanta (0.5L)",
+                    "category": "smallDrink"
+                },
+                {
+                    "name": "Olives",
+                    "category": "plant"
+                }
+            ]
+        }
+    }
+}

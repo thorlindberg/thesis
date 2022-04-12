@@ -2,51 +2,107 @@ const TXON = {
 
     documentation: [
         "HOW TO USE:",
-        "›\tValidation:\t\t\t\t\tTXON.handshake(json)",
-        "›\tValidation (sample):\tTXON.handshake(TXON.sample)",
-        "›\tValidation (tests):\t\tTXON.tests.forEach(test => TXON.handshake(test))"
+        "›\tValidate JSON:\t\tTXON.handshake(json)",
+        "›\tValidate sample:\t\tTXON.handshake(TXON.sample)",
+        "›\tValidate tests:\t\tTXON.tests.forEach(test => TXON.handshake(test))"
     ].join("\n"),
 
     handshake: (json) => {
 
-        // find property with .type in initialiser
-        // validate values based on init contract
-
         let object, initialiser, data
+        let withExtendedType = []
 
         // check: parsing JSON to JS
-        if (true) {
+        const hasJSON = true
+        if (hasJSON) {
             object = JSON.parse(json)
         } else {
-            return { result: false, error: "ERROR: could not parse JSON" }
+            return {
+                result: false,
+                feedback: "ERROR: could not parse JSON"
+            }
         }
 
         // check: has .init prop
-        if (object.hasOwnProperty("init")) {
+        const hasInit = object.hasOwnProperty("init")
+        if (hasInit) {
             initialiser = object.init
         } else {
-            return { result: false, error: "ERROR: .init property not found in JSON" }
+            return {
+                result: false,
+                feedback: "ERROR: .init property not found in JSON"
+            }
         }
 
         // check: has .data prop
-        if (object.hasOwnProperty("data")) {
+        const hasData = object.hasOwnProperty("data")
+        if (hasData) {
             data = object.data
         } else {
-            return { result: false, error: "ERROR: .data property not found in jSON" }
+            return {
+                result: false,
+                feedback: "ERROR: .data property not found in jSON"
+            }
         }
 
-        // check: data contains object with type defined in init
-        // resource: https://stackoverflow.com/a/65488445/15072454
-        const hasExtendedType = () => {
-            // Object.values(data).filter(value => initialiser.hasOwnProperty(value.type))
+        // check: .data contains object[s] conforming to extended type[s] defined in .init
+        const getExtendedType = (property) => {
+            if (typeof property === "object") {
+                Object.values(property).forEach(n => getExtendedType(n))
+            }
+            if (typeof property === "array") {
+                property.forEach(n => getExtendedType(n))
+            }
+            const isExtendedType = property.hasOwnProperty("type") && property.hasOwnProperty("values") && initialiser.hasOwnProperty(property.type)
+            if (isExtendedType) {
+                property.values.forEach(value => {
+                    const objprops = Object.getOwnPropertyNames(value)
+                    const initprops = Object.getOwnPropertyNames(initialiser[property.type])
+                    const propsConform = objprops.toString() === initprops.toString() 
+                    if (propsConform) {
+                        objprops.forEach(prop => {
+                            const inittype = initialiser[property.type][prop].type
+                            const valuetype = typeof value[prop]
+                            const typesConform = inittype === valuetype
+                            if (typesConform) {
+                                console.log( // remove
+                                    `ERROR: value › ${value[prop]} ‹ does not conform to init type › ${initialiser[property.type][prop].type} ‹`
+                                )
+                            }
+                            const hasEnum = initialiser[property.type][prop].hasOwnProperty("enum")
+                            if (hasEnum) {
+                                const objenum = Object.getOwnPropertyNames(initialiser[property.type][prop].enum)
+                                console.log(
+                                    objenum.includes(value[prop])
+                                )
+                            }
+        
+                        })
+                    }
+                })
+                withExtendedType.push(property)
+            }
         }
+        getExtendedType(data) // rewrite to be recursively created array rather than using .push()
+        const hasExtendedType = withExtendedType.length
+        console.log(
+            withExtendedType,
+            hasExtendedType
+        )
         if (hasExtendedType) {
-            // extended types exist, create array of objects with extended type?
+            // process extended objects?
         } else {
-            return { result: false, error: "ERROR: .data property contains no extended type from .init" }
+            return {
+                result: true,
+                feedback: "NOTE: .data property contains no extended type from .init"
+            }
         }
 
-        return { result: true }
+        // all checks passed succesfully
+        return {
+            result: true,
+            feedback: "SUCCESS: .data property conforms to .init property"
+        }
 
         // --- OLD CODE ---
 
