@@ -224,7 +224,7 @@ foo = Int(12)
 
 <br>
 
-This subsection constitutes my proposal for an extensible JSON superset format, and presents the following:
+This subsection constitutes my proposal for an extensible superset format, and presents:
 
 - Syntax for extended types
 - Syntax for type extensions
@@ -233,7 +233,17 @@ This subsection constitutes my proposal for an extensible JSON superset format, 
 
 <br>
 
-The JSON format specification allows the types: *string, number, object, array, boolean, and null*. It explicitly precludes the types: *function, date, and undefined*. Inspired by type restrictions/facets in the XML/XSD format, it has become common to explictly embed the intended type as a string-value property in a JSON object. This approach to type annotation enables the recipient to validate the content type based on its intended type, but not beyond the types available in JSON.
+The JavaScript Object Notation (JSON) specifies a format for storing and transmitting JavaScript objects. This format allows the types: *string, number, object, array, boolean, and null*. It explicitly precludes the types: *function, date, and undefined*. A JSON object is represented as a string of curly brackets with properties inside.
+
+```
+{
+    "date": "28-10-2005"
+}
+```
+
+<br>
+
+Inspired by type restrictions/facets in the XML/XSD format, it has become common to explictly embed the intended type as a string-value property in a JSON object. This approach to type annotation enables the recipient to validate the content type based on its intended type, but not beyond the types available in JSON.
 
 ```
 <xs:restriction base="xs:string"></xs:restriction>
@@ -305,7 +315,7 @@ The enumerated date type is its own object, declaring the required properties an
             "max": 31
         },
         "year": {
-            "type": "int
+            "type": "int"
         }
     }
 }
@@ -321,47 +331,70 @@ The enumerated date type is its own object, declaring the required properties an
 
 <br>
 
----
-
-<br>
-
-... Extended type declaration and conformance. The init property defines an extended type, that is how the type should be initialised. The data property defines values conforming to and initialising an extended type.
+It is common practice to nest JSON objects inside a top-level "data" property, to check if an API call has returned the intended result or thrown an error. Inspired by this practice, I have decided to require an "init" property for extended type declarations. The information property (data) can contain extended types, which must conform to the declaration specified in the initialisation property (init).
 
 ```
 {
     "init": {
-        "item": {
-            "name": {
-                "type": "string"
+        "date": {
+            "month": {
+                "type": "int",
+                "min": 1,
+                "max": 12
             },
-            "category": {
-                "type": "string",
-                "enum": {
-                    "largeDrink": "🍺",
-                    "smallDrink": "🥤",
-                    "plant": "🌱"
-                }
+            "day": {
+                "type": "int",
+                "min": 1,
+                "max": 31
+            },
+            "year": {
+                "type": "int"
             }
         }
     },
     "data": {
-        "items": {
-            "type": "item",
-            "values": [
-                {
-                    "name": "DietCoke(1.5L)",
-                    "category": "largeDrink"
-                },
-                {
-                    "name": "Fanta(0.5L)",
-                    "category": "smallDrink"
-                },
-                {
-                    "name": "Olives",
-                    "category": "plant"
-                }
-            ]
+        ...
+    }
+}
+```
+
+<br>
+
+Instances of extended types are themselves extensible, meaning they must include the required properties, but are not limited to only enumerated properties.
+
+There are two valid approaches to instantiating extended types:
+
+*Array of objects*. Each object contains the extended type value and its required properties. The advantage of this approach is that each object contains an extended type, but this also increases the chance of syntax errors. This is ideal when an array contains multiple types.
+
+*Object with array of objects*. The object contains the extended type value and a "values" array containing objects with required properties. The advantage of this approach is that the extended type is instantitated once, resulting in an inferred type for objects in "values". This is ideal when an array only contains one type.
+
+```
+// array of objects
+
+"data": {
+    "dates": [
+        {
+            "type": "date",
+            "month": 28,
+            "day": 10,
+            "year": 2005
         }
+    ]
+}
+```
+```
+// object with array of objects
+
+"data": {
+    "dates": {
+        "type": "date",
+        "values": [
+            {
+                "month": 28,
+                "day": 10,
+                "year": 2005
+            }
+        ]
     }
 }
 ```
@@ -408,7 +441,8 @@ if (hasJSON) {
     error.push("ERROR: could not parse JSON")
     return { result: false, error: error }
 }
-
+```
+```
 // check: has .init prop
 const hasInit = object.hasOwnProperty("init")
 if (hasInit) {
@@ -417,7 +451,8 @@ if (hasInit) {
     error.push("ERROR: .init property not found in JSON")
     return { result: false, error: error }
 }
-
+```
+```
 // check: has .data prop
 const hasData = object.hasOwnProperty("data")
 if (hasData) {
