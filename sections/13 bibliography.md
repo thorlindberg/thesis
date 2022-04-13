@@ -1,7 +1,5 @@
 {"sec":"Bibliography"}
 
-<br>
-
 {"bib":"kshemkalyani2011distributed","title":"Distributed Computing: Principles, Algorithms, and Systems","authors":["Kshemkalyani, A.","Singhal, M."],"year":"2011","publisher":"Cambridge University Press","url":"https://books.google.dk/books?id=G7SZ32dPuLgC"}
 
 {"bib":"kazuaki2011survey","title":"Comparative Survey of Object Serialization Techniques and the Programming Supports","authors":["Kazuaki Maeda"],"year":"2011","publisher":"World Academy of Science, Engineering and Technology","url":"https://publications.waset.org/15057/comparative-survey-of-object-serialization-techniques-and-the-programming-supports"}
