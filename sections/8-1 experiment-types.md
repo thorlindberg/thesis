@@ -112,7 +112,3 @@ There are two valid approaches to instantiating extended types:
 ```
 
 <br>
-
----
-
-<br>

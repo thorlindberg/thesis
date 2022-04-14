@@ -122,7 +122,3 @@ return error.length ? { result: false, error: error } : { result: true }
 ```
 
 <br>
-
----
-
-<br>
