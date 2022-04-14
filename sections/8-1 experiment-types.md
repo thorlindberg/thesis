@@ -30,7 +30,7 @@ As evidenced, embedding these restrictions in the data results in more specifica
 }
 ```
 
-{"pagebreak":true}
+{"break":true}
 
 ```
 {
@@ -71,7 +71,7 @@ It is common practice to nest JSON objects inside a top-level "data" property, t
 
 Inspired by this practice, I have decided to require an "init" property for extended type declarations. The information property (data) can contain extended types, which must conform to the declaration specified in the initialisation property (init).
 
-{"pagebreak":true}
+{"break":true}
 
 ```
 {
@@ -118,7 +118,7 @@ There are two valid approaches to instantiating extended types:
 }
 ```
 
-{"pagebreak":true}
+{"break":true}
 
 An extended type property can be partially instatiated if a default value is given. The default can be any of the available JSON types, including *null*, or **another an extended type.**
 
@@ -157,4 +157,4 @@ If the default is of type *null*, the value is optional during validation. If no
 }
 ```
 
-{"pagebreak":true}
+{"break":true}
