@@ -6,4 +6,4 @@ The success of this experiment is measured by the reduction in lines of code nec
 
 The examples presented in this section represent fetched temperature measurements. This decision was taken because weather data has direction, spatial/geographical localisation, and various representational states, in addition to general relevance for server-driven applications.
 
-<br>
+{"pagebreak":true}

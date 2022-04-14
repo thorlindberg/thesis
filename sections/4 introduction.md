@@ -40,4 +40,4 @@ The following [implementation section](#implementation) presents the company I c
 
 Based on this information...
 
-<br>
+{"pagebreak":true}
