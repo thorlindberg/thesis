@@ -64,7 +64,9 @@ The enumerated date type is its own object, declaring the required properties an
 
 <br>
 
-It is common practice to nest JSON objects inside a top-level "data" property, to check if an API call has returned the intended result or thrown an error. Inspired by this practice, I have decided to require an "init" property for extended type declarations. The information property (data) can contain extended types, which must conform to the declaration specified in the initialisation property (init).
+It is common practice to nest JSON objects inside a top-level "data" property, to check if an API call has succesfully returned the expected result or thrown an error.
+
+Inspired by this practice, I have decided to require an "init" property for extended type declarations. The information property (data) can contain extended types, which must conform to the declaration specified in the initialisation property (init).
 
 ```
 {
@@ -81,7 +83,7 @@ It is common practice to nest JSON objects inside a top-level "data" property, t
 
 <br>
 
-Instances of extended types are themselves extensible, meaning they must include the required properties, but are not limited to only enumerated properties.
+Instances of extended types are themselves extensible, meaning they are not limited to only enumeration properties.
 
 There are two valid approaches to instantiating extended types:
 
@@ -108,6 +110,45 @@ There are two valid approaches to instantiating extended types:
             { "month": 28, "day": 10, "year": 2005 }
         ]
     }
+}
+```
+
+<br>
+
+An extended type property can be partially instatiated if a default value is given. The default can be any of the available JSON types, including *null*, or **another an extended type.**
+
+Defaults are inserted in place of non-instantiated enumeration properties during validation. The value does not have to match the type given in the enumeration, but if it does it must conform to the given range (min to max). **--THIS RAISES THE QUESTION: SHOULD VALIDATION RETURN THE VALIDATED JSON???--**
+
+If the default is of type *null*, the value is optional during validation. If no default is given or the default is of any other type, it is required during validation.
+
+```
+{
+    "init": {
+        "date": {
+            "month": { "type": "int", "min": 1, "max": 12, "default": 1 },
+            "day": { "type": "int", "min": 1, "max": 31 },
+            "year": { "type": "int", "default": null }
+        }
+    },
+    "data": { ... }
+}
+```
+```
+// only required "day" instantiated
+
+"data": {
+    "dates": [
+        { "type": "date", "day": 10 }
+    ]
+}
+```
+```
+// optional "year" not instantiated
+
+"data": {
+    "dates": [
+        { "type": "date", "month": 28, "day": 10 }
+    ]
 }
 ```
 

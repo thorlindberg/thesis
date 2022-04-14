@@ -17,7 +17,7 @@ const validation = TXON.handshake('{ "init": ..., "data": ... }')
 
 <br>
 
-The function requires the parsing of a JSON object containing an "init" and "data" property, and will throw errors by storing them in a returned array **(will be changed to throwing 1 error when detected and immediately returning)**.
+The function requires the parsing of a JSON object containing an "init" and "data" property, and will throw errors by storing them in a returned array **--will be changed to throwing 1 error when detected and immediately returning--**.
 
 ```
 let object, initialiser, data
@@ -62,7 +62,7 @@ If no extended types are instantiated, the return value will be true but throw a
 
 If extended types are instantiated but do not conform, the return value will be false and an error is thrown describing how and where the mismatch occoured during validation.
 
-**(This code block is incomplete)**
+**--This code block is incomplete--**
 
 ```
 // check: .data contains object[s] conforming to extended type[s] defined in .init
@@ -114,7 +114,7 @@ checkConformance(data)
 
 <br>
 
-Once validation is complete, a descripitive object is returned and can be interpreted by the recipient. **(will be changed to returning true, as this will not be reached if an error is returned during validation)**.
+Once validation is complete, a descripitive object is returned and can be interpreted by the recipient. **--will be changed to returning true, as this will not be reached if an error is returned during validation--**.
 
 ```
 // return: false, error || true
