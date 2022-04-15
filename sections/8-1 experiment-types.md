@@ -19,14 +19,14 @@ Inspired by type restrictions/facets in the XML/XSD format, it has become common
 
 <br>
 
-The type limitations of JSON can be circumvented by deconstructing a property value into its components. A date property with a string-value could instead be represented as an object with properties for month, day, and year. Representing these properties with integer-values would further clarify the intended values, but does not define a range of valid values. This limitation could be mitigated through properties further specifying a range of integers.
+The type limitations of JSON can be circumvented by deconstructing a property value into its components. A date property with a string-value could instead be represented as an object with properties for month, day, and year. Representing these properties with number-values would further clarify the intended values, but does not define a range of valid values. This limitation could be mitigated through properties further specifying a range of numbers.
 
 As evidenced, embedding these restrictions in the data results in more specification properties than useful data. As the amount of information scales linearly, so too does the restrictions, while increasing the chance of syntax errors.
 
 ```
 {
-    "type": "int",
-    "date": { "month": 28, "day": 10, "year": 2005 }
+    "type": "number",
+    "date": { "month": 10, "day": 28, "year": 2005 }
 }
 ```
 
@@ -34,10 +34,10 @@ As evidenced, embedding these restrictions in the data results in more specifica
 
 ```
 {
-    "type": "int",
+    "type": "number",
     "date": {
-        "month": { "min": 1, "max": 31, "value": 28 },
-        "day": { "min": 1, "max": 31, "value": 10 },
+        "month": { "min": 1, "max": 31, "value": 10 },
+        "day": { "min": 1, "max": 31, "value": 28 },
         "year": { "value": 2005 }
     }
 }
@@ -55,14 +55,14 @@ The enumerated date type is its own object, declaring the required properties an
 {
     "type": "date",
     "enum": {
-        "month": { "type": "int", "min": 1, "max": 12 },
-        "day": { "type": "int", "min": 1, "max": 31 },
-        "year": { "type": "int" }
+        "month": { "type": "number", "min": 1, "max": 12 },
+        "day": { "type": "number", "min": 1, "max": 31 },
+        "year": { "type": "number" }
     }
 }
 ```
 ```
-{ "type": "date", "month": 28, "day": 10, "year": 2005 }
+{ "type": "date", "month": 10, "day": 28, "year": 2005 }
 ```
 
 <br>
@@ -77,9 +77,9 @@ Inspired by this practice, I have decided to require an "init" property for exte
 {
     "init": {
         "date": {
-            "month": { "type": "int", "min": 1, "max": 12 },
-            "day": { "type": "int", "min": 1, "max": 31 },
-            "year": { "type": "int" }
+            "month": { "type": "number", "min": 1, "max": 12 },
+            "day": { "type": "number", "min": 1, "max": 31 },
+            "year": { "type": "number" }
         }
     },
     "data": { ... }
@@ -101,7 +101,7 @@ There are two valid approaches to instantiating extended types:
 
 "data": {
     "dates": [
-        { "type": "date", "month": 28, "day": 10, "year": 2005 }
+        { "type": "date", "month": 10, "day": 28, "year": 2005 }
     ]
 }
 ```
@@ -112,7 +112,7 @@ There are two valid approaches to instantiating extended types:
     "dates": {
         "type": "date",
         "values": [
-            { "month": 28, "day": 10, "year": 2005 }
+            { "month": 10, "day": 28, "year": 2005 }
         ]
     }
 }
@@ -130,9 +130,9 @@ If the default is of type *null*, the value is optional during validation. If no
 {
     "init": {
         "date": {
-            "month": { "type": "int", "min": 1, "max": 12, "default": 1 },
-            "day": { "type": "int", "min": 1, "max": 31 },
-            "year": { "type": "int", "default": null }
+            "month": { "type": "number", "min": 1, "max": 12, "default": 1 },
+            "day": { "type": "number", "min": 1, "max": 31 },
+            "year": { "type": "number", "default": null }
         }
     },
     "data": { ... }
@@ -152,7 +152,7 @@ If the default is of type *null*, the value is optional during validation. If no
 
 "data": {
     "dates": [
-        { "type": "date", "month": 28, "day": 10 }
+        { "type": "date", "month": 10, "day": 28 }
     ]
 }
 ```
