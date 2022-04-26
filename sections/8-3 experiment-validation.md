@@ -1,28 +1,82 @@
-{"sub":"Validation library and tests"}
+{"sub":"Library for validation"}
 
-The txon.js library *handshakes* a JSON file, validating conformance of its "data" property to extended type declarations in its "init" property.
+In this section I illustrate the functional aspect of my proposal, written with the JavaScript language and phrased as a library. I present the intent of my library, and then relate the components of its validation process to the components of my syntax proposal.
 
-Handshaking is a property-function of TXON, and thus it is called as following.
+<br>
 
-```
-const TXON = {
-    handshake: (json) => { ... }
-}
-```
+**Intended use**
+
+The txon.js library *handshakes* a JSON String, validating conformance of its "data" property to extended type declarations from its "init" property. TXON is initialised as an Object with a *docs* method, *handshake* method, and *tests* property of type Array\<String>.
+
+Docs requires no input parameters and returns a String documenting the intended use of my library. This approach ensures that the code is documented as it is written, but it exists only at the top-level of the library rather than in individual components.
+
+<br>
+
+Handshaking requires a String parameter and returns an Object with *result* and *error* properties.
+
+The *result* property is of type Boolean, indicating success (true) or failure (false). If the result is true, the *error* property will be of type Undefined. If the result is false, the *error* property will be of type String describing the first encountered non-conformance issue.
+
 ```
 const validation = TXON.handshake('{ "init": ..., "data": ... }')
-// validation.result == true || false
-// validation.error == undefined || ["..."]
+
+// validation.result -> Bool
+// validation.error -> Undefined || String
 ```
 
 <br>
 
-The function requires the parsing of a JSON object containing an "init" and "data" property, and will throw errors by storing them in a returned array **--will be changed to throwing 1 error when detected and immediately returning--**.
+The *tests* property is of type Array\<String> and contains sample JSON Strings that demonstrate the features and intended use of TXON.
+
+```
+tests: [
+    '{ "init": ..., "data": ... }',
+    ...
+]
+```
+
+<br>
+
+Tests can be iterated through to illustrate the expected outcome of a correct or incorrect appropriation of my syntax proposal.
+
+```
+TXON.tests.forEach(test => {
+    
+    const validation = TXON.handshake(test)
+
+    if (validation.result) {
+        ...
+    } else {
+        ...
+    }
+    
+})
+```
+
+<br>
+
+**Validation process**
+
+The validation process consists of steps. Each step corresponds to a feature from the proposed syntax, and can return its own descriptive error if non-conformance is encountered. In the case of non-conformance, the process will not continue with the next step if any, thus reducing unnecessary computation. If non-conformance is not encountered in any step, no error will be returned.
+
+Developers may desire for validation to continue despite non-conformance, and can in this case utilise the syntax for default values. If non-conformance is encountered but a default is defined, the process will continue with the inserted default value.
+
+The extensible nature of the proposed syntax necessitates that validation be performed recursively, so that developers do not have to re-architect their existing data structures. As a result, the following steps may appear repetitive and validation performance scales non-linearly with data size.
+
+<br>
+
+**Validation steps**
+
+...
 
 ```
 let object, initialiser, data
 let error = []
 ```
+
+<br>
+
+...
+
 ```
 // check: parsing JSON to JS
 const hasJSON = true
@@ -33,6 +87,11 @@ if (hasJSON) {
     return { result: false, error: error }
 }
 ```
+
+<br>
+
+...
+
 ```
 // check: has .init prop
 const hasInit = object.hasOwnProperty("init")
@@ -43,6 +102,11 @@ if (hasInit) {
     return { result: false, error: error }
 }
 ```
+
+<br>
+
+...
+
 ```
 // check: has .data prop
 const hasData = object.hasOwnProperty("data")
@@ -52,73 +116,6 @@ if (hasData) {
     error.push("ERROR: .data property not found in JSON")
     return { result: false, error: error }
 }
-```
-
-<br>
-
-Objects with extended types can be instantiated at the top-level of the "data" property, or nested inside it, requiring their recursive detection.
-
-If no extended types are instantiated, the return value will be true but throw an error noting this.
-
-If extended types are instantiated but do not conform, the return value will be false and an error is thrown describing how and where the mismatch occoured during validation.
-
-**--This code block is incomplete--**
-
-```
-// check: .data contains object[s] conforming to extended type[s] defined in .init
-const checkConformance = (property) => {
-    if (typeof property === "object") {
-        Object.values(property).forEach(n => checkConformance(n))
-    }
-    if (typeof property === "array") {
-        property.forEach(n => checkConformance(n))
-    }
-    const isExtendedType = property.hasOwnProperty("type") && property.hasOwnProperty("values") && initialiser.hasOwnProperty(property.type)
-    if (isExtendedType) {
-        property.values.forEach(value => {
-            const objprops = Object.getOwnPropertyNames(value)
-            const initprops = Object.getOwnPropertyNames(initialiser[property.type])
-            const propsConform = objprops.toString() === initprops.toString() 
-            if (!propsConform) {
-                error.push(
-                    `ERROR: properties of extended type do not conform to init. ${objprops} and ${initprops}`
-                )
-            } else {
-                objprops.forEach(prop => {
-                    const valuetype = typeof value[prop]
-                    const inittype = initialiser[property.type][prop].type
-                    const typesConform = valuetype === inittype
-                    if (!typesConform) {
-                        error.push(
-                            `ERROR: value type does not conform to init. ${valuetype} and ${inittype}`
-                        )
-                    } else {
-                        const hasEnum = initialiser[property.type][prop].hasOwnProperty("enum")
-                        if (hasEnum) {
-                            const objenum = Object.getOwnPropertyNames(initialiser[property.type][prop].enum)
-                            const enumsConform = objenum.includes(value[prop])
-                            if (!enumsConform) {
-                                error.push(
-                                    `ERROR: enum value does not conform to init. ${value[prop]} not in ${objenum}`
-                                )
-                            }
-                        }
-                    }
-                })
-            }
-        })
-    }
-}
-checkConformance(data)
-```
-
-<br>
-
-Once validation is complete, a descripitive object is returned and can be interpreted by the recipient. **--will be changed to returning true, as this will not be reached if an error is returned during validation--**.
-
-```
-// return: false, error || true
-return error.length ? { result: false, error: error } : { result: true }
 ```
 
 {"break":true}
