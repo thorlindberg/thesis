@@ -7,15 +7,13 @@ const TXON = {
     handshake: (json) => {
 
         let object, initialiser, data
-        let error = []
 
         // check: parsing JSON to JS
         const hasJSON = true
         if (hasJSON) {
             object = JSON.parse(json)
         } else {
-            error.push("ERROR: could not parse JSON")
-            return { result: false, error: error }
+            return { result: false, error: "ERROR: could not parse JSON" }
         }
 
         // check: has .init prop
@@ -23,8 +21,7 @@ const TXON = {
         if (hasInit) {
             initialiser = object.init
         } else {
-            error.push("ERROR: .init property not found in JSON")
-            return { result: false, error: error }
+            return { result: false, error: "ERROR: .init property not found in JSON" }
         }
 
         // check: has .data prop
@@ -32,8 +29,7 @@ const TXON = {
         if (hasData) {
             data = object.data
         } else {
-            error.push("ERROR: .data property not found in JSON")
-            return { result: false, error: error }
+            return { result: false, error: "ERROR: .data property not found in JSON" }
         }
 
         // check: .data contains object[s] conforming to extended type[s] defined in .init
@@ -51,27 +47,21 @@ const TXON = {
                     const initprops = Object.getOwnPropertyNames(initialiser[property.type])
                     const propsConform = objprops.toString() === initprops.toString() 
                     if (!propsConform) {
-                        error.push(
-                            `ERROR: properties of extended type do not conform to init. ${objprops} and ${initprops}`
-                        )
+                        return { result: false, error: `ERROR: properties of extended type do not conform to init. ${objprops} and ${initprops}` }
                     } else {
                         objprops.forEach(prop => {
                             const valuetype = typeof value[prop]
                             const inittype = initialiser[property.type][prop].type
                             const typesConform = valuetype === inittype
                             if (!typesConform) {
-                                error.push(
-                                    `ERROR: value type does not conform to init. ${valuetype} and ${inittype}`
-                                )
+                                return { result: false, error: `ERROR: value type does not conform to init. ${valuetype} and ${inittype}` }
                             } else {
                                 const hasEnum = initialiser[property.type][prop].hasOwnProperty("enum")
                                 if (hasEnum) {
                                     const objenum = Object.getOwnPropertyNames(initialiser[property.type][prop].enum)
                                     const enumsConform = objenum.includes(value[prop])
                                     if (!enumsConform) {
-                                        error.push(
-                                            `ERROR: enum value does not conform to init. ${value[prop]} not in ${objenum}`
-                                        )
+                                        return { result: false, error: `ERROR: enum value does not conform to init. ${value[prop]} not in ${objenum}` }
                                     }
                                 }
                             }
@@ -82,8 +72,8 @@ const TXON = {
         }
         checkConformance(data)
 
-        // return: false, error || true
-        return error.length ? { result: false, error: error } : { result: true }
+        // all checks passed
+        return { result: true, error: null }
 
     },
 

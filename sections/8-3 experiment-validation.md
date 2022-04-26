@@ -6,7 +6,7 @@ In this section I illustrate the functional aspect of my proposal, written with 
 
 **Intended use**
 
-The txon.js library *handshakes* a JSON String, validating conformance of its "data" property to extended type declarations from its "init" property. TXON is initialised as an Object with a *docs* method, *handshake* method, and *tests* property of type Array\<String>.
+The txon.js library *handshakes* a JSON String, validating conformance of its "data" property to extended type declarations from its "init" property. TXON is initialised as an Object with a *docs* method, *handshake* method, and *tests* property.
 
 Docs requires no input parameters and returns a String documenting the intended use of my library. This approach ensures that the code is documented as it is written, but it exists only at the top-level of the library rather than in individual components.
 
@@ -20,13 +20,13 @@ docs: [
 
 Handshaking requires a String parameter and returns an Object with *result* and *error* properties.
 
-The *result* property is of type Boolean, indicating success (true) or failure (false). If the result is true, the *error* property will be of type Undefined. If the result is false, the *error* property will be of type String describing the first encountered non-conformance issue.
+The *result* property is of type Boolean, indicating success (true) or failure (false). If the result is true, the *error* property will be of type Null. If the result is false, the *error* property will be of type String describing the first encountered non-conformance issue.
 
 ```
 const validation = TXON.handshake('{ "init": ..., "data": ... }')
 
 // validation.result -> Bool
-// validation.error -> Undefined || String
+// validation.error -> Null || String
 ```
 
 <br>
