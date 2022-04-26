@@ -79,9 +79,9 @@ Table of Contents
 <br>
 &emsp;[5.2&emsp;Syntax for type extensions](#syntaxfortypeextensions)
 <br>
-&emsp;[5.3&emsp;Validation library and tests](#validationlibraryandtests)
+&emsp;[5.3&emsp;Library for validation](#libraryforvalidation)
 <br>
-&emsp;[5.4&emsp;Implementation and evaluation strategy](#implementationandevaluationstrategy)
+&emsp;[5.4&emsp;Implementation and evaluation](#implementationandevaluation)
 <br>
 
 [6&emsp;Results](#results)
@@ -465,7 +465,7 @@ In the following section on _the transmission of data in distributed computing s
 
 This section explores the standards and methods for distributed communication through a publish-subscribe service. It serves as background knowledge on how serialised data is distributed, to illustrate how our choice of data serialisation library is informed by the system model.
 
-"cite":"tarkoma2012publish"} defines _publish-subscribe (pub/sub)_ as the efficient and timely selective communication of events between participating components. He relates his conceptual perspective to how humans selectively focus on (or "subscribe" to) probable sources of interesting events.
+[Tarkoma, S. (2012)](#tarkoma2012publish) defines _publish-subscribe (pub/sub)_ as the efficient and timely selective communication of events between participating components. He relates his conceptual perspective to how humans selectively focus on (or "subscribe" to) probable sources of interesting events.
 
 He notes that participants in this type of distributed system would appear sourceless to each other, and thus they publish without direction. This introduces the crucial element of time beyond the typical asynchrony, as participants subscribe based on the probability that information will be communicated, even if no information yet exists. He contrasts this with database systems, wherein information is retrieved through queries, aimed at previously communicated information, rather than aimed at future communication.
 
@@ -782,33 +782,92 @@ Type extensions are not limited to JSON types, as you are able to extend an exte
 
 <br><div style='page-break-after:always'></div>
 
-<span id="validationlibraryandtests"></span>**5.3&emsp;Validation library and tests**
+<span id="libraryforvalidation"></span>**5.3&emsp;Library for validation**
 
-The txon.js library *handshakes* a JSON file, validating conformance of its "data" property to extended type declarations in its "init" property.
+In this section I illustrate the functional aspect of my proposal, written with the JavaScript language and phrased as a library. I present the intent of my library, and then relate the components of its validation process to the components of my syntax proposal.
 
-Handshaking is a property-function of TXON, and thus it is called as following.
+<br>
+
+**Intended use**
+
+The txon.js library *handshakes* a JSON String, validating conformance of its "data" property to extended type declarations from its "init" property. TXON is initialised as an Object with a *docs* method, *handshake* method, and *tests* property.
+
+Docs requires no input parameters and returns a String documenting the intended use of my library. This approach ensures that the code is documented as it is written, but it exists only at the top-level of the library rather than in individual components.
 
 ```
-const TXON = {
-    handshake: (json) => { ... }
-}
-```
-```
-const validation = TXON.handshake('{ "init": ..., "data": ... }')
-// validation.result == true || false
-// validation.error == undefined || ["..."]
+docs: [
+    "How to validate with TXON..."
+].join("\n")
 ```
 
 <br>
 
-The function requires the parsing of a JSON object containing an "init" and "data" property, and will throw errors by storing them in a returned array **--will be changed to throwing 1 error when detected and immediately returning--**.
+Handshaking requires a String parameter and returns an Object with *result* and *error* properties.
+
+The *result* property is of type Boolean, indicating success (true) or failure (false). If the result is true, the *error* property will be of type Null. If the result is false, the *error* property will be of type String describing the first encountered non-conformance issue.
+
+```
+const validation = TXON.handshake('{ "init": ..., "data": ... }')
+
+// validation.result -> Bool
+// validation.error -> Null || String
+```
+
+<br>
+
+The *tests* property is of type Array\<String> and contains sample JSON Strings that demonstrate the features and intended use of TXON.
+
+```
+tests: [
+    '{ "init": ..., "data": ... }',
+    ...
+]
+```
+
+<br>
+
+Tests can be iterated through to illustrate the expected outcome of a correct or incorrect appropriation of my syntax proposal.
+
+```
+TXON.tests.forEach(test => {
+    
+    const validation = TXON.handshake(test)
+
+    if (validation.result) {
+        ...
+    } else {
+        ...
+    }
+    
+})
+```
+
+<br>
+
+**Validation process**
+
+The validation process consists of steps. Each step corresponds to a feature from the proposed syntax, and can return its own descriptive error if non-conformance is encountered. In the case of non-conformance, the process will not continue with the next step if any, thus reducing unnecessary computation. If non-conformance is not encountered in any step, no error will be returned.
+
+Developers may desire for validation to continue despite non-conformance, and can in this case utilise the syntax for default values. If non-conformance is encountered but a default is defined, the process will continue with the inserted default value.
+
+The extensible nature of the proposed syntax necessitates that validation be performed recursively, so that developers do not have to re-architect their existing data structures. As a result, the following steps may appear repetitive and validation performance scales non-linearly with data size.
+
+<br>
+
+**Validation steps**
+
+...
 
 ```
 let object, initialiser, data
 let error = []
 ```
+
+<br>
+
+check: parsing JSON to JS
+
 ```
-// check: parsing JSON to JS
 const hasJSON = true
 if (hasJSON) {
     object = JSON.parse(json)
@@ -817,8 +876,12 @@ if (hasJSON) {
     return { result: false, error: error }
 }
 ```
+
+<br>
+
+check: has .init prop
+
 ```
-// check: has .init prop
 const hasInit = object.hasOwnProperty("init")
 if (hasInit) {
     initialiser = object.init
@@ -827,8 +890,12 @@ if (hasInit) {
     return { result: false, error: error }
 }
 ```
+
+<br>
+
+check: has .data prop
+
 ```
-// check: has .data prop
 const hasData = object.hasOwnProperty("data")
 if (hasData) {
     data = object.data
@@ -840,16 +907,9 @@ if (hasData) {
 
 <br>
 
-Objects with extended types can be instantiated at the top-level of the "data" property, or nested inside it, requiring their recursive detection.
-
-If no extended types are instantiated, the return value will be true but throw an error noting this.
-
-If extended types are instantiated but do not conform, the return value will be false and an error is thrown describing how and where the mismatch occoured during validation.
-
-**--This code block is incomplete--**
+check: .data contains object[s] conforming to extended type[s] defined in .init
 
 ```
-// check: .data contains object[s] conforming to extended type[s] defined in .init
 const checkConformance = (property) => {
     if (typeof property === "object") {
         Object.values(property).forEach(n => checkConformance(n))
@@ -898,18 +958,17 @@ checkConformance(data)
 
 <br>
 
-Once validation is complete, a descripitive object is returned and can be interpreted by the recipient. **--will be changed to returning true, as this will not be reached if an error is returned during validation--**.
+return: false, error || true
 
 ```
-// return: false, error || true
 return error.length ? { result: false, error: error } : { result: true }
 ```
 
 <br><div style='page-break-after:always'></div>
 
-<span id="implementationandevaluationstrategy"></span>**5.4&emsp;Implementation and evaluation strategy**
+<span id="implementationandevaluation"></span>**5.4&emsp;Implementation and evaluation**
 
-...
+This section covers the existing TypeScript validation process at the company, how TXON can be incorporated, and how to evaluate the difference between these systems.
 
 <br><div style='page-break-after:always'></div>
 
