@@ -37,20 +37,14 @@ Table of Contents
 &emsp;[1.1&emsp;Problem statement](#problemstatement)
 <br>
 
-[2&emsp;Implementation](#implementation)
+[2&emsp;Background](#background)
 <br>
 
-&emsp;[2.1&emsp;Organisational structure and stakeholders](#organisationalstructureandstakeholders)
+&emsp;[2.1&emsp;Organisation](#organisation)
 <br>
-&emsp;[2.2&emsp;Data provided to me](#dataprovidedtome)
+&emsp;[2.2&emsp;Source material](#sourcematerial)
 <br>
-&emsp;[2.3&emsp;Information](#information)
-<br>
-&emsp;[2.4&emsp;Guarding](#guarding)
-<br>
-&emsp;[2.5&emsp;Perspectives on serialised data](#perspectivesonserialiseddata)
-<br>
-&emsp;[2.6&emsp;How-might-we](#how-might-we)
+&emsp;[2.3&emsp;Developer perspectives](#developerperspectives)
 <br>
 
 [3&emsp;Vocabulary](#vocabulary)
@@ -72,19 +66,27 @@ Table of Contents
 [4&emsp;Related Work](#relatedwork)
 <br>
 
+&emsp;[4.1&emsp;Low specification syntax](#lowspecificationsyntax)
+<br>
+&emsp;[4.2&emsp;High specification syntax](#highspecificationsyntax)
+<br>
+
 [5&emsp;Experiment Setup](#experimentsetup)
 <br>
 
-&emsp;[5.1&emsp;Syntax for extended types](#syntaxforextendedtypes)
+&emsp;[5.1&emsp;Validation library](#validationlibrary)
 <br>
-&emsp;[5.2&emsp;Syntax for type extensions](#syntaxfortypeextensions)
-<br>
-&emsp;[5.3&emsp;Library for validation](#libraryforvalidation)
-<br>
-&emsp;[5.4&emsp;Implementation and evaluation](#implementationandevaluation)
+&emsp;[5.2&emsp;Tests and error handling](#testsanderrorhandling)
 <br>
 
 [6&emsp;Results](#results)
+<br>
+
+&emsp;[6.1&emsp;Syntax for extended types](#syntaxforextendedtypes)
+<br>
+&emsp;[6.2&emsp;Syntax for type extensions](#syntaxfortypeextensions)
+<br>
+&emsp;[6.3&emsp;Reduction through generalisation](#reductionthroughgeneralisation)
 <br>
 
 [7&emsp;Discussion](#discussion)
@@ -151,13 +153,15 @@ As seen in [figure 2](#persona), the persona represents a fictive person derived
 
 The following [implementation section](#implementation) presents the company I collaborate with and their _implementation case_, which lays the foundation for this project. Through organisation and system hierarchies and structures, as well as personas, this section explores perspectives on working with serialised data, in relation to the proposal in this project.
 
-<span id="problemstatement"></span>**1.1&emsp;Problem statement**
+<span id="problemstatement"></span>
+
+#### 1.1&emsp;Problem statement
 
 Based on this information...
 
 <br><div style='page-break-after:always'></div>
 
-<span id="implementation"></span>2&emsp;Implementation
+<span id="background"></span>2&emsp;Background
 ---
 
 In this project I've chosen to collaborate with a company that specialises in native mobile application development. Their identity is kept anonymous, so rather than include confidential data or code samples, I have chosen to derive generic examples from the material they have provided me.
@@ -166,7 +170,9 @@ This company holds a unique perspective relative to the landscape of software de
 
 In the following I illustrate the relationship between this company (_development company_) and their partners. This serves as a starting point for deducing which perspectives are held on working with data.
 
-<span id="organisationalstructureandstakeholders"></span>**2.1&emsp;Organisational structure and stakeholders**
+<span id="organisation"></span>
+
+#### 2.1&emsp;Organisation
 
 As seen in [figure 3](#organisation), there are two identifiable hierarchies that form a relationship between case partner and development. The top half of this diagram flows from partner to a formulated case. The bottom half of this diagram flows from developer to a product delivery.
 
@@ -182,7 +188,9 @@ The structure of the partner company informs how they formulate the case offered
 
 The structure of the development company informs how they plan and execute on a case. They are not responsible for the back-end, and thus have to negotiate infrastructure plans and changes with their partners. This presents challenges to their autonomy, hierarchy and responsibilities.
 
-<span id="dataprovidedtome"></span>**2.2&emsp;Data provided to me**
+<span id="sourcematerial"></span>
+
+#### 2.2&emsp;Source material
 
 ...
 
@@ -192,7 +200,7 @@ The structure of the development company informs how they plan and execute on a 
 
 <br>
 
-<span id="information"></span>**2.3&emsp;Information**
+Information
 
 Data records information by structuring it for hierarchy and relativity. Directional data can be represented through a 1, 2 or 3-dimensional matrix, or mapped to an object or n-dimensional matrix of objects. This subsection presents various data structures and compares them for serialisation.
 
@@ -380,7 +388,7 @@ const itemsByValue = [
 
 <br>
 
-<span id="guarding"></span>**2.4&emsp;Guarding**
+Guarding
 
 <br>
 
@@ -400,13 +408,11 @@ foo = Int(12)
 
 <br>
 
-<span id="perspectivesonserialiseddata"></span>**2.5&emsp;Perspectives on serialised data**
+<span id="developerperspectives"></span>
+
+#### 2.3&emsp;Developer perspectives
 
 This section presents the personas derived from interviews with each development team at the company, for the purpose of taking value-oriented design decisions derived from their perspectives. As these employees are coworkers, their perspectives are grounded in shared experiences, yet their unique deviations highlight how serialised data has varying implications on work practices.
-
-<span id="how-might-we"></span>**2.6&emsp;How-might-we**
-
-...
 
 <br><div style='page-break-after:always'></div>
 
@@ -415,7 +421,9 @@ This section presents the personas derived from interviews with each development
 
 This section explores fundamental principles of the system architectures that support distribution of serialised data. It serves to establish a vocabulary for communication in computing, as well as to provide background knowledge on how data becomes distributed, and motivate my choices of systems.
 
-<span id="distributedcomputing"></span>**3.1&emsp;Distributed Computing**
+<span id="distributedcomputing"></span>
+
+#### 3.1&emsp;Distributed Computing
 
 [Kshemkalyani, A. and Singhal, M. (2011)](#kshemkalyani2011distributed) define _distributed systems_ as "a collection of independent entities that cooperate to solve a problem that cannot be individually solved." They characterise distributed computing as  "a collection of mostly autonomous processors communicating over a communication network". They identify common features of distributed systems, notably a lack of shared resources which necessitates communication, autonomy and heterogeneity.
 
@@ -461,7 +469,9 @@ Figure 6: Components of a _publish-subscribe_ system.
 
 In the following section on _the transmission of data in distributed computing systems_, I present an in-depth illustration of how publish-subscribe models facilitate distribution of data-driven systems.
 
-<span id="datatransmission"></span>**3.2&emsp;Data Transmission**
+<span id="datatransmission"></span>
+
+#### 3.2&emsp;Data Transmission
 
 This section explores the standards and methods for distributed communication through a publish-subscribe service. It serves as background knowledge on how serialised data is distributed, to illustrate how our choice of data serialisation library is informed by the system model.
 
@@ -513,19 +523,27 @@ The take away from the OSI model is that as data flows through a distributed sys
 
 ...
 
-<span id="dataparsing"></span>**3.3&emsp;Data Parsing**
+<span id="dataparsing"></span>
+
+#### 3.3&emsp;Data Parsing
 
 ...
 
-<span id="typesetting"></span>**3.4&emsp;Typesetting**
+<span id="typesetting"></span>
+
+#### 3.4&emsp;Typesetting
 
 ...
 
-<span id="backwardscompatibility"></span>**3.5&emsp;Backwards Compatibility**
+<span id="backwardscompatibility"></span>
+
+#### 3.5&emsp;Backwards Compatibility
 
 ...
 
-<span id="languageextensibility"></span>**3.6&emsp;Language Extensibility**
+<span id="languageextensibility"></span>
+
+#### 3.6&emsp;Language Extensibility
 
 ...
 
@@ -534,18 +552,73 @@ The take away from the OSI model is that as data flows through a distributed sys
 <span id="relatedwork"></span>4&emsp;Related Work
 ---
 
-Previous research provides a baseline for building upon existing knowledge through this project. This research typically focuses on documenting the object serialisation process or comparing serialisation formats in terms of features, efficiency, performance, file size, and programming language support.
+In this section I present academic literature related to this project, to derive my methodological approach from previous and established practices. It is crucial that I ground my approach in related work, as I aim to alter preexisting and complex structures with decades of history and development.
+
+From this work I not only extrapolate organised information, but also methods for gathering, processing, structuring, and presenting data, features or other aspects of the investigated or developed material.
+
+Previous projects have focused on documenting and comparing object serialisation formats in terms of features, efficiency, performance, file size, and programming language support. The central theme in these comparisons is the ability of a format to be applied across heterogeneous structures, systems and languages, thus achieving interoperability despite differences in data structure.
+
+<br>
+
+**Data formats**
+
+The choice of data format is informed by the intended use of the stored data. An application utilising a proprietary data format is more likely to store information in a binary file, to reduce its file size. The proprietary nature of such an application does not necessitate interoperability, and thus transparency of the source data is a non-issue.
+
+The inverse is true of an application interacting with other systems, such as a client receiving information from a platform developed by a source serving multiple clients. This necessitates interoperability, as the application must conform to the format defined by the source, and it is more likely to receive information in a plaintext file, to ensure correct interpretation. Plain text (ASCII) data is human-readable, resulting in a more transparent and approachable format at the cost of decreased performance and increased file size.
+
+<br>
+
+**Data structure**
+
+Plain data can be human-readable, but the decriptive syntax for the information contained is not necessarily accessible to humans. A proprietary format with limited scope can prescribe meaning implicitly to data objects, but an interoperable format must be explicit. This is achieved by surrounding information with descriptive tags, nesting it into hierarchies, and/or prescribing meaning to special characters such as tabs.
+
+The data structure must be interoperable with different languages and thus various parsers. The explicit nature of these data format streamlines the design of parsers, as data can be validated without implicit meaning.
+
+<br><div style='page-break-after:always'></div>
+
+<span id="lowspecificationsyntax"></span>
+
+#### 4.1&emsp;Low specification syntax
+
+...
+
+[Malin Eriksson and V. Hallberg (2011)](#eriksson2011comparison) compares the syntax and performance of the JavaScript Object Notation (JSON) and YAML Ain't Markup Language (YAML) formats for structuring data in plain text. These light-weight data interchange formats aim to structure information with minimal additional data, such as tags or type/requirement specifications. Their purpose is to increase human-readability and ease-of-use for both authors and interpreters, and the intended use is transmission of data with non-critical requirements.
+
+Text
+
+<br>
+
+**Types**
+
+Text
+
+<br>
+
+**Extensibility**
+
+Text
+
+<br>
+
+**Readability**
+
+Text
+
+<br>
+
+**Interoperability**
+
+Text
+
+<br><div style='page-break-after:always'></div>
+
+<span id="highspecificationsyntax"></span>
+
+#### 4.2&emsp;High specification syntax
+
+...
 
 [Goff, J et al. (2001)](#goff2001xmlserialization) document object serialisation processes with the eXtensible Markup Language (XML) format, assessing its implementation in heterogeneous distributed systems.
-
-[Malin Eriksson and V. Hallberg (2011)](#eriksson2011comparison) compared the features of two plaintext object serialisation formats: JavaScript Object Notation (JSON) and YAML, then determined their efficiency by measuring performance and data storage size.
-[Kazuaki Maeda (2011)](#kazuaki2011survey) surveyed object serialisation techniques, concluding that each technique had its advantages and disadvantages in the context it was applied.
-
-[Tauro, Clarence et al. (2012)](#tauro2012binary) document implementation techniques for binary object serialisation in the programming languages: C++, Java and .NET. They conclude that binary serialisation is memory and bandwidth efficient.
-
-[Sumaray, Audie and Makki, S. Kami (2012)](#sumaray2012efficiency) ...
-
-[Vanura, Jan and Kriz, Pavel (2018)](#vanura2018performance) ...
 
 <br><div style='page-break-after:always'></div>
 
@@ -560,229 +633,9 @@ The examples presented in this section represent fetched temperature measurement
 
 <br><div style='page-break-after:always'></div>
 
-<span id="syntaxforextendedtypes"></span>**5.1&emsp;Syntax for extended types**
+<span id="validationlibrary"></span>
 
-The JavaScript Object Notation (JSON) specifies a format for storing and transmitting JavaScript objects. This format allows the types: *string, number, object, array, boolean, and null*. It explicitly precludes the types: *function, date, and undefined*. A JSON object is represented as a string of curly brackets with properties inside.
-
-```
-{ "date": "28-10-2005" }
-```
-
-<br>
-
-Inspired by type restrictions/facets in the XML/XSD format, it has become common to explictly embed the intended type as a string-value property in a JSON object. This approach to type annotation enables the recipient to validate the content type based on its intended type, but not beyond the types available in JSON.
-
-```
-<xs:restriction base="xs:string"></xs:restriction>
-```
-```
-{ "type": "string", "date": "28-10-2005" }
-```
-
-<br>
-
-The type limitations of JSON can be circumvented by deconstructing a property value into its components. A date property with a string-value could instead be represented as an object with properties for month, day, and year. Representing these properties with number-values would further clarify the intended values, but does not define a range of valid values. This limitation could be mitigated through properties further specifying a range of numbers.
-
-As evidenced, embedding these restrictions in the data results in more specification properties than useful data. As the amount of information scales linearly, so too does the restrictions, while increasing the chance of syntax errors.
-
-```
-{
-    "type": "number",
-    "date": { "month": 10, "day": 28, "year": 2005 }
-}
-```
-
-<br><div style='page-break-after:always'></div>
-
-```
-{
-    "type": "number",
-    "date": {
-        "month": { "min": 1, "max": 31, "value": 10 },
-        "day": { "min": 1, "max": 31, "value": 28 },
-        "year": { "value": 2005 }
-    }
-}
-```
-
-<br>
-
-As it turns out, this is not a unique problem, and thus the solution already exists: enumerations. This user-defined data type allows us to declare a specification once, and then instantiate it without repetition of requirements.
-
-As enum (enumeration) is not a type allowed in the JSON format, I have chosen to leverage existing JSON types to construct an enum syntax. This decision informs the phrasing of TXON as an optional extension that could be ignored by JSON parsers, rather than an alternative format.
-
-The enumerated date type is its own object, declaring the required properties and conformance instructions for property values. Notably these instructions do not have to be exhaustive, as properties can fit within strict value ranges or have no values at all (null). Instantiating a user-defined type is indifferent from providing the intended type as a string-value property, with the property name and value matching the corresponding specification.
-
-```
-{
-    "type": "date",
-    "enum": {
-        "month": { "type": "number", "min": 1, "max": 12 },
-        "day": { "type": "number", "min": 1, "max": 31 },
-        "year": { "type": "number" }
-    }
-}
-```
-```
-{ "type": "date", "month": 10, "day": 28, "year": 2005 }
-```
-
-<br>
-
-It is common practice to nest JSON objects inside a top-level "data" property, to check if an API call has succesfully returned the expected result or thrown an error.
-
-Inspired by this practice, I have decided to require an "init" property for extended type declarations. The information property (data) can contain extended types, which must conform to the declaration specified in the initialisation property (init).
-
-<br><div style='page-break-after:always'></div>
-
-```
-{
-    "init": {
-        "date": {
-            "month": { "type": "number", "min": 1, "max": 12 },
-            "day": { "type": "number", "min": 1, "max": 31 },
-            "year": { "type": "number" }
-        }
-    },
-    "data": { ... }
-}
-```
-
-<br>
-
-Instances of extended types are themselves extensible, meaning they are not limited to only enumeration properties.
-
-There are two valid approaches to instantiating extended types:
-
-*Array of objects*. Each object contains the extended type value and its required properties. The advantage of this approach is that each object contains an extended type, but this also increases the chance of syntax errors. This is ideal when an array contains multiple types.
-
-*Object with array of objects*. The object contains the extended type value and a "values" array containing objects with required properties. The advantage of this approach is that the extended type is instantitated once, resulting in an inferred type for objects in "values". This is ideal when an array only contains one type.
-
-```
-// array of objects
-
-"data": {
-    "dates": [
-        { "type": "date", "month": 10, "day": 28, "year": 2005 }
-    ]
-}
-```
-```
-// object with array of objects
-
-"data": {
-    "dates": {
-        "type": "date",
-        "values": [
-            { "month": 10, "day": 28, "year": 2005 }
-        ]
-    }
-}
-```
-
-<br><div style='page-break-after:always'></div>
-
-An extended type property can be partially instatiated if a default value is given. The default can be any of the available JSON types, including *null*, or **another an extended type.**
-
-Defaults are inserted in place of non-instantiated enumeration properties during validation. The value does not have to match the type given in the enumeration, but if it does it must conform to the given range (min to max). **--THIS RAISES THE QUESTION: SHOULD VALIDATION RETURN THE VALIDATED JSON???--**
-
-If the default is of type *null*, the value is optional during validation. If no default is given or the default is of any other type, it is required during validation.
-
-```
-{
-    "init": {
-        "date": {
-            "month": { "type": "number", "min": 1, "max": 12, "default": 1 },
-            "day": { "type": "number", "min": 1, "max": 31 },
-            "year": { "type": "number", "default": null }
-        }
-    },
-    "data": { ... }
-}
-```
-```
-// only required "day" instantiated
-
-"data": {
-    "dates": [
-        { "type": "date", "day": 10 }
-    ]
-}
-```
-```
-// optional "year" not instantiated
-
-"data": {
-    "dates": [
-        { "type": "date", "month": 10, "day": 28 }
-    ]
-}
-```
-
-<br><div style='page-break-after:always'></div>
-
-<span id="syntaxfortypeextensions"></span>**5.2&emsp;Syntax for type extensions**
-
-In addition to extending JSON with new types, you can also extend existing JSON types (*retroactive modeling*). Types can be extended with enumerations, which becomes available with the dot (.) syntax. Enumeration values must conform to the extended type, and the *null* type can not be extended.
-
-Type extension reduces type-repetition in instantiation, and thus it is a better option when enumeration values conform to a single type. **--WHAT ABOUT NULL VALUES? CAN AN EXTENSION CONFORM TO A TYPE BUT HAVE DEFAULT OF NULL???--**
-
-```
-{
-    "init": {
-        "number.date": {
-            "month": { "min": 1, "max": 12 },
-            "day": { "min": 1, "max": 31 },
-            "year": { "min": 0, "max": 3000 }
-        },
-        "number.temperature": {
-            "celsius": { "min": -100, "max": 100 }
-        }
-    },
-    "data": { ... }
-}
-```
-```
-"data": {
-    "dates": [
-        {
-            "type": "number.date",
-            "month": 10, "day": 28, "year": 2005
-        }
-    ],
-    temperatures: [
-        {
-            "type": "number.temperature",
-            "celsius": 30
-        }
-    ]
-}
-```
-
-Type extensions are not limited to JSON types, as you are able to extend an extended type...
-
-**--THIS IS EXPERIMENTAL--**
-
-```
-{
-    "init": {
-        "number.date": {
-            "month": { "min": 1, "max": 12 }
-        },
-        "date.day": {
-            "day": { "min": 1, "max": 31 }
-        }
-        "date.year": {
-            "year": { "min": 0, "max": 3000 }
-        }
-    },
-    "data": { ... }
-}
-```
-
-<br><div style='page-break-after:always'></div>
-
-<span id="libraryforvalidation"></span>**5.3&emsp;Library for validation**
+#### 5.1&emsp;Validation library
 
 In this section I illustrate the functional aspect of my proposal, written with the JavaScript language and phrased as a library. I present the intent of my library, and then relate the components of its validation process to the components of my syntax proposal.
 
@@ -966,7 +819,9 @@ return error.length ? { result: false, error: error } : { result: true }
 
 <br><div style='page-break-after:always'></div>
 
-<span id="implementationandevaluation"></span>**5.4&emsp;Implementation and evaluation**
+<span id="testsanderrorhandling"></span>
+
+#### 5.2&emsp;Tests and error handling
 
 This section covers the existing TypeScript validation process at the company, how TXON can be incorporated, and how to evaluate the difference between these systems.
 
@@ -974,6 +829,240 @@ This section covers the existing TypeScript validation process at the company, h
 
 <span id="results"></span>6&emsp;Results
 ---
+
+...
+
+<br><div style='page-break-after:always'></div>
+
+<span id="syntaxforextendedtypes"></span>
+
+#### 6.1&emsp;Syntax for extended types
+
+The JavaScript Object Notation (JSON) specifies a format for storing and transmitting JavaScript objects. This format allows the types: *string, number, object, array, boolean, and null*. It explicitly precludes the types: *function, date, and undefined*. A JSON object is represented as a string of curly brackets with properties inside.
+
+```
+{ "date": "28-10-2005" }
+```
+
+<br>
+
+Inspired by type restrictions/facets in the XML/XSD format, it has become common to explictly embed the intended type as a string-value property in a JSON object. This approach to type annotation enables the recipient to validate the content type based on its intended type, but not beyond the types available in JSON.
+
+```
+<xs:restriction base="xs:string"></xs:restriction>
+```
+```
+{ "type": "string", "date": "28-10-2005" }
+```
+
+<br>
+
+The type limitations of JSON can be circumvented by deconstructing a property value into its components. A date property with a string-value could instead be represented as an object with properties for month, day, and year. Representing these properties with number-values would further clarify the intended values, but does not define a range of valid values. This limitation could be mitigated through properties further specifying a range of numbers.
+
+As evidenced, embedding these restrictions in the data results in more specification properties than useful data. As the amount of information scales linearly, so too does the restrictions, while increasing the chance of syntax errors.
+
+```
+{
+    "type": "number",
+    "date": { "month": 10, "day": 28, "year": 2005 }
+}
+```
+
+<br><div style='page-break-after:always'></div>
+
+```
+{
+    "type": "number",
+    "date": {
+        "month": { "min": 1, "max": 31, "value": 10 },
+        "day": { "min": 1, "max": 31, "value": 28 },
+        "year": { "value": 2005 }
+    }
+}
+```
+
+<br>
+
+As it turns out, this is not a unique problem, and thus the solution already exists: enumerations. This user-defined data type allows us to declare a specification once, and then instantiate it without repetition of requirements.
+
+As enum (enumeration) is not a type allowed in the JSON format, I have chosen to leverage existing JSON types to construct an enum syntax. This decision informs the phrasing of TXON as an optional extension that could be ignored by JSON parsers, rather than an alternative format.
+
+The enumerated date type is its own object, declaring the required properties and conformance instructions for property values. Notably these instructions do not have to be exhaustive, as properties can fit within strict value ranges or have no values at all (null). Instantiating a user-defined type is indifferent from providing the intended type as a string-value property, with the property name and value matching the corresponding specification.
+
+```
+{
+    "type": "date",
+    "enum": {
+        "month": { "type": "number", "min": 1, "max": 12 },
+        "day": { "type": "number", "min": 1, "max": 31 },
+        "year": { "type": "number" }
+    }
+}
+```
+```
+{ "type": "date", "month": 10, "day": 28, "year": 2005 }
+```
+
+<br>
+
+It is common practice to nest JSON objects inside a top-level "data" property, to check if an API call has succesfully returned the expected result or thrown an error.
+
+Inspired by this practice, I have decided to require an "init" property for extended type declarations. The information property (data) can contain extended types, which must conform to the declaration specified in the initialisation property (init).
+
+<br><div style='page-break-after:always'></div>
+
+```
+{
+    "init": {
+        "date": {
+            "month": { "type": "number", "min": 1, "max": 12 },
+            "day": { "type": "number", "min": 1, "max": 31 },
+            "year": { "type": "number" }
+        }
+    },
+    "data": { ... }
+}
+```
+
+<br>
+
+Instances of extended types are themselves extensible, meaning they are not limited to only enumeration properties.
+
+There are two valid approaches to instantiating extended types:
+
+*Array of objects*. Each object contains the extended type value and its required properties. The advantage of this approach is that each object contains an extended type, but this also increases the chance of syntax errors. This is ideal when an array contains multiple types.
+
+*Object with array of objects*. The object contains the extended type value and a "values" array containing objects with required properties. The advantage of this approach is that the extended type is instantitated once, resulting in an inferred type for objects in "values". This is ideal when an array only contains one type.
+
+```
+// array of objects
+
+"data": {
+    "dates": [
+        { "type": "date", "month": 10, "day": 28, "year": 2005 }
+    ]
+}
+```
+```
+// object with array of objects
+
+"data": {
+    "dates": {
+        "type": "date",
+        "values": [
+            { "month": 10, "day": 28, "year": 2005 }
+        ]
+    }
+}
+```
+
+<br><div style='page-break-after:always'></div>
+
+An extended type property can be partially instatiated if a default value is given. The default can be any of the available JSON types, including *null*, or **another an extended type.**
+
+Defaults are inserted in place of non-instantiated enumeration properties during validation. The value does not have to match the type given in the enumeration, but if it does it must conform to the given range (min to max). **--THIS RAISES THE QUESTION: SHOULD VALIDATION RETURN THE VALIDATED JSON???--**
+
+If the default is of type *null*, the value is optional during validation. If no default is given or the default is of any other type, it is required during validation.
+
+```
+{
+    "init": {
+        "date": {
+            "month": { "type": "number", "min": 1, "max": 12, "default": 1 },
+            "day": { "type": "number", "min": 1, "max": 31 },
+            "year": { "type": "number", "default": null }
+        }
+    },
+    "data": { ... }
+}
+```
+```
+// only required "day" instantiated
+
+"data": {
+    "dates": [
+        { "type": "date", "day": 10 }
+    ]
+}
+```
+```
+// optional "year" not instantiated
+
+"data": {
+    "dates": [
+        { "type": "date", "month": 10, "day": 28 }
+    ]
+}
+```
+
+<br><div style='page-break-after:always'></div>
+
+<span id="syntaxfortypeextensions"></span>
+
+#### 6.2&emsp;Syntax for type extensions
+
+In addition to extending JSON with new types, you can also extend existing JSON types (*retroactive modeling*). Types can be extended with enumerations, which becomes available with the dot (.) syntax. Enumeration values must conform to the extended type, and the *null* type can not be extended.
+
+Type extension reduces type-repetition in instantiation, and thus it is a better option when enumeration values conform to a single type. **--WHAT ABOUT NULL VALUES? CAN AN EXTENSION CONFORM TO A TYPE BUT HAVE DEFAULT OF NULL???--**
+
+```
+{
+    "init": {
+        "number.date": {
+            "month": { "min": 1, "max": 12 },
+            "day": { "min": 1, "max": 31 },
+            "year": { "min": 0, "max": 3000 }
+        },
+        "number.temperature": {
+            "celsius": { "min": -100, "max": 100 }
+        }
+    },
+    "data": { ... }
+}
+```
+```
+"data": {
+    "dates": [
+        {
+            "type": "number.date",
+            "month": 10, "day": 28, "year": 2005
+        }
+    ],
+    temperatures: [
+        {
+            "type": "number.temperature",
+            "celsius": 30
+        }
+    ]
+}
+```
+
+Type extensions are not limited to JSON types, as you are able to extend an extended type...
+
+**--THIS IS EXPERIMENTAL--**
+
+```
+{
+    "init": {
+        "number.date": {
+            "month": { "min": 1, "max": 12 }
+        },
+        "date.day": {
+            "day": { "min": 1, "max": 31 }
+        }
+        "date.year": {
+            "year": { "min": 0, "max": 3000 }
+        }
+    },
+    "data": { ... }
+}
+```
+
+<br><div style='page-break-after:always'></div>
+
+<span id="reductionthroughgeneralisation"></span>
+
+#### 6.3&emsp;Reduction through generalisation
 
 ...
 

@@ -1,4 +1,4 @@
-{"sub":"Library for validation"}
+{"sub":"Validation library"}
 
 In this section I illustrate the functional aspect of my proposal, written with the JavaScript language and phrased as a library. I present the intent of my library, and then relate the components of its validation process to the components of my syntax proposal.
 

@@ -1,4 +1,4 @@
-{"sec":"Implementation"}
+{"sec":"Background"}
 
 In this project I've chosen to collaborate with a company that specialises in native mobile application development. Their identity is kept anonymous, so rather than include confidential data or code samples, I have chosen to derive generic examples from the material they have provided me.
 
@@ -6,17 +6,16 @@ This company holds a unique perspective relative to the landscape of software de
 
 In the following I illustrate the relationship between this company (_development company_) and their partners. This serves as a starting point for deducing which perspectives are held on working with data.
 
-{"sub":"Organisational structure and stakeholders"}
+{"sub":"Organisation"}
 
 As seen in {"ref":"organisation"}, there are two identifiable hierarchies that form a relationship between case partner and development. The top half of this diagram flows from partner to a formulated case. The bottom half of this diagram flows from developer to a product delivery.
 
 {"fig":"organisation","url":"./figures/organisation.png","caption":"Hierarchical and structural relationship between development company and case partners.","width":"100%"}
-
 The structure of the partner company informs how they formulate the case offered to the developers. They are also responsible for maintenance of a back-end, delivering customer data to the client developed in the delivery.
 
 The structure of the development company informs how they plan and execute on a case. They are not responsible for the back-end, and thus have to negotiate infrastructure plans and changes with their partners. This presents challenges to their autonomy, hierarchy and responsibilities.
 
-{"sub":"Data provided to me"}
+{"sub":"Source material"}
 
 ...
 
@@ -26,7 +25,7 @@ The structure of the development company informs how they plan and execute on a 
 
 <br>
 
-{"sub":"Information"}
+Information
 
 Data records information by structuring it for hierarchy and relativity. Directional data can be represented through a 1, 2 or 3-dimensional matrix, or mapped to an object or n-dimensional matrix of objects. This subsection presents various data structures and compares them for serialisation.
 
@@ -214,7 +213,7 @@ const itemsByValue = [
 
 <br>
 
-{"sub":"Guarding"}
+Guarding
 
 <br>
 
@@ -234,12 +233,8 @@ foo = Int(12)
 
 <br>
 
-{"sub":"Perspectives on serialised data"}
+{"sub":"Developer perspectives"}
 
 This section presents the personas derived from interviews with each development team at the company, for the purpose of taking value-oriented design decisions derived from their perspectives. As these employees are coworkers, their perspectives are grounded in shared experiences, yet their unique deviations highlight how serialised data has varying implications on work practices.
-
-{"sub":"How-might-we"}
-
-...
 
 {"break":true}
