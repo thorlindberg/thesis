@@ -78,22 +78,236 @@ const TXON = {
     },
 
     tests: [
+
         // parseable JSON
-        '{"init":{"item":{"name":{"type":"string"},"category":{"type":"string","enum":{"largeDrink":"🍺","smallDrink":"🥤","plant":"🌱"}}}},"data":{"items":{"type":"item","values":[{"name":"Diet Coke (1.5L)","category":"largeDrink"},{"name":"Fanta (0.5L)","category":"smallDrink"},{"name":"Olives","category":"plant"}]}}}',
+        `{
+            "init": {
+                "item": {
+                    "name": {
+                        "type": "string"
+                    },
+                    "category": {
+                        "type": "string",
+                        "enum": {
+                            "largeDrink": "🍺",
+                            "smallDrink": "🥤",
+                            "plant":"🌱"
+                        }
+                    }
+                }
+            },
+            "data": {
+                "items": {
+                    "type": "item",
+                    "values": [
+                        { "name": "Diet Coke (1.5L)", "category": "largeDrink" },
+                        { "name": "Fanta (0.5L)", "category": "smallDrink" },
+                        { "name": "Olives", "category": "plant" }
+                    ]
+                }
+            }
+        }`,
+
         // properties mismatch between data and init
-        '{"init":{"item":{"name":{"type":"string"},"category":{"type":"string","enum":{"largeDrink":"🍺","smallDrink":"🥤","plant":"🌱"}}}},"data":{"items":{"type":"item","values":[{"product":"Diet Coke (1.5L)","category":"largeDrink"},{"name":"Fanta (0.5L)","category":"smallDrink"},{"name":"Olives","category":"plant"}]}}}',
+        `{
+            "init": {
+                "item": {
+                    "name": {
+                        "type": "string"
+                    },
+                    "category": {
+                        "type": "string",
+                        "enum": {
+                            "largeDrink": "🍺",
+                            "smallDrink": "🥤",
+                            "plant": "🌱"
+                        }
+                    }
+                }
+            },
+            "data": {
+                "items": {
+                    "type": "item",
+                    "values": [
+                        { "product": "Diet Coke (1.5L)", "category": "largeDrink" },
+                        { "name": "Fanta (0.5L)","category": "smallDrink"},
+                        { "name": "Olives", "category": "plant"}
+                    ]
+                }
+            }
+        }`,
+
         // type mismatch with property in extended type
-        '{"init":{"item":{"name":{"type":"string"},"category":{"type":"string","enum":{"largeDrink":"🍺","smallDrink":"🥤","plant":"🌱"}}}},"data":{"items":{"type":"item","values":[{"name":12,"category":"largeDrink"},{"name":"Fanta (0.5L)","category":"smallDrink"},{"name":"Olives","category":"plant"}]}}}',
+        `{
+            "init": {
+                "item": {
+                    "name": {
+                        "type": "string"
+                    },
+                    "category": {
+                        "type": "string",
+                        "enum": {
+                            "largeDrink": "🍺",
+                            "smallDrink": "🥤",
+                            "plant": "🌱"
+                        }
+                    }
+                }
+            },
+            "data": {
+                "items": {
+                    "type": "item", "values": [
+                        { "name": 12, "category": "largeDrink" },
+                        { "name": "Fanta (0.5L)", "category": "smallDrink" },
+                        { "name": "Olives","category": "plant" }
+                    ]
+                }
+            }
+        }`,
+
         // value mismatch with enum
-        '{"init":{"item":{"name":{"type":"string"},"category":{"type":"string","enum":{"largeDrink":"🍺","smallDrink":"🥤","plant":"🌱"}}}},"data":{"items":{"type":"item","values":[{"name":"Diet Coke (1.5L)","category":"product"},{"name":"Fanta (0.5L)","category":"smallDrink"},{"name":"Olives","category":"plant"}]}}}',
+        `{
+            "init": {
+                "item": {
+                    "name": {
+                        "type": "string"
+                    },
+                    "category": {
+                        "type": "string",
+                        "enum": {
+                            "largeDrink": "🍺",
+                            "smallDrink": "🥤",
+                            "plant": "🌱"
+                        }
+                    }
+                }
+            },
+            "data": {
+                "items": {
+                    "type": "item",
+                    "values": [
+                        { "name": "Diet Coke (1.5L)", "category": "product" },
+                        { "name": "Fanta (0.5L)", "category": "smallDrink" },
+                        { "name": "Olives","category": "plant" }
+                    ]
+                }
+            }
+        }`,
+
         // combined three errors above this
-        '{"init":{"item":{"name":{"type":"string"},"category":{"type":"string","enum":{"largeDrink":"🍺","smallDrink":"🥤","plant":"🌱"}}}},"data":{"items":{"type":"item","values":[{"product":"Diet Coke (1.5L)","category":"largeDrink"},{"name":12,"category":"smallDrink"},{"name":"Olives","category":"product"}]}}}',
+        `{
+            "init": {
+                "item": {
+                    "name": {
+                        "type": "string"
+                    },
+                    "category": {
+                        "type": "string",
+                        "enum": {
+                            "largeDrink": "🍺",
+                            "smallDrink": "🥤",
+                            "plant": "🌱"
+                        }
+                    }
+                }
+            },
+            "data": {
+                "items": {
+                    "type": "item",
+                    "values": [
+                        { "product": "Diet Coke (1.5L)", "category": "largeDrink" },
+                        { "name": 12, "category": "smallDrink" },
+                        { "name": "Olives", "category": "product" }
+                    ]
+                }
+            }
+        }`,
+
         // extended type in init and data
-        '{"init":{"item":{"name":{"type":"string"},"category":{"type":"string","enum":{"largeDrink":"🍺","smallDrink":"🥤","plant":"🌱"}}}},"data":{"items":{"type":"item","values":[{"name":"Diet Coke (1.5L)","category":"largeDrink"},{"name":"Fanta (0.5L)","category":"smallDrink"},{"name":"Olives","category":"plant"}]}}}',
+        `{
+            "init": {
+                "item": {
+                    "name": {
+                        "type": "string"
+                    },
+                    "category": {
+                        "type": "string",
+                        "enum": {
+                            "largeDrink": "🍺",
+                            "smallDrink": "🥤",
+                            "plant": "🌱"
+                        }
+                    }
+                }
+            },
+            "data": {
+                "items": {
+                    "type": "item", "values": [
+                        { "name": "Diet Coke (1.5L)", "category": "largeDrink" },
+                        { "name": "Fanta (0.5L)", "category": "smallDrink" },
+                        { "name": "Olives", "category": "plant" }
+                    ]
+                }
+            }
+        }`,
+
         // extended type not in init
-        '{"init":{"product":{"name":{"type":"string"},"category":{"type":"string","enum":{"largeDrink":"🍺","smallDrink":"🥤","plant":"🌱"}}}},"data":{"items":{"type":"item","values":[{"name":"Diet Coke (1.5L)","category":"largeDrink"},{"name":"Fanta (0.5L)","category":"smallDrink"},{"name":"Olives","category":"plant"}]}}}',
+        `{
+            "init": {
+                "product": {
+                    "name": {
+                        "type": "string"
+                    },
+                    "category": {
+                        "type": "string",
+                        "enum": {
+                            "largeDrink": "🍺",
+                            "smallDrink": "🥤",
+                            "plant": "🌱"
+                        }
+                    }
+                }
+            },
+            "data": {
+                "items": {
+                    "type": "item", "values": [
+                        { "name": "Diet Coke (1.5L)", "category": "largeDrink" },
+                        { "name": "Fanta (0.5L)", "category": "smallDrink" },
+                        { "name": "Olives", "category": "plant" }
+                    ]
+                }
+            }
+        }`,
+            
         // extended type not in data
-        '{"init":{"item":{"name":{"type":"string"},"category":{"type":"string","enum":{"largeDrink":"🍺","smallDrink":"🥤","plant":"🌱"}}}},"data":{"items":{"type":"product","values":[{"name":"Diet Coke (1.5L)","category":"largeDrink"},{"name":"Fanta (0.5L)","category":"smallDrink"},{"name":"Olives","category":"plant"}]}}}',
+        `{
+            "init": {
+                "item": {
+                    "name": {
+                        "type": "string"
+                    },
+                    "category": {
+                        "type": "string",
+                        "enum": {
+                            "largeDrink": "🍺",
+                            "smallDrink": "🥤",
+                            "plant": "🌱"
+                        }
+                    }
+                }
+            },
+            "data": {
+                "items": {
+                    "type": "product",
+                    "values": [
+                        { "name": "Diet Coke (1.5L)", "category": "largeDrink" },
+                        { "name": "Fanta (0.5L)", "category": "smallDrink" },
+                        { "name": "Olives", "category": "plant" }
+                    ]
+                }
+            }
+        }`
+        
     ]
 
 }

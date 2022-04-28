@@ -1,23 +1,27 @@
 {"sub":"Type validation library"}
 
-In this section I illustrate the functional aspect of my proposal, written with the JavaScript language and phrased as a library. I present the intent of my library, and then relate the components of its validation process to the components of my syntax proposal.
+A library is a collection of utilities that in combination achieve a shared goal. In this instance, the TXON library is instantiated as a TXON object and its method provides validation of a JSON String.
+
+In the following I present the features, intent and structure of my library.
 
 <br>
 
 **Features**
 
-This library supports the following features, with the aim of validating information based on its instantiated type, which corresponds to a type declaration of requirements for validity.
-
-The developer can declare their own types, or declare extensions of existing types using a dot-syntax. There is support for infinite nesting and various syntaxes for declaration and instantiation.
-
-*Extended types* are specified as requirements and instantiated for validation purposes.
-
-*Extension of types* allows you to inherit an existing type (incl. beyond JSON types, that is self-declared types) while extending it with new requirements.
+This library supports the following validation features, reflecting syntactical features in the .txon data format.
 
 - Type specification declaration (in *init property*).
 - Type instantiation (in *data property*).
 - Optional values (ignored during validation).
 - Default value insertion (for type misconformance).
+
+Users can declare their own extended types (e.g. "date"), or declare extensions of JSON types or extended types using a dot-syntax (e.g. "string.date" or "date.month"). 
+
+*Extended types* are specified as enumerations and instantiated by associating data with the type. This is further presented in the syntax proposal.
+
+*Extension of types* allows you to inherit the requirements of an existing type, while extending it as a sub-type with an enumeration. This is further presented in the syntax proposal.
+
+In the following I present my intent with TXON, by providing an overview of the library as an object in JavaScript.
 
 <br>
 

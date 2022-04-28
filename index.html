@@ -4,21 +4,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>html{background-color:black}</style>
+    <style> html { background-color: black } </style>
     <script src="txon.js"></script>
     <script>
 
-        /*
-        console.log(
-            TXON.docs
-        )
-        */
-
         TXON.tests.forEach(test => {
             const valid = TXON.handshake(test)
-            if (valid.result) {
-                console.log(valid.result)
-            } else {
+            if (!valid.result) {
                 console.log(valid.error)
             }
         })
