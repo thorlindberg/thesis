@@ -1,12 +1,29 @@
-{"sub":"Validation library"}
+{"sub":"Type validation library"}
 
 In this section I illustrate the functional aspect of my proposal, written with the JavaScript language and phrased as a library. I present the intent of my library, and then relate the components of its validation process to the components of my syntax proposal.
 
 <br>
 
+**Features**
+
+This library supports the following features, with the aim of validating information based on its instantiated type, which corresponds to a type declaration of requirements for validity.
+
+The developer can declare their own types, or declare extensions of existing types using a dot-syntax. There is support for infinite nesting and various syntaxes for declaration and instantiation.
+
+*Extended types* are specified as requirements and instantiated for validation purposes.
+
+*Extension of types* allows you to inherit an existing type (incl. beyond JSON types, that is self-declared types) while extending it with new requirements.
+
+- Type specification declaration (in *init property*).
+- Type instantiation (in *data property*).
+- Optional values (ignored during validation).
+- Default value insertion (for type misconformance).
+
+<br>
+
 **Intended use**
 
-The txon.js library *handshakes* a JSON String, validating conformance of its "data" property to extended type declarations from its "init" property. TXON is initialised as an Object with a *docs* method, *handshake* method, and *tests* property.
+The txon.js library *handshakes* a JSON String, validating conformance of its *data property* to extended type declarations from its "init" property. TXON is initialised as an Object with a *docs method*, *handshake method*, and *tests property*.
 
 Docs requires no input parameters and returns a String documenting the intended use of my library. This approach ensures that the code is documented as it is written, but it exists only at the top-level of the library rather than in individual components.
 
@@ -60,7 +77,7 @@ TXON.tests.forEach(test => {
 
 <br>
 
-**Validation process**
+**Process**
 
 The validation process consists of steps. Each step corresponds to a feature from the proposed syntax, and can return its own descriptive error if non-conformance is encountered. In the case of non-conformance, the process will not continue with the next step if any, thus reducing unnecessary computation. If non-conformance is not encountered in any step, no error will be returned.
 
@@ -70,7 +87,7 @@ The extensible nature of the proposed syntax necessitates that validation be per
 
 <br>
 
-**Validation steps**
+**Implementation**
 
 ...
 
@@ -133,41 +150,7 @@ const checkConformance = (property) => {
     if (typeof property === "array") {
         property.forEach(n => checkConformance(n))
     }
-    const isExtendedType = property.hasOwnProperty("type") && property.hasOwnProperty("values") && initialiser.hasOwnProperty(property.type)
-    if (isExtendedType) {
-        property.values.forEach(value => {
-            const objprops = Object.getOwnPropertyNames(value)
-            const initprops = Object.getOwnPropertyNames(initialiser[property.type])
-            const propsConform = objprops.toString() === initprops.toString() 
-            if (!propsConform) {
-                error.push(
-                    `ERROR: properties of extended type do not conform to init. ${objprops} and ${initprops}`
-                )
-            } else {
-                objprops.forEach(prop => {
-                    const valuetype = typeof value[prop]
-                    const inittype = initialiser[property.type][prop].type
-                    const typesConform = valuetype === inittype
-                    if (!typesConform) {
-                        error.push(
-                            `ERROR: value type does not conform to init. ${valuetype} and ${inittype}`
-                        )
-                    } else {
-                        const hasEnum = initialiser[property.type][prop].hasOwnProperty("enum")
-                        if (hasEnum) {
-                            const objenum = Object.getOwnPropertyNames(initialiser[property.type][prop].enum)
-                            const enumsConform = objenum.includes(value[prop])
-                            if (!enumsConform) {
-                                error.push(
-                                    `ERROR: enum value does not conform to init. ${value[prop]} not in ${objenum}`
-                                )
-                            }
-                        }
-                    }
-                })
-            }
-        })
-    }
+    ...
 }
 checkConformance(data)
 ```
