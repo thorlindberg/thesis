@@ -144,17 +144,44 @@ const TXON = {
 
         {
             "valid": false,
-            "feedback": "instantated extended type ... has property ... of mismatched type ...",
+            "feedback": `instantiated extended type "date" is missing required property "month" of type "string"`,
             "json": `{
-                ...
+                "init": {
+                    "number.date": {
+                        "month": {
+                            "min": 1,
+                            "max": 12,
+                            "default": 1
+                        }
+                    }
+                },
+                "data": [
+                    {
+                        "type": "number.date"
+                    }
+                ]
             }`
         },
 
         {
             "valid": false,
-            "feedback": "instantiated extended type ... is missing ... required property/properties",
+            "feedback": `instantated extended type "date" has property "month" of mismatched type "string" but should have type "number"`,
             "json": `{
-                ...
+                "init": {
+                    "number.date": {
+                        "month": {
+                            "min": 1,
+                            "max": 12,
+                            "default": 1
+                        }
+                    }
+                },
+                "data": [
+                    {
+                        "type": "number.date",
+                        "month": "four"
+                    }
+                ]
             }`
         }
         
