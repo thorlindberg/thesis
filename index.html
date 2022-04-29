@@ -9,10 +9,13 @@
     <script>
 
         TXON.tests.forEach(test => {
-            const valid = TXON.handshake(test)
-            if (!valid.result) {
-                console.log(valid.error)
-            }
+            const validation = TXON.handshake(test.json)
+            console.log(
+                test.result,
+                test.feedback,
+                validation.result,
+                validation.feedback
+            )
         })
 
     </script>

@@ -13,7 +13,7 @@ const TXON = {
         if (hasJSON) {
             object = JSON.parse(json)
         } else {
-            return { result: false, error: "ERROR: could not parse JSON" }
+            return { result: false, feedback: "could not parse JSON" }
         }
 
         // check: has .init prop
@@ -21,7 +21,7 @@ const TXON = {
         if (hasInit) {
             initialiser = object.init
         } else {
-            return { result: false, error: "ERROR: .init property not found in JSON" }
+            return { result: false, feedback: "init property not found in JSON" }
         }
 
         // check: has .data prop
@@ -29,16 +29,16 @@ const TXON = {
         if (hasData) {
             data = object.data
         } else {
-            return { result: false, error: "ERROR: .data property not found in JSON" }
+            return { result: false, feedback: "data property not found in JSON" }
         }
 
         // check: .data contains object[s] conforming to extended type[s] defined in .init
-        const validateConformance = (property) => {
+        const conformance = (property) => {
             if (typeof property === "object") {
-                Object.values(property).forEach(n => validateConformance(n))
+                Object.values(property).forEach(n => conformance(n))
             }
             if (typeof property === "array") {
-                property.forEach(n => validateConformance(n))
+                property.forEach(n => conformance(n))
             }
             const isExtendedType = property.hasOwnProperty("type") && property.hasOwnProperty("values") && initialiser.hasOwnProperty(property.type)
             if (isExtendedType) {
@@ -47,21 +47,21 @@ const TXON = {
                     const initprops = Object.getOwnPropertyNames(initialiser[property.type])
                     const propsConform = objprops.toString() === initprops.toString() 
                     if (!propsConform) {
-                        return { result: false, error: `ERROR: properties of extended type do not conform to init. ${objprops} and ${initprops}` }
+                        return { result: false, feedback: `properties of extended type do not conform to init. ${objprops} and ${initprops}` }
                     } else {
                         objprops.forEach(prop => {
                             const valuetype = typeof value[prop]
                             const inittype = initialiser[property.type][prop].type
                             const typesConform = valuetype === inittype
                             if (!typesConform) {
-                                return { result: false, error: `ERROR: value type does not conform to init. ${valuetype} and ${inittype}` }
+                                return { result: false, feedback: `value type does not conform to init. ${valuetype} and ${inittype}` }
                             } else {
                                 const hasEnum = initialiser[property.type][prop].hasOwnProperty("enum")
                                 if (hasEnum) {
                                     const objenum = Object.getOwnPropertyNames(initialiser[property.type][prop].enum)
                                     const enumsConform = objenum.includes(value[prop])
                                     if (!enumsConform) {
-                                        return { result: false, error: `ERROR: enum value does not conform to init. ${value[prop]} not in ${objenum}` }
+                                        return { result: false, feedback: `enum value does not conform to init. ${value[prop]} not in ${objenum}` }
                                     }
                                 }
                             }
@@ -70,17 +70,69 @@ const TXON = {
                 })
             }
         }
-        validateConformance(data)
+        conformance(data)
 
         // all checks passed
-        return { result: true, error: null }
+        return { result: true, feedback: "all checks passed succesfully" }
 
     },
 
     tests: [
 
-        // test: 
-        ``,
+        {
+            "result": Boolean,
+            "feedback": String,
+            "json": `{
+                ...
+            }`
+        },
+
+        {
+            "result": true,
+            "feedback": "init property not found",
+            "json": `{
+                "data": []
+            }`
+        },
+
+        {
+            "result": true,
+            "feedback": "data property not found",
+            "json": `{
+                "init": {}
+            }`
+        },
+
+        {
+            "result": true,
+            "feedback": "extended type not instantiated",
+            "json": `{
+                "init": {
+                    "number.date": {
+                        "month": {
+                            "min": 1,
+                            "max": 12,
+                            "default": 1
+                        }
+                    }
+                },
+                "data": []
+            }`
+        },
+
+        {
+            "result": true,
+            "feedback": "extended type not declared",
+            "json": `{
+                "init": {},
+                "data": [
+                    {
+                        "type": "number.date",
+                        "month": 4
+                    }
+                ]
+            }`
+        },
 
         // --------- OLD TESTS BELOW ---------
 
