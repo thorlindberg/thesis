@@ -33,12 +33,12 @@ const TXON = {
         }
 
         // check: .data contains object[s] conforming to extended type[s] defined in .init
-        const checkConformance = (property) => {
+        const validateConformance = (property) => {
             if (typeof property === "object") {
-                Object.values(property).forEach(n => checkConformance(n))
+                Object.values(property).forEach(n => validateConformance(n))
             }
             if (typeof property === "array") {
-                property.forEach(n => checkConformance(n))
+                property.forEach(n => validateConformance(n))
             }
             const isExtendedType = property.hasOwnProperty("type") && property.hasOwnProperty("values") && initialiser.hasOwnProperty(property.type)
             if (isExtendedType) {
@@ -70,7 +70,7 @@ const TXON = {
                 })
             }
         }
-        checkConformance(data)
+        validateConformance(data)
 
         // all checks passed
         return { result: true, error: null }
@@ -79,7 +79,12 @@ const TXON = {
 
     tests: [
 
-        // parseable JSON
+        // test: 
+        ``,
+
+        // --------- OLD TESTS BELOW ---------
+
+        // test: parseable JSON
         `{
             "init": {
                 "item": {
@@ -108,7 +113,7 @@ const TXON = {
             }
         }`,
 
-        // properties mismatch between data and init
+        // test: properties mismatch between data and init
         `{
             "init": {
                 "item": {
@@ -137,7 +142,7 @@ const TXON = {
             }
         }`,
 
-        // type mismatch with property in extended type
+        // test: type mismatch with property in extended type
         `{
             "init": {
                 "item": {
@@ -165,7 +170,7 @@ const TXON = {
             }
         }`,
 
-        // value mismatch with enum
+        // test: value mismatch with enum
         `{
             "init": {
                 "item": {
@@ -194,7 +199,7 @@ const TXON = {
             }
         }`,
 
-        // combined three errors above this
+        // test: combined three errors above this
         `{
             "init": {
                 "item": {
@@ -223,7 +228,7 @@ const TXON = {
             }
         }`,
 
-        // extended type in init and data
+        // test: extended type in init and data
         `{
             "init": {
                 "item": {
@@ -251,7 +256,7 @@ const TXON = {
             }
         }`,
 
-        // extended type not in init
+        // test: extended type not in init
         `{
             "init": {
                 "product": {
@@ -279,7 +284,7 @@ const TXON = {
             }
         }`,
             
-        // extended type not in data
+        // test: extended type not in data
         `{
             "init": {
                 "item": {
@@ -311,3 +316,154 @@ const TXON = {
     ]
 
 }
+
+
+/*
+
+// example: individual declaration and instantiation
+
+{
+    "init": {
+        "date": {
+            "month": {
+                "type": "number",
+                "min": 1,
+                "max": 12,
+                "default": 1
+            },
+            "day": {
+                "type": "number",
+                "min": 1,
+                "max": 31
+            },
+            "year": {
+                "type": "number",
+                "default": null
+            }
+        }
+    },
+    "data": [
+        {
+            "type": "date",
+            "month": 10,
+            "day": 28,
+            "year": 2005
+        },
+        {
+            "type": "date",
+            "day": 28
+        },
+        {
+            "type": "date",
+            "month": 10,
+            "day": 28
+        }
+    ]
+}
+
+// example: shared declaration (type) and instantiation
+
+{
+    "init": {
+        "date": {
+            "type": "number",
+            "month": {
+                "min": 1,
+                "max": 12,
+                "default": 1
+            },
+            "day": {
+                "min": 1,
+                "max": 31
+            },
+            "year": {
+                "default": null
+            }
+        }
+    },
+    "data": {
+        "type": "date",
+        "values": [
+            {
+                "month": 10,
+                "day": 28,
+                "year": 2005
+            },
+            {
+                "day": 28
+            },
+            {
+                "month": 10,
+                "day": 28
+            }
+        ]
+    }
+}
+
+// example: shared declaration (type, min, max, default) and instantiation
+
+{
+    "init": {
+        "person": {
+            "type": "string",
+            "min": 1,
+            "max": 256,
+            "default": "not found",
+            "properties" : [
+                "firstname",
+                "lastname"
+            ]
+        }
+    },
+    "data": {
+        "type": "person",
+        "values": [
+            {
+                "firstname": "thor",
+                "lastname": "lindberg"
+            }
+        ]
+    }
+}
+
+// example: shared declaration with overrides (type, min, max, default) and instantiation
+
+{
+    "init": {
+        "person": {
+            "type": "string",
+            "min": 1,
+            "max": 256,
+            "default": "not found",
+            "properties" : [
+                "firstname",
+                "lastname"
+            ],
+            "age": {
+                "type": "number",
+                "min": 0,
+                "max": 200,
+                "default": null
+            }
+        }
+    },
+    "data": {
+        "type": "person",
+        "values": [
+            {
+                "firstname": "thor",
+                "lastname": "lindberg",
+                "age": 25
+            },
+            {
+                "firstname": "thor",
+                "lastname": "lindberg"
+            },
+            {
+                "age": 25
+            }
+        ]
+    }
+}
+
+*/
