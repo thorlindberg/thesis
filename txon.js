@@ -144,7 +144,52 @@ const TXON = {
 
         {
             "valid": false,
-            "feedback": `instantiated extended type "date" is missing required property "month" of type "string"`,
+            "feedback": `instance of extended type "date" is missing required property "month"`,
+            "json": `{
+                "init": {
+                    "date": {
+                        "type": "number",
+                        "month": {
+                            "min": 1,
+                            "max": 12,
+                            "default": 1
+                        }
+                    }
+                },
+                "data": [
+                    {
+                        "type": "number.date"
+                    }
+                ]
+            }`
+        },
+
+        {
+            "valid": false,
+            "feedback": `instance of extended type "date" has property "month" of type "string" but requires type "number"`,
+            "json": `{
+                "init": {
+                    "date": {
+                        "type": "number",
+                        "month": {
+                            "min": 1,
+                            "max": 12,
+                            "default": 1
+                        }
+                    }
+                },
+                "data": [
+                    {
+                        "type": "number.date",
+                        "month": "four"
+                    }
+                ]
+            }`
+        },
+
+        {
+            "valid": false,
+            "feedback": `instance of type extension "number.date" is missing required property "month"`,
             "json": `{
                 "init": {
                     "number.date": {
@@ -165,7 +210,7 @@ const TXON = {
 
         {
             "valid": false,
-            "feedback": `instantated extended type "date" has property "month" of mismatched type "string" but should have type "number"`,
+            "feedback": `instance of type extension "number.date" has property "month" of mismatched type "string"`,
             "json": `{
                 "init": {
                     "number.date": {
