@@ -8,31 +8,36 @@ const TXON = {
 
         let object, initialiser, data
 
-        // check: parsing JSON to JS
+        // check: parsing JSON to JS Object
         const hasJSON = true
         if (hasJSON) {
             object = JSON.parse(json)
         } else {
-            return { valid: false, feedback: "could not parse JSON" }
+            return { valid: true, feedback: "could not parse JSON" }
         }
 
-        // check: has .init prop
+        // check: Object has .init prop
         const hasInit = object.hasOwnProperty("init")
         if (hasInit) {
             initialiser = object.init
         } else {
-            return { valid: false, feedback: "init property not found in JSON" }
+            return { valid: true, feedback: "init property not found" }
         }
 
-        // check: has .data prop
+        // check: Object has .data prop
         const hasData = object.hasOwnProperty("data")
         if (hasData) {
             data = object.data
         } else {
-            return { valid: false, feedback: "data property not found in JSON" }
+            return { valid: true, feedback: "data property not found" }
         }
 
-        // check: .data contains object[s] conforming to extended type[s] defined in .init
+        // check: extended type declared but no instance
+        // check: extended type instantiated but not declared
+        // check: type extension declared but no instance
+        // check: type extension instantiated but not declared
+
+        // check: data contains object[s] conforming to extended type[s] defined in init
         const conformance = (property) => {
             if (typeof property === "object") {
                 Object.values(property).forEach(n => conformance(n))
@@ -114,7 +119,8 @@ const TXON = {
             "feedback": "extended type not instantiated",
             "json": `{
                 "init": {
-                    "number.date": {
+                    "date": {
+                        "type": "month",
                         "month": {
                             "min": 1,
                             "max": 12,
@@ -129,6 +135,37 @@ const TXON = {
         {
             "valid": true,
             "feedback": "extended type not declared",
+            "json": `{
+                "init": {},
+                "data": [
+                    {
+                        "type": "date",
+                        "month": 4
+                    }
+                ]
+            }`
+        },
+
+        {
+            "valid": true,
+            "feedback": "type extension not instantiated",
+            "json": `{
+                "init": {
+                    "number.date": {
+                        "month": {
+                            "min": 1,
+                            "max": 12,
+                            "default": 1
+                        }
+                    }
+                },
+                "data": []
+            }`
+        },
+
+        {
+            "valid": true,
+            "feedback": "type extension not declared",
             "json": `{
                 "init": {},
                 "data": [
