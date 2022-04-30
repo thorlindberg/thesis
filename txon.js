@@ -32,11 +32,90 @@ const TXON = {
             return { valid: true, feedback: "data property not found" }
         }
 
-        // check: extended type declared but no instance
-        // check: extended type instantiated but not declared
-        // check: type extension declared but no instance
-        // check: type extension instantiated but not declared
+        // loop through initialiser and find type declaration
+            // loop through data and find matching type instance
+                    //  validate instance based on requirements declaration
+                        // throw error if mismatch
 
+        for (var property of Object.getOwnPropertyNames(initialiser)) {
+
+            const isObject = typeof initialiser[property] == "object"
+            if (isObject) {
+
+                // extended type
+                const hasNoDot = !property.includes(".")
+                if (hasNoDot) {
+
+                    const JSONTypes = ["string", "number", "integer", "object", "array", "boolean", "null"]
+                    const endsWithCustomType = !JSONTypes.includes(property)
+                    if (endsWithCustomType) {
+
+                        const hasType = property.hasOwnProperty("type")
+                        if (hasType) {
+                            
+                            const JSONTypes = ["string", "number", "integer", "object", "array", "boolean", "null"]
+                            const isJSONType = JSONTypes.includes(property.type)
+                            if (isJSONType) {
+
+                                // has default? -> conforms to type?
+                                // has min? -> conforms to type?
+                                // has max? -> conforms to type?
+
+                                // has enum?
+                                    // is array? (collection)
+                                    // is object?
+                                        // has default? -> conforms to type?
+                                        // has min? -> conforms to type?
+                                        // has max? -> conforms to type?
+
+                            }
+
+                        }
+
+                    }
+
+                }
+
+                // type extension
+                const hasDot = property.includes(".")
+                if (hasDot) {
+
+                    const hasSingleDot = property.split(".").length === 2
+                    if (hasSingleDot) {
+
+                        const JSONTypes = ["string", "number", "integer", "object", "array", "boolean", "null"]
+                        const startsWithJSONType = JSONTypes.includes(property.split(".")[0])
+                        const endsWithCustomType = !JSONTypes.includes(property.split(".")[1])
+                        if (startsWithJSONType && endsWithCustomType) {
+                            //
+                        }
+
+                    }
+
+                }
+                
+            }
+
+        }
+
+        /*
+        const recursion = (n) => {
+
+        }
+
+        // recursively checking nested data
+        const conformance = (n) => {
+            if (typeof n === "object") {
+                Object.values(property).forEach(n => conformance(n))
+            }
+            if (typeof n === "array") {
+                property.forEach(n => conformance(n))
+            }
+        }
+        conformance(data)
+        */
+
+        /*
         // check: data contains object[s] conforming to extended type[s] defined in init
         const conformance = (property) => {
             if (typeof property === "object") {
@@ -76,6 +155,7 @@ const TXON = {
             }
         }
         conformance(data)
+        */
 
         // all checks passed
         return { valid: true, feedback: "all checks passed succesfully" }
@@ -83,18 +163,6 @@ const TXON = {
     },
 
     tests: [
-
-        // template
-
-        /*
-        {
-            "valid": Boolean,
-            "feedback": String,
-            "json": `{
-                ...
-            }`
-        },
-        */
 
         // returns true
 
@@ -116,11 +184,11 @@ const TXON = {
 
         {
             "valid": true,
-            "feedback": "extended type not instantiated",
+            "feedback": `extended type "date" declared but not instantiated`,
             "json": `{
                 "init": {
                     "date": {
-                        "type": "month",
+                        "type": "number",
                         "month": {
                             "min": 1,
                             "max": 12,
@@ -134,7 +202,7 @@ const TXON = {
 
         {
             "valid": true,
-            "feedback": "extended type not declared",
+            "feedback": `extended type "date" intantiated but not declared`,
             "json": `{
                 "init": {},
                 "data": [
@@ -148,7 +216,7 @@ const TXON = {
 
         {
             "valid": true,
-            "feedback": "type extension not instantiated",
+            "feedback": `type extension "number.date" declared but not instantiated`,
             "json": `{
                 "init": {
                     "number.date": {
@@ -165,7 +233,7 @@ const TXON = {
 
         {
             "valid": true,
-            "feedback": "type extension not declared",
+            "feedback": `type extension "number.date" instantaited but not declared`,
             "json": `{
                 "init": {},
                 "data": [
