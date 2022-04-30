@@ -39,7 +39,7 @@ const TXON = {
 
         for (var property of Object.getOwnPropertyNames(initialiser)) {
 
-            const isObject = typeof initialiser[property] == "object"
+            const isObject = typeof initialiser[property] === "object"
             if (isObject) {
 
                 // extended type
@@ -47,26 +47,114 @@ const TXON = {
                 if (hasNoDot) {
 
                     const JSONTypes = ["string", "number", "integer", "object", "array", "boolean", "null"]
-                    const endsWithCustomType = !JSONTypes.includes(property)
-                    if (endsWithCustomType) {
+                    const hasCustomType = !JSONTypes.includes(property)
+                    if (hasCustomType) {
 
-                        const hasType = property.hasOwnProperty("type")
+                        const hasType = initialiser[property].hasOwnProperty("type")
                         if (hasType) {
                             
                             const JSONTypes = ["string", "number", "integer", "object", "array", "boolean", "null"]
-                            const isJSONType = JSONTypes.includes(property.type)
+                            const isJSONType = JSONTypes.includes(initialiser[property].type)
                             if (isJSONType) {
 
-                                // has default? -> conforms to type?
-                                // has min? -> conforms to type?
-                                // has max? -> conforms to type?
+                                const hasSharedDefault = initialiser[property].hasOwnProperty("default")
+                                if (hasSharedDefault) {
+                                    const typeMismatch = typeof initialiser[property].default != typeof initialiser[property].type
+                                    if (typeMismatch) {
+                                        return { valid: true, feedback: `extended type "${property}" has shared default of mismatched type ${typeof initialiser[property].default}` }
+                                    }
+                                }
 
-                                // has enum?
-                                    // is array? (collection)
-                                    // is object?
-                                        // has default? -> conforms to type?
-                                        // has min? -> conforms to type?
-                                        // has max? -> conforms to type?
+                                const hasSharedMinimum = initialiser[property].hasOwnProperty("minimum")
+                                if (hasSharedMinimum) {
+                                    const typeMismatch = typeof initialiser[property].minimum != typeof initialiser[property].type
+                                    if (typeMismatch) {
+                                        return { valid: true, feedback: `extended type "${property}" has shared minimum of mismatched type ${typeof initialiser[property].minimum}` }
+                                    }
+                                }
+
+                                const hasSharedMaximum = initialiser[property].hasOwnProperty("maximum")
+                                if (hasSharedMaximum) {
+                                    const typeMismatch = typeof initialiser[property].maximum != typeof initialiser[property].type
+                                    if (typeMismatch) {
+                                        return { valid: true, feedback: `extended type "${property}" has shared maximum of mismatched type ${typeof initialiser[property].minimum}` }
+                                    }
+                                }
+
+                                for (var enumeration of Object.getOwnPropertyNames(property)) {
+
+                                    const isObject = typeof property[enumeration] === "object"
+                                    if (isObject) {
+
+                                        const hasNoType = !property[enumeration].hasOwnProperty("type")
+                                        if (hasNoType) {
+                                            
+                                            const hasDefault = property[enumeration].hasOwnProperty("default")
+                                            if (hasDefault) {
+                                                const typeMismatch = typeof property[enumeration].default != typeof initialiser[property].type
+                                                if (typeMismatch) {
+                                                    return { valid: true, feedback: `extended type "${property}" has enumeration ${enumeration} with default of mismatched type ${typeof initialiser[property].default}` }
+                                                }
+                                            }
+
+                                            const hasMinimum = property[enumeration].hasOwnProperty("minimum")
+                                            if (hasMinimum) {
+                                                const typeMismatch = typeof property[enumeration].minimum != typeof initialiser[property].type
+                                                if (typeMismatch) {
+                                                    return { valid: true, feedback: `extended type "${property}" has enumeration ${enumeration} with minimum of mismatched type ${typeof initialiser[property].minimum}` }
+                                                }
+                                            }
+
+                                            const hasMaximum = property[enumeration].hasOwnProperty("maximum")
+                                            if (hasMaximum) {
+                                                const typeMismatch = typeof property[enumeration].maximum != typeof initialiser[property].type
+                                                if (typeMismatch) {
+                                                    return { valid: true, feedback: `extended type "${property}" has enumeration ${enumeration} with maximum of mismatched type ${typeof initialiser[property].minimum}` }
+                                                }
+                                            }
+
+                                        }
+
+                                        const hasType = property[enumeration].hasOwnProperty("type")
+                                        if (hasType) {
+                                            
+                                            const JSONTypes = ["string", "number", "integer", "object", "array", "boolean", "null"]
+                                            const isJSONType = JSONTypes.includes(property[enumeration].type)
+                                            if (isJSONType) {
+
+                                                const hasDefault = property[enumeration].hasOwnProperty("default")
+                                                if (hasDefault) {
+                                                    const typeMismatch = typeof property[enumeration].default != typeof property[enumeration].type
+                                                    if (typeMismatch) {
+                                                        return { valid: true, feedback: `extended type "${property}" has enumeration ${enumeration} with default of mismatched type ${typeof initialiser[property].default}` }
+                                                    }
+                                                }
+
+                                                const hasMinimum = property[enumeration].hasOwnProperty("minimum")
+                                                if (hasMinimum) {
+                                                    const typeMismatch = typeof property[enumeration].minimum != typeof property[enumeration].type
+                                                    if (typeMismatch) {
+                                                        return { valid: true, feedback: `extended type "${property}" has enumeration ${enumeration} with minimum of mismatched type ${typeof initialiser[property].minimum}` }
+                                                    }
+                                                }
+
+                                                const hasMaximum = property[enumeration].hasOwnProperty("maximum")
+                                                if (hasMaximum) {
+                                                    const typeMismatch = typeof property[enumeration].maximum != typeof property[enumeration].type
+                                                    if (typeMismatch) {
+                                                        return { valid: true, feedback: `extended type "${property}" has enumeration ${enumeration} with maximum of mismatched type ${typeof initialiser[property].minimum}` }
+                                                    }
+                                                }
+                                                    
+                                            }
+
+                                        }
+
+                                    }
+
+                                }
+
+                                // something about "enumerations": [...] for shared??? probably not
 
                             }
 
@@ -190,8 +278,8 @@ const TXON = {
                     "date": {
                         "type": "number",
                         "month": {
-                            "min": 1,
-                            "max": 12,
+                            "minimum": 1,
+                            "maximum": 12,
                             "default": 1
                         }
                     }
@@ -221,8 +309,8 @@ const TXON = {
                 "init": {
                     "number.date": {
                         "month": {
-                            "min": 1,
-                            "max": 12,
+                            "minimum": 1,
+                            "maximum": 12,
                             "default": 1
                         }
                     }
@@ -255,8 +343,8 @@ const TXON = {
                     "date": {
                         "type": "number",
                         "month": {
-                            "min": 1,
-                            "max": 12,
+                            "minimum": 1,
+                            "maximum": 12,
                             "default": 1
                         }
                     }
@@ -277,8 +365,8 @@ const TXON = {
                     "date": {
                         "type": "number",
                         "month": {
-                            "min": 1,
-                            "max": 12,
+                            "minimum": 1,
+                            "maximum": 12,
                             "default": 1
                         }
                     }
@@ -299,8 +387,8 @@ const TXON = {
                 "init": {
                     "number.date": {
                         "month": {
-                            "min": 1,
-                            "max": 12,
+                            "minimum": 1,
+                            "maximum": 12,
                             "default": 1
                         }
                     }
@@ -320,8 +408,8 @@ const TXON = {
                 "init": {
                     "number.date": {
                         "month": {
-                            "min": 1,
-                            "max": 12,
+                            "minimum": 1,
+                            "maximum": 12,
                             "default": 1
                         }
                     }
@@ -348,14 +436,14 @@ const TXON = {
         "date": {
             "month": {
                 "type": "number",
-                "min": 1,
-                "max": 12,
+                "minimum": 1,
+                "maximum": 12,
                 "default": 1
             },
             "day": {
                 "type": "number",
-                "min": 1,
-                "max": 31
+                "minimum": 1,
+                "maximum": 31
             },
             "year": {
                 "type": "number",
@@ -389,13 +477,13 @@ const TXON = {
         "date": {
             "type": "number",
             "month": {
-                "min": 1,
-                "max": 12,
+                "minimum": 1,
+                "maximum": 12,
                 "default": 1
             },
             "day": {
-                "min": 1,
-                "max": 31
+                "minimum": 1,
+                "maximum": 31
             },
             "year": {
                 "default": null
@@ -427,10 +515,10 @@ const TXON = {
     "init": {
         "person": {
             "type": "string",
-            "min": 1,
-            "max": 256,
+            "minimum": 1,
+            "maximum": 256,
             "default": "not found",
-            "properties" : [
+            "enumerations" : [
                 "firstname",
                 "lastname"
             ]
@@ -453,17 +541,17 @@ const TXON = {
     "init": {
         "person": {
             "type": "string",
-            "min": 1,
-            "max": 256,
+            "minimum": 1,
+            "maximum": 256,
             "default": "not found",
-            "properties" : [
+            "enumerations" : [
                 "firstname",
                 "lastname"
             ],
             "age": {
                 "type": "number",
-                "min": 0,
-                "max": 200,
+                "minimum": 0,
+                "maximum": 200,
                 "default": null
             }
         }
