@@ -16,7 +16,7 @@ const TXON = {
             return { valid: true, feedback: "could not parse JSON" }
         }
 
-        // check: Object has .init prop
+        // check: Object has "init" property
         const hasInit = object.hasOwnProperty("init")
         if (hasInit) {
             initialiser = object.init
@@ -24,7 +24,7 @@ const TXON = {
             return { valid: true, feedback: "init property not found" }
         }
 
-        // check: Object has .data prop
+        // check: Object has "data" property
         const hasData = object.hasOwnProperty("data")
         if (hasData) {
             data = object.data
@@ -37,6 +37,7 @@ const TXON = {
                     //  validate instance based on requirements declaration
                         // throw error if mismatch
 
+        // check: type-extensibility is correctly initialised
         for (var property of Object.getOwnPropertyNames(initialiser)) {
 
             const JSONTypes = ["string", "integer", "integer", "object", "array", "boolean", "null"]
