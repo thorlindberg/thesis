@@ -9,10 +9,9 @@ const TXON = {
         let object, initialiser, data
 
         // check: parsing JSON to JS Object
-        const hasJSON = true
-        if (hasJSON) {
+        try {
             object = JSON.parse(json)
-        } else {
+        } catch {
             return { valid: true, feedback: "could not parse JSON" }
         }
 
@@ -40,17 +39,18 @@ const TXON = {
         // check: type-extensibility is correctly initialised
         for (var property of Object.getOwnPropertyNames(initialiser)) {
 
-            const JSONTypes = ["string", "integer", "integer", "object", "array", "boolean", "null"]
+            const JSONTypes = ["string", "integer", "number", "object", "array", "boolean", "null"]
 
             // property value is of type Object
             const isObject = typeof initialiser[property] === "object"
 
             // name is type extension
             var isTypeExtensionName;
+            var firstType;
             const hasDot = property.includes(".")
             if (hasDot) {
                 const hasSingleDot = property.split(".").length === 2
-                const firstType = property.split(".")[0]
+                firstType = property.split(".")[0]
                 const secondType = property.split(".")[1]
                 if (hasSingleDot) {
                     const startsWithJSONType = JSONTypes.includes(firstType)
@@ -69,7 +69,7 @@ const TXON = {
                     const propertyType = initialiser[property].type
                     const typeMatchesJSON = JSONTypes.includes(propertyType)
                     if (!typeMatchesJSON) {
-                        return { valid: true, feedback: `extended type "${property}" has invalid shared JSON "type" declaration ${propertyType}` }
+                        return { valid: true, feedback: `extended type "${property}" has invalid shared JSON "type" declaration "${propertyType}"` }
                     }
 
                     // property value has property default with value of type matching type property
@@ -78,7 +78,7 @@ const TXON = {
                         const defaultType = typeof initialiser[property].default
                         const defaultMatchesType = defaultType === propertyType
                         if (!defaultMatchesType) {
-                            return { valid: true, feedback: `extended type "${property}" has shared default of mismatched type ${defaultType}` }
+                            return { valid: true, feedback: `extended type "${property}" has shared default of mismatched type "${defaultType}"` }
                         }
                     }
 
@@ -88,7 +88,7 @@ const TXON = {
                         const minType = typeof initialiser[property].minimum
                         const minMatchesType = minType === propertyType
                         if (!minMatchesType) {
-                            return { valid: true, feedback: `extended type "${property}" has shared minimum of mismatched type ${minType}` }
+                            return { valid: true, feedback: `extended type "${property}" has shared minimum of mismatched type "${minType}"` }
                         }
                     }
 
@@ -98,7 +98,7 @@ const TXON = {
                         const maxType = typeof initialiser[property].maximum
                         const maxMatchesType = maxType === propertyType
                         if (!maxMatchesType) {
-                            return { valid: true, feedback: `extended type "${property}" has shared maximum of mismatched type ${maxType}` }
+                            return { valid: true, feedback: `extended type "${property}" has shared maximum of mismatched type "${maxType}"` }
                         }
                     }
 
@@ -109,27 +109,30 @@ const TXON = {
                     // property value has property default with value of type matching type property
                     const hasSharedDefault = initialiser[property].hasOwnProperty("default")
                     if (hasSharedDefault) {
-                        const defaultMatchesType = typeof initialiser[property].default === firstType
+                        const defaultType = typeof initialiser[property].default
+                        const defaultMatchesType = defaultType === firstType
                         if (!defaultMatchesType) {
-                            return { valid: true, feedback: `extended type "${property}" has shared default of mismatched type ${typeof initialiser[property].default}` }
+                            return { valid: true, feedback: `type extension "${property}" has shared default of mismatched type "${defaultType}"` }
                         }
                     }
 
                     // property value has property minimum with value of type matching type property
                     const hasSharedMinimum = initialiser[property].hasOwnProperty("minimum")
                     if (hasSharedMinimum) {
-                        const minMatchesType = typeof initialiser[property].minimum === firstType
+                        const minType = typeof initialiser[property].minimum
+                        const minMatchesType = minType === firstType
                         if (!minMatchesType) {
-                            return { valid: true, feedback: `extended type "${property}" has shared minimum of mismatched type ${typeof initialiser[property].minimum}` }
+                            return { valid: true, feedback: `type extension "${property}" has shared minimum of mismatched type "${minType}"` }
                         }
                     }
 
                     // property value has property maximum with value of type matching type property
                     const hasSharedMaximum = initialiser[property].hasOwnProperty("maximum")
                     if (hasSharedMaximum) {
-                        const maxMatchesType = typeof initialiser[property].maximum === firstType
+                        const maxType = typeof initialiser[property].maximum
+                        const maxMatchesType = maxType === firstType
                         if (!maxMatchesType) {
-                            return { valid: true, feedback: `extended type "${property}" has shared maximum of mismatched type ${typeof initialiser[property].minimum}` }
+                            return { valid: true, feedback: `type extension "${property}" has shared maximum of mismatched type "${maxType}"` }
                         }
                     }
 
@@ -313,11 +316,11 @@ const TXON = {
 
     tests: [
 
-        // initialisation validation<hasSharedType> -> true
+        // initialisation<shared> -> true
 
         {
             "valid": true,
-            "feedback": 'extended type "..." has invalid shared JSON "type" declaration ...',
+            "feedback": 'extended type "date" has invalid shared JSON "type" declaration "double"',
             "json": `{
                 "init": {
                     "date": {
@@ -330,11 +333,11 @@ const TXON = {
 
         {
             "valid": true,
-            "feedback": 'extended type "..." has shared default of mismatched type ...',
+            "feedback": 'extended type "date" has shared default of mismatched type "string"',
             "json": `{
                 "init": {
                     "date": {
-                        "type": "integer",
+                        "type": "number",
                         "default": "10"
                     }
                 },
@@ -344,11 +347,11 @@ const TXON = {
 
         {
             "valid": true,
-            "feedback": 'extended type "..." has shared minimum of mismatched type ...',
+            "feedback": 'extended type "date" has shared minimum of mismatched type "string"',
             "json": `{
                 "init": {
                     "date": {
-                        "type": "integer",
+                        "type": "number",
                         "default": 10,
                         "minimum": "1"
                     }
@@ -359,11 +362,11 @@ const TXON = {
 
         {
             "valid": true,
-            "feedback": 'extended type "..." has shared maximum of mismatched type ...',
+            "feedback": 'extended type "date" has shared maximum of mismatched type "string"',
             "json": `{
                 "init": {
                     "date": {
-                        "type": "integer",
+                        "type": "number",
                         "default": 10,
                         "minimum": 5,
                         "maximum": "15"
@@ -371,7 +374,55 @@ const TXON = {
                 },
                 "data": []
             }`
-        }
+        },
+
+        // initialisation<isTypeExtensionName> -> true
+
+        {
+            "valid": true,
+            "feedback": 'type extension "number.date" has shared default of mismatched type "string"',
+            "json": `{
+                "init": {
+                    "number.date": {
+                        "default": "10"
+                    }
+                },
+                "data": []
+            }`
+        },
+
+        {
+            "valid": true,
+            "feedback": 'type extension "number.date" has shared minimum of mismatched type "string"',
+            "json": `{
+                "init": {
+                    "number.date": {
+                        "default": 10,
+                        "minimum": "5"
+                    }
+                },
+                "data": []
+            }`
+        },
+
+        {
+            "valid": true,
+            "feedback": 'type extension "number.date" has shared maximum of mismatched type "string"',
+            "json": `{
+                "init": {
+                    "number.date": {
+                        "default": 10,
+                        "minimum": 5,
+                        "maximum": "15"
+                    }
+                },
+                "data": []
+            }`
+        },
+
+        // initialisation<Object.getOwnPropertyNames(property)> -> true
+
+        {},
 
         /*
 
@@ -399,7 +450,7 @@ const TXON = {
             "json": `{
                 "init": {
                     "date": {
-                        "type": "integer",
+                        "type": "number",
                         "month": {
                             "minimum": 1,
                             "maximum": 12,
@@ -427,10 +478,10 @@ const TXON = {
 
         {
             "valid": true,
-            "feedback": `type extension "integer.date" declared but not instantiated`,
+            "feedback": `type extension "number.date" declared but not instantiated`,
             "json": `{
                 "init": {
-                    "integer.date": {
+                    "number.date": {
                         "month": {
                             "minimum": 1,
                             "maximum": 12,
@@ -444,12 +495,12 @@ const TXON = {
 
         {
             "valid": true,
-            "feedback": `type extension "integer.date" instantaited but not declared`,
+            "feedback": `type extension "number.date" instantaited but not declared`,
             "json": `{
                 "init": {},
                 "data": [
                     {
-                        "type": "integer.date",
+                        "type": "number.date",
                         "month": 4
                     }
                 ]
@@ -464,7 +515,7 @@ const TXON = {
             "json": `{
                 "init": {
                     "date": {
-                        "type": "integer",
+                        "type": "number",
                         "month": {
                             "minimum": 1,
                             "maximum": 12,
@@ -482,11 +533,11 @@ const TXON = {
 
         {
             "valid": false,
-            "feedback": `instance of extended type "date" has property "month" of type "string" but requires type "integer"`,
+            "feedback": `instance of extended type "date" has property "month" of type "string" but requires type "number"`,
             "json": `{
                 "init": {
                     "date": {
-                        "type": "integer",
+                        "type": "number",
                         "month": {
                             "minimum": 1,
                             "maximum": 12,
@@ -505,10 +556,10 @@ const TXON = {
 
         {
             "valid": false,
-            "feedback": `instance of type extension "integer.date" is missing required property "month"`,
+            "feedback": `instance of type extension "number.date" is missing required property "month"`,
             "json": `{
                 "init": {
-                    "integer.date": {
+                    "number.date": {
                         "month": {
                             "minimum": 1,
                             "maximum": 12,
@@ -518,7 +569,7 @@ const TXON = {
                 },
                 "data": [
                     {
-                        "type": "integer.date"
+                        "type": "number.date"
                     }
                 ]
             }`
@@ -526,10 +577,10 @@ const TXON = {
 
         {
             "valid": false,
-            "feedback": `instance of type extension "integer.date" has property "month" of mismatched type "string"`,
+            "feedback": `instance of type extension "number.date" has property "month" of mismatched type "string"`,
             "json": `{
                 "init": {
-                    "integer.date": {
+                    "number.date": {
                         "month": {
                             "minimum": 1,
                             "maximum": 12,
@@ -539,7 +590,7 @@ const TXON = {
                 },
                 "data": [
                     {
-                        "type": "integer.date",
+                        "type": "number.date",
                         "month": "four"
                     }
                 ]
@@ -560,18 +611,18 @@ const TXON = {
     "init": {
         "date": {
             "month": {
-                "type": "integer",
+                "type": "number",
                 "minimum": 1,
                 "maximum": 12,
                 "default": 1
             },
             "day": {
-                "type": "integer",
+                "type": "number",
                 "minimum": 1,
                 "maximum": 31
             },
             "year": {
-                "type": "integer",
+                "type": "number",
                 "default": null
             }
         }
@@ -600,7 +651,7 @@ const TXON = {
 {
     "init": {
         "date": {
-            "type": "integer",
+            "type": "number",
             "month": {
                 "minimum": 1,
                 "maximum": 12,
@@ -674,7 +725,7 @@ const TXON = {
                 "lastname"
             ],
             "age": {
-                "type": "integer",
+                "type": "number",
                 "minimum": 0,
                 "maximum": 200,
                 "default": null
