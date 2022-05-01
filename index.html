@@ -10,8 +10,8 @@
 
         TXON.tests.forEach(test => {
             const validation = TXON.handshake(test.json)
-            console.log(test.valid, test.feedback)
-            console.log(validation.valid, validation.feedback)
+            console.log("test\t\t\t\t", test.valid, test.feedback)
+            console.log("validation\t", validation.valid, validation.feedback)
             console.log("-")
         })
 
