@@ -66,35 +66,39 @@ const TXON = {
                 const hasSharedType = initialiser[property].hasOwnProperty("type")
                 if (hasSharedType) {
 
-                    const typeMatchesJSON = JSONTypes.includes(initialiser[property].type)
+                    const propertyType = initialiser[property].type
+                    const typeMatchesJSON = JSONTypes.includes(propertyType)
                     if (!typeMatchesJSON) {
-                        return { valid: true, feedback: `extended type "${property}" has invalid shared JSON "type" declaration ${initialiser[property].type}` }
+                        return { valid: true, feedback: `extended type "${property}" has invalid shared JSON "type" declaration ${propertyType}` }
                     }
 
                     // property value has property default with value of type matching type property
                     const hasSharedDefault = initialiser[property].hasOwnProperty("default")
                     if (hasSharedDefault) {
-                        const defaultMatchesType = typeof initialiser[property].default != initialiser[property].type
+                        const defaultType = typeof initialiser[property].default
+                        const defaultMatchesType = defaultType === propertyType
                         if (!defaultMatchesType) {
-                            return { valid: true, feedback: `extended type "${property}" has shared default of mismatched type ${typeof initialiser[property].default}` }
+                            return { valid: true, feedback: `extended type "${property}" has shared default of mismatched type ${defaultType}` }
                         }
                     }
 
                     // property value has property minimum with value of type matching type property
                     const hasSharedMinimum = initialiser[property].hasOwnProperty("minimum")
                     if (hasSharedMinimum) {
-                        const minMatchesType = typeof initialiser[property].minimum != initialiser[property].type
+                        const minType = typeof initialiser[property].minimum
+                        const minMatchesType = minType === propertyType
                         if (!minMatchesType) {
-                            return { valid: true, feedback: `extended type "${property}" has shared minimum of mismatched type ${typeof initialiser[property].minimum}` }
+                            return { valid: true, feedback: `extended type "${property}" has shared minimum of mismatched type ${minType}` }
                         }
                     }
 
                     // property value has property maximum with value of type matching type property
                     const hasSharedMaximum = initialiser[property].hasOwnProperty("maximum")
                     if (hasSharedMaximum) {
-                        const maxMatchesType = typeof initialiser[property].maximum != initialiser[property].type
+                        const maxType = typeof initialiser[property].maximum
+                        const maxMatchesType = maxType === propertyType
                         if (!maxMatchesType) {
-                            return { valid: true, feedback: `extended type "${property}" has shared maximum of mismatched type ${typeof initialiser[property].minimum}` }
+                            return { valid: true, feedback: `extended type "${property}" has shared maximum of mismatched type ${maxType}` }
                         }
                     }
 
@@ -105,7 +109,7 @@ const TXON = {
                     // property value has property default with value of type matching type property
                     const hasSharedDefault = initialiser[property].hasOwnProperty("default")
                     if (hasSharedDefault) {
-                        const defaultMatchesType = typeof initialiser[property].default != firstType
+                        const defaultMatchesType = typeof initialiser[property].default === firstType
                         if (!defaultMatchesType) {
                             return { valid: true, feedback: `extended type "${property}" has shared default of mismatched type ${typeof initialiser[property].default}` }
                         }
@@ -114,7 +118,7 @@ const TXON = {
                     // property value has property minimum with value of type matching type property
                     const hasSharedMinimum = initialiser[property].hasOwnProperty("minimum")
                     if (hasSharedMinimum) {
-                        const minMatchesType = typeof initialiser[property].minimum != firstType
+                        const minMatchesType = typeof initialiser[property].minimum === firstType
                         if (!minMatchesType) {
                             return { valid: true, feedback: `extended type "${property}" has shared minimum of mismatched type ${typeof initialiser[property].minimum}` }
                         }
@@ -123,7 +127,7 @@ const TXON = {
                     // property value has property maximum with value of type matching type property
                     const hasSharedMaximum = initialiser[property].hasOwnProperty("maximum")
                     if (hasSharedMaximum) {
-                        const maxMatchesType = typeof initialiser[property].maximum != firstType
+                        const maxMatchesType = typeof initialiser[property].maximum === firstType
                         if (!maxMatchesType) {
                             return { valid: true, feedback: `extended type "${property}" has shared maximum of mismatched type ${typeof initialiser[property].minimum}` }
                         }
@@ -309,6 +313,68 @@ const TXON = {
 
     tests: [
 
+        // initialisation validation<hasSharedType> -> true
+
+        {
+            "valid": true,
+            "feedback": 'extended type "..." has invalid shared JSON "type" declaration ...',
+            "json": `{
+                "init": {
+                    "date": {
+                        "type": "double"
+                    }
+                },
+                "data": []
+            }`
+        },
+
+        {
+            "valid": true,
+            "feedback": 'extended type "..." has shared default of mismatched type ...',
+            "json": `{
+                "init": {
+                    "date": {
+                        "type": "integer",
+                        "default": "10"
+                    }
+                },
+                "data": []
+            }`
+        },
+
+        {
+            "valid": true,
+            "feedback": 'extended type "..." has shared minimum of mismatched type ...',
+            "json": `{
+                "init": {
+                    "date": {
+                        "type": "integer",
+                        "default": 10,
+                        "minimum": "1"
+                    }
+                },
+                "data": []
+            }`
+        },
+
+        {
+            "valid": true,
+            "feedback": 'extended type "..." has shared maximum of mismatched type ...',
+            "json": `{
+                "init": {
+                    "date": {
+                        "type": "integer",
+                        "default": 10,
+                        "minimum": 5,
+                        "maximum": "15"
+                    }
+                },
+                "data": []
+            }`
+        }
+
+        /*
+
         // returns true
 
         {
@@ -479,6 +545,8 @@ const TXON = {
                 ]
             }`
         }
+
+        */
         
     ]
 
