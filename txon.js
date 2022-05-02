@@ -250,65 +250,120 @@ const TXON = {
         }
 
         // check: type instantiation
-        const recursion = (property) => {
+        const recursion = (input) => {
 
-            if (typeof property === "object") {
-                Object.values(property).forEach(n => recursion(n))
+            const isArray = input instanceof Array
+            if (isArray) {
+                for (const element of input) {
+
+                    const isArray = element instanceof Array
+                    if (isArray) {
+                        recursion(element)
+                    }
+
+                    const isObject = typeof element === "object"
+                    if (isObject) {
+                        validate(element)
+                    }
+                    
+                }
             }
-            if (typeof property === "array") {
-                property.forEach(n => recursion(n))
+
+            const isObject = typeof input === "object"
+            if (isObject) {
+                validate(input)
             }
 
         }
 
-        // recursion(data)
+        const validate = (input) => {
 
-        // recursion(input)
-            // is input instanceof "array"?
-                // loop through elements
-                    // is element instanceof "array"?
-                        // recursion(element)
-                    // is element typeof "object"?
-                        // validate(element)
-            // is input typeof "object"?
-                // validate(input)
+            const hasType = input.hasOwnProperty("type")
+            if (hasType) {
+                
+                const JSONTypes = ["string", "integer", "number", "object", "array", "boolean", "null"]
 
-        // ADD TYPE EXTENSION SUPPORT TO BELOW. THIS MEANS INFERRING TYPE FROM TYPE VALUE [0]
-        // validate(input)
-            // input has property "type"?
-                // "type" name found in init?
-                    // input has property "values"?
-                        // loop through "values"
-                            // is value typeof "object"?
-                                // property value does not meet shared default (if any)?
-                                    // return false
-                                // property value does not meet shared min (if any)?
-                                    // return false
-                                // property value does not meet shared max (if any)?
-                                    // return false
-                                // property value does not meet local default (if any)?
-                                    // return false
-                                // property value does not meet local min (if any)?
-                                    // return false
-                                // property value does not meet local max (if any)?
-                                    // return false
-                    // input has no property "values"?
-                        // loop through properties of input
+                var isTypeExtensionName
+                var firstType
+                const hasDot = input.type.includes(".")
+                if (hasDot) {
+                    const hasSingleDot = input.type.split(".").length === 2
+                    firstType = input.type.split(".")[0]
+                    const secondType = input.type.split(".")[1]
+                    if (hasSingleDot) {
+                        const startsWithJSONType = JSONTypes.includes(firstType)
+                        const endsWithCustomType = !JSONTypes.includes(secondType)
+                        isTypeExtensionName = startsWithJSONType && endsWithCustomType
+                    }
+                }
+
+                const typeInitialised = init.hasOwnProperty(input.type)
+                if (typeInitialised) {
+
+                    const hasValues = input.hasOwnProperty("values")
+
+                    if (hasValues) {
+
+                        const isArray = input.values instanceof Array
+                        if (isArray) {
+                            
+                            for (const value of input.values) {
+
+                                const isObject = typeof value === "object"
+                                if (isObject) {
+
+                                    // property value does not match shared default (if any)?
+                                        // return false
+                                    // property value does not match shared min (if any)?
+                                        // return false
+                                    // property value does not match shared max (if any)?
+                                        // return false
+                                    // property value does not match local default (if any)?
+                                        // return false
+                                    // property value does not match local min (if any)?
+                                        // return false
+                                    // property value does not match local max (if any)?
+                                        // return false
+
+                                }
+
+                            }
+
+                        }
+
+                    }
+
+                    if (!hasValues) {
+
+                        for (const property of input) {
+
                             // is property defined from extended type?
-                                // property have value of incorrect type?
+                                // property has value of incorrect type?
                                     // return false
-                                // property value does not meet shared default (if any)?
+                                // property value does not match shared default (if any)?
                                     // return false
-                                // property value does not meet shared min (if any)?
+                                // property value does not match shared min (if any)?
                                     // return false
-                                // property value does not meet shared max (if any)?
+                                // property value does not match shared max (if any)?
                                     // return false
-                                // property value does not meet local default (if any)?
+                                // property value does not match local default (if any)?
                                     // return false
-                                // property value does not meet local min (if any)?
+                                // property value does not match local min (if any)?
                                     // return false
-                                // property value does not meet local max (if any)?
+                                // property value does not match local max (if any)?
                                     // return false
+
+                        }
+
+                    }
+
+                }
+
+            }
+
+        }
+                                    
+        recursion(data)
         
         /*
         // check: data contains object[s] conforming to type[s] defined in init
