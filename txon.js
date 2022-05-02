@@ -54,8 +54,8 @@ const TXON = {
             const isObject = typeof initialiser[property] === "object"
 
             // name is extension
-            var isTypeExtensionName;
-            var firstType;
+            var isTypeExtensionName
+            var firstType
             const hasDot = property.includes(".")
             if (hasDot) {
                 const hasSingleDot = property.split(".").length === 2
@@ -163,14 +163,14 @@ const TXON = {
                 }
 
                 // loop through property names and find "case" array or case declaration
-                for (var prop of Object.getOwnPropertyNames(property)) {
+                for (var prop of Object.getOwnPropertyNames(initialiser[property])) {
 
                     // prop name is "case" and array and all strings
                     const isCaseName = property === "case"
-                    const isArray = typeof property[prop] === "array"
+                    const isArray = typeof initialiser[property][prop] === "array"
                     const isCase = isCaseName && isArray
                     if (isCase) {
-                        const typesMatchString = property[prop].filter(n => typeof n === "string").length === property[prop].length;
+                        const typesMatchString = initialiser[property][prop].filter(n => typeof n === "string").length === initialiser[property][prop].length
                         if (!typesMatchString) {
                             return {
                                 valid: true,
@@ -180,121 +180,71 @@ const TXON = {
                     }
 
                     // prop is object
-                    const isObject = typeof property[prop] === "object"
+                    const isObject = typeof initialiser[property][prop] === "object"
                     if (isObject) {
 
-                        const hasLocalType = property[prop].hasOwnProperty("type")
-
+                        var hasLocalJSON
+                        const hasLocalType = initialiser[property][prop].hasOwnProperty("type")
                         if (hasLocalType) {
-                            const isJSONType = JSONTypes.includes(property[prop].type)
-                            if (isJSONType) {
-                                const hasDefault = property[prop].hasOwnProperty("default")
-                                if (hasDefault) {
-                                    const typeMismatch = typeof property[prop].default != property[prop].type
-                                    if (typeMismatch) {
-                                        return {
-                                            valid: true,
-                                            feedback: `type "${property}" has prop ${prop} with default of mismatched type ${typeof initialiser[property].default}`
-                                        }
-                                    }
-                                }
-                                const hasMinimum = property[prop].hasOwnProperty("minimum")
-                                if (hasMinimum) {
-                                    const typeMismatch = typeof property[prop].minimum != property[prop].type
-                                    if (typeMismatch) {
-                                        return {
-                                            valid: true,
-                                            feedback: `type "${property}" has prop ${prop} with minimum of mismatched type ${typeof initialiser[property].minimum}`
-                                        }
-                                    }
-                                }
-                                const hasMaximum = property[prop].hasOwnProperty("maximum")
-                                if (hasMaximum) {
-                                    const typeMismatch = typeof property[prop].maximum != property[prop].type
-                                    if (typeMismatch) {
-                                        return {
-                                            valid: true,
-                                            feedback: `type "${property}" has prop ${prop} with maximum of mismatched type ${typeof initialiser[property].minimum}`
-                                        }
-                                    }
-                                }
-                            }
-    
+                            hasLocalJSON = JSONTypes.includes(initialiser[property][prop].type)
                         }
-    
-                        if (!hasLocalType) {
 
-                            if (isTypeExtensionName) {
-
-                                const hasDefault = property[prop].hasOwnProperty("default")
-                                if (hasDefault) {
-                                    const typeMismatch = typeof property[prop].default != firstType
-                                    if (typeMismatch) {
-                                        return {
-                                            valid: true,
-                                            feedback: `type "${property}" has prop ${prop} with default of mismatched type ${typeof initialiser[property].default}`
-                                        }
-                                    }
-                                }
-                                const hasMinimum = property[prop].hasOwnProperty("minimum")
-                                if (hasMinimum) {
-                                    const typeMismatch = typeof property[prop].minimum != firstType
-                                    if (typeMismatch) {
-                                        return {
-                                            valid: true,
-                                            feedback: `type "${property}" has prop ${prop} with minimum of mismatched type ${typeof initialiser[property].minimum}`
-                                        }
-                                    }
-                                }
-                                const hasMaximum = property[prop].hasOwnProperty("maximum")
-                                if (hasMaximum) {
-                                    const typeMismatch = typeof property[prop].maximum != firstType
-                                    if (typeMismatch) {
-                                        return {
-                                            valid: true,
-                                            feedback: `type "${property}" has prop ${prop} with maximum of mismatched type ${typeof initialiser[property].minimum}`
-                                        }
-                                    }
-                                }
-            
+                        const hasDefault = initialiser[property][prop].hasOwnProperty("default")
+                        if (hasDefault) {
+                            const defaultType = typeof initialiser[property][prop].default
+                            var typeMismatch
+                            if (hasLocalJSON) {
+                                typeMismatch = defaultType != initialiser[property][prop].type
+                            } else if (isTypeExtensionName) {
+                                typeMismatch = defaultType != firstType
+                            } else {
+                                typeMismatch = defaultType != initialiser[property].type
                             }
-
-                            if (!isTypeExtensionName) {
-
-                                const hasDefault = property[prop].hasOwnProperty("default")
-                                if (hasDefault) {
-                                    const typeMismatch = typeof property[prop].default != initialiser[property].type
-                                    if (typeMismatch) {
-                                        return {
-                                            valid: true,
-                                            feedback: `type "${property}" has prop ${prop} with default of mismatched type ${typeof initialiser[property].default}`
-                                        }
-                                    }
+                            if (typeMismatch) {
+                                return {
+                                    valid: true,
+                                    feedback: `type "${property}" has property "${prop}" with default of mismatched type "${defaultType}"`
                                 }
-                                const hasMinimum = property[prop].hasOwnProperty("minimum")
-                                if (hasMinimum) {
-                                    const typeMismatch = typeof property[prop].minimum != initialiser[property].type
-                                    if (typeMismatch) {
-                                        return {
-                                            valid: true,
-                                            feedback: `type "${property}" has prop ${prop} with minimum of mismatched type ${typeof initialiser[property].minimum}`
-                                        }
-                                    }
-                                }
-                                const hasMaximum = property[prop].hasOwnProperty("maximum")
-                                if (hasMaximum) {
-                                    const typeMismatch = typeof property[prop].maximum != initialiser[property].type
-                                    if (typeMismatch) {
-                                        return {
-                                            valid: true,
-                                            feedback: `type "${property}" has prop ${prop} with maximum of mismatched type ${typeof initialiser[property].minimum}`
-                                        }
-                                    }
-                                }
-            
                             }
-                            
-                        }    
+                        }
+
+                        const hasMinimum = initialiser[property][prop].hasOwnProperty("minimum")
+                        if (hasMinimum) {
+                            const minType = typeof initialiser[property][prop].minimum
+                            var typeMismatch
+                            if (hasLocalJSON) {
+                                typeMismatch = minType != initialiser[property][prop].type
+                            } else if (isTypeExtensionName) {
+                                typeMismatch = minType != firstType
+                            } else {
+                                typeMismatch = minType != initialiser[property].type
+                            }
+                            if (typeMismatch) {
+                                return {
+                                    valid: true,
+                                    feedback: `type "${property}" has property "${prop}" with minimum of mismatched type "${minType}"`
+                                }
+                            }
+                        }
+
+                        const hasMaximum = initialiser[property][prop].hasOwnProperty("maximum")
+                        if (hasMaximum) {
+                            const maxType = typeof initialiser[property][prop].maximum
+                            var typeMismatch
+                            if (hasLocalJSON) {
+                                typeMismatch = maxType != initialiser[property][prop].type
+                            } else if (isTypeExtensionName) {
+                                typeMismatch = maxType != firstType
+                            } else {
+                                typeMismatch = maxType != initialiser[property].type
+                            }
+                            if (typeMismatch) {
+                                return {
+                                    valid: true,
+                                    feedback: `type "${property}" has property "${prop}" with maximum of mismatched type "${maxType}"`
+                                }
+                            }
+                        }
     
                     }
     
@@ -495,11 +445,188 @@ const TXON = {
                 },
                 "data": []
             }`
-        }
+        },
 
-        /*
+        {
+            "valid": true,
+            "feedback": 'type "number.date" has property "month"" with default of mismatched type "string"',
+            "json": `{
+                "init": {
+                    "number.date": {
+                        "default": 10,
+                        "minimum": 5,
+                        "maximum": 15,
+                        "month": {
+                            "type": "number",
+                            "default": "8"
+                        }
+                    }
+                },
+                "data": []
+            }`
+        },
+
+        {
+            "valid": true,
+            "feedback": 'type "number.date" has property "month" with minimum of mismatched type "string"',
+            "json": `{
+                "init": {
+                    "number.date": {
+                        "default": 10,
+                        "minimum": 5,
+                        "maximum": 15,
+                        "month": {
+                            "type": "number",
+                            "default": 8,
+                            "minimum": "1"
+                        }
+                    }
+                },
+                "data": []
+            }`
+        },
+
+        {
+            "valid": true,
+            "feedback": 'type "number.date" has property "month" with maximum of mismatched type "string"',
+            "json": `{
+                "init": {
+                    "number.date": {
+                        "default": 10,
+                        "minimum": 5,
+                        "maximum": 15,
+                        "month": {
+                            "type": "number",
+                            "default": 8,
+                            "minimum": 1,
+                            "maximum": "12"
+                        }
+                    }
+                },
+                "data": []
+            }`
+        },
+
+        {
+            "valid": true,
+            "feedback": 'type "number.date" has property "month" with default of mismatched type "string"',
+            "json": `{
+                "init": {
+                    "number.date": {
+                        "default": 10,
+                        "minimum": 5,
+                        "maximum": 15,
+                        "month": {
+                            "default": "8"
+                        }
+                    }
+                },
+                "data": []
+            }`
+        },
+
+        {
+            "valid": true,
+            "feedback": 'type "number.date" has property "month" with minimum of mismatched type "string"',
+            "json": `{
+                "init": {
+                    "number.date": {
+                        "default": 10,
+                        "minimum": 5,
+                        "maximum": 15,
+                        "month": {
+                            "default": 8,
+                            "minimum": "1"
+                        }
+                    }
+                },
+                "data": []
+            }`
+        },
+
+        {
+            "valid": true,
+            "feedback": 'type "number.date" has property "month" with maximum of mismatched type "string"',
+            "json": `{
+                "init": {
+                    "number.date": {
+                        "default": 10,
+                        "minimum": 5,
+                        "maximum": 15,
+                        "month": {
+                            "default": 8,
+                            "minimum": 1,
+                            "maximum": "12"
+                        }
+                    }
+                },
+                "data": []
+            }`
+        },
+
+        {
+            "valid": true,
+            "feedback": 'type "date" has property "month" with default of mismatched type "string"',
+            "json": `{
+                "init": {
+                    "date": {
+                        "type": "number",
+                        "default": 10,
+                        "minimum": 5,
+                        "maximum": 15,
+                        "month": {
+                            "default": "8"
+                        }
+                    }
+                },
+                "data": []
+            }`
+        },
+
+        {
+            "valid": true,
+            "feedback": 'type "date" has property "month" with minimum of mismatched type "string"',
+            "json": `{
+                "init": {
+                    "date": {
+                        "type": "number",
+                        "default": 10,
+                        "minimum": 5,
+                        "maximum": 15,
+                        "month": {
+                            "default": 8,
+                            "minimum": "1"
+                        }
+                    }
+                },
+                "data": []
+            }`
+        },
+
+        {
+            "valid": true,
+            "feedback": 'type "date" has property "month" with maximum of mismatched type "string"',
+            "json": `{
+                "init": {
+                    "date": {
+                        "type": "number",
+                        "default": 10,
+                        "minimum": 5,
+                        "maximum": 15,
+                        "month": {
+                            "default": 8,
+                            "minimum": 1,
+                            "maximum": "12"
+                        }
+                    }
+                },
+                "data": []
+            }`
+        },
 
         // returns true
+
+        /*
 
         {
             "valid": true,
@@ -669,7 +796,6 @@ const TXON = {
                 ]
             }`
         }
-
         */
         
     ]
