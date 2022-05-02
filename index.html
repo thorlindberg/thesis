@@ -15,6 +15,13 @@
             console.log("-")
         })
 
+        if (TXON.tests.map(test => {
+            const validation = TXON.handshake(test.json)
+            return test.valid === validation.valid && test.feedback === validation.feedback
+        })) {
+            console.log("all tests threw expected validation error :) 🎉")
+        }
+
     </script>
 </head>
 </html>
