@@ -166,8 +166,8 @@ const TXON = {
                 for (var prop of Object.getOwnPropertyNames(initialiser[property])) {
 
                     // prop name is "case" and array and all strings
-                    const isCaseName = property === "case"
-                    const isArray = typeof initialiser[property][prop] === "array"
+                    const isCaseName = prop === "case"
+                    const isArray = initialiser[property][prop] instanceof Array
                     const isCase = isCaseName && isArray
                     if (isCase) {
                         const typesMatchString = initialiser[property][prop].filter(n => typeof n === "string").length === initialiser[property][prop].length
