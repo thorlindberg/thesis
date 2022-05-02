@@ -273,18 +273,41 @@ const TXON = {
             // is input typeof "object"?
                 // validate(input)
 
+        // ADD TYPE EXTENSION SUPPORT TO BELOW. THIS MEANS INFERRING TYPE FROM TYPE VALUE [0]
         // validate(input)
             // input has property "type"?
                 // "type" name found in init?
                     // input has property "values"?
                         // loop through "values"
                             // is value typeof "object"?
-                                // !!! value does not meet requirements (min, max, can default be inserted?)
+                                // property value does not meet shared default (if any)?
+                                    // return false
+                                // property value does not meet shared min (if any)?
+                                    // return false
+                                // property value does not meet shared max (if any)?
+                                    // return false
+                                // property value does not meet local default (if any)?
+                                    // return false
+                                // property value does not meet local min (if any)?
+                                    // return false
+                                // property value does not meet local max (if any)?
                                     // return false
                     // input has no property "values"?
                         // loop through properties of input
-                            // is property defined for extended type?
-                                // !!! property does not meet requirements (type, min, max, can default be inserted?)
+                            // is property defined from extended type?
+                                // property have value of incorrect type?
+                                    // return false
+                                // property value does not meet shared default (if any)?
+                                    // return false
+                                // property value does not meet shared min (if any)?
+                                    // return false
+                                // property value does not meet shared max (if any)?
+                                    // return false
+                                // property value does not meet local default (if any)?
+                                    // return false
+                                // property value does not meet local min (if any)?
+                                    // return false
+                                // property value does not meet local max (if any)?
                                     // return false
         
         /*
