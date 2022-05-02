@@ -41,21 +41,21 @@ const TXON = {
         }
 
         // check: type declaration
-        for (var property of Object.getOwnPropertyNames(initialiser)) {
+        for (const [name, value] of Object.entries(initialiser)) {
 
             const JSONTypes = ["string", "integer", "number", "object", "array", "boolean", "null"]
 
-            // property value is of type Object
-            const isObject = typeof initialiser[property] === "object"
+            // value is of type Object
+            const isObject = typeof value === "object"
 
             // name is extension
             var isTypeExtensionName
             var firstType
-            const hasDot = property.includes(".")
+            const hasDot = name.includes(".")
             if (hasDot) {
-                const hasSingleDot = property.split(".").length === 2
-                firstType = property.split(".")[0]
-                const secondType = property.split(".")[1]
+                const hasSingleDot = name.split(".").length === 2
+                firstType = name.split(".")[0]
+                const secondType = name.split(".")[1]
                 if (hasSingleDot) {
                     const startsWithJSONType = JSONTypes.includes(firstType)
                     const endsWithCustomType = !JSONTypes.includes(secondType)
@@ -66,49 +66,49 @@ const TXON = {
             // validate type declaration
             if (isObject) {
 
-                // property value has property type with value of JSON type
-                const hasSharedType = initialiser[property].hasOwnProperty("type")
+                // value has property type with value of JSON type
+                const hasSharedType = value.hasOwnProperty("type")
                 if (hasSharedType) {
 
-                    const propertyType = initialiser[property].type
+                    const propertyType = value.type
                     const typeMatchesJSON = JSONTypes.includes(propertyType)
                     if (!typeMatchesJSON) {
                         return {
                             valid: true,
-                            feedback: `type "${property}" has invalid shared JSON "type" declaration "${propertyType}"`
+                            feedback: `type "${name}" has invalid shared JSON "type" declaration "${propertyType}"`
                         }
                     }
 
-                    // property value has property default with value of type matching type property
-                    const hasSharedDefault = initialiser[property].hasOwnProperty("default")
+                    // value has property default with value of type matching type property
+                    const hasSharedDefault = value.hasOwnProperty("default")
                     if (hasSharedDefault) {
-                        const defaultType = typeof initialiser[property].default
+                        const defaultType = typeof value.default
                         const defaultMatchesType = defaultType === propertyType
                         if (!defaultMatchesType) {
                             return {
                                 valid: true,
-                                feedback: `type "${property}" has shared default of mismatched type "${defaultType}"`
+                                feedback: `type "${name}" has shared default of mismatched type "${defaultType}"`
                             }
                         }
                     }
 
-                    // property value has property minimum with value of type matching type property
-                    const hasSharedMinimum = initialiser[property].hasOwnProperty("minimum")
+                    // value has property minimum with value of type matching type property
+                    const hasSharedMinimum = value.hasOwnProperty("minimum")
                     if (hasSharedMinimum) {
-                        const minType = typeof initialiser[property].minimum
+                        const minType = typeof value.minimum
                         const minMatchesType = minType === propertyType
                         if (!minMatchesType) {
-                            return { valid: true, feedback: `type "${property}" has shared minimum of mismatched type "${minType}"` }
+                            return { valid: true, feedback: `type "${name}" has shared minimum of mismatched type "${minType}"` }
                         }
                     }
 
-                    // property value has property maximum with value of type matching type property
-                    const hasSharedMaximum = initialiser[property].hasOwnProperty("maximum")
+                    // value has property maximum with value of type matching type property
+                    const hasSharedMaximum = value.hasOwnProperty("maximum")
                     if (hasSharedMaximum) {
-                        const maxType = typeof initialiser[property].maximum
+                        const maxType = typeof value.maximum
                         const maxMatchesType = maxType === propertyType
                         if (!maxMatchesType) {
-                            return { valid: true, feedback: `type "${property}" has shared maximum of mismatched type "${maxType}"` }
+                            return { valid: true, feedback: `type "${name}" has shared maximum of mismatched type "${maxType}"` }
                         }
                     }
 
@@ -116,41 +116,41 @@ const TXON = {
 
                 if (isTypeExtensionName) {
 
-                    // property value has property default with value of type matching type property
-                    const hasSharedDefault = initialiser[property].hasOwnProperty("default")
+                    // value has property default with value of type matching type property
+                    const hasSharedDefault = value.hasOwnProperty("default")
                     if (hasSharedDefault) {
-                        const defaultType = typeof initialiser[property].default
+                        const defaultType = typeof value.default
                         const defaultMatchesType = defaultType === firstType
                         if (!defaultMatchesType) {
                             return {
                                 valid: true,
-                                feedback: `extension "${property}" has shared default of mismatched type "${defaultType}"`
+                                feedback: `extension "${name}" has shared default of mismatched type "${defaultType}"`
                             }
                         }
                     }
 
-                    // property value has property minimum with value of type matching type property
-                    const hasSharedMinimum = initialiser[property].hasOwnProperty("minimum")
+                    // value has property minimum with value of type matching type property
+                    const hasSharedMinimum = value.hasOwnProperty("minimum")
                     if (hasSharedMinimum) {
-                        const minType = typeof initialiser[property].minimum
+                        const minType = typeof value.minimum
                         const minMatchesType = minType === firstType
                         if (!minMatchesType) {
                             return {
                                 valid: true,
-                                feedback: `extension "${property}" has shared minimum of mismatched type "${minType}"`
+                                feedback: `extension "${name}" has shared minimum of mismatched type "${minType}"`
                             }
                         }
                     }
 
-                    // property value has property maximum with value of type matching type property
-                    const hasSharedMaximum = initialiser[property].hasOwnProperty("maximum")
+                    // value has property maximum with value of type matching type property
+                    const hasSharedMaximum = value.hasOwnProperty("maximum")
                     if (hasSharedMaximum) {
-                        const maxType = typeof initialiser[property].maximum
+                        const maxType = typeof value.maximum
                         const maxMatchesType = maxType === firstType
                         if (!maxMatchesType) {
                             return {
                                 valid: true,
-                                feedback: `extension "${property}" has shared maximum of mismatched type "${maxType}"`
+                                feedback: `extension "${name}" has shared maximum of mismatched type "${maxType}"`
                             }
                         }
                     }
@@ -158,85 +158,85 @@ const TXON = {
                 }
 
                 // loop through property names and find "case" array or case declaration
-                for (var prop of Object.getOwnPropertyNames(initialiser[property])) {
+                for (const [propName, propValue] of Object.entries(value)) {
 
                     // prop name is "case" and array and all strings
-                    const isCaseName = prop === "case"
-                    const isArray = initialiser[property][prop] instanceof Array
+                    const isCaseName = propName === "case"
+                    const isArray = propValue instanceof Array
                     const isCase = isCaseName && isArray
                     if (isCase) {
-                        const typesMatchString = initialiser[property][prop].filter(n => typeof n === "string").length === initialiser[property][prop].length
+                        const typesMatchString = propValue.filter(n => typeof n === "string").length === propValue.length
                         if (!typesMatchString) {
                             return {
                                 valid: true,
-                                feedback: `type "${property}" has case declaration array with invalid contents`
+                                feedback: `type "${propName}" has case declaration array with invalid contents`
                             }
                         }
                     }
 
-                    // prop is object
-                    const isObject = typeof initialiser[property][prop] === "object"
+                    // propValue is object
+                    const isObject = typeof propValue === "object"
                     if (isObject) {
 
                         var hasLocalJSON
-                        const hasLocalType = initialiser[property][prop].hasOwnProperty("type")
+                        const hasLocalType = propValue.hasOwnProperty("type")
                         if (hasLocalType) {
-                            hasLocalJSON = JSONTypes.includes(initialiser[property][prop].type)
+                            hasLocalJSON = JSONTypes.includes(propValue.type)
                         }
 
-                        const hasDefault = initialiser[property][prop].hasOwnProperty("default")
+                        const hasDefault = propValue.hasOwnProperty("default")
                         if (hasDefault) {
-                            const defaultType = typeof initialiser[property][prop].default
+                            const defaultType = typeof propValue.default
                             var typeMismatch
                             if (hasLocalJSON) {
-                                typeMismatch = defaultType != initialiser[property][prop].type
+                                typeMismatch = defaultType != propValue.type
                             } else if (isTypeExtensionName) {
                                 typeMismatch = defaultType != firstType
                             } else {
-                                typeMismatch = defaultType != initialiser[property].type
+                                typeMismatch = defaultType != value.type
                             }
                             if (typeMismatch) {
                                 return {
                                     valid: true,
-                                    feedback: `type "${property}" has property "${prop}" with default of mismatched type "${defaultType}"`
+                                    feedback: `type "${name}" has property "${propName}" with default of mismatched type "${defaultType}"`
                                 }
                             }
                         }
 
-                        const hasMinimum = initialiser[property][prop].hasOwnProperty("minimum")
+                        const hasMinimum = propValue.hasOwnProperty("minimum")
                         if (hasMinimum) {
-                            const minType = typeof initialiser[property][prop].minimum
+                            const minType = typeof propValue.minimum
                             var typeMismatch
                             if (hasLocalJSON) {
-                                typeMismatch = minType != initialiser[property][prop].type
+                                typeMismatch = minType != propValue.type
                             } else if (isTypeExtensionName) {
                                 typeMismatch = minType != firstType
                             } else {
-                                typeMismatch = minType != initialiser[property].type
+                                typeMismatch = minType != value.type
                             }
                             if (typeMismatch) {
                                 return {
                                     valid: true,
-                                    feedback: `type "${property}" has property "${prop}" with minimum of mismatched type "${minType}"`
+                                    feedback: `type "${name}" has property "${propName}" with minimum of mismatched type "${minType}"`
                                 }
                             }
                         }
 
-                        const hasMaximum = initialiser[property][prop].hasOwnProperty("maximum")
+                        const hasMaximum = propValue.hasOwnProperty("maximum")
                         if (hasMaximum) {
-                            const maxType = typeof initialiser[property][prop].maximum
+                            const maxType = typeof propValue.maximum
                             var typeMismatch
                             if (hasLocalJSON) {
-                                typeMismatch = maxType != initialiser[property][prop].type
+                                typeMismatch = maxType != propValue.type
                             } else if (isTypeExtensionName) {
                                 typeMismatch = maxType != firstType
                             } else {
-                                typeMismatch = maxType != initialiser[property].type
+                                typeMismatch = maxType != value.type
                             }
                             if (typeMismatch) {
                                 return {
                                     valid: true,
-                                    feedback: `type "${property}" has property "${prop}" with maximum of mismatched type "${maxType}"`
+                                    feedback: `type "${name}" has property "${propName}" with maximum of mismatched type "${maxType}"`
                                 }
                             }
                         }
@@ -306,7 +306,7 @@ const TXON = {
                         return { valid: false, feedback: `properties of type do not conform to init. ${objprops} and ${initprops}` }
                     } else {
                         objprops.forEach(prop => {
-                            const valuetype = typeof value[prop]
+                            const valuetype = typeof propValue
                             const inittype = initialiser[property.type][prop].type
                             const typesConform = valuetype === inittype
                             if (!typesConform) {
@@ -315,9 +315,9 @@ const TXON = {
                                 const hasEnum = initialiser[property.type][prop].hasOwnProperty("enum")
                                 if (hasEnum) {
                                     const objenum = Object.getOwnPropertyNames(initialiser[property.type][prop].enum)
-                                    const enumsConform = objenum.includes(value[prop])
+                                    const enumsConform = objenum.includes(propValue)
                                     if (!enumsConform) {
-                                        return { valid: false, feedback: `enum value does not conform to init. ${value[prop]} not in ${objenum}` }
+                                        return { valid: false, feedback: `enum value does not conform to init. ${propValue} not in ${objenum}` }
                                     }
                                 }
                             }
