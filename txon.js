@@ -263,17 +263,6 @@ const TXON = {
 
         // recursion(data)
 
-        // validate(input)
-            // input has property "type"?
-                // "type" name found in init?
-                    // input does not meet requirements
-                        // return false
-                    // input has property "values"?
-                        // loop through "values"
-                            // is value typeof "object"?
-                                // value does not meet requirements
-                                    // return false
-
         // recursion(input)
             // is input instanceof "array"?
                 // loop through elements
@@ -283,6 +272,20 @@ const TXON = {
                         // validate(element)
             // is input typeof "object"?
                 // validate(input)
+
+        // validate(input)
+            // input has property "type"?
+                // "type" name found in init?
+                    // input has property "values"?
+                        // loop through "values"
+                            // is value typeof "object"?
+                                // !!! value does not meet requirements (min, max, can default be inserted?)
+                                    // return false
+                    // input has no property "values"?
+                        // loop through properties of input
+                            // is property defined for extended type?
+                                // !!! property does not meet requirements (type, min, max, can default be inserted?)
+                                    // return false
         
         /*
         // check: data contains object[s] conforming to type[s] defined in init
