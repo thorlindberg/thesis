@@ -40,12 +40,7 @@ const TXON = {
             }
         }
 
-        // loop through initialiser and find type declaration
-            // loop through data and find matching type instance
-                    //  validate instance based on requirements declaration
-                        // throw error if mismatch
-
-        // check: type-extensibility is correctly initialised
+        // check: type declaration
         for (var property of Object.getOwnPropertyNames(initialiser)) {
 
             const JSONTypes = ["string", "integer", "number", "object", "array", "boolean", "null"]
@@ -254,23 +249,41 @@ const TXON = {
 
         }
 
-        /*
-        const recursion = (n) => {
+        // check: type instantiation
+        const recursion = (property) => {
+
+            if (typeof property === "object") {
+                Object.values(property).forEach(n => recursion(n))
+            }
+            if (typeof property === "array") {
+                property.forEach(n => recursion(n))
+            }
 
         }
 
-        // recursively checking nested data
-        const conformance = (n) => {
-            if (typeof n === "object") {
-                Object.values(property).forEach(n => conformance(n))
-            }
-            if (typeof n === "array") {
-                property.forEach(n => conformance(n))
-            }
-        }
-        conformance(data)
-        */
+        // recursion(data)
 
+        // validate(input)
+            // input has property "type"?
+                // "type" name found in init?
+                    // input does not meet requirements
+                        // return false
+                    // input has property "values"?
+                        // loop through "values"
+                            // is value typeof "object"?
+                                // value does not meet requirements
+                                    // return false
+
+        // recursion(input)
+            // is input instanceof "array"?
+                // loop through elements
+                    // is element instanceof "array"?
+                        // recursion(element)
+                    // is element typeof "object"?
+                        // validate(element)
+            // is input typeof "object"?
+                // validate(input)
+        
         /*
         // check: data contains object[s] conforming to type[s] defined in init
         const conformance = (property) => {

@@ -10,8 +10,8 @@
 
         TXON.tests.forEach(test => {
             const validation = TXON.handshake(test.json)
-            console.log("test\t\t", test.valid, test.feedback)
-            console.log("result\t", validation.valid, validation.feedback)
+            console.log("expected\t", test.valid, test.feedback)
+            console.log("outcome\t\t", validation.valid, validation.feedback)
             console.log("-")
         })
 
@@ -19,7 +19,7 @@
             const validation = TXON.handshake(test.json)
             return test.valid === validation.valid && test.feedback === validation.feedback
         })) {
-            console.log("all tests threw expected validation error :) 🎉")
+            console.log("all tests returned expected validation error :) 🎉")
         }
 
     </script>
