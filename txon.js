@@ -6,7 +6,8 @@ const TXON = {
 
     handshake: (json) => {
 
-        let object, initialiser, data
+        var object, initialiser, data
+        const JSONTypes = ["string", "integer", "number", "object", "array", "boolean", "null"]
 
         // check: parsing JSON to JS Object
         try {
@@ -42,8 +43,6 @@ const TXON = {
 
         // check: type declaration
         for (const [name, value] of Object.entries(initialiser)) {
-
-            const JSONTypes = ["string", "integer", "number", "object", "array", "boolean", "null"]
 
             // value is of type Object
             const isObject = typeof value === "object"
@@ -280,8 +279,6 @@ const TXON = {
 
             const hasType = input.hasOwnProperty("type")
             if (hasType) {
-                
-                const JSONTypes = ["string", "integer", "number", "object", "array", "boolean", "null"]
 
                 var isTypeExtensionName
                 var firstType
@@ -307,23 +304,48 @@ const TXON = {
                         const isArray = input.values instanceof Array
                         if (isArray) {
                             
-                            for (const value of input.values) {
+                            for (const [value, index] of input.values) {
 
                                 const isObject = typeof value === "object"
                                 if (isObject) {
 
-                                    // property value does not match shared default (if any)?
-                                        // return false
-                                    // property value does not match shared min (if any)?
-                                        // return false
-                                    // property value does not match shared max (if any)?
-                                        // return false
-                                    // property value does not match local default (if any)?
-                                        // return false
-                                    // property value does not match local min (if any)?
-                                        // return false
-                                    // property value does not match local max (if any)?
-                                        // return false
+                                    const hasLocalType = value.hasOwnProperty("type")
+
+                                    const hasDefault = value.hasOwnProperty("default")
+                                    if (hasDefault) {
+                                        if (hasLocalType) {
+                                            const typeMismatch = typeof value.default != init[input.type].values[index].type
+                                        } else {
+                                            const typeMismatch = typeof value.default != init[input.type].type
+                                        }
+                                        if (typeMismatch) {
+                                            return { }
+                                        }
+                                    }
+
+                                    const hasMinimum = value.hasOwnProperty("minimum")
+                                    if (hasMinimum) {
+                                        if (hasLocalType) {
+                                            const typeMismatch = typeof value.minimum != init[input.type].values[index].type
+                                        } else {
+                                            const typeMismatch = typeof value.minimum != init[input.type].type
+                                        }
+                                        if (typeMismatch) {
+                                            return { }
+                                        }
+                                    }
+
+                                    const hasMaximum = value.hasOwnProperty("maximum")
+                                    if (hasMaximum) {
+                                        if (hasLocalType) {
+                                            const typeMismatch = typeof value.maximum != init[input.type].values[index].type
+                                        } else {
+                                            const typeMismatch = typeof value.maximum != init[input.type].type
+                                        }
+                                        if (typeMismatch) {
+                                            return { }
+                                        }
+                                    }
 
                                 }
 
@@ -337,7 +359,11 @@ const TXON = {
 
                         for (const property of input) {
 
-                            // is property defined from extended type?
+                            const inInitialiser = init[input.type].hasOwnProperty(property)
+                            if (inInitialiser) {
+
+                                const valueMismatch = typeof property != value.type
+
                                 // property has value of incorrect type?
                                     // return false
                                 // property value does not match shared default (if any)?
@@ -353,6 +379,8 @@ const TXON = {
                                 // property value does not match local max (if any)?
                                     // return false
 
+                            }
+
                         }
 
                     }
@@ -364,48 +392,6 @@ const TXON = {
         }
                                     
         recursion(data)
-        
-        /*
-        // check: data contains object[s] conforming to type[s] defined in init
-        const conformance = (property) => {
-            if (typeof property === "object") {
-                Object.values(property).forEach(n => conformance(n))
-            }
-            if (typeof property === "array") {
-                property.forEach(n => conformance(n))
-            }
-            const isExtendedType = property.hasOwnProperty("type") && property.hasOwnProperty("values") && initialiser.hasOwnProperty(property.type)
-            if (isExtendedType) {
-                property.values.forEach(value => {
-                    const objprops = Object.getOwnPropertyNames(value)
-                    const initprops = Object.getOwnPropertyNames(initialiser[property.type])
-                    const propsConform = objprops.toString() === initprops.toString() 
-                    if (!propsConform) {
-                        return { valid: false, feedback: `properties of type do not conform to init. ${objprops} and ${initprops}` }
-                    } else {
-                        objprops.forEach(prop => {
-                            const valuetype = typeof propValue
-                            const inittype = initialiser[property.type][prop].type
-                            const typesConform = valuetype === inittype
-                            if (!typesConform) {
-                                return { valid: false, feedback: `value type does not conform to init. ${valuetype} and ${inittype}` }
-                            } else {
-                                const hasEnum = initialiser[property.type][prop].hasOwnProperty("enum")
-                                if (hasEnum) {
-                                    const objenum = Object.getOwnPropertyNames(initialiser[property.type][prop].enum)
-                                    const enumsConform = objenum.includes(propValue)
-                                    if (!enumsConform) {
-                                        return { valid: false, feedback: `enum value does not conform to init. ${propValue} not in ${objenum}` }
-                                    }
-                                }
-                            }
-                        })
-                    }
-                })
-            }
-        }
-        conformance(data)
-        */
 
         // all checks passed
         return {
