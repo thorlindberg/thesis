@@ -1,17 +1,16 @@
 const TXON = {
 
-    docs: [
-        "How to validate with TXON..."
-    ].join("\n"),
+    // properties and methods for validation
 
-    handshake: (json) => {
+    JSONTypes: [
+        "string", "integer", "number",
+        "object", "array", "boolean", "null"
+    ],
 
-        var object, initialiser, data
-        const JSONTypes = ["string", "integer", "number", "object", "array", "boolean", "null"]
+    checkJSON: (input) => {
 
-        // check: parsing JSON to JS Object
         try {
-            object = JSON.parse(json)
+            object = JSON.parse(input)
         } catch {
             return {
                 valid: true,
@@ -19,30 +18,20 @@ const TXON = {
             }
         }
 
-        // check: Object has "init" property
+    },
+
+    checkInit: (object) => {
+
         const hasInit = object.hasOwnProperty("init")
-        if (hasInit) {
-            initialiser = object.init
-        } else {
+        if (!hasInit) {
             return {
                 valid: true,
                 feedback: "init property not found"
             }
         }
 
-        // check: Object has "data" property
-        const hasData = object.hasOwnProperty("data")
-        if (hasData) {
-            data = object.data
-        } else {
-            return {
-                valid: true,
-                feedback: "data property not found"
-            }
-        }
-
         // check: type declaration
-        for (const [name, value] of Object.entries(initialiser)) {
+        for (const [name, value] of Object.entries(object.init)) {
 
             // value is of type Object
             const isObject = typeof value === "object"
@@ -56,8 +45,8 @@ const TXON = {
                 firstType = name.split(".")[0]
                 const secondType = name.split(".")[1]
                 if (hasSingleDot) {
-                    const startsWithJSONType = JSONTypes.includes(firstType)
-                    const endsWithCustomType = !JSONTypes.includes(secondType)
+                    const startsWithJSONType = TXON.JSONTypes.includes(firstType)
+                    const endsWithCustomType = !TXON.JSONTypes.includes(secondType)
                     isTypeExtensionName = startsWithJSONType && endsWithCustomType
                 }
             }
@@ -70,7 +59,7 @@ const TXON = {
                 if (hasSharedType) {
 
                     const propertyType = value.type
-                    const typeMatchesJSON = JSONTypes.includes(propertyType)
+                    const typeMatchesJSON = TXON.JSONTypes.includes(propertyType)
                     if (!typeMatchesJSON) {
                         return {
                             valid: true,
@@ -180,7 +169,7 @@ const TXON = {
                         var hasLocalJSON
                         const hasLocalType = propValue.hasOwnProperty("type")
                         if (hasLocalType) {
-                            hasLocalJSON = JSONTypes.includes(propValue.type)
+                            hasLocalJSON = TXON.JSONTypes.includes(propValue.type)
                         }
 
                         const hasDefault = propValue.hasOwnProperty("default")
@@ -248,7 +237,18 @@ const TXON = {
 
         }
 
-        // check: type instantiation
+    },
+
+    checkData: (object) => {
+
+        const hasData = object.hasOwnProperty("data")
+        if (!hasData) {
+            return {
+                valid: true,
+                feedback: "data property not found"
+            }
+        }
+
         const recursion = (input) => {
 
             const isArray = input instanceof Array
@@ -288,8 +288,8 @@ const TXON = {
                     firstType = input.type.split(".")[0]
                     const secondType = input.type.split(".")[1]
                     if (hasSingleDot) {
-                        const startsWithJSONType = JSONTypes.includes(firstType)
-                        const endsWithCustomType = !JSONTypes.includes(secondType)
+                        const startsWithJSONType = TXON.JSONTypes.includes(firstType)
+                        const endsWithCustomType = !TXON.JSONTypes.includes(secondType)
                         isTypeExtensionName = startsWithJSONType && endsWithCustomType
                     }
                 }
@@ -391,9 +391,35 @@ const TXON = {
 
         }
                                     
-        recursion(data)
+        recursion(object.data)
 
-        // all checks passed
+    },
+
+    // properties and methods for usage
+
+    docs: [
+        "How to validate with TXON..."
+    ].join("\n"),
+
+    handshake: (input) => {
+
+        const jsonError = TXON.checkJSON(input)
+        if (jsonError != null) {
+            return jsonError
+        }
+
+        const object = JSON.parse(input)
+
+        const initError = TXON.checkInit(object)
+        if (initError != null) {
+            return initError
+        }
+
+        const dataError = TXON.checkData(object)
+        if (dataError != null) {
+            return dataError
+        }
+
         return {
             valid: true,
             feedback: "all checks passed"
