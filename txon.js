@@ -9,8 +9,7 @@ const TXON = {
         var object
 
         const JSONTypes = [
-            "string", "integer", "number",
-            "object", "array", "boolean", "null"
+            "string", "integer", "number", "object", "array", "boolean", "null"
         ]
     
         const checkJSON = (input) => {
