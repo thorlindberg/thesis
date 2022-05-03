@@ -6,6 +6,7 @@ const TXON = {
 
     handshake: (input) => {
 
+        var object
 
         const JSONTypes = [
             "string", "integer", "number",
