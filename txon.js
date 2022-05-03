@@ -364,27 +364,65 @@ const TXON = {
     
                         if (!hasValues) {
     
-                            for (const property of input) {
+                            for (const [name, value] of Object.entries(input)) {
     
-                                const inInitialiser = init[input.type].hasOwnProperty(property)
-                                if (inInitialiser) {
-    
-                                    const valueMismatch = typeof property != value.type
-    
-                                    // property has value of incorrect type?
-                                        // return false
-                                    // property value does not match shared default (if any)?
-                                        // return false
-                                    // property value does not match shared min (if any)?
-                                        // return false
-                                    // property value does not match shared max (if any)?
-                                        // return false
-                                    // property value does not match local default (if any)?
-                                        // return false
-                                    // property value does not match local min (if any)?
-                                        // return false
-                                    // property value does not match local max (if any)?
-                                        // return false
+                                const inDeclaration = init[input.type].hasOwnProperty(name)
+                                if (inDeclaration) {
+
+                                    const isObject = typeof init[input.type][name] === "object"
+                                    if (isObject) {
+
+                                        const hasLocalType = init[input.type][name].hasOwnProperty("type")
+                                        const hasLocalDefault = init[input.type][name].hasOwnProperty("default")
+                                        const hasLocalMinimum = init[input.type][name].hasOwnProperty("minimum")
+                                        const hasLocalMaximum = init[input.type][name].hasOwnProperty("maximum")
+
+                                        const hasSharedType = init[input.type].hasOwnProperty("type")
+                                        const hasSharedDefault = init[input.type].hasOwnProperty("default")
+                                        const hasSharedMinimum = init[input.type].hasOwnProperty("minimum")
+                                        const hasSharedMaximum = init[input.type].hasOwnProperty("maximum")
+
+                                        var typeMismatch
+                                        var aboveMinimum
+                                        var belowMaximum
+
+                                        if (hasLocalMinimum) {
+                                            aboveMinimum = value >= init[input.type][name].minimum
+                                        } else if (hasSharedMinimum) {
+                                            aboveMinimum = value >= init[input.type].minimum
+                                        }
+
+                                        if (hasLocalMaximum) {
+                                            belowMaximum = value >= init[input.type][name].maximum
+                                        } else if (hasSharedMaximum) {
+                                            belowMaximum = value >= init[input.type].maximum
+                                        }
+
+                                        if (hasLocalType) {
+                                            typeMismatch = typeof value != init[input.type][name].type
+                                        } else if (isTypeExtensionName) {
+                                            typeMismatch = typeof value != firstType
+                                        } else if (hasSharedType) {
+                                            typeMismatch = typeof value != init[input.type].type
+                                        }
+
+                                        if (typeMismatch) {
+                                            return { }
+                                        }
+
+                                        if (aboveMinimum != null) {
+                                            if (typeMismatch && aboveMinimum) {
+                                                return { }
+                                            }
+                                        }
+
+                                        if (belowMaximum != null) {
+                                            if (typeMismatch && belowMaximum) {
+                                                return { }
+                                            }
+                                        }
+
+                                    }
     
                                 }
     
