@@ -413,17 +413,16 @@ const TXON = {
 
                                         const hasLocalMinimum = object.init[input.type][name].hasOwnProperty("minimum")
                                         const hasSharedMinimum = object.init[input.type].hasOwnProperty("minimum")
-                                        var belowMinimum
 
                                         if (hasLocalMinimum) {
-                                            belowMinimum = value >= object.init[input.type][name].minimum
+                                            const belowMinimum = value < object.init[input.type][name].minimum
                                             if (belowMinimum) {
-                                                return { valid: false, feedback: "below minimum" }
+                                                return { valid: false, feedback: `instance of type "${input.type}" has property "${name}" with value "${value}" below minimum "${object.init[input.type][name].minimum}"` }
                                             }
                                         } else if (hasSharedMinimum) {
-                                            belowMinimum = value >= object.init[input.type].minimum
+                                            const belowMinimum = value < object.init[input.type].minimum
                                             if (belowMinimum) {
-                                                return { valid: false, feedback: "below minimum" }
+                                                return { valid: false, feedback: `instance of type "${input.type}" has property "${name}" with value "${value}" below minimum "${object.init[input.type].minimum}"` }
                                             }
                                         }
 
@@ -432,17 +431,15 @@ const TXON = {
                                         const hasLocalMaximum = object.init[input.type][name].hasOwnProperty("maximum")
                                         const hasSharedMaximum = object.init[input.type].hasOwnProperty("maximum")
 
-                                        var aboveMaximum
-
                                         if (hasLocalMaximum) {
-                                            aboveMaximum = value >= object.init[input.type][name].maximum
+                                            const aboveMaximum = value > object.init[input.type][name].maximum
                                             if (aboveMaximum) {
-                                                return { valid: false, feedback: "above maximum" }
+                                                return { valid: false, feedback: `instance of type "${input.type}" has property "${name}" with value "${value}" above maximum "${object.init[input.type][name].maximum}"` }
                                             }
                                         } else if (hasSharedMaximum) {
-                                            aboveMaximum = value >= object.init[input.type].maximum
+                                            const aboveMaximum = value > object.init[input.type].maximum
                                             if (aboveMaximum) {
-                                                return { valid: false, feedback: "above maximum" }
+                                                return { valid: false, feedback: `instance of type "${input.type}" has property "${name}" with value "${value}" above maximum "${object.init[input.type].maximum}"` }
                                             }
                                         }
 
@@ -858,7 +855,7 @@ const TXON = {
 
         {
             "valid": false,
-            "feedback": 'instance of type "date" has property "month" with value below minimum',
+            "feedback": 'instance of type "date" has property "month" with value "0" below minimum "1"',
             "json": `{
                 "init": {
                     "date": {
@@ -881,7 +878,7 @@ const TXON = {
         
         {
             "valid": false,
-            "feedback": 'instance of type "date" has property "month" with value above maximum',
+            "feedback": 'instance of type "date" has property "month" with value "13" above maximum "12"',
             "json": `{
                 "init": {
                     "date": {
