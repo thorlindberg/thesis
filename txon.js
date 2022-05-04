@@ -311,6 +311,7 @@ const TXON = {
     
                         const hasValues = input.hasOwnProperty("values")
     
+                        /*
                         if (hasValues) {
     
                             const isArray = input.values instanceof Array
@@ -320,8 +321,6 @@ const TXON = {
     
                                     const isObject = typeof value === "object"
                                     if (isObject) {
-    
-                                        /*
     
                                         const hasLocalType = value.hasOwnProperty("type")
     
@@ -361,8 +360,6 @@ const TXON = {
                                             }
                                         }
     
-                                        */
-    
                                     }
     
                                 }
@@ -370,23 +367,25 @@ const TXON = {
                             }
     
                         }
+                        */
     
                         if (!hasValues) {
 
-                            // LOOP THROUGH INIT RATHER THAN INPUT, AS INIT DEFINES DEFAULT WHICH INFORMS INPUT REQUIREMENTS :(
-    
-                            for (const [name, value] of Object.entries(input)) {
-    
-                                const inDeclaration = object.init[input.type].hasOwnProperty(name)
-                                if (inDeclaration) {
+                            for (const [name, value] of Object.entries(object.init[input.type])) {
 
-                                    const isObject = typeof object.init[input.type][name] === "object"
-                                    if (isObject) {
+                                const isObject = typeof value === "object"
+                                if (isObject) {
 
-                                        // default
+                                    const inInstance = input.hasOwnProperty(name)
+                                    const hasLocalDefault = object.init[input.type][name].hasOwnProperty("default")
+                                    const hasSharedDefault = object.init[input.type].hasOwnProperty("default")
 
-                                        const hasLocalDefault = object.init[input.type][name].hasOwnProperty("default")
-                                        const hasSharedDefault = object.init[input.type].hasOwnProperty("default")
+                                    const notInstantiated = !inInstance && !hasLocalDefault && !inInstance && !hasSharedDefault
+                                    if (notInstantiated) {
+                                        return { valid: false, feedback: `instance of type "${input.type}" missing required property "${name}"`}
+                                    }
+
+                                    if (inInstance) {
 
                                         // type
 
@@ -404,9 +403,9 @@ const TXON = {
                                             typeTarget = input.type
                                         }
 
-                                        const typeMismatch = typeof value != typeTarget
+                                        const typeMismatch = typeof input[name] != typeTarget
                                         if (typeMismatch) {
-                                            return { valid: false, feedback: `instance of type "${input.type}" has property "${name}" of mismatched type "${typeof value}"` }
+                                            return { valid: false, feedback: `instance of type "${input.type}" has property "${name}" of mismatched type "${typeof input[name]}"` }
                                         }
 
                                         // minimum
@@ -415,14 +414,14 @@ const TXON = {
                                         const hasSharedMinimum = object.init[input.type].hasOwnProperty("minimum")
 
                                         if (hasLocalMinimum) {
-                                            const belowMinimum = value < object.init[input.type][name].minimum
+                                            const belowMinimum = input[name] < object.init[input.type][name].minimum
                                             if (belowMinimum) {
-                                                return { valid: false, feedback: `instance of type "${input.type}" has property "${name}" with value "${value}" below minimum "${object.init[input.type][name].minimum}"` }
+                                                return { valid: false, feedback: `instance of type "${input.type}" has property "${name}" with value "${input[name]}" below minimum "${object.init[input.type][name].minimum}"` }
                                             }
                                         } else if (hasSharedMinimum) {
-                                            const belowMinimum = value < object.init[input.type].minimum
+                                            const belowMinimum = input[name] < object.init[input.type].minimum
                                             if (belowMinimum) {
-                                                return { valid: false, feedback: `instance of type "${input.type}" has property "${name}" with value "${value}" below minimum "${object.init[input.type].minimum}"` }
+                                                return { valid: false, feedback: `instance of type "${input.type}" has property "${name}" with value "${input[name]}" below minimum "${object.init[input.type].minimum}"` }
                                             }
                                         }
 
@@ -432,19 +431,19 @@ const TXON = {
                                         const hasSharedMaximum = object.init[input.type].hasOwnProperty("maximum")
 
                                         if (hasLocalMaximum) {
-                                            const aboveMaximum = value > object.init[input.type][name].maximum
+                                            const aboveMaximum = input[name] > object.init[input.type][name].maximum
                                             if (aboveMaximum) {
-                                                return { valid: false, feedback: `instance of type "${input.type}" has property "${name}" with value "${value}" above maximum "${object.init[input.type][name].maximum}"` }
+                                                return { valid: false, feedback: `instance of type "${input.type}" has property "${name}" with value "${input[name]}" above maximum "${object.init[input.type][name].maximum}"` }
                                             }
                                         } else if (hasSharedMaximum) {
-                                            const aboveMaximum = value > object.init[input.type].maximum
+                                            const aboveMaximum = input[name] > object.init[input.type].maximum
                                             if (aboveMaximum) {
-                                                return { valid: false, feedback: `instance of type "${input.type}" has property "${name}" with value "${value}" above maximum "${object.init[input.type].maximum}"` }
+                                                return { valid: false, feedback: `instance of type "${input.type}" has property "${name}" with value "${input[name]}" above maximum "${object.init[input.type].maximum}"` }
                                             }
                                         }
-
+        
                                     }
-    
+
                                 }
     
                             }
