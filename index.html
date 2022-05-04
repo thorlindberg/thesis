@@ -13,19 +13,12 @@
             console.log("expected\t", test.valid, test.feedback)
             const checksPassed = validation.valid && validation.feedback == null
             if (checksPassed) {
-                console.log("outcome\t\t", "no feedback, all checks passed")
+                console.log("outcome\t\t", true, "no feedback, all checks passed")
             } else {
                 console.log("outcome\t\t", validation.valid, validation.feedback)
             }
             console.log("-")
         })
-
-        if (TXON.tests.map(test => {
-            const validation = TXON.handshake(test.json)
-            return test.valid === validation.valid && test.feedback === validation.feedback
-        })) {
-            console.log("all tests returned expected validation error :) 🎉")
-        }
 
     </script>
 </head>

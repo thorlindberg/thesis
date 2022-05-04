@@ -260,12 +260,18 @@ const TXON = {
     
                         const isArray = element instanceof Array
                         if (isArray) {
-                            recursion(element)
+                            const recursionError = recursion(element)
+                            if (recursionError != null) {
+                                return recursionError
+                            }
                         }
     
                         const isObject = typeof element === "object"
                         if (isObject) {
-                            validate(element)
+                            const validateError = validate(element)
+                            if (validateError != null) {
+                                return validateError
+                            }
                         }
                         
                     }
@@ -273,7 +279,10 @@ const TXON = {
     
                 const isObject = typeof input === "object"
                 if (isObject) {
-                    validate(input)
+                    const validateError = validate(input)
+                    if (validateError != null) {
+                        return validateError
+                    }
                 }
     
             }
@@ -363,6 +372,8 @@ const TXON = {
                         }
     
                         if (!hasValues) {
+
+                            // LOOP THROUGH INIT RATHER THAN INPUT, AS INIT DEFINES DEFAULT WHICH INFORMS INPUT REQUIREMENTS :(
     
                             for (const [name, value] of Object.entries(input)) {
     
@@ -372,27 +383,30 @@ const TXON = {
                                     const isObject = typeof object.init[input.type][name] === "object"
                                     if (isObject) {
 
+                                        // default
+
+                                        const hasLocalDefault = object.init[input.type][name].hasOwnProperty("default")
+                                        const hasSharedDefault = object.init[input.type].hasOwnProperty("default")
+
                                         // type
 
                                         const hasLocalType = object.init[input.type][name].hasOwnProperty("type")
                                         const hasSharedType = object.init[input.type].hasOwnProperty("type")
-                                        var typeMismatch
 
+                                        var typeTarget
                                         if (hasLocalType) {
-                                            typeMismatch = typeof value != object.init[input.type][name].type
-                                            if (typeMismatch) {
-                                                return { valid: false, feedback: "type mismatch" }
-                                            }
-                                        } else if (isTypeExtensionName) {
-                                            typeMismatch = typeof value != firstType
-                                            if (typeMismatch) {
-                                                return { valid: false, feedback: "type mismatch" }
-                                            }
+                                            typeTarget = object.init[input.type][name].type
                                         } else if (hasSharedType) {
-                                            typeMismatch = typeof value != object.init[input.type].type
-                                            if (typeMismatch) {
-                                                return { valid: false, feedback: "type mismatch" }
-                                            }
+                                            typeTarget = object.init[input.type].type
+                                        } else if (isTypeExtensionName) {
+                                            typeTarget = firstType
+                                        } else {
+                                            typeTarget = input.type
+                                        }
+
+                                        const typeMismatch = typeof value != typeTarget
+                                        if (typeMismatch) {
+                                            return { valid: false, feedback: "type mismatch" }
                                         }
 
                                         // minimum
@@ -432,11 +446,6 @@ const TXON = {
                                             }
                                         }
 
-                                        // default
-
-                                        const hasLocalDefault = object.init[input.type][name].hasOwnProperty("default")
-                                        const hasSharedDefault = object.init[input.type].hasOwnProperty("default")
-
                                     }
     
                                 }
@@ -451,7 +460,10 @@ const TXON = {
     
             }
                                         
-            recursion(object.data)
+            const recursionError = recursion(object.data)
+            if (recursionError != null) {
+                return recursionError
+            }
     
         }
 
@@ -805,7 +817,8 @@ const TXON = {
             "feedback": 'instance of type extension "number.date" missing required property "month"',
             "json": `{
                 "init": {
-                    "number.date": {
+                    "date": {
+                        "type": "number",
                         "day": {
                             "default": 1
                         },
@@ -816,7 +829,7 @@ const TXON = {
                     }
                 },
                 "data": {
-                    "type": "number.date"
+                    "type": "date"
                 }
             }`
         },
@@ -827,7 +840,8 @@ const TXON = {
             "feedback": 'wrong typeof month from type extension',
             "json": `{
                 "init": {
-                    "number.date": {
+                    "date": {
+                        "type": "number",
                         "day": {
                             "default": 1
                         },
@@ -838,7 +852,7 @@ const TXON = {
                     }
                 },
                 "data": {
-                    "type": "number.date",
+                    "type": "date",
                     "month": "10"
                 }
             }`
@@ -850,7 +864,8 @@ const TXON = {
             "feedback": 'value for month below minimum from type extension',
             "json": `{
                 "init": {
-                    "number.date": {
+                    "date": {
+                        "type": "number",
                         "day": {
                             "default": 1
                         },
@@ -861,7 +876,7 @@ const TXON = {
                     }
                 },
                 "data": {
-                    "type": "number.date",
+                    "type": "date",
                     "month": 0
                 }
             }`
@@ -873,7 +888,8 @@ const TXON = {
             "feedback": 'value for month above maximum from type extension',
             "json": `{
                 "init": {
-                    "number.date": {
+                    "date": {
+                        "type": "number",
                         "day": {
                             "default": 1
                         },
@@ -884,7 +900,7 @@ const TXON = {
                     }
                 },
                 "data": {
-                    "type": "number.date",
+                    "type": "date",
                     "month": 13
                 }
             }`
