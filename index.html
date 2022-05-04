@@ -10,11 +10,11 @@
 
         TXON.tests.forEach(test => {
             const validation = TXON.handshake(test.json)
+            console.log("expected\t", test.valid, test.feedback)
             const checksPassed = validation.valid && validation.feedback == null
             if (checksPassed) {
-                console.log("no feedback, all checks passed!")
+                console.log("outcome\t\t", "no feedback, all checks passed")
             } else {
-                console.log("expected\t", test.valid, test.feedback)
                 console.log("outcome\t\t", validation.valid, validation.feedback)
             }
             console.log("-")

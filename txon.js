@@ -297,7 +297,7 @@ const TXON = {
                         }
                     }
     
-                    const typeInitialised = init.hasOwnProperty(input.type)
+                    const typeInitialised = object.init.hasOwnProperty(input.type)
                     if (typeInitialised) {
     
                         const hasValues = input.hasOwnProperty("values")
@@ -319,9 +319,9 @@ const TXON = {
                                         const hasDefault = value.hasOwnProperty("default")
                                         if (hasDefault) {
                                             if (hasLocalType) {
-                                                const typeMismatch = typeof value.default != init[input.type].values[index].type
+                                                const typeMismatch = typeof value.default != object.init[input.type].values[index].type
                                             } else {
-                                                const typeMismatch = typeof value.default != init[input.type].type
+                                                const typeMismatch = typeof value.default != object.init[input.type].type
                                             }
                                             if (typeMismatch) {
                                                 return { }
@@ -331,9 +331,9 @@ const TXON = {
                                         const hasMinimum = value.hasOwnProperty("minimum")
                                         if (hasMinimum) {
                                             if (hasLocalType) {
-                                                const typeMismatch = typeof value.minimum != init[input.type].values[index].type
+                                                const typeMismatch = typeof value.minimum != object.init[input.type].values[index].type
                                             } else {
-                                                const typeMismatch = typeof value.minimum != init[input.type].type
+                                                const typeMismatch = typeof value.minimum != object.init[input.type].type
                                             }
                                             if (typeMismatch) {
                                                 return { }
@@ -343,9 +343,9 @@ const TXON = {
                                         const hasMaximum = value.hasOwnProperty("maximum")
                                         if (hasMaximum) {
                                             if (hasLocalType) {
-                                                const typeMismatch = typeof value.maximum != init[input.type].values[index].type
+                                                const typeMismatch = typeof value.maximum != object.init[input.type].values[index].type
                                             } else {
-                                                const typeMismatch = typeof value.maximum != init[input.type].type
+                                                const typeMismatch = typeof value.maximum != object.init[input.type].type
                                             }
                                             if (typeMismatch) {
                                                 return { }
@@ -366,61 +366,76 @@ const TXON = {
     
                             for (const [name, value] of Object.entries(input)) {
     
-                                const inDeclaration = init[input.type].hasOwnProperty(name)
+                                const inDeclaration = object.init[input.type].hasOwnProperty(name)
                                 if (inDeclaration) {
 
-                                    const isObject = typeof init[input.type][name] === "object"
+                                    const isObject = typeof object.init[input.type][name] === "object"
                                     if (isObject) {
 
-                                        const hasLocalType = init[input.type][name].hasOwnProperty("type")
-                                        const hasLocalDefault = init[input.type][name].hasOwnProperty("default")
-                                        const hasLocalMinimum = init[input.type][name].hasOwnProperty("minimum")
-                                        const hasLocalMaximum = init[input.type][name].hasOwnProperty("maximum")
+                                        // type
 
-                                        const hasSharedType = init[input.type].hasOwnProperty("type")
-                                        const hasSharedDefault = init[input.type].hasOwnProperty("default")
-                                        const hasSharedMinimum = init[input.type].hasOwnProperty("minimum")
-                                        const hasSharedMaximum = init[input.type].hasOwnProperty("maximum")
-
+                                        const hasLocalType = object.init[input.type][name].hasOwnProperty("type")
+                                        const hasSharedType = object.init[input.type].hasOwnProperty("type")
                                         var typeMismatch
-                                        var aboveMinimum
-                                        var belowMaximum
-
-                                        if (hasLocalMinimum) {
-                                            aboveMinimum = value >= init[input.type][name].minimum
-                                        } else if (hasSharedMinimum) {
-                                            aboveMinimum = value >= init[input.type].minimum
-                                        }
-
-                                        if (hasLocalMaximum) {
-                                            belowMaximum = value >= init[input.type][name].maximum
-                                        } else if (hasSharedMaximum) {
-                                            belowMaximum = value >= init[input.type].maximum
-                                        }
 
                                         if (hasLocalType) {
-                                            typeMismatch = typeof value != init[input.type][name].type
+                                            typeMismatch = typeof value != object.init[input.type][name].type
+                                            if (typeMismatch) {
+                                                return { valid: false, feedback: "type mismatch" }
+                                            }
                                         } else if (isTypeExtensionName) {
                                             typeMismatch = typeof value != firstType
+                                            if (typeMismatch) {
+                                                return { valid: false, feedback: "type mismatch" }
+                                            }
                                         } else if (hasSharedType) {
-                                            typeMismatch = typeof value != init[input.type].type
-                                        }
-
-                                        if (typeMismatch) {
-                                            return { }
-                                        }
-
-                                        if (aboveMinimum != null) {
-                                            if (typeMismatch && aboveMinimum) {
-                                                return { }
+                                            typeMismatch = typeof value != object.init[input.type].type
+                                            if (typeMismatch) {
+                                                return { valid: false, feedback: "type mismatch" }
                                             }
                                         }
 
-                                        if (belowMaximum != null) {
-                                            if (typeMismatch && belowMaximum) {
-                                                return { }
+                                        // minimum
+
+                                        const hasLocalMinimum = object.init[input.type][name].hasOwnProperty("minimum")
+                                        const hasSharedMinimum = object.init[input.type].hasOwnProperty("minimum")
+                                        var belowMinimum
+
+                                        if (hasLocalMinimum) {
+                                            belowMinimum = value >= object.init[input.type][name].minimum
+                                            if (belowMinimum) {
+                                                return { valid: false, feedback: "below minimum" }
+                                            }
+                                        } else if (hasSharedMinimum) {
+                                            belowMinimum = value >= object.init[input.type].minimum
+                                            if (belowMinimum) {
+                                                return { valid: false, feedback: "below minimum" }
                                             }
                                         }
+
+                                        // maximum
+
+                                        const hasLocalMaximum = object.init[input.type][name].hasOwnProperty("maximum")
+                                        const hasSharedMaximum = object.init[input.type].hasOwnProperty("maximum")
+
+                                        var aboveMaximum
+
+                                        if (hasLocalMaximum) {
+                                            aboveMaximum = value >= object.init[input.type][name].maximum
+                                            if (aboveMaximum) {
+                                                return { valid: false, feedback: "above maximum" }
+                                            }
+                                        } else if (hasSharedMaximum) {
+                                            aboveMaximum = value >= object.init[input.type].maximum
+                                            if (aboveMaximum) {
+                                                return { valid: false, feedback: "above maximum" }
+                                            }
+                                        }
+
+                                        // default
+
+                                        const hasLocalDefault = object.init[input.type][name].hasOwnProperty("default")
+                                        const hasSharedDefault = object.init[input.type].hasOwnProperty("default")
 
                                     }
     
@@ -784,6 +799,7 @@ const TXON = {
 
         // instantiation<recursion(object.data)> -> false
 
+        // mising required property month
         {
             "valid": false,
             "feedback": 'instance of type extension "number.date" missing required property "month"',
@@ -805,6 +821,7 @@ const TXON = {
             }`
         },
 
+        // wrong type for month
         {
             "valid": false,
             "feedback": 'wrong typeof month from type extension',
@@ -827,6 +844,7 @@ const TXON = {
             }`
         },
 
+        // below min for month
         {
             "valid": false,
             "feedback": 'value for month below minimum from type extension',
@@ -849,6 +867,7 @@ const TXON = {
             }`
         },
         
+        // above max for month
         {
             "valid": false,
             "feedback": 'value for month above maximum from type extension',
@@ -867,108 +886,6 @@ const TXON = {
                 "data": {
                     "type": "number.date",
                     "month": 13
-                }
-            }`
-        },
-
-        //
-
-        {
-            "valid": false,
-            "feedback": 'instance of type extension "number.date" missing required property "month"',
-            "json": `{
-                "init": {
-                    "number.date": {
-                        "day": {
-                            "default": 1
-                        },
-                        "month": {
-                            "minimum": 1,
-                            "maximum": 12
-                        }
-                    }
-                },
-                "data": {
-                    "type": "number.date",
-                    "values": []
-                }
-            }`
-        },
-
-        {
-            "valid": false,
-            "feedback": 'wrong typeof month from type extension',
-            "json": `{
-                "init": {
-                    "number.date": {
-                        "day": {
-                            "default": 1
-                        },
-                        "month": {
-                            "minimum": 1,
-                            "maximum": 12
-                        }
-                    }
-                },
-                "data": {
-                    "type": "number.date",
-                    "values": [
-                        {
-                            "month": "10"
-                        }
-                    ]
-                }
-            }`
-        },
-
-        {
-            "valid": false,
-            "feedback": 'value for month below minimum from type extension',
-            "json": `{
-                "init": {
-                    "number.date": {
-                        "day": {
-                            "default": 1
-                        },
-                        "month": {
-                            "minimum": 1,
-                            "maximum": 12
-                        }
-                    }
-                },
-                "data": {
-                    "type": "number.date",
-                    "values": [
-                        {
-                            "month": 0
-                        }
-                    ]
-                }
-            }`
-        },
-
-        {
-            "valid": false,
-            "feedback": 'value for month above maximum from type extension',
-            "json": `{
-                "init": {
-                    "number.date": {
-                        "day": {
-                            "default": 1
-                        },
-                        "month": {
-                            "minimum": 1,
-                            "maximum": 12
-                        }
-                    }
-                },
-                "data": {
-                    "type": "number.date",
-                    "values": [
-                        {
-                            "month": 13
-                        }
-                    ]
                 }
             }`
         }
