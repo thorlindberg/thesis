@@ -29,7 +29,7 @@ const TXON = {
             if (!hasInit) {
                 return {
                     valid: true,
-                    feedback: "init property not found"
+                    feedback: '"init" property not found at top level'
                 }
             }
     
@@ -248,7 +248,7 @@ const TXON = {
             if (!hasData) {
                 return {
                     valid: true,
-                    feedback: "data property not found"
+                    feedback: '"data" property not found at top level'
                 }
             }
     
@@ -463,7 +463,25 @@ const TXON = {
 
     tests: [
 
-        // initialisation<shared> -> true
+        // requirements
+
+        {
+            "valid": true,
+            "feedback": '"init" property not found at top level',
+            "json": `{
+                "data": []
+            }`
+        },
+
+        {
+            "valid": true,
+            "feedback": '"data" property not found at top level',
+            "json": `{
+                "init": {}
+            }`
+        },
+
+        // declaration<shared> -> true
 
         {
             "valid": true,
@@ -523,7 +541,7 @@ const TXON = {
             }`
         },
 
-        // initialisation<isTypeExtensionName> -> true
+        // declaration<isTypeExtensionName> -> true
 
         {
             "valid": true,
@@ -567,7 +585,7 @@ const TXON = {
             }`
         },
 
-        // initialisation<Object.getOwnPropertyNames(property)> -> true
+        // declaration<Object.getOwnPropertyNames(property)> -> true
 
         {
             "valid": true,
@@ -764,179 +782,196 @@ const TXON = {
             }`
         },
 
-        // returns true
-
-        /*
+        // instantiation<recursion(object.data)> -> false
 
         {
-            "valid": true,
-            "feedback": "init property not found",
-            "json": `{
-                "data": []
-            }`
-        },
-
-        {
-            "valid": true,
-            "feedback": "data property not found",
-            "json": `{
-                "init": {}
-            }`
-        },
-
-        {
-            "valid": true,
-            "feedback": `type "date" declared but not instantiated`,
-            "json": `{
-                "init": {
-                    "date": {
-                        "type": "number",
-                        "month": {
-                            "minimum": 1,
-                            "maximum": 12,
-                            "default": 1
-                        }
-                    }
-                },
-                "data": []
-            }`
-        },
-
-        {
-            "valid": true,
-            "feedback": `type "date" intantiated but not declared`,
-            "json": `{
-                "init": {},
-                "data": [
-                    {
-                        "type": "date",
-                        "month": 4
-                    }
-                ]
-            }`
-        },
-
-        {
-            "valid": true,
-            "feedback": `extension "number.date" declared but not instantiated`,
+            "valid": false,
+            "feedback": 'instance of type extension "number.date" missing required property "month"',
             "json": `{
                 "init": {
                     "number.date": {
+                        "day": {
+                            "default": 1
+                        },
                         "month": {
                             "minimum": 1,
-                            "maximum": 12,
-                            "default": 1
+                            "maximum": 12
                         }
                     }
                 },
-                "data": []
-            }`
-        },
-
-        {
-            "valid": true,
-            "feedback": `extension "number.date" instantaited but not declared`,
-            "json": `{
-                "init": {},
-                "data": [
-                    {
-                        "type": "number.date",
-                        "month": 4
-                    }
-                ]
-            }`
-        },
-
-        // returns false
-
-        {
-            "valid": false,
-            "feedback": `instance of type "date" is missing required property "month"`,
-            "json": `{
-                "init": {
-                    "date": {
-                        "type": "number",
-                        "month": {
-                            "minimum": 1,
-                            "maximum": 12,
-                            "default": 1
-                        }
-                    }
-                },
-                "data": [
-                    {
-                        "type": "date"
-                    }
-                ]
+                "data": {
+                    "type": "number.date"
+                }
             }`
         },
 
         {
             "valid": false,
-            "feedback": `instance of type "date" has property "month" of type "string" but requires type "number"`,
-            "json": `{
-                "init": {
-                    "date": {
-                        "type": "number",
-                        "month": {
-                            "minimum": 1,
-                            "maximum": 12,
-                            "default": 1
-                        }
-                    }
-                },
-                "data": [
-                    {
-                        "type": "date",
-                        "month": "four"
-                    }
-                ]
-            }`
-        },
-
-        {
-            "valid": false,
-            "feedback": `instance of extension "number.date" is missing required property "month"`,
+            "feedback": 'wrong typeof month from type extension',
             "json": `{
                 "init": {
                     "number.date": {
+                        "day": {
+                            "default": 1
+                        },
                         "month": {
                             "minimum": 1,
-                            "maximum": 12,
-                            "default": 1
+                            "maximum": 12
                         }
                     }
                 },
-                "data": [
-                    {
-                        "type": "number.date"
-                    }
-                ]
+                "data": {
+                    "type": "number.date",
+                    "month": "10"
+                }
             }`
         },
 
         {
             "valid": false,
-            "feedback": `instance of extension "number.date" has property "month" of mismatched type "string"`,
+            "feedback": 'value for month below minimum from type extension',
             "json": `{
                 "init": {
                     "number.date": {
+                        "day": {
+                            "default": 1
+                        },
                         "month": {
                             "minimum": 1,
-                            "maximum": 12,
-                            "default": 1
+                            "maximum": 12
                         }
                     }
                 },
-                "data": [
-                    {
-                        "type": "number.date",
-                        "month": "four"
+                "data": {
+                    "type": "number.date",
+                    "month": 0
+                }
+            }`
+        },
+        
+        {
+            "valid": false,
+            "feedback": 'value for month above maximum from type extension',
+            "json": `{
+                "init": {
+                    "number.date": {
+                        "day": {
+                            "default": 1
+                        },
+                        "month": {
+                            "minimum": 1,
+                            "maximum": 12
+                        }
                     }
-                ]
+                },
+                "data": {
+                    "type": "number.date",
+                    "month": 13
+                }
+            }`
+        },
+
+        //
+
+        {
+            "valid": false,
+            "feedback": 'instance of type extension "number.date" missing required property "month"',
+            "json": `{
+                "init": {
+                    "number.date": {
+                        "day": {
+                            "default": 1
+                        },
+                        "month": {
+                            "minimum": 1,
+                            "maximum": 12
+                        }
+                    }
+                },
+                "data": {
+                    "type": "number.date",
+                    "values": []
+                }
+            }`
+        },
+
+        {
+            "valid": false,
+            "feedback": 'wrong typeof month from type extension',
+            "json": `{
+                "init": {
+                    "number.date": {
+                        "day": {
+                            "default": 1
+                        },
+                        "month": {
+                            "minimum": 1,
+                            "maximum": 12
+                        }
+                    }
+                },
+                "data": {
+                    "type": "number.date",
+                    "values": [
+                        {
+                            "month": "10"
+                        }
+                    ]
+                }
+            }`
+        },
+
+        {
+            "valid": false,
+            "feedback": 'value for month below minimum from type extension',
+            "json": `{
+                "init": {
+                    "number.date": {
+                        "day": {
+                            "default": 1
+                        },
+                        "month": {
+                            "minimum": 1,
+                            "maximum": 12
+                        }
+                    }
+                },
+                "data": {
+                    "type": "number.date",
+                    "values": [
+                        {
+                            "month": 0
+                        }
+                    ]
+                }
+            }`
+        },
+
+        {
+            "valid": false,
+            "feedback": 'value for month above maximum from type extension',
+            "json": `{
+                "init": {
+                    "number.date": {
+                        "day": {
+                            "default": 1
+                        },
+                        "month": {
+                            "minimum": 1,
+                            "maximum": 12
+                        }
+                    }
+                },
+                "data": {
+                    "type": "number.date",
+                    "values": [
+                        {
+                            "month": 13
+                        }
+                    ]
+                }
             }`
         }
-        */
         
     ]
 
