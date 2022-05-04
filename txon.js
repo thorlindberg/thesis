@@ -406,7 +406,7 @@ const TXON = {
 
                                         const typeMismatch = typeof value != typeTarget
                                         if (typeMismatch) {
-                                            return { valid: false, feedback: "type mismatch" }
+                                            return { valid: false, feedback: `instance of type "${input.type}" has property "${name}" of mismatched type "${typeof value}"` }
                                         }
 
                                         // minimum
@@ -811,10 +811,9 @@ const TXON = {
 
         // instantiation<recursion(object.data)> -> false
 
-        // mising required property month
         {
             "valid": false,
-            "feedback": 'instance of type extension "number.date" missing required property "month"',
+            "feedback": 'instance of type "date" missing required property "month"',
             "json": `{
                 "init": {
                     "date": {
@@ -834,10 +833,9 @@ const TXON = {
             }`
         },
 
-        // wrong type for month
         {
             "valid": false,
-            "feedback": 'wrong typeof month from type extension',
+            "feedback": 'instance of type "date" has property "month" of mismatched type "string"',
             "json": `{
                 "init": {
                     "date": {
@@ -858,10 +856,9 @@ const TXON = {
             }`
         },
 
-        // below min for month
         {
             "valid": false,
-            "feedback": 'value for month below minimum from type extension',
+            "feedback": 'instance of type "date" has property "month" with value below minimum',
             "json": `{
                 "init": {
                     "date": {
@@ -882,10 +879,9 @@ const TXON = {
             }`
         },
         
-        // above max for month
         {
             "valid": false,
-            "feedback": 'value for month above maximum from type extension',
+            "feedback": 'instance of type "date" has property "month" with value above maximum',
             "json": `{
                 "init": {
                     "date": {
