@@ -311,64 +311,6 @@ const TXON = {
     
                         const hasValues = input.hasOwnProperty("values")
     
-                        /*
-                        if (hasValues) {
-    
-                            const isArray = input.values instanceof Array
-                            if (isArray) {
-                                
-                                for (const [value, index] of input.values) {
-    
-                                    const isObject = typeof value === "object"
-                                    if (isObject) {
-    
-                                        const hasLocalType = value.hasOwnProperty("type")
-    
-                                        const hasDefault = value.hasOwnProperty("default")
-                                        if (hasDefault) {
-                                            if (hasLocalType) {
-                                                const typeMismatch = typeof value.default != object.init[input.type].values[index].type
-                                            } else {
-                                                const typeMismatch = typeof value.default != object.init[input.type].type
-                                            }
-                                            if (typeMismatch) {
-                                                return { }
-                                            }
-                                        }
-    
-                                        const hasMinimum = value.hasOwnProperty("minimum")
-                                        if (hasMinimum) {
-                                            if (hasLocalType) {
-                                                const typeMismatch = typeof value.minimum != object.init[input.type].values[index].type
-                                            } else {
-                                                const typeMismatch = typeof value.minimum != object.init[input.type].type
-                                            }
-                                            if (typeMismatch) {
-                                                return { }
-                                            }
-                                        }
-    
-                                        const hasMaximum = value.hasOwnProperty("maximum")
-                                        if (hasMaximum) {
-                                            if (hasLocalType) {
-                                                const typeMismatch = typeof value.maximum != object.init[input.type].values[index].type
-                                            } else {
-                                                const typeMismatch = typeof value.maximum != object.init[input.type].type
-                                            }
-                                            if (typeMismatch) {
-                                                return { }
-                                            }
-                                        }
-    
-                                    }
-    
-                                }
-    
-                            }
-    
-                        }
-                        */
-    
                         if (!hasValues) {
 
                             for (const [name, value] of Object.entries(object.init[input.type])) {
@@ -448,6 +390,101 @@ const TXON = {
     
                             }
     
+                        }
+
+                        if (hasValues) {
+    
+                            const isArray = input.values instanceof Array
+                            if (isArray) {
+                                
+                                for (const element of input.values) {
+    
+                                    const isObject = typeof element === "object"
+                                    if (isObject) {
+
+                                        for (const [name, value] of Object.entries(object.init[input.type])) {
+
+                                            const isObject = typeof value === "object"
+                                            if (isObject) {
+
+                                                const inInstance = element.hasOwnProperty(name)
+                                                const hasLocalDefault = object.init[input.type][name].hasOwnProperty("default")
+                                                const hasSharedDefault = object.init[input.type].hasOwnProperty("default")
+
+                                                const notInstantiated = !inInstance && !hasLocalDefault && !inInstance && !hasSharedDefault
+                                                if (notInstantiated) {
+                                                    return { valid: false, feedback: `instance of type "${input.type}" missing required property "${name}"`}
+                                                }
+
+                                                if (inInstance) {
+
+                                                    // type
+
+                                                    const hasLocalType = object.init[input.type][name].hasOwnProperty("type")
+                                                    const hasSharedType = object.init[input.type].hasOwnProperty("type")
+
+                                                    var typeTarget
+                                                    if (hasLocalType) {
+                                                        typeTarget = object.init[input.type][name].type
+                                                    } else if (hasSharedType) {
+                                                        typeTarget = object.init[input.type].type
+                                                    } else if (isTypeExtensionName) {
+                                                        typeTarget = firstType
+                                                    } else {
+                                                        typeTarget = input.type
+                                                    }
+
+                                                    const typeMismatch = typeof element[name] != typeTarget
+                                                    if (typeMismatch) {
+                                                        return { valid: false, feedback: `instance of type "${input.type}" has "values" array containing property "${name}" of mismatched type "${typeof element[name]}"` }
+                                                    }
+
+                                                    // minimum
+
+                                                    const hasLocalMinimum = object.init[input.type][name].hasOwnProperty("minimum")
+                                                    const hasSharedMinimum = object.init[input.type].hasOwnProperty("minimum")
+
+                                                    if (hasLocalMinimum) {
+                                                        const belowMinimum = element[name] < object.init[input.type][name].minimum
+                                                        if (belowMinimum) {
+                                                            return { valid: false, feedback: `instance of type "${input.type}" has "values" array containing property "${name}" with value "${element[name]}" below minimum "${object.init[input.type][name].minimum}"` }
+                                                        }
+                                                    } else if (hasSharedMinimum) {
+                                                        const belowMinimum = element[name] < object.init[input.type].minimum
+                                                        if (belowMinimum) {
+                                                            return { valid: false, feedback: `instance of type "${input.type}" has "values" array containing property "${name}" with value "${element[name]}" below minimum "${object.init[input.type].minimum}"` }
+                                                        }
+                                                    }
+
+                                                    // maximum
+
+                                                    const hasLocalMaximum = object.init[input.type][name].hasOwnProperty("maximum")
+                                                    const hasSharedMaximum = object.init[input.type].hasOwnProperty("maximum")
+
+                                                    if (hasLocalMaximum) {
+                                                        const aboveMaximum = element[name] > object.init[input.type][name].maximum
+                                                        if (aboveMaximum) {
+                                                            return { valid: false, feedback: `instance of type "${input.type}" has "values" array containing property "${name}" with value "${element[name]}" above maximum "${object.init[input.type][name].maximum}"` }
+                                                        }
+                                                    } else if (hasSharedMaximum) {
+                                                        const aboveMaximum = element[name] > object.init[input.type].maximum
+                                                        if (aboveMaximum) {
+                                                            return { valid: false, feedback: `instance of type "${input.type}" has "values" array containing property "${name}" with value "${element[name]}" above maximum "${object.init[input.type].maximum}"` }
+                                                        }
+                                                    }
+                    
+                                                }
+
+                                            }
+
+                                        }
+
+                                    }
+
+                                }
+
+                            }
+
                         }
     
                     }
@@ -829,6 +866,8 @@ const TXON = {
             }`
         },
 
+        // !hasValues
+
         {
             "valid": false,
             "feedback": 'instance of type "date" has property "month" of mismatched type "string"',
@@ -896,158 +935,92 @@ const TXON = {
                     "month": 13
                 }
             }`
+        },
+        
+        // hasValues
+
+
+        {
+            "valid": false,
+            "feedback": 'instance of type "date" has "values" array containing property "month" of mismatched type "string"',
+            "json": `{
+                "init": {
+                    "date": {
+                        "type": "number",
+                        "day": {
+                            "default": 1
+                        },
+                        "month": {
+                            "minimum": 1,
+                            "maximum": 12
+                        }
+                    }
+                },
+                "data": {
+                    "type": "date",
+                    "values": [
+                        {
+                            "month": "10"
+                        }
+                    ]
+                }
+            }`
+        },
+
+        {
+            "valid": false,
+            "feedback": 'instance of type "date" has "values" array containing property "month" with value "0" below minimum "1"',
+            "json": `{
+                "init": {
+                    "date": {
+                        "type": "number",
+                        "day": {
+                            "default": 1
+                        },
+                        "month": {
+                            "minimum": 1,
+                            "maximum": 12
+                        }
+                    }
+                },
+                "data": {
+                    "type": "date",
+                    "values": [
+                        {
+                            "month": 0
+                        }
+                    ]
+                }
+            }`
+        },
+        
+        {
+            "valid": false,
+            "feedback": 'instance of type "date" has "values" array containing property "month" with value "13" above maximum "12"',
+            "json": `{
+                "init": {
+                    "date": {
+                        "type": "number",
+                        "day": {
+                            "default": 1
+                        },
+                        "month": {
+                            "minimum": 1,
+                            "maximum": 12
+                        }
+                    }
+                },
+                "data": {
+                    "type": "date",
+                    "values": [
+                        {
+                            "month": 13
+                        }
+                    ]
+                }
+            }`
         }
         
     ]
 
 }
-
-/*
-
-// example: individual declaration and instantiation
-
-{
-    "init": {
-        "date": {
-            "month": {
-                "type": "number",
-                "minimum": 1,
-                "maximum": 12,
-                "default": 1
-            },
-            "day": {
-                "type": "number",
-                "minimum": 1,
-                "maximum": 31
-            },
-            "year": {
-                "type": "number",
-                "default": null
-            }
-        }
-    },
-    "data": [
-        {
-            "type": "date",
-            "month": 10,
-            "day": 28,
-            "year": 2005
-        },
-        {
-            "type": "date",
-            "day": 28
-        },
-        {
-            "type": "date",
-            "month": 10,
-            "day": 28
-        }
-    ]
-}
-
-// example: shared declaration (type) and instantiation
-
-{
-    "init": {
-        "date": {
-            "type": "number",
-            "month": {
-                "minimum": 1,
-                "maximum": 12,
-                "default": 1
-            },
-            "day": {
-                "minimum": 1,
-                "maximum": 31
-            },
-            "year": {
-                "default": null
-            }
-        }
-    },
-    "data": {
-        "type": "date",
-        "values": [
-            {
-                "month": 10,
-                "day": 28,
-                "year": 2005
-            },
-            {
-                "day": 28
-            },
-            {
-                "month": 10,
-                "day": 28
-            }
-        ]
-    }
-}
-
-// example: shared declaration (type, min, max, default) and instantiation
-
-{
-    "init": {
-        "person": {
-            "type": "string",
-            "minimum": 1,
-            "maximum": 256,
-            "default": "not found",
-            "case" : [
-                "firstname",
-                "lastname"
-            ]
-        }
-    },
-    "data": {
-        "type": "person",
-        "values": [
-            {
-                "firstname": "thor",
-                "lastname": "lindberg"
-            }
-        ]
-    }
-}
-
-// example: shared declaration with overrides (type, min, max, default) and instantiation
-
-{
-    "init": {
-        "person": {
-            "type": "string",
-            "minimum": 1,
-            "maximum": 256,
-            "default": "not found",
-            "case" : [
-                "firstname",
-                "lastname"
-            ],
-            "age": {
-                "type": "number",
-                "minimum": 0,
-                "maximum": 200,
-                "default": null
-            }
-        }
-    },
-    "data": {
-        "type": "person",
-        "values": [
-            {
-                "firstname": "thor",
-                "lastname": "lindberg",
-                "age": 25
-            },
-            {
-                "firstname": "thor",
-                "lastname": "lindberg"
-            },
-            {
-                "age": 25
-            }
-        ]
-    }
-}
-
-*/
