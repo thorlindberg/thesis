@@ -456,8 +456,7 @@ const TXON = {
         }
 
         return {
-            valid: true,
-            feedback: "all checks passed"
+            valid: true
         }
 
     },
