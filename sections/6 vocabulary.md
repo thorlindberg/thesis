@@ -2,6 +2,8 @@
 
 This section explores fundamental principles of the system architectures that support distribution of serialised data. It serves to establish a vocabulary for communication in computing, as well as to provide background knowledge on how data becomes distributed, and motivate my choices of systems.
 
+<br>
+
 {"sub":"Distributed Computing"}
 
 {"cite":"kshemkalyani2011distributed"} define _distributed systems_ as "a collection of independent entities that cooperate to solve a problem that cannot be individually solved." They characterise distributed computing as  "a collection of mostly autonomous processors communicating over a communication network". They identify common features of distributed systems, notably a lack of shared resources which necessitates communication, autonomy and heterogeneity.
@@ -29,6 +31,8 @@ Given the inherent nature of serialised data exchange, and the ubiquity of distr
 {"cite":"kshemkalyani2011distributed"} describe several applications of distributed computing, of which the publish-subscribe model of content distribution is particularly relevant to this project, because it is the most prominent server-client system. In this model, information is filtered by relevancy, meaning the server distributes only the requested information. As argued by {"cite":"kshemkalyani2011distributed"}, information distribution requires three types of mechanisms: distribution (publishing), specific requests (subscribe), and the ability to manipulate information based on a request before publishing.
 
 In the following section on _the transmission of data in distributed computing systems_, I present an in-depth illustration of how publish-subscribe models facilitate distribution of data-driven systems.
+
+<br>
 
 {"sub":"Data Transmission"}
 
@@ -64,17 +68,25 @@ The take away from the OSI model is that as data flows through a distributed sys
 
 ...
 
+<br>
+
 {"sub":"Data Parsing"}
 
 ...
+
+<br>
 
 {"sub":"Typesetting"}
 
 ...
 
+<br>
+
 {"sub":"Backwards Compatibility"}
 
 ...
+
+<br>
 
 {"sub":"Language Extensibility"}
 
