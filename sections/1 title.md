@@ -1,8 +1,6 @@
-<p align="center"><b style="font-size: 1.5em">Type-Extensible Object Notation: JSON with Syntax for Types</b></p>
+<p align="center"><b style="font-size: 1.45em">Type-Extensible Object Notation: JSON with Syntax for Types</b></p>
 
 <p align="center"><i>Master's Thesis in Information Technology</i></p>
-
-<br>
 
 <br>
 

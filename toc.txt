@@ -1,0 +1,44 @@
+1-1			frontpage-title
+1-2			frontpage-abstract
+
+——————————————————————————————
+
+2-1			introduction-purpose
+2-2			introduction-reader
+2-3			introduction-perspective
+2-4			introduction-statement
+
+3-1			background-
+
+4-1			vocabulary-distributed?
+4-2			vocabulary-heterogeneity?
+4-3			vocabulary-testdriven?
+
+——————————————————————————————
+
+5-1			relatedwork-implicit
+5-2			relatedwork-explicit
+
+6-1			experiment-library
+6-2-1		experiment-features-docs
+6-2-2		experiment-features-tests
+6-2-3		experiment-features-handshake
+6-3			experiment-declaration?
+6-4			experiment-instances?
+6-5-1		experiment-conformance-json?
+6-5-2		experiment-conformance-init?
+6-5-3		experiment-conformance-data?
+6-6			experiment-evaluation
+
+7-1			results-syntax
+7-2			results-comparison
+
+——————————————————————————————
+
+8-1			discussion-
+
+9			futurework
+
+10			conclusion
+
+11			bibliography
