@@ -1,25 +1,36 @@
-**Type-Extensible Object Notation: JSON with Syntax for Types**
----
+<p align="center"><b style="font-size: 2em">Type-Extensible Object Notation:</b></p>
+<p align="center"><b style="font-size: 3em">JSON with Syntax for Types</b></p>
 
-_Master's Thesis in Information Technology_
+<p align="center"><i>Master's Thesis in Information Technology</i></p>
 
 <br>
 
+<br>
+
+<div style="display: flex; justify-content: space-evenly">
+<div>
+<p align="center">
 Thor Wessel Lindberg
 <br>
-Department of Digital Design
+Masters in Digital Design
 <br>
-IT-University of Copenhagen, Denmark
+IT-University of Copenhagen
 <br>
-[mawl@itu.dk](mailto:mawl@itu.dk)
-
+<a href="mailto:mawl@itu.dk">mawl@itu.dk</a>
+</p>
+</div>
+<div>
+<p align="center">
 Dr. Jørgen Staunstrup
 <br>
 Department of Computer Science
 <br>
-IT-University of Copenhagen, Denmark
+IT-University of Copenhagen
 <br>
-[jst@itu.dk](mailto:jst@itu.dk)
+<a href="mailto:jst@itu.dk">jst@itu.dk</a>
+</p>
+</div>
+</div>
 
 <br>
 
@@ -123,11 +134,11 @@ Design philosophy extends to software development, as human-readable code become
 
 <br>
 
-<span id="cleanarchitecture"></span><img style="width:100%" src="./figures/cleanarchitecture.jpg"/>
+<span id="cleanarchitecture"></span><br><div style='page-break-after:always'></div><img style="width:100%" src="./figures/cleanarchitecture.jpg"/>
 
 Figure 1: The clean architecture.
 
-<br>
+<br><div style='page-break-after:always'></div>
 
 As seen in [figure 1](#cleanarchitecture), this division results in four types of layers, guided by the various types of business rules and internal or external dependencies. This fragmentation of components facilitates the independent development, testing and evolution of the software layers. This philosophical perspective on software illustrates the importance of design in software, as system architecture can either motivate or inhibit developers from achieving their desired design goals.
 
@@ -143,11 +154,11 @@ JavaScript Object Notation (JSON) is...
 
 <br>
 
-<span id="persona"></span><img style="width:100%" src="./figures/persona.png"/>
+<span id="persona"></span><br><div style='page-break-after:always'></div><img style="width:100%" src="./figures/persona.png"/>
 
 Figure 2: A complete persona.
 
-<br>
+<br><div style='page-break-after:always'></div>
 
 As seen in [figure 2](#persona), the persona represents a fictive person derived from real information on users. It is crucial that the persona does not represent a real person, as the goal is not to design for a specific person, but for personas to represent multiple and potentially conflicting perspectives.
 
@@ -178,11 +189,11 @@ As seen in [figure 3](#organisation), there are two identifiable hierarchies tha
 
 <br>
 
-<span id="organisation"></span><img style="width:100%" src="./figures/organisation.png"/>
+<span id="organisation"></span><br><div style='page-break-after:always'></div><img style="width:100%" src="./figures/organisation.png"/>
 
 Figure 3: Hierarchical and structural relationship between development company and case partners.
 
-<br>
+<br><div style='page-break-after:always'></div>
 
 The structure of the partner company informs how they formulate the case offered to the developers. They are also responsible for maintenance of a back-end, delivering customer data to the client developed in the delivery.
 
@@ -433,11 +444,11 @@ As seen in [figure 4](#networkcomms), a distributed system achieves asynchronous
 
 <br>
 
-<span id="networkcomms"></span><img style="width:100%" src="./figures/networkcomms.png"/>
+<span id="networkcomms"></span><br><div style='page-break-after:always'></div><img style="width:100%" src="./figures/networkcomms.png"/>
 
 Figure 4: A distributed system connects processors by a communication network.
 
-<br>
+<br><div style='page-break-after:always'></div>
 
 _Hardware heterogeneity_ manifests as a variation in physical resources and thus implicitly a variation in computational capability. This necessitates a variance in entity responsibilities, as each individual entity is... This can of course be a cognitive decision made by system architects and engineers, facilitating a more efficient distribution, as computational tasks are inherently varied in requirements.
 
@@ -445,11 +456,11 @@ _Software heterogeneity_ manifests as a variation in programming languages and f
 
 <br>
 
-<span id="processinteraction"></span><img style="width:100%" src="./figures/processinteraction.png"/>
+<span id="processinteraction"></span><br><div style='page-break-after:always'></div><img style="width:100%" src="./figures/processinteraction.png"/>
 
 Figure 5: Interaction of the software components at each processor.
 
-<br>
+<br><div style='page-break-after:always'></div>
 
 At this point, you are probably wondering _why distribution is relevant_ to this project, and _how it pertains to data serialisation_. [Kshemkalyani, A. and Singhal, M. (2011)](#kshemkalyani2011distributed) define various potential requirements of a system, that would motivate heterogeneous distribution. As data serialisation is typically utilised for distributed communication, it is not inherently performance- or scalability-oriented, but it is inherently distributed and geographically remote. The implication is that the inherent distributed nature of serialised data exchange necessitates the use of a distributed system, and not vice versa.
 
@@ -457,11 +468,11 @@ Given the inherent nature of serialised data exchange, and the ubiquity of distr
 
 <br>
 
-<span id="pubsubsystem"></span><img style="width:100%" src="./figures/pubsubsystem.png"/>
+<span id="pubsubsystem"></span><br><div style='page-break-after:always'></div><img style="width:100%" src="./figures/pubsubsystem.png"/>
 
 Figure 6: Components of a _publish-subscribe_ system.
 
-<br>
+<br><div style='page-break-after:always'></div>
 
 [Kshemkalyani, A. and Singhal, M. (2011)](#kshemkalyani2011distributed) identify a set of design challenges applicable to the traditional server-client model of distributed systems. An _Applications Programming Interface (API)_ enables the distributed system to communicate internally and more importantly externally, maximising the adoption of system services by outside forces. It introduces the challenge of _transparency_, as the system should be accessible without revealing its internal operations (resource [re]location, replication, concurrency, failure handling etc.) and implementation policies.
 
@@ -491,29 +502,27 @@ The network layer is one of multiple layers typical of networking systems. As se
 
 <br>
 
-<span id="ositcilayers"></span><img style="width:100%" src="./figures/ositcilayers.png"/>
+<span id="ositcilayers"></span><br><div style='page-break-after:always'></div><img style="width:100%" src="./figures/ositcilayers.png"/>
 
 Figure 7: Comparison between layers in the OSI model and TCI/IP model, providing a standard communication architecture for distributed processing systems.
 
-<br>
+<br><div style='page-break-after:always'></div>
 
 As data in a distributed systems flows from the software (_application layer_) to the hardware (_physical layer_), it is transformed by protocols which add additional information to the data. This process is referred to as _encapsulation_, and consists of _capsulation_ from the source host and _decapsulation_ towards the destination host. As data flows from source host's application layer and towards the physical layer, protocols prepend headers (leading information) and append trailers (trailing information) to the data. This additional information indicates the purpose of communicating the data and how it should be interpreted by the next layer.
 
 <br>
 
-<span id="dataflow"></span><img style="width:100%" src="./figures/endtoendflow.png"/>
+<span id="dataflow"></span><br><div style='page-break-after:always'></div><img style="width:100%" src="./figures/endtoendflow.png"/>
 
 Figure 8: End-to-end data flow.
 
-<br>
+<br><div style='page-break-after:always'></div>
 
-<br>
-
-<span id="encapsulation"></span><img style="width:100%" src="./figures/encapsulation.png"/>
+<span id="encapsulation"></span><br><div style='page-break-after:always'></div><img style="width:100%" src="./figures/encapsulation.png"/>
 
 Figure 9: Encapsulation with headers and trailers.
 
-<br>
+<br><div style='page-break-after:always'></div>
 
 This transformation of distributed data has consequences for...
 

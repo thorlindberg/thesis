@@ -1,24 +1,34 @@
-**Type-Extensible Object Notation: JSON with Syntax for Types**
----
+<p align="center"><b style="font-size: 2em">Type-Extensible Object Notation:</b></p>
+<p align="center"><b style="font-size: 3em">JSON with Syntax for Types</b></p>
 
-_Master's Thesis in Information Technology_
+<p align="center"><i>Master's Thesis in Information Technology</i></p>
 
 <br>
 
+<br>
+
+<div style="display: flex; justify-content: space-evenly">
+
+<p align="center">
 Thor Wessel Lindberg
 <br>
-Department of Digital Design
+Masters in Digital Design
 <br>
-IT-University of Copenhagen, Denmark
+IT-University of Copenhagen
 <br>
-[mawl@itu.dk](mailto:mawl@itu.dk)
+<a href="mailto:mawl@itu.dk">mawl@itu.dk</a>
+</p>
 
+<p align="center">
 Dr. Jørgen Staunstrup
 <br>
 Department of Computer Science
 <br>
-IT-University of Copenhagen, Denmark
+IT-University of Copenhagen
 <br>
-[jst@itu.dk](mailto:jst@itu.dk)
+<a href="mailto:jst@itu.dk">jst@itu.dk</a>
+</p>
+
+</div>
 
 <br>

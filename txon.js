@@ -4,6 +4,508 @@ const TXON = {
         "How to validate with TXON..."
     ].join("\n"),
 
+    tests: [
+
+        // requirements
+
+        {
+            "valid": true,
+            "feedback": '"init" property not found at top level',
+            "json": `{
+                "data": []
+            }`
+        },
+
+        {
+            "valid": true,
+            "feedback": '"data" property not found at top level',
+            "json": `{
+                "init": {}
+            }`
+        },
+
+        // declaration<shared> -> true
+
+        {
+            "valid": true,
+            "feedback": 'type "date" has invalid shared JSON "type" declaration "double"',
+            "json": `{
+                "init": {
+                    "date": {
+                        "type": "double"
+                    }
+                },
+                "data": []
+            }`
+        },
+
+        {
+            "valid": true,
+            "feedback": 'type "date" has shared default of mismatched type "string"',
+            "json": `{
+                "init": {
+                    "date": {
+                        "type": "number",
+                        "default": "10"
+                    }
+                },
+                "data": []
+            }`
+        },
+
+        {
+            "valid": true,
+            "feedback": 'type "date" has shared minimum of mismatched type "string"',
+            "json": `{
+                "init": {
+                    "date": {
+                        "type": "number",
+                        "default": 10,
+                        "minimum": "1"
+                    }
+                },
+                "data": []
+            }`
+        },
+
+        {
+            "valid": true,
+            "feedback": 'type "date" has shared maximum of mismatched type "string"',
+            "json": `{
+                "init": {
+                    "date": {
+                        "type": "number",
+                        "default": 10,
+                        "minimum": 5,
+                        "maximum": "15"
+                    }
+                },
+                "data": []
+            }`
+        },
+
+        // declaration<isTypeExtensionName> -> true
+
+        {
+            "valid": true,
+            "feedback": 'extension "number.date" has shared default of mismatched type "string"',
+            "json": `{
+                "init": {
+                    "number.date": {
+                        "default": "10"
+                    }
+                },
+                "data": []
+            }`
+        },
+
+        {
+            "valid": true,
+            "feedback": 'extension "number.date" has shared minimum of mismatched type "string"',
+            "json": `{
+                "init": {
+                    "number.date": {
+                        "default": 10,
+                        "minimum": "5"
+                    }
+                },
+                "data": []
+            }`
+        },
+
+        {
+            "valid": true,
+            "feedback": 'extension "number.date" has shared maximum of mismatched type "string"',
+            "json": `{
+                "init": {
+                    "number.date": {
+                        "default": 10,
+                        "minimum": 5,
+                        "maximum": "15"
+                    }
+                },
+                "data": []
+            }`
+        },
+
+        // declaration<Object.getOwnPropertyNames(property)> -> true
+
+        {
+            "valid": true,
+            "feedback": 'type "number.date" has case declaration array with invalid contents',
+            "json": `{
+                "init": {
+                    "number.date": {
+                        "default": 10,
+                        "minimum": 5,
+                        "maximum": 15,
+                        "case": [
+                            100
+                        ]
+                    }
+                },
+                "data": []
+            }`
+        },
+
+        {
+            "valid": true,
+            "feedback": 'type "number.date" has property "month"" with default of mismatched type "string"',
+            "json": `{
+                "init": {
+                    "number.date": {
+                        "default": 10,
+                        "minimum": 5,
+                        "maximum": 15,
+                        "month": {
+                            "type": "number",
+                            "default": "8"
+                        }
+                    }
+                },
+                "data": []
+            }`
+        },
+
+        {
+            "valid": true,
+            "feedback": 'type "number.date" has property "month" with minimum of mismatched type "string"',
+            "json": `{
+                "init": {
+                    "number.date": {
+                        "default": 10,
+                        "minimum": 5,
+                        "maximum": 15,
+                        "month": {
+                            "type": "number",
+                            "default": 8,
+                            "minimum": "1"
+                        }
+                    }
+                },
+                "data": []
+            }`
+        },
+
+        {
+            "valid": true,
+            "feedback": 'type "number.date" has property "month" with maximum of mismatched type "string"',
+            "json": `{
+                "init": {
+                    "number.date": {
+                        "default": 10,
+                        "minimum": 5,
+                        "maximum": 15,
+                        "month": {
+                            "type": "number",
+                            "default": 8,
+                            "minimum": 1,
+                            "maximum": "12"
+                        }
+                    }
+                },
+                "data": []
+            }`
+        },
+
+        {
+            "valid": true,
+            "feedback": 'type "number.date" has property "month" with default of mismatched type "string"',
+            "json": `{
+                "init": {
+                    "number.date": {
+                        "default": 10,
+                        "minimum": 5,
+                        "maximum": 15,
+                        "month": {
+                            "default": "8"
+                        }
+                    }
+                },
+                "data": []
+            }`
+        },
+
+        {
+            "valid": true,
+            "feedback": 'type "number.date" has property "month" with minimum of mismatched type "string"',
+            "json": `{
+                "init": {
+                    "number.date": {
+                        "default": 10,
+                        "minimum": 5,
+                        "maximum": 15,
+                        "month": {
+                            "default": 8,
+                            "minimum": "1"
+                        }
+                    }
+                },
+                "data": []
+            }`
+        },
+
+        {
+            "valid": true,
+            "feedback": 'type "number.date" has property "month" with maximum of mismatched type "string"',
+            "json": `{
+                "init": {
+                    "number.date": {
+                        "default": 10,
+                        "minimum": 5,
+                        "maximum": 15,
+                        "month": {
+                            "default": 8,
+                            "minimum": 1,
+                            "maximum": "12"
+                        }
+                    }
+                },
+                "data": []
+            }`
+        },
+
+        {
+            "valid": true,
+            "feedback": 'type "date" has property "month" with default of mismatched type "string"',
+            "json": `{
+                "init": {
+                    "date": {
+                        "type": "number",
+                        "default": 10,
+                        "minimum": 5,
+                        "maximum": 15,
+                        "month": {
+                            "default": "8"
+                        }
+                    }
+                },
+                "data": []
+            }`
+        },
+
+        {
+            "valid": true,
+            "feedback": 'type "date" has property "month" with minimum of mismatched type "string"',
+            "json": `{
+                "init": {
+                    "date": {
+                        "type": "number",
+                        "default": 10,
+                        "minimum": 5,
+                        "maximum": 15,
+                        "month": {
+                            "default": 8,
+                            "minimum": "1"
+                        }
+                    }
+                },
+                "data": []
+            }`
+        },
+
+        {
+            "valid": true,
+            "feedback": 'type "date" has property "month" with maximum of mismatched type "string"',
+            "json": `{
+                "init": {
+                    "date": {
+                        "type": "number",
+                        "default": 10,
+                        "minimum": 5,
+                        "maximum": 15,
+                        "month": {
+                            "default": 8,
+                            "minimum": 1,
+                            "maximum": "12"
+                        }
+                    }
+                },
+                "data": []
+            }`
+        },
+
+        // instantiation<recursion(object.data)> -> false
+
+        {
+            "valid": false,
+            "feedback": 'instance of type "date" missing required property "month"',
+            "json": `{
+                "init": {
+                    "date": {
+                        "type": "number",
+                        "day": {
+                            "default": 1
+                        },
+                        "month": {
+                            "minimum": 1,
+                            "maximum": 12
+                        }
+                    }
+                },
+                "data": {
+                    "type": "date"
+                }
+            }`
+        },
+
+        // !hasValues
+
+        {
+            "valid": false,
+            "feedback": 'instance of type "date" has property "month" of mismatched type "string"',
+            "json": `{
+                "init": {
+                    "date": {
+                        "type": "number",
+                        "day": {
+                            "default": 1
+                        },
+                        "month": {
+                            "minimum": 1,
+                            "maximum": 12
+                        }
+                    }
+                },
+                "data": {
+                    "type": "date",
+                    "month": "10"
+                }
+            }`
+        },
+
+        {
+            "valid": false,
+            "feedback": 'instance of type "date" has property "month" with value "0" below minimum "1"',
+            "json": `{
+                "init": {
+                    "date": {
+                        "type": "number",
+                        "day": {
+                            "default": 1
+                        },
+                        "month": {
+                            "minimum": 1,
+                            "maximum": 12
+                        }
+                    }
+                },
+                "data": {
+                    "type": "date",
+                    "month": 0
+                }
+            }`
+        },
+        
+        {
+            "valid": false,
+            "feedback": 'instance of type "date" has property "month" with value "13" above maximum "12"',
+            "json": `{
+                "init": {
+                    "date": {
+                        "type": "number",
+                        "day": {
+                            "default": 1
+                        },
+                        "month": {
+                            "minimum": 1,
+                            "maximum": 12
+                        }
+                    }
+                },
+                "data": {
+                    "type": "date",
+                    "month": 13
+                }
+            }`
+        },
+        
+        // hasValues
+
+
+        {
+            "valid": false,
+            "feedback": 'instance of type "date" has "values" array containing property "month" of mismatched type "string"',
+            "json": `{
+                "init": {
+                    "date": {
+                        "type": "number",
+                        "day": {
+                            "default": 1
+                        },
+                        "month": {
+                            "minimum": 1,
+                            "maximum": 12
+                        }
+                    }
+                },
+                "data": {
+                    "type": "date",
+                    "values": [
+                        {
+                            "month": "10"
+                        }
+                    ]
+                }
+            }`
+        },
+
+        {
+            "valid": false,
+            "feedback": 'instance of type "date" has "values" array containing property "month" with value "0" below minimum "1"',
+            "json": `{
+                "init": {
+                    "date": {
+                        "type": "number",
+                        "day": {
+                            "default": 1
+                        },
+                        "month": {
+                            "minimum": 1,
+                            "maximum": 12
+                        }
+                    }
+                },
+                "data": {
+                    "type": "date",
+                    "values": [
+                        {
+                            "month": 0
+                        }
+                    ]
+                }
+            }`
+        },
+        
+        {
+            "valid": false,
+            "feedback": 'instance of type "date" has "values" array containing property "month" with value "13" above maximum "12"',
+            "json": `{
+                "init": {
+                    "date": {
+                        "type": "number",
+                        "day": {
+                            "default": 1
+                        },
+                        "month": {
+                            "minimum": 1,
+                            "maximum": 12
+                        }
+                    }
+                },
+                "data": {
+                    "type": "date",
+                    "values": [
+                        {
+                            "month": 13
+                        }
+                    ]
+                }
+            }`
+        }
+        
+    ],
+
     handshake: (input) => {
 
         var object
@@ -519,508 +1021,6 @@ const TXON = {
             valid: true
         }
 
-    },
-
-    tests: [
-
-        // requirements
-
-        {
-            "valid": true,
-            "feedback": '"init" property not found at top level',
-            "json": `{
-                "data": []
-            }`
-        },
-
-        {
-            "valid": true,
-            "feedback": '"data" property not found at top level',
-            "json": `{
-                "init": {}
-            }`
-        },
-
-        // declaration<shared> -> true
-
-        {
-            "valid": true,
-            "feedback": 'type "date" has invalid shared JSON "type" declaration "double"',
-            "json": `{
-                "init": {
-                    "date": {
-                        "type": "double"
-                    }
-                },
-                "data": []
-            }`
-        },
-
-        {
-            "valid": true,
-            "feedback": 'type "date" has shared default of mismatched type "string"',
-            "json": `{
-                "init": {
-                    "date": {
-                        "type": "number",
-                        "default": "10"
-                    }
-                },
-                "data": []
-            }`
-        },
-
-        {
-            "valid": true,
-            "feedback": 'type "date" has shared minimum of mismatched type "string"',
-            "json": `{
-                "init": {
-                    "date": {
-                        "type": "number",
-                        "default": 10,
-                        "minimum": "1"
-                    }
-                },
-                "data": []
-            }`
-        },
-
-        {
-            "valid": true,
-            "feedback": 'type "date" has shared maximum of mismatched type "string"',
-            "json": `{
-                "init": {
-                    "date": {
-                        "type": "number",
-                        "default": 10,
-                        "minimum": 5,
-                        "maximum": "15"
-                    }
-                },
-                "data": []
-            }`
-        },
-
-        // declaration<isTypeExtensionName> -> true
-
-        {
-            "valid": true,
-            "feedback": 'extension "number.date" has shared default of mismatched type "string"',
-            "json": `{
-                "init": {
-                    "number.date": {
-                        "default": "10"
-                    }
-                },
-                "data": []
-            }`
-        },
-
-        {
-            "valid": true,
-            "feedback": 'extension "number.date" has shared minimum of mismatched type "string"',
-            "json": `{
-                "init": {
-                    "number.date": {
-                        "default": 10,
-                        "minimum": "5"
-                    }
-                },
-                "data": []
-            }`
-        },
-
-        {
-            "valid": true,
-            "feedback": 'extension "number.date" has shared maximum of mismatched type "string"',
-            "json": `{
-                "init": {
-                    "number.date": {
-                        "default": 10,
-                        "minimum": 5,
-                        "maximum": "15"
-                    }
-                },
-                "data": []
-            }`
-        },
-
-        // declaration<Object.getOwnPropertyNames(property)> -> true
-
-        {
-            "valid": true,
-            "feedback": 'type "number.date" has case declaration array with invalid contents',
-            "json": `{
-                "init": {
-                    "number.date": {
-                        "default": 10,
-                        "minimum": 5,
-                        "maximum": 15,
-                        "case": [
-                            100
-                        ]
-                    }
-                },
-                "data": []
-            }`
-        },
-
-        {
-            "valid": true,
-            "feedback": 'type "number.date" has property "month"" with default of mismatched type "string"',
-            "json": `{
-                "init": {
-                    "number.date": {
-                        "default": 10,
-                        "minimum": 5,
-                        "maximum": 15,
-                        "month": {
-                            "type": "number",
-                            "default": "8"
-                        }
-                    }
-                },
-                "data": []
-            }`
-        },
-
-        {
-            "valid": true,
-            "feedback": 'type "number.date" has property "month" with minimum of mismatched type "string"',
-            "json": `{
-                "init": {
-                    "number.date": {
-                        "default": 10,
-                        "minimum": 5,
-                        "maximum": 15,
-                        "month": {
-                            "type": "number",
-                            "default": 8,
-                            "minimum": "1"
-                        }
-                    }
-                },
-                "data": []
-            }`
-        },
-
-        {
-            "valid": true,
-            "feedback": 'type "number.date" has property "month" with maximum of mismatched type "string"',
-            "json": `{
-                "init": {
-                    "number.date": {
-                        "default": 10,
-                        "minimum": 5,
-                        "maximum": 15,
-                        "month": {
-                            "type": "number",
-                            "default": 8,
-                            "minimum": 1,
-                            "maximum": "12"
-                        }
-                    }
-                },
-                "data": []
-            }`
-        },
-
-        {
-            "valid": true,
-            "feedback": 'type "number.date" has property "month" with default of mismatched type "string"',
-            "json": `{
-                "init": {
-                    "number.date": {
-                        "default": 10,
-                        "minimum": 5,
-                        "maximum": 15,
-                        "month": {
-                            "default": "8"
-                        }
-                    }
-                },
-                "data": []
-            }`
-        },
-
-        {
-            "valid": true,
-            "feedback": 'type "number.date" has property "month" with minimum of mismatched type "string"',
-            "json": `{
-                "init": {
-                    "number.date": {
-                        "default": 10,
-                        "minimum": 5,
-                        "maximum": 15,
-                        "month": {
-                            "default": 8,
-                            "minimum": "1"
-                        }
-                    }
-                },
-                "data": []
-            }`
-        },
-
-        {
-            "valid": true,
-            "feedback": 'type "number.date" has property "month" with maximum of mismatched type "string"',
-            "json": `{
-                "init": {
-                    "number.date": {
-                        "default": 10,
-                        "minimum": 5,
-                        "maximum": 15,
-                        "month": {
-                            "default": 8,
-                            "minimum": 1,
-                            "maximum": "12"
-                        }
-                    }
-                },
-                "data": []
-            }`
-        },
-
-        {
-            "valid": true,
-            "feedback": 'type "date" has property "month" with default of mismatched type "string"',
-            "json": `{
-                "init": {
-                    "date": {
-                        "type": "number",
-                        "default": 10,
-                        "minimum": 5,
-                        "maximum": 15,
-                        "month": {
-                            "default": "8"
-                        }
-                    }
-                },
-                "data": []
-            }`
-        },
-
-        {
-            "valid": true,
-            "feedback": 'type "date" has property "month" with minimum of mismatched type "string"',
-            "json": `{
-                "init": {
-                    "date": {
-                        "type": "number",
-                        "default": 10,
-                        "minimum": 5,
-                        "maximum": 15,
-                        "month": {
-                            "default": 8,
-                            "minimum": "1"
-                        }
-                    }
-                },
-                "data": []
-            }`
-        },
-
-        {
-            "valid": true,
-            "feedback": 'type "date" has property "month" with maximum of mismatched type "string"',
-            "json": `{
-                "init": {
-                    "date": {
-                        "type": "number",
-                        "default": 10,
-                        "minimum": 5,
-                        "maximum": 15,
-                        "month": {
-                            "default": 8,
-                            "minimum": 1,
-                            "maximum": "12"
-                        }
-                    }
-                },
-                "data": []
-            }`
-        },
-
-        // instantiation<recursion(object.data)> -> false
-
-        {
-            "valid": false,
-            "feedback": 'instance of type "date" missing required property "month"',
-            "json": `{
-                "init": {
-                    "date": {
-                        "type": "number",
-                        "day": {
-                            "default": 1
-                        },
-                        "month": {
-                            "minimum": 1,
-                            "maximum": 12
-                        }
-                    }
-                },
-                "data": {
-                    "type": "date"
-                }
-            }`
-        },
-
-        // !hasValues
-
-        {
-            "valid": false,
-            "feedback": 'instance of type "date" has property "month" of mismatched type "string"',
-            "json": `{
-                "init": {
-                    "date": {
-                        "type": "number",
-                        "day": {
-                            "default": 1
-                        },
-                        "month": {
-                            "minimum": 1,
-                            "maximum": 12
-                        }
-                    }
-                },
-                "data": {
-                    "type": "date",
-                    "month": "10"
-                }
-            }`
-        },
-
-        {
-            "valid": false,
-            "feedback": 'instance of type "date" has property "month" with value "0" below minimum "1"',
-            "json": `{
-                "init": {
-                    "date": {
-                        "type": "number",
-                        "day": {
-                            "default": 1
-                        },
-                        "month": {
-                            "minimum": 1,
-                            "maximum": 12
-                        }
-                    }
-                },
-                "data": {
-                    "type": "date",
-                    "month": 0
-                }
-            }`
-        },
-        
-        {
-            "valid": false,
-            "feedback": 'instance of type "date" has property "month" with value "13" above maximum "12"',
-            "json": `{
-                "init": {
-                    "date": {
-                        "type": "number",
-                        "day": {
-                            "default": 1
-                        },
-                        "month": {
-                            "minimum": 1,
-                            "maximum": 12
-                        }
-                    }
-                },
-                "data": {
-                    "type": "date",
-                    "month": 13
-                }
-            }`
-        },
-        
-        // hasValues
-
-
-        {
-            "valid": false,
-            "feedback": 'instance of type "date" has "values" array containing property "month" of mismatched type "string"',
-            "json": `{
-                "init": {
-                    "date": {
-                        "type": "number",
-                        "day": {
-                            "default": 1
-                        },
-                        "month": {
-                            "minimum": 1,
-                            "maximum": 12
-                        }
-                    }
-                },
-                "data": {
-                    "type": "date",
-                    "values": [
-                        {
-                            "month": "10"
-                        }
-                    ]
-                }
-            }`
-        },
-
-        {
-            "valid": false,
-            "feedback": 'instance of type "date" has "values" array containing property "month" with value "0" below minimum "1"',
-            "json": `{
-                "init": {
-                    "date": {
-                        "type": "number",
-                        "day": {
-                            "default": 1
-                        },
-                        "month": {
-                            "minimum": 1,
-                            "maximum": 12
-                        }
-                    }
-                },
-                "data": {
-                    "type": "date",
-                    "values": [
-                        {
-                            "month": 0
-                        }
-                    ]
-                }
-            }`
-        },
-        
-        {
-            "valid": false,
-            "feedback": 'instance of type "date" has "values" array containing property "month" with value "13" above maximum "12"',
-            "json": `{
-                "init": {
-                    "date": {
-                        "type": "number",
-                        "day": {
-                            "default": 1
-                        },
-                        "month": {
-                            "minimum": 1,
-                            "maximum": 12
-                        }
-                    }
-                },
-                "data": {
-                    "type": "date",
-                    "values": [
-                        {
-                            "month": 13
-                        }
-                    ]
-                }
-            }`
-        }
-        
-    ]
+    }
 
 }
