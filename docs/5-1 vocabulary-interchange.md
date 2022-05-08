@@ -2,13 +2,19 @@
 
 [ Text ]
 
+<br>
+
 **Relational data, matrices and dimensions**
 
 [ Text ]
 
+<br>
+
 **Object-oriented data**
 
 [ Text ]
+
+<br>
 
 **Data specification and readability**
 
