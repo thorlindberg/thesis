@@ -22,4 +22,22 @@ Users can declare their own extended types (e.g. "date"), or declare extensions 
 
 In the following I present my intent with TXON, by providing an overview of the library as an object in JavaScript.
 
+<br>
+
+**Intended use**
+
+The txon.js library *handshakes* a JSON String, validating conformance of its *data property* to extended type declarations from its "init" property. TXON is initialised as an Object with a *docs method*, *handshake method*, and *tests property*.
+
+```
+const TXON = {
+
+    docs: [ ∙∙∙ ].join("\n"),
+
+    tests: [ ∙∙∙ ],
+
+    handshake: (input) => { ∙∙∙ }
+
+}
+```
+
 {"break":true}
