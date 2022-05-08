@@ -23,26 +23,26 @@ The types available are, compared to JSON as following.
 <br>
 
 <table style="width:100%">
-<tr><th>Type</th><th>Subtype</th> <th>TSON</th><th>JSON</th></tr>
-<tr><td>Object</td><td>-</td><td>•</td><td>•</td></tr>
-<tr><td>Array</td><td>-</td><td>•</td><td>•</td></tr>
-<tr><td>Literal</td><td>string</td><td>•</td><td>•</td></tr>
-<tr><td>Literal</td><td>boolean</td><td>•</td><td>•</td></tr>
-<tr><td>Literal</td><td>int</td><td>•</td><td>•</td></tr>
-<tr><td>Literal</td><td>uint</td><td>•</td><td></td></tr>
-<tr><td>Literal</td><td>long</td><td>•</td><td></td></tr>
-<tr><td>Literal</td><td>ulong</td><td>•</td><td></td></tr>
-<tr><td>Literal</td><td>char</td><td>•</td><td></td></tr>
-<tr><td>Literal</td><td>short</td><td>•</td><td></td></tr>
-<tr><td>Literal</td><td>ushort</td><td>•</td><td></td></tr>
-<tr><td>Literal</td><td>float</td><td>•</td><td>•</td></tr>
-<tr><td>Literal</td><td>double</td><td>•</td><td>•</td></tr>
-<tr><td>Literal</td><td>sbyte</td><td>•</td><td></td></tr>
-<tr><td>Literal</td><td>byte</td><td>•</td><td></td></tr>
-<tr><td>Literal</td><td>byte[]</td><td>•</td><td></td></tr>
-<tr><td>Literal</td><td>null</td><td>•</td><td>•</td></tr>
-<tr><td>Literal</td><td>datetime</td><td>•</td><td></td></tr>
-<tr><td>Literal</td><td>uri</td><td>•</td><td></td></tr>
+<tr><th><sub>Type</sub></th><th><sub>Subtype</sub></th> <th><sub>TSON</sub></th><th><sub>JSON</sub></th></tr>
+<tr  style="padding-bottom:0"><td style="padding-bottom:0"><sub>Object</sub></td><td style="padding-bottom:0"><sub>-</sub></td><td style="padding-bottom:0"><sub>•</sub></td><td style="padding-bottom:0"><sub>•</sub></td></tr>
+<tr style="padding-bottom:0;padding-top:0;border:none"><td style="padding-bottom:0;padding-top:0;border:none"><sub>Array</sub></td><td style="padding-bottom:0;padding-top:0;border:none"><sub>-</sub></td><td style="padding-bottom:0;padding-top:0;border:none"><sub>•</sub></td><td style="padding-bottom:0;padding-top:0;border:none"><sub>•</sub></td></tr>
+<tr style="padding-bottom:0;padding-top:0;border:none"><td style="padding-bottom:0;padding-top:0;border:none"><sub>Literal</sub></td><td style="padding-bottom:0;padding-top:0;border:none"><sub>string</sub></td><td style="padding-bottom:0;padding-top:0;border:none"><sub>•</sub></td><td style="padding-bottom:0;padding-top:0;border:none"><sub>•</sub></td></tr>
+<tr style="padding-bottom:0;padding-top:0;border:none"><td style="padding-bottom:0;padding-top:0;border:none"><sub>Literal</sub></td><td style="padding-bottom:0;padding-top:0;border:none"><sub>boolean</sub></td><td style="padding-bottom:0;padding-top:0;border:none"><sub>•</sub></td><td style="padding-bottom:0;padding-top:0;border:none"><sub>•</sub></td></tr>
+<tr style="padding-bottom:0;padding-top:0;border:none"><td style="padding-bottom:0;padding-top:0;border:none"><sub>Literal</sub></td><td style="padding-bottom:0;padding-top:0;border:none"><sub>int</sub></td><td style="padding-bottom:0;padding-top:0;border:none"><sub>•</sub></td><td style="padding-bottom:0;padding-top:0;border:none"><sub>•</sub></td></tr>
+<tr style="padding-bottom:0;padding-top:0;border:none"><td style="padding-bottom:0;padding-top:0;border:none"><sub>Literal</sub></td><td style="padding-bottom:0;padding-top:0;border:none"><sub>uint</sub></td><td style="padding-bottom:0;padding-top:0;border:none"><sub>•</sub></td><td style="padding-bottom:0;padding-top:0;border:none"><sub></sub></td></tr>
+<tr style="padding-bottom:0;padding-top:0;border:none"><td style="padding-bottom:0;padding-top:0;border:none"><sub>Literal</sub></td><td style="padding-bottom:0;padding-top:0;border:none"><sub>long</sub></td><td style="padding-bottom:0;padding-top:0;border:none"><sub>•</sub></td><td style="padding-bottom:0;padding-top:0;border:none"><sub></sub></td></tr>
+<tr style="padding-bottom:0;padding-top:0;border:none"><td style="padding-bottom:0;padding-top:0;border:none"><sub>Literal</sub></td><td style="padding-bottom:0;padding-top:0;border:none"><sub>ulong</sub></td><td style="padding-bottom:0;padding-top:0;border:none"><sub>•</sub></td><td style="padding-bottom:0;padding-top:0;border:none"><sub></sub></td></tr>
+<tr style="padding-bottom:0;padding-top:0;border:none"><td style="padding-bottom:0;padding-top:0;border:none"><sub>Literal</sub></td><td style="padding-bottom:0;padding-top:0;border:none"><sub>char</sub></td><td style="padding-bottom:0;padding-top:0;border:none"><sub>•</sub></td><td style="padding-bottom:0;padding-top:0;border:none"><sub></sub></td></tr>
+<tr style="padding-bottom:0;padding-top:0;border:none"><td style="padding-bottom:0;padding-top:0;border:none"><sub>Literal</sub></td><td style="padding-bottom:0;padding-top:0;border:none"><sub>short</sub></td><td style="padding-bottom:0;padding-top:0;border:none"><sub>•</sub></td><td style="padding-bottom:0;padding-top:0;border:none"><sub></sub></td></tr>
+<tr style="padding-bottom:0;padding-top:0;border:none"><td style="padding-bottom:0;padding-top:0;border:none"><sub>Literal</sub></td><td style="padding-bottom:0;padding-top:0;border:none"><sub>ushort</sub></td><td style="padding-bottom:0;padding-top:0;border:none"><sub>•</sub></td><td style="padding-bottom:0;padding-top:0;border:none"><sub></sub></td></tr>
+<tr style="padding-bottom:0;padding-top:0;border:none"><td style="padding-bottom:0;padding-top:0;border:none"><sub>Literal</sub></td><td style="padding-bottom:0;padding-top:0;border:none"><sub>float</sub></td><td style="padding-bottom:0;padding-top:0;border:none"><sub>•</sub></td><td style="padding-bottom:0;padding-top:0;border:none"><sub>•</sub></td></tr>
+<tr style="padding-bottom:0;padding-top:0;border:none"><td style="padding-bottom:0;padding-top:0;border:none"><sub>Literal</sub></td><td style="padding-bottom:0;padding-top:0;border:none"><sub>double</sub></td><td style="padding-bottom:0;padding-top:0;border:none"><sub>•</sub></td><td style="padding-bottom:0;padding-top:0;border:none"><sub>•</sub></td></tr>
+<tr style="padding-bottom:0;padding-top:0;border:none"><td style="padding-bottom:0;padding-top:0;border:none"><sub>Literal</sub></td><td style="padding-bottom:0;padding-top:0;border:none"><sub>sbyte</sub></td><td style="padding-bottom:0;padding-top:0;border:none"><sub>•</sub></td><td style="padding-bottom:0;padding-top:0;border:none"><sub></sub></td></tr>
+<tr style="padding-bottom:0;padding-top:0;border:none"><td style="padding-bottom:0;padding-top:0;border:none"><sub>Literal</sub></td><td style="padding-bottom:0;padding-top:0;border:none"><sub>byte</sub></td><td style="padding-bottom:0;padding-top:0;border:none"><sub>•</sub></td><td style="padding-bottom:0;padding-top:0;border:none"><sub></sub></td></tr>
+<tr style="padding-bottom:0;padding-top:0;border:none"><td style="padding-bottom:0;padding-top:0;border:none"><sub>Literal</sub></td><td style="padding-bottom:0;padding-top:0;border:none"><sub>byte[]</sub></td><td style="padding-bottom:0;padding-top:0;border:none"><sub>•</sub></td><td style="padding-bottom:0;padding-top:0;border:none"><sub></sub></td></tr>
+<tr style="padding-bottom:0;padding-top:0;border:none"><td style="padding-bottom:0;padding-top:0;border:none"><sub>Literal</sub></td><td style="padding-bottom:0;padding-top:0;border:none"><sub>null</sub></td><td style="padding-bottom:0;padding-top:0;border:none"><sub>•</sub></td><td style="padding-bottom:0;padding-top:0;border:none"><sub>•</sub></td></tr>
+<tr style="padding-bottom:0;padding-top:0;border:none"><td style="padding-bottom:0;padding-top:0;border:none"><sub>Literal</sub></td><td style="padding-bottom:0;padding-top:0;border:none"><sub>datetime</sub></td><td style="padding-bottom:0;padding-top:0;border:none"><sub>•</sub></td><td style="padding-bottom:0;padding-top:0;border:none"><sub></sub></td></tr>
+<tr style="padding-bottom:0;padding-top:0;border:none"><td style="padding-bottom:0;padding-top:0;border:none"><sub>Literal</sub></td><td style="padding-bottom:0;padding-top:0;border:none"><sub>uri</sub></td><td style="padding-bottom:0;padding-top:0;border:none"><sub>•</sub></td><td style="padding-bottom:0;padding-top:0;border:none"><sub></sub></td></tr>
 </table>
 
 <br>
