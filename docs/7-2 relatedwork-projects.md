@@ -1,12 +1,8 @@
-{"sec":"Related Work"}
-
-In this section I present academic literature related to this project, to derive my methodological approach from previous and established practices. It is crucial that I ground my approach in related work, as I aim to alter preexisting and complex structures with decades of history and development.
-
-From this work I not only extrapolate organised information, but also methods for gathering, processing, structuring, and presenting data, features or other aspects of the investigated or developed material.
+{"sub":"Projects"}
 
 Previous projects have focused on documenting and comparing object serialisation formats in terms of features, efficiency, performance, file size, and programming language support. The central theme in these comparisons is the ability of a format to be applied across heterogeneous structures, systems and languages, thus achieving interoperability despite differences in data structure.
 
-<br>
+<br
 
 **Data formats**
 

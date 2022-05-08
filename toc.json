@@ -1,17 +1,5 @@
 {
 
-    "frontpage": [ "title", "abstract" ],
-
-    "tableofcontents": [ ],
-
-    "introduction": [ "purpose", "audience", "perspective", "statement" ],
-
-    "background": [ "company" ],
-
-    "vocabulary": [ "distributed", "heterogeneity", "testdriven", "enumeration" ],
-
-    "relatedwork": [ "formats", "projects", "strategies" ],
-
     "experiment": [
         "library",
         { "features": [ "docs", "tests", "handshake" ] },
