@@ -25,3 +25,7 @@
 {"bib":"buley2013user","title":"The User Experience Team of One: A Research and Design Survival Guide","authors":["Buley, L."],"year":"2013","publisher":"Rosenfeld Media","url":"https://books.google.dk/books?id=vQ7cnAEACAAJ"}
 
 {"bib":"norman2013design","title":"The design of everyday things","authors":["Norman, Donald A."],"year":"2002","publisher":"Basic Books","url":""}
+
+{"bib":"miou2019tson","title":"tson","authors":["Miou", "John P."],"year":"2019","publisher":"GitHub","url":"https://github.com/miou-gh/tson"}
+
+{"bib":"lyon2014typeable","title":"TSON: Typeable Simple Object Notation","authors":["Lyon-Smith, J."],"year":"2014","publisher":"GitHub","url":"https://github.com/jlyonsmith/Tson"}

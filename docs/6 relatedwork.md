@@ -4,9 +4,9 @@ In this section I present academic literature and projects from which I derived 
 
 I chose a test-driven development process for this project, and thus I have chosen to include literature on methodological approaches and recommendations for writing testable code. This is presented in the subsection on ["Writing Testable Code"](#writingtestablecode).
 
-By searching publicly accessible repositories on GitHub, I have found previous work towards extending data interchange formats with more explicitly specified and type-safe features. These projects are presented in the subsection on ["Attempts at Extensibility of Data Syntax"](#attemptsatextensibilityofdatasyntax).
-
 ... projects that attempt to extend the JSON syntax with type declarations for specific programming languages, and choosing a light-weight readable data format. This is presented in the subsection on ["Specification of Data Serialisation Formats"](#specificationofdataserialisationformats).
+
+By searching publicly accessible repositories on GitHub, I have found previous work towards extending data interchange formats with more explicitly specified and type-safe features. These projects are presented in the subsection on ["Attempts at Extensibility of Data Syntax"](#attemptsatextensibilityofdatasyntax).
 
 ... and strategies for choosing and evaluating data syntax and the implementation of data formats in computer systems. This is presented in the subsection on ["Evaluation Strategies"](#evaluationstrategies).
 

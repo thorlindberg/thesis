@@ -1,5 +1,5 @@
 {"sub":"Evaluation Strategies"}
 
-Text
+[ Text ]
 
 {"break":true}
