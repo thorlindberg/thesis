@@ -1,4 +1,4 @@
-{"sub":"Data Serialisation Formats"}
+{"sub":"Specification of Data Serialisation Formats"}
 
 **Low specification syntax**
 

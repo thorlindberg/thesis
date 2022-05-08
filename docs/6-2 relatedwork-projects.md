@@ -1,8 +1,8 @@
-{"sub":"Projects"}
+{"sub":"Attempts at Extensibility of Data Syntax"}
 
 Previous projects have focused on documenting and comparing object serialisation formats in terms of features, efficiency, performance, file size, and programming language support. The central theme in these comparisons is the ability of a format to be applied across heterogeneous structures, systems and languages, thus achieving interoperability despite differences in data structure.
 
-<br
+<br>
 
 **Data formats**
 

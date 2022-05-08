@@ -1,17 +1,13 @@
 {"sec":"Related Work"}
 
-In this section I present academic literature and projects that inspired my theoretical and methodological framework for approaching this project. As this project proposes extensibility of a data interchange format surrounded with well-established practices and rigid structures, it is crucial that my approach be informed by existing and previous work. By presenting these references and applying their methods in my experiment, I aim to avoid constructing a proposal that is incompatible with existing systems or derived without consideration for user perspectives.
+In this section I present academic literature and projects from which I derived the theoretical and methodological framework. As this project proposes extensibility of a data interchange format surrounded by well-established practices and rigid structures, it is crucial that my approach is informed by previous related work. By referencing this literature and applying its methods in my experiment, I aim to avoid constructing a proposal that is incompatible with existing computer systems or developing without consideration for the perspectives of other developers.
 
----
+I chose a test-driven development process for this project, and thus I have chosen to include literature on methodological approaches and recommendations for writing testable code. This is presented in the subsection on <a href="#writing-testable-code"><i>"Writing Testable Code"</i></a>
 
-HOW I CAME TO MY FRAMEWORK
+By searching publicly accessible repositories on GitHub, I have found previous work towards extending data interchange formats with more explicitly specified and type-safe features. These projects are presented in the subsection on ["Attempts at Extensibility of Data Syntax"](#attempts-at-extensibility-of-data-syntax).
 
-Let's start by deliminating the contents of this framework.
+... projects that attempt to extend the JSON syntax with type declarations for specific programming languages, and choosing a light-weight readable data format. This is presented in the subsection on ["Specification of Data Serialisation Formats"](#specification-of-data-serialisation-formats).
 
-It consists of theory on how to methodologically approach writing tests in a test-driven development process,
-
-projects that attempt to extend the JSON syntax with type declarations for specific programming languages,
-
-and strategies for choosing and evaluating data syntax and the implementation of data formats in computer systems.
+... and strategies for choosing and evaluating data syntax and the implementation of data formats in computer systems. This is presented in the subsection on ["Evaluation Strategies"](#evaluation-strategies).
 
 {"break":true}
