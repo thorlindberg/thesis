@@ -33,7 +33,7 @@ He provides an example of how to declare a valid TSON root node, and as evidence
 
 He provides a list of the types available in the TSON specification, including the C# types that are not available in the JSON specification {"citep":"miou2019tson"}. In the following I provide a table comparing these two specifications, but I note that as JSON does not distinguish between floats and doubles for its "number" type, meaning integers and numbers are implicitly typed, I have marked them as available in the JSON specification.
 
-<br>
+{"break":true}
 
 <table style="width:100%">
 <tr><th><sub>Type</sub></th><th><sub>Subtype</sub></th> <th><sub>TSON</sub></th><th><sub>JSON</sub></th></tr>
