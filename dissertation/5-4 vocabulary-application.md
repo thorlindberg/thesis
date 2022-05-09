@@ -1,4 +1,4 @@
-{"sub":"Object-oriented Data in Applications and Programming Languages"}
+{"sub":"Data in Applications and Programming Languages"}
 
 Text
 

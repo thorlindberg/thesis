@@ -22,4 +22,4 @@ Developers may desire for validation to continue despite non-conformance, and ca
 
 The extensible nature of the proposed syntax necessitates that validation be performed recursively, so that developers do not have to re-architect their existing data structures. As a result, the following steps may appear repetitive and validation performance scales non-linearly with data size.
 
-{"break":true}
+<br>

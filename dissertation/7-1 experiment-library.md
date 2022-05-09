@@ -1,8 +1,6 @@
 {"sub":"Validation Library and Implementation"}
 
-A library is a collection of utilities that in combination achieve a shared goal. In this instance, the TXON library is instantiated as a TXON object and its method provides validation of a JSON String.
-
-In the following I present the features, intent and structure of my library.
+A library is a collection of utilities that in combination achieve a shared goal. In this instance, the TXON library is instantiated as a TXON object and its method provides validation of a JSON String. In the following I present the features, intent and structure of my library.
 
 <br>
 

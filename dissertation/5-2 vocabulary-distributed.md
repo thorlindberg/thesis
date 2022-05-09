@@ -1,4 +1,4 @@
-{"sub":"Distributed Computing"}
+{"sub":"Distributed Computing and Heterogeneity"}
 
 {"cite":"kshemkalyani2011distributed"} define _distributed systems_ as "a collection of independent entities that cooperate to solve a problem that cannot be individually solved." They characterise distributed computing as  "a collection of mostly autonomous processors communicating over a communication network". They identify common features of distributed systems, notably a lack of shared resources which necessitates communication, autonomy and heterogeneity.
 

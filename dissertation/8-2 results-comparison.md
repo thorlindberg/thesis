@@ -1,5 +1,5 @@
 {"sub":"Comparison"}
 
-Text
+[ Text ]
 
 {"break":true}

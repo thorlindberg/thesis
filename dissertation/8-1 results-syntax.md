@@ -1,6 +1,6 @@
 {"sub":"Syntax Proposal"}
 
-Text
+[ Text ]
 
 <br>
 
