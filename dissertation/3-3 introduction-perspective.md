@@ -1,4 +1,4 @@
-{"sub":"Research perspective"}
+{"sub":"Research Perspective"}
 
 There exists a rich history of design philosophy in programming language and data format syntax, features, and architecture. It is crucial to preface the project with this historical perspective, as the project has to build upon firmly established structures and rigid practices. This contextualisation ensures that decisions made for the project are grounded in the realities of software development, and thus takes into consideration any barriers to implementation of the proposal.
 

@@ -1,4 +1,4 @@
-{"sub":"Syntax proposal"}
+{"sub":"Syntax Proposal"}
 
 Text
 
