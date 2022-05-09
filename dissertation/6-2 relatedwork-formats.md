@@ -10,7 +10,7 @@ In the following I present two sides of specifying requirements for data interch
 
 <br>
 
-**Scope of light-weight human-readable formats**
+**Scope of light-weight human-readable data format**
 
 {"cite":"eriksson2011comparison"} compares the scope and performance of the JavaScript Object Notation (JSON) and YAML Ain't Markup Language (YAML) formats for data transmission. These light-weight data interchange formats aim to structure information with minimal additional data, such as tags or type/requirement specifications. Their purpose is to increase human-readability and ease-of-use for both authors and recipients, and they are most applicable when specification of data requirements is not critical.
 
@@ -20,8 +20,12 @@ Beyond the syntax differences, he also notes that YAML implements an extensible 
 
 <br>
 
-**Scope of strict and extensible formats**
+**Scope of data format with strict requirements**
 
-{"cite":"goff2001xmlserialization"} document object serialisation processes with the eXtensible Markup Language (XML) format, assessing its implementation in heterogeneous distributed systems.
+{"cite":"goff2001xmlserialization"} describes document object serialisation processes with the eXtensible Markup Language (XML) data format, assessing its implementation in heterogeneous distributed systems. While this paper focuses heavily on the serialisation process, it also illustrates why more strict and "heavy" data formats are applicable for data interchange, as well as the extent of their scope.
+
+He notes that the are three identifiable capabilities required of an object representation, and that these are often evident in ongoing research into the XML specification {"citep":"goff2001xmlserialization","page":"3"}. These capabilities can be summarised as: *language neutrality*, *verifiable validity*, and the *ability to be deserialised*.
+
+This description is not far from the design goals of the JSON specification, which also aims to be neutral and easily deserialised. However they differ vastly in the extent of their ability to be easily verified. This is evident in the limited extent of pre-defined capabilities for specifying node requirements in JSON. While it is entirely possible to specify any requirements within JSON semantics, the specification does not officially support these stricter requirements, which means there is no universal syntax to expect when parsing.
 
 {"break":true}

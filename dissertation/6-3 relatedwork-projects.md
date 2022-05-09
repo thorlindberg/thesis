@@ -6,7 +6,7 @@ The choice of data format is informed by the intended use of the stored data. An
 
 The inverse is true of an application interacting with other systems, such as a client receiving information from a platform developed by a source serving multiple clients. This necessitates interoperability, as the application must conform to the format defined by the source, and it is more likely to receive information in a plaintext file, to ensure correct interpretation. Plain text (ASCII) data is human-readable, resulting in a more transparent and approachable format at the cost of decreased performance and increased file size.
 
-Plain data can be human-readable, but the decriptive syntax for the information contained is not necessarily accessible to humans. A proprietary format with limited scope can prescribe meaning implicitly to data objects, but an interoperable format must be explicit. This is achieved by surrounding information with descriptive tags, nesting it into hierarchies, and/or prescribing meaning to special characters such as tabs.
+Plain-text data can be human-readable, but the decriptive syntax for the information contained is not necessarily accessible to humans. A proprietary format with limited scope can prescribe meaning implicitly to data objects, but an interoperable format must be explicit. This is achieved by surrounding information with descriptive tags, nesting it into hierarchies, and/or prescribing meaning to special characters such as tabs.
 
 The data structure must be interoperable with different languages and thus various parsers. The explicit nature of these data format streamlines the design of parsers, as data can be validated without implicit meaning.
 
@@ -14,11 +14,24 @@ The data structure must be interoperable with different languages and thus vario
 
 **TSON: JSON with language-specific type-safety**
 
-Developed by {"cite":"miou2019tson"} this project defines the declaration of explicitly typed property values in the JSON format, corresponding to types from the C# programming language. This is a simple approach to a syntactical extension of the JSON specification, but the result is more complex, as the data becomes incompatible with existing JSON parsers, and the data is transformed to a format only reflecting types in C# and other languages that may declare types in an identical manner.
+Developed by {"cite":"miou2019tson"} this project proposes a syntax for declaring explicitly typed property values in the JSON format. These types correspond to types from the C# programming language. This is a simple approach to a syntactical extension of the JSON specification, but it also transform the data itself to a format only reflecting types in one specific language or langauges that may declare types in an identical manner. As such it reduces the scope of JSON to a point where its users would likely be better served by an entirely new format.
 
-The types available are, compared to JSON as following.
+He provides an example of how to declare a valid TSON root node, and as evidenced it is semantically identical to a JSON root node, with the exception of explicit C# types surrounding property values {"citep":"miou2019tson"} . As this syntax transforms the actual data, it also invalidates it as a JSON object, and as such it is not compatible with JSON parsers.
 
-[ Note that JSON does not distinguish between floats and doubles for its number-type, and integers or numbers are implicitly typed, thus 1 and 1.0 would be the same value. For this comparison I have chosen to compare the types that JSON supports rather than the ones it explicitly declares. ]
+```
+{
+    "name": string("My Cool Adventure"),
+    "plays": uint(150),
+    "reputation": int(-2),
+    "visible": bool(false),
+    "data": bytes("UTIHCQsOEBIUFxkbHSAiJCYHCQsOEBIUFxkbHSAiJCYICAg="),
+    "created": datetime("2020-05-13T10:06:09.5137659-04:00")
+}
+```
+
+<br>
+
+He provides a list of the types available in the TSON specification, including the C# types that are not available in the JSON specification {"citep":"miou2019tson"}. In the following I provide a table comparing these two specifications, but I note that as JSON does not distinguish between floats and doubles for its "number" type, meaning integers and numbers are implicitly typed, I have marked them as available in the JSON specification.
 
 <br>
 
@@ -47,7 +60,7 @@ The types available are, compared to JSON as following.
 
 <br>
 
-[ something about how: datetime is the most interesting here, and I expect this to be useful but it is not very interesting from an extensibility standpoint. it is probably great for C# devs? ]
+An interesting finding here is the inclusion of a DateTime type, as dates are complex structures with a high degree of variance in declaration between programming languages and data formats. While this can be expected to ease validation of dates when parsed, this specification in general does not provide much in terms of extensibility, as it only extends the type declarations available in JSON, when it could extend the syntax itself to support declaration of any type desirable.
 
 {"break":true}
 
