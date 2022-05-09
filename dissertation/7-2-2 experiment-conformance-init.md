@@ -22,6 +22,8 @@ const checkInit = (object) => {
 
 The second step validates the type declarations in that init property, and consits of several smaller steps.
 
+{"break":true}
+
 ```
 const checkInit = (object) => {
 
@@ -64,6 +66,8 @@ const checkInit = (object) => {
 
 [ Text ]
 
+{"break":true}
+
 ```
 const checkInit = (object) => {
 
@@ -103,6 +107,8 @@ const checkInit = (object) => {
 <br>
 
 [ Text ]
+
+{"break":true}
 
 ```
 // value has property type with value of JSON type
@@ -154,7 +160,7 @@ if (hasSharedType) {
 }
 ```
 
-<br>
+{"break":true}
 
 [ Text ]
 
@@ -203,7 +209,7 @@ if (isTypeExtensionName) {
 }
 ```
 
-<br>
+{"break":true}
 
 [ Text ]
 
@@ -234,7 +240,7 @@ for (const [propName, propValue] of Object.entries(value)) {
 }
 ```
 
-<br>
+{"break":true}
 
 [ Text ]
 
@@ -274,7 +280,7 @@ for (const [propName, propValue] of Object.entries(value)) {
 }
 ```
 
-<br>
+{"break":true}
 
 [ Text ]
 
@@ -328,7 +334,7 @@ for (const [propName, propValue] of Object.entries(value)) {
 }
 ```
 
-<br>
+{"break":true}
 
 [ Text ]
 
@@ -382,7 +388,7 @@ for (const [propName, propValue] of Object.entries(value)) {
 }
 ```
 
-<br>
+{"break":true}
 
 [ Text ]
 
