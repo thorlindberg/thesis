@@ -28,4 +28,17 @@ He notes that the are three identifiable capabilities required of an object repr
 
 This description is not far from the design goals of the JSON specification, which also aims to be neutral and easily deserialised. However they differ vastly in the extent of their ability to be easily verified. This is evident in the limited extent of pre-defined capabilities for specifying node requirements in JSON. While it is entirely possible to specify any requirements within JSON semantics, the specification does not officially support these stricter requirements, which means there is no universal syntax to expect when parsing.
 
+[ The following is an example of a JSON with typed data, but everything is just type of String ]
+
+```
+{
+    "name": { "type": "string", "value": "My Cool Adventure" },
+    "plays": { "type": "uint", "value": 150 },
+    "reputation": { "type": "int", "value": -2 },
+    "visible": { "type": "bool", "value": false },
+    "data": { "type": "bytes", "value": "UTIHCQsOEBIUFxkbHSAiJCYHCQsOEBIUFxkbHSAiJCYICAg=" },
+    "created": { "type": "datetime", "value": "2020-05-13T10:06:09.5137659-04:00" }
+}
+```
+
 {"break":true}
