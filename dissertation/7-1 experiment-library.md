@@ -18,8 +18,6 @@ Users can declare their own extended types (e.g. "date"), or declare extensions 
 
 *Extension of types* allows you to inherit the requirements of an existing type, while extending it as a sub-type with an enumeration. This is further presented in the syntax proposal.
 
-In the following I present my intent with TXON, by providing an overview of the library as an object in JavaScript.
-
 <br>
 
 **Intended use**

@@ -1,10 +1,8 @@
-**Tests**
-
 The *tests* property is of type Array\<String> and contains sample JSON Strings that demonstrate the features and intended use of TXON.
 
 ```
 tests: [
-    
+
     {
         "valid": true,
         "feedback": '"init" property not found at top level',
@@ -13,7 +11,7 @@ tests: [
         }`
     },
     ∙∙∙
-
+    
 ]
 ```
 

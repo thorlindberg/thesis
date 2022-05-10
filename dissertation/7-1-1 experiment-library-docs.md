@@ -1,6 +1,4 @@
-**Docs**
-
-Docs requires no input parameters and returns a String documenting the intended use of my library. This approach ensures that the code is documented as it is written, but it exists only at the top-level of the library rather than in individual components.
+The *docs* property requires no input parameters and returns a String documenting the intended use of my library. This approach ensures that the code is documented as it is written, but it exists only at the top-level of the library rather than in individual components.
 
 ```
 docs: [
@@ -11,4 +9,4 @@ docs: [
 ].join("\n")
 ```
 
-{"break":true}
+<br>
