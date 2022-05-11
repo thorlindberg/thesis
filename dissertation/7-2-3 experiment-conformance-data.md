@@ -1,4 +1,4 @@
-**checkData**
+**(c) checkData**
 
 The third process
 

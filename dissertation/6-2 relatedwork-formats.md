@@ -2,15 +2,15 @@
 
 In the landscape of data format specifications it is evident that authors collectively trend towards similar yet distinctly different approaches. This is likely informed by the purpose of the respective data format, as no format can be or should attempt to be applicable in every situation. There is a negotiation of values involved in deciding how to specify a format, as the author[s] must choose a side on conflicting values.
 
-As noted in the subsection on ["Data Storage and Interchange Formats"](#datastorageandinterchangeformats) there exists a vast difference between the optimal specification of storage and interchangable data formats. Scalability is perhaps the most influential factor in specifying a format, as efficiency and strict requirements increase in importance as the data increases in size. But as light-weight and less strict data formats have been popularised, they have been applied in ways for which they were not intended, as the alternatives sacrifice readability for safety.
+As noted in the section on ["Data Storage and Interchange Formats"](#datastorageandinterchangeformats) there exists a vast difference between the optimal specification of storage and interchangable data formats. Scalability is perhaps the most influential factor in specifying a format, as efficiency and strict requirements increase in importance as the data increases in size. But as light-weight and less strict data formats have been popularised, they have been applied in ways for which they were not intended, as the alternatives sacrifice readability for safety.
 
-This is illustrated in the subsection on ["Company Partnership, Case and Material"](#companypartnershipcaseandmaterial") wherein I present an organisational move towards smaller and more modular data specifications for transmission in a distributed system.
+This is illustrated in the section on ["Company Partnership, Case and Material"](#companypartnershipcaseandmaterial") wherein I present an organisational move towards smaller and more modular data specifications for transmission in a distributed system.
 
 In the following I present two sides of specifying requirements for data interchange formats, to illustrate why JSON is the correct choice and where it is applicable but not exhaustive in features.
 
 <br>
 
-**Scope of light-weight human-readable data format**
+**(a) Scope of light-weight human-readable data format**
 
 {"cite":"eriksson2011comparison"} compares the scope and performance of the JavaScript Object Notation (JSON) and YAML Ain't Markup Language (YAML) formats for data transmission. These light-weight data interchange formats aim to structure information with minimal additional data, such as tags or type/requirement specifications. Their purpose is to increase human-readability and ease-of-use for both authors and recipients, and they are most applicable when specification of data requirements is not critical.
 
@@ -20,7 +20,7 @@ Beyond the syntax differences, he also notes that YAML implements an extensible 
 
 <br>
 
-**Scope of data format with strict requirements**
+**(b) Scope of data format with strict requirements**
 
 {"cite":"goff2001xmlserialization"} describes document object serialisation processes with the eXtensible Markup Language (XML) data format, assessing its implementation in heterogeneous distributed systems. While this paper focuses heavily on the serialisation process, it also illustrates why more strict and "heavy" data formats are applicable for data interchange, as well as the extent of their scope.
 

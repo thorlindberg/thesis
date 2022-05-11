@@ -28,7 +28,7 @@ In the following section on _the transmission of data in distributed computing s
 
 <br>
 
-**Data transmission**
+**(a) Data transmission**
 
 This section explores the standards and methods for distributed communication through a publish-subscribe service. It serves as background knowledge on how serialised data is distributed, to illustrate how our choice of data serialisation library is informed by the system model.
 
@@ -64,25 +64,25 @@ The take away from the OSI model is that as data flows through a distributed sys
 
 <br>
 
-**Data parsing**
+**(b) Data parsing**
 
 ...
 
 <br>
 
-**Typesetting**
+**(c) Typesetting**
 
 ...
 
 <br>
 
-**Backwards compatibility**
+**(d) Backwards compatibility**
 
 ...
 
 <br>
 
-**Language extensibility**
+**(e) Language extensibility**
 
 ...
 

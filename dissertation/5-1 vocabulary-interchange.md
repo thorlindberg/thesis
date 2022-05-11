@@ -4,19 +4,19 @@
 
 <br>
 
-**Relational data, matrices and dimensions**
+**(a) Relational data, matrices and dimensions**
 
 [ Text ]
 
 <br>
 
-**Object-oriented data**
+**(b) Object-oriented data**
 
 [ Text ]
 
 <br>
 
-**Data specification and readability**
+**(c) Data specification and readability**
 
 [ Text ]
 
