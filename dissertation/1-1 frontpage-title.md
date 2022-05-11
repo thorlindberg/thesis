@@ -4,12 +4,10 @@
 
 <br>
 
-Thor Wessel Lindberg
+Thor Wessel Lindberg, Department of Digital Design
 <br>
-Department of Digital Design
+IT-University of Copenhagen, [mawl@itu.dk](mailto:mawl@itu.dk)
 <br>
-IT-University of Copenhagen
-<br>
-[mawl@itu.dk](mailto:mawl@itu.dk)
+Student no.: 17858
 
 <br>
