@@ -1,6 +1,6 @@
 {"sec":"Experiment Setup"}
 
-In this section I present the features of the TXON (Type-Extensible Object Notation) data validation library written in JavaScript, and evaluate its usefulness by comparing it to an existing TypeScript validation process.
+In this section I present the specification of my Type-Extensible Object Notation (TXON) data interchange format. This is a superset of JSON and its validation features are implemented in JavaScript, to evaluate its usefulness by comparing it to an existing TypeScript validation process.
 
 The TXON library is paired with a JSON-derived TXON syntax proposal for declaring types, type extensions, and instantiating type conformance. As such, the validation features in this experiment reflect syntactical features, and their testing is conducted with proposed syntactical samples.
 
