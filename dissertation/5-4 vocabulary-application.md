@@ -4,13 +4,13 @@ Text
 
 <br>
 
-**(a) Swift Enumeration Structure**
+#### (a)&emsp;Swift Enumeration Structure
 
 Text
 
 <br>
 
-**(b) Swift Codable Protocol**
+#### (b)&emsp;Swift Codable Protocol
 
 Text
 

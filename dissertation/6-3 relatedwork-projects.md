@@ -12,7 +12,7 @@ The data structure must be interoperable with different languages and thus vario
 
 {"break":true}
 
-**(a) TSON: JSON with language-specific type-safety**
+#### (a)&emsp;TSON: JSON with language-specific type-safety
 
 Developed by {"cite":"miou2019tson"} this project proposes a syntax for declaring explicitly typed property values in the JSON format. These types correspond to types from the C# programming language. This is a simple approach to a syntactical extension of the JSON specification, but it also transform the data itself to a format only reflecting types in one specific language or langauges that may declare types in an identical manner. As such it reduces the scope of JSON to a point where its users would likely be better served by an entirely new format.
 
@@ -64,7 +64,7 @@ An interesting finding here is the inclusion of a DateTime type, as dates are co
 
 {"break":true}
 
-**(b) The "Typeable Simple Object Notation" (TSON)**
+#### (b)&emsp;The "Typeable Simple Object Notation" (TSON)
 
 [ Text ] {"cite":"lyon2014typeable"}
 
