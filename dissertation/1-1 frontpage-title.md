@@ -1,4 +1,4 @@
-<b style="font-size: 1.45em">Type-Extensible Object Notation: JSON with Syntax for Types</b>
+<b style="font-size: 1.5em">Type-Extensible Object Notation: JSON with Syntax for Types</b>
 
 *Master's Thesis for Master of Science in Information Technology*
 

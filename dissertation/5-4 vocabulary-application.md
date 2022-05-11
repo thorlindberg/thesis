@@ -4,19 +4,19 @@
 
 <br>
 
-#### a.&emsp;Swift Enumeration Structure
+*a.&emsp;Swift Enumeration Structure*
 
 [ Text ]
 
 <br>
 
-#### b.&emsp;Swift Codable Protocol
+*b.&emsp;Swift Codable Protocol*
 
 [ Text ]
 
 <br>
 
-#### c.&emsp;Continuous Integration and Development (CI/CD)
+*c.&emsp;Continuous Integration and Development (CI/CD)*
 
 [ Text ]
 
@@ -228,4 +228,4 @@ Guarding
 foo = Int(12)
 ```
 
-<br>
+{"break":true}

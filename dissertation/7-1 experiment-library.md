@@ -4,7 +4,7 @@ A library is a collection of utilities that in combination achieve a shared goal
 
 <br>
 
-#### a.&emsp;Features
+*a.&emsp;Features*
 
 This library supports the following validation features, reflecting syntactical features in the .txon data format.
 
@@ -20,7 +20,7 @@ Users can declare their own extended types (e.g. "date"), or declare extensions 
 
 <br>
 
-#### b.&emsp;Intended use
+*b.&emsp;Intended use*
 
 The txon.js library *handshakes* a JSON String, validating conformance of its *data property* to extended type declarations from its "init" property. TXON is initialised as an Object with a *docs method*, *handshake method*, and *tests property*.
 

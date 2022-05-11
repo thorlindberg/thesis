@@ -1,5 +1,5 @@
-<h1>Table of Contents</h1>
-<br>
+Table of Contents
+---
 
 {"toc":"sec-sub"}
 
