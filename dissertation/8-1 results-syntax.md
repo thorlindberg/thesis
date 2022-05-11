@@ -4,7 +4,7 @@
 
 <br>
 
-#### (a)&emsp;Syntax for extended types
+#### a.&emsp;Syntax for extended types
 
 The JavaScript Object Notation (JSON) specifies a format for storing and transmitting JavaScript objects. This format allows the types: *string, number, object, array, boolean, and null*. It explicitly precludes the types: *function, date, and undefined*. A JSON object is represented as a string of curly brackets with properties inside.
 
@@ -165,7 +165,7 @@ If the default is of type *null*, the value is optional during validation. If no
 
 {"break":true}
 
-#### (b)&emsp;Syntax for type extensions
+#### b.&emsp;Syntax for type extensions
 
 In addition to extending JSON with new types, you can also extend existing JSON types (*retroactive modeling*). Types can be extended with enumerations, which becomes available with the dot (.) syntax. Enumeration values must conform to the extended type, and the *null* type can not be extended.
 

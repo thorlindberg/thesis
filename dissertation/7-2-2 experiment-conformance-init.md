@@ -1,4 +1,4 @@
-#### (b)&emsp;checkInit
+#### b.&emsp;checkInit
 
 The second process consists of two main / top-level steps. The first step returns an error if the input of type Object does not have an init property.
 

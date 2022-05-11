@@ -1,4 +1,4 @@
-#### (c)&emsp;checkData
+#### c.&emsp;checkData
 
 The third process
 
