@@ -23,12 +23,11 @@ As seen in figure 1 an extensible type declaration can declare optional local mi
 
 <style>
 jsonDiagram {
-    BackGroundColor #fafafa
+    BackGroundColor transparent
     node {
         BackGroundColor white
         highlight {
-            BackGroundColor red
-            FontColor white
+            BackGroundColor #ff9999
         }
     }
 }
