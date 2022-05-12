@@ -1,10 +1,10 @@
-{"sub":"Validation Library and Implementation"}
+{"sec":"Validation Library and Implementation"}
 
 A library is a collection of utilities that in combination achieve a shared goal. In this instance, the TXON library is instantiated as a TXON object and its method provides validation of a JSON String. In the following I present the features, intent and structure of my library.
 
 <br>
 
-*a.&emsp;Features*
+{"sub":"Features"}
 
 This library supports the following validation features, reflecting syntactical features in the .txon data format.
 
@@ -20,7 +20,7 @@ Users can declare their own extended types (e.g. "date"), or declare extensions 
 
 <br>
 
-*b.&emsp;Intended use*
+{"sub":"Intended use"}
 
 The txon.js library *handshakes* a JSON String, validating conformance of its *data property* to extended type declarations from its "init" property. TXON is initialised as an Object with a *docs method*, *handshake method*, and *tests property*.
 

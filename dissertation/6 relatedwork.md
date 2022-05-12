@@ -1,4 +1,4 @@
-{"sec":"Related Work"}
+{"chp":"Related Work"}
 
 In this section I present academic literature and projects from which I derived my theoretical and methodological framework. As this project proposes extensibility of a data interchange format surrounded by well-established practices and rigid structures, it is crucial that my approach is informed by previous related work. By referencing literature and applying its methods in my experiment, I aim to avoid constructing a proposal that is incompatible with existing computer systems or developing without consideration for end-users.
 
@@ -6,7 +6,7 @@ These following four main topics cover the areas of work that inspired my proces
 
 <br>
 
-*a.&emsp;Framework for design and development*
+{"sub":"Framework for design and development"}
 
 I chose a Test-Driven Development (TDD) process for this project as described in the section on ["Test-Driven Development (TDD)"](#test-drivendevelopment(tdd))", and as such I have chosen to include literature on recommandations derived from practice for writing test-able code. This is presented in the section on ["Writing Testable Code"](#writingtestablecode).
 

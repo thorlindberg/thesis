@@ -1,4 +1,4 @@
-{"sub":"Collaboration, Case and Source Material"}
+{"sec":"Collaboration, Case and Source Material"}
 
 As seen in {"ref":"organisation"}, there are two identifiable hierarchies that form a relationship between case partner and development. The top half of this diagram flows from partner to a formulated case. The bottom half of this diagram flows from developer to a product delivery.
 
@@ -12,7 +12,7 @@ The structure of the development company informs how they plan and execute on a 
 
 <br>
 
-*a.&emsp;Source material*
+{"sub":"Source material"}
 
 [ Text ]
 

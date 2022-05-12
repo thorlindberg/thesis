@@ -1,4 +1,4 @@
-{"sub":"Comparison"}
+{"sec":"Comparison"}
 
 [ Text ]
 

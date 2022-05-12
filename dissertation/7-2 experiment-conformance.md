@@ -1,4 +1,4 @@
-{"sub":"Conformance Validation Flow"}
+{"sec":"Conformance Validation Flow"}
 
 *Non-conformance* is defined as incorrect type declaration, incorrect type instantiation, or mismatch between the two.
 

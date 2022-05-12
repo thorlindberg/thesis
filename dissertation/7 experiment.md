@@ -1,4 +1,4 @@
-{"sec":"Experiment Setup"}
+{"chp":"Experiment Setup"}
 
 In this section I present the specification of my Type-Extensible Object Notation (TXON) data interchange format. This is a superset of JSON and its validation features are implemented in JavaScript, to evaluate its usefulness by comparing it to an existing TypeScript validation process.
 

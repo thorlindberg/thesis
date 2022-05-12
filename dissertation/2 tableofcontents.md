@@ -1,6 +1,6 @@
 Table of Contents
 ---
 
-{"toc":"sec-sub"}
+{"toc":"chp-sec"}
 
 {"break":true}

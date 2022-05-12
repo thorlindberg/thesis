@@ -1,4 +1,4 @@
-{"sub":"Distributed Computing and Heterogeneity"}
+{"sec":"Distributed Computing and Heterogeneity"}
 
 {"cite":"kshemkalyani2011distributed"} define _distributed systems_ as "a collection of independent entities that cooperate to solve a problem that cannot be individually solved." They characterise distributed computing as  "a collection of mostly autonomous processors communicating over a communication network". They identify common features of distributed systems, notably a lack of shared resources which necessitates communication, autonomy and heterogeneity.
 
@@ -28,7 +28,7 @@ In the following section on _the transmission of data in distributed computing s
 
 <br>
 
-*a.&emsp;Data transmission*
+{"sub":"Data transmission"}
 
 This section explores the standards and methods for distributed communication through a publish-subscribe service. It serves as background knowledge on how serialised data is distributed, to illustrate how our choice of data serialisation library is informed by the system model.
 
@@ -64,25 +64,25 @@ The take away from the OSI model is that as data flows through a distributed sys
 
 <br>
 
-*b.&emsp;Data parsing*
+{"sub":"Data parsing"}
 
 ...
 
 <br>
 
-*c.&emsp;Typesetting*
+{"sub":"Typesetting"}
 
 ...
 
 <br>
 
-*d.&emsp;Backwards compatibility*
+{"sub":"Backwards compatibility"}
 
 ...
 
 <br>
 
-*e.&emsp;Language extensibility*
+{"sub":"Language extensibility"}
 
 ...
 

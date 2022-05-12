@@ -1,4 +1,4 @@
-{"sub":"Attempts at Extensibility of Data Syntax"}
+{"sec":"Attempts at Extensibility of Data Syntax"}
 
 Previous projects have focused on documenting and comparing object serialisation formats in terms of features, efficiency, performance, file size, and programming language support. The central theme in these comparisons is the ability of a format to be applied across heterogeneous structures, systems and languages, thus achieving interoperability despite differences in data structure.
 
@@ -12,7 +12,7 @@ The data structure must be interoperable with different languages and thus vario
 
 {"break":true}
 
-*a.&emsp;TSON: JSON with language-specific type-safety*
+{"sub":"TSON: JSON with language-specific type-safety"}
 
 Developed by {"cite":"miou2019tson"} this project proposes a syntax for declaring explicitly typed property values in the JSON format. These types correspond to types from the C# programming language. This is a simple approach to a syntactical extension of the JSON specification, but it also transform the data itself to a format only reflecting types in one specific language or langauges that may declare types in an identical manner. As such it reduces the scope of JSON to a point where its users would likely be better served by an entirely new format.
 
@@ -64,7 +64,7 @@ An interesting finding here is the inclusion of a DateTime type, as dates are co
 
 {"break":true}
 
-*b.&emsp;The "Typeable Simple Object Notation" (TSON)*
+{"sub":"The "Typeable Simple Object Notation" (TSON)"}
 
 [ Text ] {"cite":"lyon2014typeable"}
 

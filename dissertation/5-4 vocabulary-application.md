@@ -1,22 +1,22 @@
-{"sub":"Application Development and Languages"}
+{"sec":"Application Development and Languages"}
 
 [ Text ]
 
 <br>
 
-*a.&emsp;Swift Enumeration Structure*
+{"sub":"Swift Enumeration Structure"}
 
 [ Text ]
 
 <br>
 
-*b.&emsp;Swift Codable Protocol*
+{"sub":"Swift Codable Protocol"}
 
 [ Text ]
 
 <br>
 
-*c.&emsp;Continuous Integration and Development (CI/CD)*
+{"sub":"Continuous Integration and Development (CI/CD)"}
 
 [ Text ]
 

@@ -1,4 +1,4 @@
-{"sec":"Background"}
+{"chp":"Background"}
 
 In this project I've chosen to collaborate with a company that specialises in native mobile application development. Their identity is kept anonymous, so rather than include confidential data or code samples, I have chosen to derive generic examples from the material they have provided me.
 

@@ -1,4 +1,4 @@
-{"sec":"Bibliography"}
+{"chp":"Bibliography"}
 
 {"bib":"kshemkalyani2011distributed","title":"Distributed Computing: Principles, Algorithms, and Systems","authors":["Kshemkalyani, A.","Singhal, M."],"year":"2011","publisher":"Cambridge University Press","url":"https://books.google.dk/books?id=G7SZ32dPuLgC"}
 
