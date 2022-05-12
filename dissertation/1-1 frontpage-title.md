@@ -1,6 +1,6 @@
 <b style="font-size: 1.5em">Type-Extensible Object Notation: JSON with Syntax for Types</b>
 
-*Thesis for Master of Science in Information Technology*
+*Master's Thesis for Master of Science in Information Technology*
 
 <br>
 
