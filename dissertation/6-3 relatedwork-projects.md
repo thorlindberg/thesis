@@ -64,7 +64,7 @@ An interesting finding here is the inclusion of a DateTime type, as dates are co
 
 {"break":true}
 
-{"sub":"The "Typeable Simple Object Notation" (TSON)"}
+{"sub":"The \"Typeable Simple Object Notation\" (TSON)"}
 
 [ Text ] {"cite":"lyon2014typeable"}
 
