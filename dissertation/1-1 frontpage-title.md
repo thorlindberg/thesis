@@ -1,15 +1,21 @@
-<b style="font-size: 1.5em">Type-Extensible Object Notation: JSON with Syntax for Types</b>
+<p align="center">
+<b style="font-size: 1.515em">Type-Extensible Object Notation: JSON with Syntax for Types</b>
+</p>
 
-*Master's Thesis for Master of Science in Information Technology*
+<p align="center">
+<i>Master's Thesis for Master of Science in Information Technology</i>
+</p>
 
 <br>
 
+<p align="center">
 Thor Wessel Lindberg
 <br>
 IT University of Copenhagen
 <br>
-Student no.: 17858
+student no.: 17858
 <br>
-[mawl@itu.dk](mailto:mawl@itu.dk)
+<a href="mailto:mawl@itu.dk">mawl@itu.dk</a>
+</p>
 
 <br>
