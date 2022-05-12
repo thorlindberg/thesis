@@ -16,4 +16,39 @@ The structure of the development company informs how they plan and execute on a 
 
 [ Text ]
 
+A JSON diagram representing a validation test for incorrect value range:
+
+@startuml
+@startjson
+
+<style>
+jsonDiagram {
+    node {
+        highlight {
+            BackGroundColor red
+            FontColor white
+        }
+    }
+}
+</style>
+
+#highlight "data" / "values" / "0" / "month"
+
+{
+    "init": {
+        "date": {
+            "type": "number",
+            "day": { "default": 1 },
+            "month": { "minimum": 1, "maximum": 12 }
+        }
+    },
+    "data": {
+        "type": "date",
+        "values": [ { "month": 13 } ]
+    }
+}
+
+@endjson
+@enduml
+
 {"break":true}
