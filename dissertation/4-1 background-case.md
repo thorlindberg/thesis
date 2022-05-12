@@ -23,6 +23,9 @@ A JSON diagram representing a validation test for incorrect value range:
 
 <style>
 jsonDiagram {
+    root {
+        BackGroundColor #fafafa
+    }
     node {
         highlight {
             BackGroundColor red
