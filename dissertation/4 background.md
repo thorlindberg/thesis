@@ -4,6 +4,46 @@ In this project I've chosen to collaborate with a company that specialises in na
 
 This company holds a unique perspective relative to the landscape of software development in Copenhagen, where return on investment (ROI) in my optics is valued above quality. Rather than take the typical multi-platform approach, using a platform-neutral framework like _React Native_, they maintain independent development teams for each platform, and they work exclusively with native code. They maintain an Android team utilising _Flutter_ and an iOS team utilising _Swift_. This nets them hardware efficiency and performance advantages, at the cost of operating and aligning two parallel developer teams working on the same projects.
 
-In the following I illustrate the relationship between this company (_development company_) and their partners. This serves as a starting point for deducing which perspectives are held on working with data.
+As seen in figure {"ref":"companystructure"} ...
+
+@startuml
+
+skinparam linetype ortho
+
+<style>
+componentDiagram {
+    BackGroundColor transparent
+    frame {
+        BackGroundColor white
+    }
+    component {
+        BackGroundColor white
+    }
+    database {
+        BackGroundColor white
+    }
+}
+</style>
+
+frame Client {
+    [Product management] -down-> [Back-end engineering]
+}
+
+frame Developer {
+    [Project management] -down-> [Management]
+    [Management] -down-> [Human resources]
+    [Management] -down-> [Engineering]
+    [Management] -down-> [Design]
+}
+
+[Product management] -right-> [Project management]
+
+[Back-end engineering] <-right-> [Engineering]
+
+@enduml
+
+{"fig":"companystructure","caption":"Responsibilities of involved parties and how parties relate and interact."}
+
+In the following I illustrate the relationship between this company (developer) and their partners. This serves as a starting point for deducing which perspectives are held on working with data.
 
 {"break":true}
