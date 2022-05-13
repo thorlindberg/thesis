@@ -6,6 +6,10 @@
 <i>Master's Thesis for Master of Science in Information Technology</i>
 </p>
 
+<p align="center">
+Compiled on {"date":"m-d-y"}.
+</p>
+
 <br>
 
 <div style="display:flex;justify-content:space-evenly">

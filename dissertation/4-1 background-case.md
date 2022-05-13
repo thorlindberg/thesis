@@ -16,7 +16,7 @@ The structure of the development company informs how they plan and execute on a 
 
 [ Text ]
 
-As seen in figure 1 an extensible type declaration can declare optional local minimum and maximum value requirements, which are used during conformance validation.
+As seen in {"ref":"maxMismatchJSON"} an extensible type declaration can declare optional local minimum and maximum value requirements, which are used during conformance validation.
 
 @startuml
 @startjson
@@ -53,6 +53,14 @@ jsonDiagram {
 @endjson
 @enduml
 
-Figure 1. Example: instance of type "date" has "values" array containing property "month" with value "13" above maximum "12".
+{"fig":"maxMismatchJSON","caption":'Example: instance of type "date" has "values" array containing property "month" with value "13" above maximum "12".'}
+
+<br>
+
+As seen in {"ref":"sourceJSON"} an extensible type declaration can declare optional local minimum and maximum value requirements, which are used during conformance validation.
+
+[ UML diagram ]
+
+{"fig":"sourceJSON","caption":'Example: instance of type "date" has "values" array containing property "month" with value "13" above maximum "12".'}
 
 {"break":true}
