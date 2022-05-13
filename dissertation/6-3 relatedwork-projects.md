@@ -16,7 +16,7 @@ The data structure must be interoperable with different languages and thus vario
 
 Developed by {"cite":"miou2019tson"} this project proposes a syntax for declaring explicitly typed property values in the JSON format. These types correspond to types from the C# programming language. This is a simple approach to a syntactical extension of the JSON specification, but it also transform the data itself to a format only reflecting types in one specific language or langauges that may declare types in an identical manner. As such it reduces the scope of JSON to a point where its users would likely be better served by an entirely new format.
 
-He provides an example of how to declare a valid TSON root node, and as evidenced it is semantically identical to a JSON root node, with the exception of explicit C# types surrounding property values {"citep":"miou2019tson"} . As this syntax transforms the actual data, it also invalidates it as a JSON object, and as such it is not compatible with JSON parsers.
+He provides an example of how to declare a valid TSON root node, and as evidenced it is semantically identical to a JSON root node, with the exception of explicit C# types surrounding property values {"citep":"miou2019tson"}. As this syntax transforms the actual data, it also invalidates it as a JSON object, and as such it is not compatible with JSON parsers.
 
 ```
 {
@@ -31,7 +31,7 @@ He provides an example of how to declare a valid TSON root node, and as evidence
 
 <br>
 
-He provides a list of the types available in the TSON specification, including the C# types that are not available in the JSON specification {"citep":"miou2019tson"}. In the following I provide a table comparing these two specifications, but I note that as JSON does not distinguish between floats and doubles for its "number" type, meaning integers and numbers are implicitly typed, I have marked them as available in the JSON specification.
+He provides a list of the types available in the TSON specification, including the C# types that are not available in the JSON specification {"citep":"miou2019tson"}. As seen in table {"ref":"tsonjson"} comparing these two specifications, but I note that as JSON does not distinguish between floats and doubles for its "number" type, meaning integers and numbers are implicitly typed, I have marked them as available in the JSON specification.
 
 {"break":true}
 
@@ -57,6 +57,8 @@ He provides a list of the types available in the TSON specification, including t
 <tr style="padding-bottom:0;padding-top:0;border:none"><td style="padding-bottom:0;padding-top:0;border:none"><sub>Literal</sub></td><td style="padding-bottom:0;padding-top:0;border:none"><sub>datetime</sub></td><td style="padding-bottom:0;padding-top:0;border:none"><sub>•</sub></td><td style="padding-bottom:0;padding-top:0;border:none"><sub></sub></td></tr>
 <tr style="padding-bottom:0;padding-top:0;border:none"><td style="padding-bottom:0;padding-top:0;border:none"><sub>Literal</sub></td><td style="padding-bottom:0;padding-top:0;border:none"><sub>uri</sub></td><td style="padding-bottom:0;padding-top:0;border:none"><sub>•</sub></td><td style="padding-bottom:0;padding-top:0;border:none"><sub></sub></td></tr>
 </table>
+
+{"tbl":"tsonjson","caption":"Description."}
 
 <br>
 

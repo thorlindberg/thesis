@@ -1,6 +1,6 @@
 {"sec":"Collaboration, Case and Source Material"}
 
-As seen in {"ref":"organisation"}, there are two identifiable hierarchies that form a relationship between case partner and development. The top half of this diagram flows from partner to a formulated case. The bottom half of this diagram flows from developer to a product delivery.
+As seen in figure {"ref":"organisation"}, there are two identifiable hierarchies that form a relationship between case partner and development. The top half of this diagram flows from partner to a formulated case. The bottom half of this diagram flows from developer to a product delivery.
 
 {"fig":"organisation","url":"figures/organisation.png","caption":"Hierarchical and structural relationship between development company and case partners.","width":"100%"}
 
@@ -16,7 +16,7 @@ The structure of the development company informs how they plan and execute on a 
 
 [ Text ]
 
-As seen in {"ref":"maxMismatchJSON"} an extensible type declaration can declare optional local minimum and maximum value requirements, which are used during conformance validation.
+As seen in figure {"ref":"maxMismatchJSON"} an extensible type declaration can declare optional local minimum and maximum value requirements, which are used during conformance validation.
 
 @startuml
 @startjson
@@ -53,14 +53,14 @@ jsonDiagram {
 @endjson
 @enduml
 
-{"fig":"maxMismatchJSON","caption":'Example: instance of type "date" has "values" array containing property "month" with value "13" above maximum "12".'}
+{"fig":"maxMismatchJSON","caption":"Example: instance of type \"date\" has \"values\" array containing property \"month\" with value \"13\" above maximum \"12\"."}
 
 <br>
 
-As seen in {"ref":"sourceJSON"} an extensible type declaration can declare optional local minimum and maximum value requirements, which are used during conformance validation.
+As seen in figure {"ref":"sourceJSON"} an extensible type declaration can declare optional local minimum and maximum value requirements, which are used during conformance validation.
 
 [ UML diagram ]
 
-{"fig":"sourceJSON","caption":'Example: instance of type "date" has "values" array containing property "month" with value "13" above maximum "12".'}
+{"fig":"sourceJSON","caption":"Example: instance of type \"date\" has \"values\" array containing property \"month\" with value \"13\" above maximum \"12\"."}
 
 {"break":true}
