@@ -3,11 +3,11 @@
 </p>
 
 <p align="center">
-<i>Master's Thesis for Master of Science in Information Technology</i>
+Master's Thesis for Master of Science in Information Technology
 </p>
 
 <p align="center">
-Compiled on {"date":"m-d-y"}.
+Compiled {"date":"m-d-y"}. Character count {"count":"char"}.
 </p>
 
 <br>

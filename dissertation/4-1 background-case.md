@@ -1,4 +1,4 @@
-{"sec":"Collaboration, Case and Source Material"}
+{"sec":"Company Collaboration and Case"}
 
 As seen in figure {"ref":"organisation"}, there are two identifiable hierarchies that form a relationship between case partner and development. The top half of this diagram flows from partner to a formulated case. The bottom half of this diagram flows from developer to a product delivery.
 
@@ -8,11 +8,13 @@ The structure of the partner company informs how they formulate the case offered
 
 The structure of the development company informs how they plan and execute on a case. They are not responsible for the back-end, and thus have to negotiate infrastructure plans and changes with their partners. This presents challenges to their autonomy, hierarchy and responsibilities.
 
+{"sub":"Case-work and delivery"}
+
 [ A typical case delivery by this company? ]
 
 <br>
 
-{"sub":"Source material"}
+{"sub":"Architecture and data samples"}
 
 [ Text ]
 
