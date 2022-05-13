@@ -1,4 +1,4 @@
-The *tests* property is of type Array\<String> and contains sample JSON Strings that demonstrate the features and intended use of TXON.
+The "tests" property is of type Array\<String> and contains sample JSON Strings that demonstrate the features and intended use of TXON.
 
 ```
 tests: [

@@ -6,7 +6,7 @@
 
 {"sub":"Syntax for extended types"}
 
-The JavaScript Object Notation (JSON) specifies a format for storing and transmitting JavaScript objects. This format allows the types: *string, number, object, array, boolean, and null*. It explicitly precludes the types: *function, date, and undefined*. A JSON object is represented as a string of curly brackets with properties inside.
+The JavaScript Object Notation (JSON) specifies a format for storing and transmitting JavaScript objects. This format allows the types: "string, number, object, array, boolean, and null". It explicitly precludes the types: "function, date, and undefined". A JSON object is represented as a string of curly brackets with properties inside.
 
 ```
 { "date": "28-10-2005" }
@@ -98,9 +98,9 @@ Instances of extended types are themselves extensible, meaning they are not limi
 
 There are two valid approaches to instantiating extended types:
 
-*Array of objects*. Each object contains the extended type value and its required properties. The advantage of this approach is that each object contains an extended type, but this also increases the chance of syntax errors. This is ideal when an array contains multiple types.
+"Array of objects". Each object contains the extended type value and its required properties. The advantage of this approach is that each object contains an extended type, but this also increases the chance of syntax errors. This is ideal when an array contains multiple types.
 
-*Object with array of objects*. The object contains the extended type value and a "values" array containing objects with required properties. The advantage of this approach is that the extended type is instantitated once, resulting in an inferred type for objects in "values". This is ideal when an array only contains one type.
+"Object with array of objects". The object contains the extended type value and a "values" array containing objects with required properties. The advantage of this approach is that the extended type is instantitated once, resulting in an inferred type for objects in "values". This is ideal when an array only contains one type.
 
 ```
 // array of objects
@@ -126,11 +126,11 @@ There are two valid approaches to instantiating extended types:
 
 {"break":true}
 
-An extended type property can be partially instatiated if a default value is given. The default can be any of the available JSON types, including *null*, or **another an extended type.**
+An extended type property can be partially instatiated if a default value is given. The default can be any of the available JSON types, including "null", or ""another an extended type.""
 
-Defaults are inserted in place of non-instantiated enumeration properties during validation. The value does not have to match the type given in the enumeration, but if it does it must conform to the given range (min to max). **--THIS RAISES THE QUESTION: SHOULD VALIDATION RETURN THE VALIDATED JSON???--**
+Defaults are inserted in place of non-instantiated enumeration properties during validation. The value does not have to match the type given in the enumeration, but if it does it must conform to the given range (min to max). ""--THIS RAISES THE QUESTION: SHOULD VALIDATION RETURN THE VALIDATED JSON???--""
 
-If the default is of type *null*, the value is optional during validation. If no default is given or the default is of any other type, it is required during validation.
+If the default is of type "null", the value is optional during validation. If no default is given or the default is of any other type, it is required during validation.
 
 ```
 {
@@ -167,9 +167,9 @@ If the default is of type *null*, the value is optional during validation. If no
 
 {"sub":"Syntax for type extensions"}
 
-In addition to extending JSON with new types, you can also extend existing JSON types (*retroactive modeling*). Types can be extended with enumerations, which becomes available with the dot (.) syntax. Enumeration values must conform to the extended type, and the *null* type can not be extended.
+In addition to extending JSON with new types, you can also extend existing JSON types ("retroactive modeling"). Types can be extended with enumerations, which becomes available with the dot (.) syntax. Enumeration values must conform to the extended type, and the "null" type can not be extended.
 
-Type extension reduces type-repetition in instantiation, and thus it is a better option when enumeration values conform to a single type. **--WHAT ABOUT NULL VALUES? CAN AN EXTENSION CONFORM TO A TYPE BUT HAVE DEFAULT OF NULL???--**
+Type extension reduces type-repetition in instantiation, and thus it is a better option when enumeration values conform to a single type. ""--WHAT ABOUT NULL VALUES? CAN AN EXTENSION CONFORM TO A TYPE BUT HAVE DEFAULT OF NULL???--""
 
 ```
 {
@@ -205,7 +205,7 @@ Type extension reduces type-repetition in instantiation, and thus it is a better
 
 Type extensions are not limited to JSON types, as you are able to extend an extended type...
 
-**--THIS IS EXPERIMENTAL--**
+""--THIS IS EXPERIMENTAL--""
 
 ```
 {
