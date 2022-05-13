@@ -18,7 +18,7 @@ At this point, you are probably wondering "why distribution is relevant" to this
 
 Given the inherent nature of serialised data exchange, and the ubiquity of distributed computing systems, the design of such systems informs our approach to communicating across them. It should be noted that systems do not exist in a vacuum, and thus system should be contextually designed based on market forces. System designers must balance or choose between industry standard protocols, which maximise interoperability, and the technically best solutions, which require more control and closed source development.
 
-{"fig":"pubsubsystem","url":"figures/pubsubsystem.png","caption":"Components of a "publish-subscribe" system.","width":"100%"}
+{"fig":"pubsubsystem","url":"figures/pubsubsystem.png","caption":"Components of a \"publish-subscribe\" system.","width":"100%"}
 
 {"cite":"kshemkalyani2011distributed"} identify a set of design challenges applicable to the traditional server-client model of distributed systems. An "Applications Programming Interface (API)" enables the distributed system to communicate internally and more importantly externally, maximising the adoption of system services by outside forces. It introduces the challenge of "transparency", as the system should be accessible without revealing its internal operations (resource [re]location, replication, concurrency, failure handling etc.) and implementation policies.
 
