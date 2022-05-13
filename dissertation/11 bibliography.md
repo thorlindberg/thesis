@@ -29,3 +29,7 @@
 {"bib":"miou2019tson","title":"...","authors":["..."],"year":"2019","publisher":"GitHub","url":"https://github.com/miou-gh/tson"}
 
 {"bib":"lyon2014typeable","title":"TSON: Typeable Simple Object Notation","authors":["Lyon-Smith, J."],"year":"2014","publisher":"GitHub","url":"https://github.com/jlyonsmith/Tson"}
+
+{"bib":"apple2022swift","title":"The Swift Programming Language","authors":["Apple Inc."],"year":"2022","publisher":"Apple","url":"https://docs.swift.org/swift-book/"}
+
+{"bib":"alpha2022flutter","title":"Flutter documentation","authors":["Alphabet Inc."],"year":"2022","publisher":"Alphabet","url":"https://docs.flutter.dev"}
