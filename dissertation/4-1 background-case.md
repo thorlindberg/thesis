@@ -1,4 +1,6 @@
-{"sec":"Collaboration and Case"}
+{"sec":"Case-work and Source Material"}
+
+In this section I present ...
 
 As seen in figure {"ref":"organisation"}, there are two identifiable hierarchies that form a relationship between case partner and development. The top half of this diagram flows from partner to a formulated case. The bottom half of this diagram flows from developer to a product delivery.
 
