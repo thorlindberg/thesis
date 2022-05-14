@@ -48,29 +48,38 @@ componentDiagram {
 }
 </style>
 
-frame Application {
-    [View Model] -left-> [View (UI)]
-    frame Model {
-        [HTTP] -left-> [Protocol]
-        [Protocol] -left-> [Object]
+
+frame Backend {
+    frame Client  {
+        [Database]
     }
-}
-
-frame Client  {
-    [Database]
-}
-
-frame Developer {
-    frame Backend {
+    frame Developer {
         [GitLab]
     }
 }
 
-[View (UI)] -up-> [HTTP]
-[Object] -left-> [View Model]
-[HTTP] -right-> [Database]
+frame Application {
+    frame View {
+        [User Interface]
+    }
+    frame "View Model" {
+        [Observable]
+    }
+    frame Model {
+        [HTTP request]
+        [HTTP response] -left-> [Protocol]
+        [Protocol] -up-> [Class]
+    }
+}
+
+[Protocol] -left-> [Observable]
+[Observable] -up-> [User Interface]
+[User Interface] -right-> [Class]
+
+[Class] -right-> [HTTP request]
+[HTTP request] -right-> [Database]
 [Database] -down-> [GitLab]
-[GitLab] -left-> [View (UI)]
+[GitLab] -left-> [HTTP response]
 
 @enduml
 
