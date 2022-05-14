@@ -19,9 +19,6 @@ componentDiagram {
     component {
         BackGroundColor white
     }
-    database {
-        BackGroundColor white
-    }
 }
 </style>
 

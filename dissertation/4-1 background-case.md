@@ -1,6 +1,38 @@
 {"sec":"Case-work and Source Material"}
 
-In this section I present ...
+In this section I present my collaboration with the company and the specific case from which I source data samples and other material. As the company is kept anonymous, I present generic examples of data structures rather than confidential data samples. 
+
+As seen in table {"ref":"casedelivery"} the most represented deliverables across all published case-work reflects the departments at the company, as presented in figure {"ref":"companystructure"}. This only includes deliverables occuring in multiple cases, and there is greater variance in deliverables when considering single occurences.
+
+<table style="width:100%">
+<tr><th><sub>Deliverable</sub></th><th><sub style="float: right">Cases</sub></th></tr>
+<tr  style="padding-bottom:0"><td style="padding-bottom:0"><sub>iOS Development</sub></td><td style="padding-bottom:0"><sub style="float: right">23</sub></td></tr>
+<tr style="padding-bottom:0;padding-top:0;border:none"><td style="padding-bottom:0;padding-top:0;border:none"><sub>Android Development</sub></td><td style="padding-bottom:0;padding-top:0;border:none"><sub style="float: right">18</sub></td></tr>
+<tr style="padding-bottom:0;padding-top:0;border:none"><td style="padding-bottom:0;padding-top:0;border:none"><sub>UI/UX Design</sub></td><td style="padding-bottom:0;padding-top:0;border:none"><sub style="float: right">19</sub></td></tr>
+<tr style="padding-bottom:0;padding-top:0;border:none"><td style="padding-bottom:0;padding-top:0;border:none"><sub>Project Management</sub></td><td style="padding-bottom:0;padding-top:0;border:none"><sub style="float: right">16</sub></td></tr>
+<tr style="padding-bottom:0;padding-top:0;border:none"><td style="padding-bottom:0;padding-top:0;border:none"><sub>Quality Assurance (QA)</sub></td><td style="padding-bottom:0;padding-top:0;border:none"><sub style="float: right">7</sub></td></tr>
+<tr style="padding-bottom:0;padding-top:0;border:none"><td style="padding-bottom:0;padding-top:0;border:none"><sub>Backend Development</sub></td><td style="padding-bottom:0;padding-top:0;border:none"><sub style="float: right">6</sub></td></tr>
+<tr style="padding-bottom:0;padding-top:0;border:none"><td style="padding-bottom:0;padding-top:0;border:none"><sub>Business Development</sub></td><td style="padding-bottom:0;padding-top:0;border:none"><sub style="float: right">4</sub></td></tr>
+<tr style="padding-bottom:0;padding-top:0;border:none"><td style="padding-bottom:0;padding-top:0;border:none"><sub>Technical Leadership</sub></td><td style="padding-bottom:0;padding-top:0;border:none"><sub style="float: right">2</sub></td></tr>
+</table>
+
+{"tbl":"casedelivery","caption":"Deliverables that occur in multiple case descriptions published by the contracted company."}
+
+{"sub":"Client project and case"}
+
+In my collaboration with the contracted company I am only involved with the engineering department, who are responsible for software development and coordinating backend engineering with the client. The deliverables for this client are: project management, iOS/Android development, backend development, and UI/UX design. This case is typical as its deliverables occur frequently across all published cases. 
+
+Their client for this case provides both physical infrastructure and back-end maintenance for their product, but have contracted the company to develop a mobile application connecting users with their data. The client collects and stores information on the status of their products, mainly charge state. They also track the availability of their proprietary charger installations, to offer users a map of available chargers.
+
+As the client relies so heavily on connecting users with their data, the software developed also primarily relies on data interchange. The company and I have agreed to produce a proposal for an improved data format that guards against potential errors, by investigating the current data validation proccesses and how errors are handled in their systems and software architecture.
+
+{"break":true}
+
+{"sub":"Source material and sample data"}
+
+[ Text ]
+
+---
 
 As seen in figure {"ref":"organisation"}, there are two identifiable hierarchies that form a relationship between case partner and development. The top half of this diagram flows from partner to a formulated case. The bottom half of this diagram flows from developer to a product delivery.
 
