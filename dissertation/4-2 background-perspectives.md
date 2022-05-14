@@ -1,5 +1,7 @@
 {"sec":"Developer Perspectives on Interchangable Data"}
 
+[ Application (Codable) handles data casting ]
+
 In this section I present ...
 
 ---

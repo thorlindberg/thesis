@@ -1,4 +1,4 @@
-{"sec":"Case-work and Source Material"}
+{"sec":"Case Description and Material"}
 
 In this section I present my collaboration with the company and the specific case from which I source data samples and other material. As the company is kept anonymous, I present generic examples of data structures rather than confidential data samples. 
 
@@ -24,31 +24,57 @@ In my collaboration with the contracted company I am only involved with the engi
 
 Their client for this case provides both physical infrastructure and back-end maintenance for their product, but have contracted the company to develop a mobile application connecting users with their data. The client collects and stores the status of their products (e.g. charge state), and they track availability of their proprietary chargers to offer users a map of available chargers.
 
-As the client relies so heavily on connecting users with their data, the software developed also primarily relies on data interchange. The company and I have agreed to produce a proposal for an improved data format that guards against potential errors, by investigating the current data validation proccesses and how errors are handled in their systems and software architecture.
+As the client relies so heavily on connecting users with their data, the software developed also primarily relies on data interchange. The company and I have agreed to produce a proposal for an improved data structure that guards against potential errors, by investigating the current data validation processes and how errors are handled in their systems and software architecture.
 
 {"break":true}
 
-{"sub":"Source material and sample data"}
+{"sub":"Source code and sample data"}
 
-[ Text ]
+For this project the company engineers have chosen to utilise the Continuous Integration and Continuous Development (CI/CD) platform "GitLab" as their backend. As users attempt to authenticate themselves within the developed software application, a request for information is sent to the client backend. If authentication succeeds, the information is forwarded to the company backend (GitLab), wherein the information is validated with TypeScript and forwarded as a response to the application. This flow of information is illustrated in figure {"ref":"informationflow"}.
 
----
+@startuml
 
-As seen in figure {"ref":"organisation"}, there are two identifiable hierarchies that form a relationship between case partner and development. The top half of this diagram flows from partner to a formulated case. The bottom half of this diagram flows from developer to a product delivery.
+skinparam linetype ortho
 
-{"fig":"organisation","url":"figures/organisation.png","caption":"Hierarchical and structural relationship between development company and case partners.","width":"100%"}
+<style>
+componentDiagram {
+    BackGroundColor transparent
+    frame {
+        BackGroundColor white
+    }
+    component {
+        BackGroundColor white
+    }
+}
+</style>
 
-The structure of the partner company informs how they formulate the case offered to the developers. They are also responsible for maintenance of a back-end, delivering customer data to the client developed in the delivery.
+frame Application {
+    [View Model] -left-> [View (UI)]
+    frame Model {
+        [HTTP] -left-> [Protocol]
+        [Protocol] -left-> [Object]
+    }
+}
 
-The structure of the development company informs how they plan and execute on a case. They are not responsible for the back-end, and thus have to negotiate infrastructure plans and changes with their partners. This presents challenges to their autonomy, hierarchy and responsibilities.
+frame Client  {
+    [Database]
+}
 
-{"sub":"Case-work and delivery"}
+frame Developer {
+    frame Backend {
+        [GitLab]
+    }
+}
 
-[ A typical case delivery by this company? ]
+[View (UI)] -up-> [HTTP]
+[Object] -left-> [View Model]
+[HTTP] -right-> [Database]
+[Database] -down-> [GitLab]
+[GitLab] -left-> [View (UI)]
 
-<br>
+@enduml
 
-{"sub":"Architecture and data samples"}
+{"fig":"informationflow","caption":"Flow of information from the initial request sent from application to backend, to a response from the data validation backend (GitLab)."}
 
 [ Text ]
 
