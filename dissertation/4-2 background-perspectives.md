@@ -2,6 +2,8 @@
 
 [ Application (Codable) handles data casting ]
 
+[ API is split into components, part of negotiation, but this is outside the scope of this project, but further illustrates the negotiation and communication between backends ]
+
 In this section I present ...
 
 ---
