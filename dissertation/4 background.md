@@ -1,3 +1,5 @@
 {"chp":"Background"}
 
 In this chapter I present the background for this project, by introducing the company I have chosen to collaborate with on my proposal. This company provides software design, development and user insights to its clients, on a case-work basis. The identity of this company is intentionally kept anymous in this report to avoid breach of confidentiality, and as such I have chosen to derive generic data samples from the professional material they have provided me.
+
+<br>
