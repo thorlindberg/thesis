@@ -20,7 +20,6 @@ componentDiagram {
 }
 </style>
 
-
 frame Backend {
     frame Client  {
         [Database]

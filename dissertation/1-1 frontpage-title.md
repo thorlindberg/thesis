@@ -7,7 +7,7 @@ Master's Thesis for Master of Science in Information Technology
 </p>
 
 <p align="center">
-{"date":"m-d-y"}. {"count":"char"} characters.
+Date {"date":"m-d-y"}. Character count {"count":"char"}.
 </p>
 
 <br>

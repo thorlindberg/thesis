@@ -35,3 +35,5 @@
 {"bib":"apple2022swift","title":"The Swift Programming Language","authors":["Apple Inc."],"year":"2022","publisher":"Apple","url":"https://docs.swift.org/swift-book/"}
 
 {"bib":"alpha2022flutter","title":"Flutter documentation","authors":["Alphabet Inc."],"year":"2022","publisher":"Alphabet","url":"https://docs.flutter.dev"}
+
+{"bib":"micro2022typescript","title":"TypeScript Handbook: Object Types","authors":["Microsoft"],"year":"2022","publisher":"Microsoft","url":"https://www.typescriptlang.org/docs/handbook/2/objects.html"}
