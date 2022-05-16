@@ -48,15 +48,6 @@ jsonDiagram {
       "id": "DKc300",
       "modelId": "c300",
       "modelName": "c"
-    },
-    {
-      "connectors": [
-        { "connectorId": "1", "typeId": 2, "typeName": "DC", "variantName": "y", "capacitykW": 150 },
-        { "connectorId": "2", "typeId": 2, "typeName": "DC", "variantName": "y", "capacitykW": 150 }
-      ],
-      "id": "DKc400",
-      "modelId": "d400",
-      "modelName": "c"
     }
   ],
   "city": "København",
@@ -66,7 +57,7 @@ jsonDiagram {
   "isRoamingLocation": true,
   "isSemipublic": true,
   "isFuture": true,
-  "latitude": 55.696914,,
+  "latitude": 55.696914,
   "locationIdentity": "DKpartner",
   "longitude": 12.566042,
   "name": "København",
