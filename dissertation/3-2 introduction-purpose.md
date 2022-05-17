@@ -1,10 +1,10 @@
-{"sec":"Purpose of this Project"}
+{"sub":"Purpose of this Project"}
 
 <!--
 I contribute to this field with a proposal for a strongly-typed superset syntax for JSON data structures, similar to how the superset TypeScript languages provides typing of JavaScript data structures. The Type-Extensible Object Notation (TXON) data format developed for this proposal provides a syntax for type declarations and relational references in JSON data structures. As a superset of JSON this format is fully compatible with existing JSON parsers, as it conforms to the JSON specification. A validation layer evaluates the conformance of the data structure based on references to its type declarations, providing developers with feedback on where and why the transmitted data structure is invalid.
 -->
 
-In this section I illustrate the contribution made through this project. This project contributes with a proposal for type declarations within the JavaScript Object Notation (JSON) specification, by defining a syntax for extensible declaration and relation references. The result is a superset JSON data format, the Type-Extensible Object Notation (TXON), paired with a JavaScript library to validate the conformance of a data structure to this format. Type declarations in this format can contain enumerated values and extensible types, while remaining compatible with JSON parsers. This proposal is developed within the context of the existing and historical body of work on interchangable data formats and extensibility in programming languages.
+This project contributes with a proposal for type declarations within the JavaScript Object Notation (JSON) specification, by defining a syntax for extensible declaration and relation references. The result is a superset JSON data format, the Type-Extensible Object Notation (TXON), paired with a JavaScript library to validate the conformance of a data structure to this format. Type declarations in this format can contain enumerated values and extensible types, while remaining compatible with JSON parsers. This proposal is developed within the context of the existing and historical body of work on interchangable data formats and extensibility in programming languages.
 
 The proposal was directly inspired by the TypeScript programming language, which is a superset of the JavaScript language, from which the JSON specification is derived {"citep":"micro2022typescript"}. TypeScript takes an extensible approach to declaring strongly-typed JavaScript properties, by maintaing the structure of JavaScript, allowing developers to add as many or no declarations at all. This also means that TypeScript code becomes JavaScript code with slight modifications to declarations.
 
@@ -14,18 +14,14 @@ As seen in figure {"ref":"txonsyntax"} a TXON data structure contains at least t
 
 ```
 {
-        "init": {
-            "number.date": {
-                "case": "month"
-            }
-        },
-        "data": {
-            "date": {
-                "type": "number.date", "month": 4
-            },
-            "description": "The month of my birth"
-        }
+    "init": {
+        "number.date": { "case": "month" }
+    },
+    "data": {
+        "date": { "type": "number.date", "month": 4 },
+        "description": "The month of my birth"
     }
+}
 ```
 {"fig":"txonsyntax","caption":"Example of the extensible approach to both type declaration and initialisation, as the type inherits from the JSON \"number\" type and not all of the data references a type."}
 

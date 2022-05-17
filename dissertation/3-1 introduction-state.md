@@ -1,6 +1,6 @@
-{"sec":"State-of-the-Art"}
+{"sub":"State-of-the-Art"}
 
-In this section I present the current "state-of-the-art" data interchange format. I approached this project with understanding of and respect for the existing structures and practices wherein I seek to contribute. It is crucial to acknowledge that the importance of data interchange has resulted in extensive work into the grammar, transmission and universiality of data formats. For this reason I developed my proposal with emphasis on humility and causing the least disruption of existing implementations in systems and languages.
+I approached this project with understanding of and respect for the existing structures and practices wherein I seek to contribute. It is crucial to acknowledge that the importance of data interchange has resulted in extensive work into the grammar, transmission and universiality of data formats. For this reason I developed my proposal with emphasis on humility and causing the least disruption of existing implementations in systems and languages.
 
 The popularity of the JavaScript Object Notation (JSON) made it an obvious choice for this project. As the web became ubiquitous, so too did the JavaScript language, from which the JSON data format is derived. The specification for the JSON format stresses human-readability and universiality across systems and programming languages {"citep":"ecma2022json"}. JSON is a plain-text format, meaning it can be displayed and edited in any text processing application. The seven values types available in JSON are: object, array, string, number, true, false, and null.
 

@@ -1,6 +1,18 @@
-{"sec":"Problem Statement"}
+{"sub":"Problem Statement"}
 
-In this section I present my statement for how to approach the given problem...
+As the project was developed it was crucial to deliminate the problem area, to ensure continuity from exploration to development to evaluation. This project explores the problem area of a strongly-typed data interchange format conforming to the JSON specification, and results in a proposal for the its syntax and implementation.
+
+Inspired by the syntax and implementation of TypeScript the Type-Extensible Object Notation (TXON) proposed in this report emphasises the values of extensibility, human-readability, and universiality/interoperability across systems and programming languages. This is expressed in my approach to altering as few existing structures and practices as possible, while providing a safer and easier to use syntax than JSON.
+
+The proposal presented in this report aims to demonstrate the following features:
+
+1. Type declarations and instances (through relational references).
+2. Extensible typing (as little or much as wanted) and extensible types (inheritance).
+3. Enumerated values with required or optional cases.
+
+The proposed features are demonstrated with a validation library, and critically evaluated with an implementation comparison to TypeScript declarations in a CI/CD environment on GitLab. This is not an exhaustive review of the format, but this should not be necessary as it conforms to the JSON specification with non-breaking extension.
+
+<!--
 
 There exists a rich history of design philosophy in programming language and data format syntax, features, and architecture. It is crucial to preface the project with this historical perspective, as the project has to build upon firmly established structures and rigid practices. This contextualisation ensures that decisions made for the project are grounded in the realities of software development, and thus takes into consideration any barriers to implementation of the proposal.
 
@@ -27,5 +39,7 @@ JavaScript Object Notation (JSON) is...
 As seen in figure {"ref":"persona"}, the persona represents a fictive person derived from real information on users. It is crucial that the persona does not represent a real person, as the goal is not to design for a specific person, but for personas to represent multiple and potentially conflicting perspectives.
 
 The following chapter presents the company I collaborate with and their implementation case, which lays the foundation for this project. Through organisation and system hierarchies and structures, as well as personas, this section explores perspectives on working with serialised data, in relation to the proposal in this project.
+
+-->
 
 {"break":true}
