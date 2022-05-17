@@ -8,6 +8,4 @@ The data transmitted to these applications... A main feature of distributed syst
 
 Existing research predominantly evaluates data serialisation formats from a feature, performance, and efficiency perspective. While these aspects are quantifiable, measurable, and potentially motivate decisions for designing large-scale data transmission systems, they fail to illustrate the conditions that inform the choice of data format for the common software development team. As performance differences are negligible, these conditions are likely more abstract and extend beyond development into the organisational structures and division of responsibilities in the team and between levels of developers.
 
-I contribute to this field with a proposal for a strongly-typed superset syntax for JSON data structures, similar to how the superset TypeScript languages provides typing of JavaScript data structures. The Type-Extensible Object Notation (TXON) data format developed for this proposal provides a syntax for type declarations and relational references in JSON data structures. As a superset of JSON this format is fully compatible with existing JSON parsers, as it conforms to the JSON specification. A validation layer evaluates the conformance of the data structure based on references to its type declarations, providing developers with feedback on where and why the transmitted data structure is invalid.
-
-{"break":true}
+<br>

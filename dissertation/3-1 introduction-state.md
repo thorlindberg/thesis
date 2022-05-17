@@ -2,4 +2,4 @@
 
 [ Text ]
 
-<br>
+{"break":true}
