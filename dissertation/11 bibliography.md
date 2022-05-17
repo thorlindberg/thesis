@@ -37,3 +37,7 @@
 {"bib":"alpha2022flutter","title":"Flutter documentation","authors":["Alphabet Inc."],"year":"2022","publisher":"Alphabet","url":"https://docs.flutter.dev"}
 
 {"bib":"micro2022typescript","title":"TypeScript Handbook: Object Types","authors":["Microsoft"],"year":"2022","publisher":"Microsoft","url":"https://www.typescriptlang.org/docs/handbook/2/objects.html"}
+
+{"bib":"ecma2022json","title":"JavaScript Object Notation","authors":["ECMA"],"year":"2022","publisher":"ECMA","url":"https://www.json.org"}
+
+{"bib":"douglas2020form","title":"McKeeman Form","authors":["C. Douglas"],"year":"2020","publisher":"C. Douglas","url":"https://www.crockford.com/mckeeman.html"}
