@@ -13,7 +13,19 @@ The TXON format provides support for type declarations and instances, which are 
 As seen in figure {"ref":"txonsyntax"} a TXON data structure contains at least two root nodes: "init" and "data". It is typical of JSON data structures to contain data in a root "data" property, and the "init" property was added to contain type declarations. As seen in figure {"ref":"txonjson"} the TXON syntax requires fewer characters than JSON at scale, when it is assumed that both structures require validation. This illustrates how the TXON approach to generalised validation saves both development time and reduces file sizes, relative to utilising JSON and writing custom validation code.
 
 ```
-// Example of the TXON features + syntax
+{
+        "init": {
+            "number.date": {
+                "case": "month"
+            }
+        },
+        "data": {
+            "date": {
+                "type": "number.date", "month": 4
+            },
+            "description": "The month of my birth"
+        }
+    }
 ```
 {"fig":"txonsyntax","caption":"Example of the extensible approach to both type declaration and initialisation, as the type inherits from the JSON \"number\" type and not all of the data references a type."}
 
@@ -35,7 +47,26 @@ jsonDiagram {
 </style>
 
 {
-
+    "txon": {
+        "init": {
+            "number.date": {
+                "case": "month"
+            }
+        },
+        "data": {
+            "date": {
+                "type": "number.date",
+                "month": 4
+            },
+            "description": "The month of my birth"
+        }
+    },
+    "json": {
+        "data": {
+            "month": 4,
+            "description": "The month of my birth"
+        }
+    }
 }
 
 @endjson
