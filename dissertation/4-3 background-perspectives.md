@@ -57,7 +57,7 @@ frame Application {
 
 @enduml
 
-{"fig":"codablestruct","caption":"Declaration with the Codable protocol in Swift and process of casting data structures from API response."}
+{"fig":"codablestruct","caption":"Process of casting data structure to Codable protocol in the Swift language."}
 
 I anticipated that the engineers would not be concerned with interchangable data if asked directly, so instead I asked them about their experiences with software crashes and pushing updates to correct these errors. This lead to a discussion of the utilities they have to test and deploy API calls, as well as how they negotiate data structures with their client. It was evident from this discussion that potential invalid data structures are not of immediate concern to the engineers, but espite this the engineers had previous experiences with invalid data structures. They explained that the result was a high amount of time invest in debugging the software, but from their perspective these issues should ideally be handled by their backend engineers or the client engineers.
 

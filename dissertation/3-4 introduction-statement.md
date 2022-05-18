@@ -4,7 +4,7 @@ As the project was developed it was crucial to deliminate the problem area, to e
 
 Inspired by the syntax and implementation of TypeScript the Type-Extensible Object Notation (TXON) proposed in this report emphasises the values of extensibility, human-readability, and universiality/interoperability across systems and programming languages. This is expressed in my approach to altering as few existing structures and practices as possible, while providing a safer and easier to use syntax than JSON.
 
-The proposal presented in this report aims to demonstrate the following features:
+The proposal presented in this report aims to demonstrate the features:
 
 1. Type declarations and instances (through relational references).
 2. Extensible typing (as little or much as wanted) and extensible types (inheritance).
