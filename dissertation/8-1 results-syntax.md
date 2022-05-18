@@ -1,10 +1,8 @@
 {"sec":"Syntax Proposal"}
 
-[ Text ]
+In this section I present...
 
-<br>
-
-{"sub":"Syntax for extended types"}
+The syntax or grammar of any language or data format is derived from the ability to validate their correctness or inaccuracies. As such the syntax of type declarations and instances in TXON correspond directly to the features implemented in the JavaScript library. This also places certain restrictions or limitations on the usage of TXON, informed by the structure and flow of processes in the library. Each component of the syntax proposal is structured to provide an example of the valid and invalid data structure, the feedback provided from validating the invalid data, and a diagram illustrating the source of misconformance.
 
 The JavaScript Object Notation (JSON) specifies a format for storing and transmitting JavaScript objects. This format allows the types: "string, number, object, array, boolean, and null". It explicitly precludes the types: "function, date, and undefined". A JSON object is represented as a string of curly brackets with properties inside.
 
@@ -35,9 +33,6 @@ As evidenced, embedding these restrictions in the data results in more specifica
     "date": { "month": 10, "day": 28, "year": 2005 }
 }
 ```
-
-{"break":true}
-
 ```
 {
     "type": "number",
@@ -52,6 +47,12 @@ As evidenced, embedding these restrictions in the data results in more specifica
 <br>
 
 As it turns out, this is not a unique problem, and thus the solution already exists: enumerations. This user-defined data type allows us to declare a specification once, and then instantiate it without repetition of requirements.
+
+<br>
+
+<!--
+
+{"sub":"Syntax for extended types"}
 
 As enum (enumeration) is not a type allowed in the JSON format, I have chosen to leverage existing JSON types to construct an enum syntax. This decision informs the phrasing of TXON as an optional extension that could be ignored by JSON parsers, rather than an alternative format.
 
@@ -224,4 +225,4 @@ Type extensions are not limited to JSON types, as you are able to extend an exte
 }
 ```
 
-{"break":true}
+-->
