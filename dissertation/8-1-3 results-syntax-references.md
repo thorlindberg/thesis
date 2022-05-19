@@ -1,4 +1,4 @@
-{"sub":"Type instances in the data"}
+{"sub":"Instantiation of typed data points"}
 
 [ Text ]
 
