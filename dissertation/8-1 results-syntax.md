@@ -48,7 +48,7 @@ As evidenced, embedding these restrictions in the data results in more specifica
 
 As it turns out, this is not a unique problem, and thus the solution already exists: enumerations. This user-defined data type allows us to declare a specification once, and then instantiate it without repetition of requirements.
 
-<br>
+{"break":true}
 
 <!--
 
