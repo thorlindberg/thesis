@@ -10,7 +10,7 @@ Consider a simple `data structure` that conforms to the JSON specification:
 
 ```
 {
-    "date": "28-10-2005"
+    "date": "10-28-2005"
 }
 ```
 
@@ -19,7 +19,7 @@ Suppose you are transmitting this to a client but you decide to alter the date f
 ```
 {
     "date": {
-        "month": 28, "day": 10, "year": 2005
+        "month": 10, "day": 28, "year": 2005
     }
 }
 ```
@@ -29,7 +29,7 @@ This is much clearer to both parties, and because the data points have number va
 ```
 {
     "date": {
-        "type": "number", "month": 28, "day": 10, "year": 2005
+        "type": "number", "month": 10, "day": 28, "year": 2005
     }
 }
 ```
@@ -66,8 +66,8 @@ Declarations provide a generic and single-location place to specify enumerated a
     "data": {
         "date": {
             "type": "date",
-            "month": 28,
-            "day": 10,
+            "month": 10,
+            "day": 28,
             "year": 2005
         }
     }

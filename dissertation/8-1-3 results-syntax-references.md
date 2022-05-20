@@ -11,8 +11,8 @@ Consider this simple explicitly typed `data structure` that conforms to the JSON
 ```
 {
     "date": {
-        "month": { "type": "number", "value": 28 },
-        "day": { "type": "number", "value": 10 },
+        "month": { "type": "number", "value": 10 },
+        "day": { "type": "number", "value": 28 },
         "year": { "type": "number", "value": 2005 }
     }
 }
@@ -25,7 +25,7 @@ Suppose that this structure was used to type an entire data structure that may c
 {
     "date": {
         "type": "number",
-        "month": 28, "day": 10, "year": 2005
+        "month": 10, "day": 28, "year": 2005
     }
 }
 ```
@@ -35,8 +35,8 @@ This greatly reduces the character count by 48% to 92 characters of which the in
 ```
 {
     "date": {
-        "month": { "type": "number", "value": 28 },
-        "day": { "type": "number", "value": 10 },
+        "month": { "type": "number", "value": 10 },
+        "day": { "type": "number", "value": 28 },
         "year": { "type": "number", "value": 2005 },
         "category": { "type": "string", "value": "birthday" },
         "gifted": { "type": "boolean", "value": 1 }
@@ -47,7 +47,7 @@ This greatly reduces the character count by 48% to 92 characters of which the in
 {
     "date": {
         "number": {
-            "month": 28, "day": 10, "year": 2005
+            "month": 10, "day": 28, "year": 2005
         },
         "string": {
             "category": "birthday"
@@ -63,13 +63,37 @@ These can be considered safe structures, but also increasingly prone to syntax e
 
 <br>
 
-I would like to propose a syntax for type instances...
+I would like to propose a syntax for instantiating types with a generic and minimal `type instance syntax`, with relational references to type specifications outside the immediate data point and structure. This syntax is grammatically designed to accomodate different data structures, especially as pertaining to inheritance and shared typing of data points.
 
-These features of a data point could be implemented in a `type instance` that references such a specification outside of the immediate data point and structure:
-
-```
+Types can be instantiated in the `data property`at the root of the data structure:
 
 ```
+{
+    "init": {
+        "date": {
+            "month": "number",
+            "day": "number",
+            "year": "number",
+            "category": {
+                "type": "string", "cases": [ "birthday", "work", "holiday" ]
+            },
+            "gifted": "boolean"
+        }
+    }
+    "data": {
+        "date": {
+            "type": "date",
+            "month": 10, "day": 28, "year": 2005, "category": "birthday", "gifted": 1
+        }
+    }
+}
+```
+
+[ Text, character count, character count when ignoring initialiser specification ]
+
+[ Example of type-values sharing ]
+
+[ Example of nested typing, such as date-category ]
 
 <br>
 
