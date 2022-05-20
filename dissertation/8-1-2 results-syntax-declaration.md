@@ -91,7 +91,7 @@ As the TXON specification conforms to the JSON specification, there should be ze
 
 <br>
 
-[ Text on future directions ]
+Actually adopting this proposed syntax for type declarations is quite feasible, as the data can remain otherwise unaltered and the declarations can be ignored. However, this will decrease performance and increase size of file transmissions, so it should not be done unless it clearly demonstrates an improved validation process both now and in the future.
 
 {"break":true}
 
@@ -102,7 +102,5 @@ As the TXON specification conforms to the JSON specification, there should be ze
 `Alternatives considered:` a step-wise description of alternative changes, fluxuating between description and samples of code or other material that demonstrate the alternative implementations. This can vary greatly in how closely the alternatives correlate or do not correlate, as there are often multiple varied paths to achieving the same effect.
 
 `Source compatibility:` a description of the impact on existing code if any, such as changes that deprecate existing code over new preferred approaches or invalidate it syntactically, referred to as "source-breaking".
-
-`Future directions:` a description of further changes that could be or should be made to accomodate this proposal or improve upon the implementation of a certain part of the given language.
 
 -->

@@ -114,7 +114,7 @@ Type instances can be arrayrised, enabling the explicit typing of multiple data 
 }
 ```
 
-As this syntax aims to be extensible by selectively typing data, type instances can be nested inside each other, so that types can be declared once in the initialiser and re-purposed throughout the data structure. This is also useful for splitting a type into components that are declaratively simpler and require fewer characters:
+As this syntax aims to be extensible by selectively typing data, type instances can be nested inside each other, so that types can be declared once in the initialiser and repurposed throughout the data structure. This is also useful for splitting a type into components that are declaratively simpler and require fewer characters:
 
 ```
 {
@@ -128,8 +128,12 @@ As this syntax aims to be extensible by selectively typing data, type instances 
     },
     "data": {
         "schedule": {
-            "type": "birthday",
+            "category": {
+                "type": "category",
+                "value": "birthday"
+            },
             "date": {
+                "type": "date",
                 "month": 10, "day": 28, "year": 2005
             }
         }
@@ -137,7 +141,7 @@ As this syntax aims to be extensible by selectively typing data, type instances 
 }
 ```
 
-It is evident...
+It is evident that despite being strongly, explicitly, yet dynamically typed, this data structure is readable and the typing can be utilised for validation ignored. A major advantage of this approach is that it is generic, by leveraging grammatical standards for typing data. This centralised approach means the involved parties can invest fewer resources in defensive mechanisms, as they can expect typed data in a standard format with TXON.
 
 <br>
 
@@ -150,11 +154,11 @@ It is evident...
 
 <br>
 
-[ Text on source compatibility ]
+As the TXON specification conforms to the JSON specification, there should be zero compatibility issues with existing implementations of JSON for editing, serialising or parsing data. Existing JSON data structures cannot be validated with the txon.js validation library, as it requires the declaration of types, but since it is not a TXON structure this would be unnecessary regardless. However, data structures with type declarations/instances are still valid JSON structures, and as such they can be parsed and the explicit typing can be ignored or utilised with other validation implementations or for other purposes.
 
 <br>
 
-[ Text on future directions ]
+Actually adopting this proposed syntax for type instances is quite feasible, as the data can remain otherwise unaltered and the explicit typing can be ignored. However, this will decrease performance and increase size of file transmissions, so it should not be done unless it clearly demonstrates an improved validation process both now and in the future.
 
 {"break":true}
 
@@ -163,9 +167,5 @@ It is evident...
 `Detailed design:` an enumerated list describing how the proposed changes are expressed, fluxuating between description and samples of code or other material that showcase these expressions. This should include a criticial reflection on the proposed expressions and unsupported expressions if any exist in the implementation.
 
 `Alternatives considered:` a step-wise description of alternative changes, fluxuating between description and samples of code or other material that demonstrate the alternative implementations. This can vary greatly in how closely the alternatives correlate or do not correlate, as there are often multiple varied paths to achieving the same effect.
-
-`Source compatibility:` a description of the impact on existing code if any, such as changes that deprecate existing code over new preferred approaches or invalidate it syntactically, referred to as "source-breaking".
-
-`Future directions:` a description of further changes that could be or should be made to accomodate this proposal or improve upon the implementation of a certain part of the given language.
 
 -->
