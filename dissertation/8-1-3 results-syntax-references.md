@@ -149,8 +149,48 @@ It is evident that despite being strongly, explicitly, yet dynamically typed, th
 
 <br>
 
-[ Text on alternatives ]
-[ Could use question mark (?) syntax for optionals :) ]
+After experimenting with the implementation of this proposed syntax for type instances, it became evident that instances with a single value requiring an explicit type reference is not the optimal grammatical approach. If you were to type a single value:
+
+```
+{
+    "init": {
+        "description": {
+            "type": "string"
+        }
+    },
+    "data": {
+        "type": "description",
+        "value": "How-to use TXON"
+    }
+}
+```
+
+The explicit typing does not make sense in this situation, and it would be far more appropriate to type a single value as:
+
+```
+{
+    "init": {
+        "description": "string"
+    },
+    "data": {
+        "description": "How-to use TXON"
+    }
+}
+```
+
+This is however not without fault as the type name would become a reserved property name for the entire data structure, as there is nothing to indicate whether it is a type reference or not. This is not in keeping with the extensible approach of TXON, so the propery name would need some other non-typical indicator such as an exclamation mark (!) to indicate it is initialising a type:
+
+```
+{
+    "init": {
+        "description": "string"
+    },
+    "data": {
+        "description!": "A type instance",
+        "description": "Not a type instance"
+    }
+}
+```
 
 <br>
 
@@ -165,7 +205,5 @@ Actually adopting this proposed syntax for type instances is quite feasible, as 
 <!--
 
 `Detailed design:` an enumerated list describing how the proposed changes are expressed, fluxuating between description and samples of code or other material that showcase these expressions. This should include a criticial reflection on the proposed expressions and unsupported expressions if any exist in the implementation.
-
-`Alternatives considered:` a step-wise description of alternative changes, fluxuating between description and samples of code or other material that demonstrate the alternative implementations. This can vary greatly in how closely the alternatives correlate or do not correlate, as there are often multiple varied paths to achieving the same effect.
 
 -->

@@ -82,8 +82,35 @@ It is evident from this syntactical approach that despite these strict requireme
 
 <br>
 
-[ Text on alternatives ]
-[ Could use question mark (?) syntax for optionals :) ]
+After experimenting with the implementation of this proposed syntax for type declarations, it became evident that not all type values should be required, and that default values are not an appropiate approach to declaring optional values. With the current implementation you can declare a type:
+
+```
+{
+    "init": {
+        "date": {
+            "month": "string",
+            "day": "string",
+            "year": "string"
+        }
+    }
+}
+```
+
+Instead you should be able to declare a type value as optional by appending a question mark (?) to its name:
+
+```
+{
+    "init": {
+        "date": {
+            "month": "string",
+            "day": "string",
+            "year?": "string"
+        }
+    }
+}
+```
+
+This is easier to read and interpret than providing default values, which do not make much sense in an enumeration case anyway.
 
 <br>
 
@@ -98,9 +125,5 @@ Actually adopting this proposed syntax for type declarations is quite feasible, 
 <!--
 
 `Detailed design:` an enumerated list describing how the proposed changes are expressed, fluxuating between description and samples of code or other material that showcase these expressions. This should include a criticial reflection on the proposed expressions and unsupported expressions if any exist in the implementation.
-
-`Alternatives considered:` a step-wise description of alternative changes, fluxuating between description and samples of code or other material that demonstrate the alternative implementations. This can vary greatly in how closely the alternatives correlate or do not correlate, as there are often multiple varied paths to achieving the same effect.
-
-`Source compatibility:` a description of the impact on existing code if any, such as changes that deprecate existing code over new preferred approaches or invalidate it syntactically, referred to as "source-breaking".
 
 -->
