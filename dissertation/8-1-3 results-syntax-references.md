@@ -39,7 +39,7 @@ This greatly reduces the character count by 48% to 92 characters of which the in
         "day": { "type": "number", "value": 28 },
         "year": { "type": "number", "value": 2005 },
         "category": { "type": "string", "value": "birthday" },
-        "gifted": { "type": "boolean", "value": 1 }
+        "gifted": { "type": "boolean", "value": true }
     }
 }
 ```
@@ -53,13 +53,13 @@ This greatly reduces the character count by 48% to 92 characters of which the in
             "category": "birthday"
         },
         "boolean": {
-            "gifted": 1
+            "gifted": true
         }
     }
 }
 ```
 
-These can be considered safe structures, but also increasingly prone to syntax errors. All parties involved would have to agree to use identical structures for data points, to ensure compatibility with validation processes. The former structure with individual typing contains 301 characters of which the information represents 19 characters or 6.3% of the data. The altter structure with collections of properties through inverted typing contains 224 characters of which the information represents 19 characters or 8.48% of the data. It is evident that efficient explicit typing is possible with JSON, but that it necessitates a relational and generic approach for scalability and to guard against syntax errors. In addition, properties of types such as String can vary greatly in content, but typically match an enumerated list of values. As such, it would be apt to enumerate values in a type declaration.
+These can be considered safe structures, but also increasingly prone to syntax errors. All parties involved would have to agree to use identical structures for data points, to ensure compatibility with validation processes. The former structure with individual typing contains 301 characters of which the information represents 19 characters or 6.3% of the data. The latter structure with collections of properties through inverted typing contains 224 characters of which the information represents 19 characters or 8.48% of the data. It is evident that efficient explicit typing is possible with JSON, but that it necessitates a relational and generic approach for scalability and to guard against syntax errors. In addition, properties of types such as String can vary greatly in content, but typically match an enumerated list of values. As such, it would be apt to enumerate values in a type declaration.
 
 <br>
 
@@ -79,21 +79,65 @@ Types can be instantiated in the `data property`at the root of the data structur
             },
             "gifted": "boolean"
         }
-    }
+    },
     "data": {
         "date": {
             "type": "date",
-            "month": 10, "day": 28, "year": 2005, "category": "birthday", "gifted": 1
+            "month": 10, "day": 28, "year": 2005, "category": "birthday", "gifted": true
         }
     }
 }
 ```
 
-[ Text, character count, character count when ignoring initialiser specification ]
+This greatly reduces the character count of the data instance by 66.5% to 149 characters of which the information represents 19 characters or % of the data. The data is also safer because the property of type String has enumerated values, allowing it to be validated base on whether its case conforms to the enumeration. This approach is not without fault, as the data structure including the type declarations is larger at 454 characters, but this trade-off is offset by the reduction in repetition of type declarations as the data scales up in size.
 
-[ Example of type-values sharing ]
+Type instances can be arrayrised, enabling the explicit typing of multiple data points with identical structure with only a single declaration:
 
-[ Example of nested typing, such as date-category ]
+```
+{
+    "init": {
+        "date": { ∙∙∙ }
+    },
+    "data": {
+        "date": {
+            "type": "date",
+            "values": [
+                {
+                    "month": 10, "day": 28, "year": 2005, "category": "birthday", "gifted": true
+                },
+                {
+                    "month": 12, "day": 25, "year": 2004, "category": "holiday", "gifted": false
+                }
+            ]
+        }
+    }
+}
+```
+
+As this syntax aims to be extensible by selectively typing data, type instances can be nested inside each other, so that types can be declared once in the initialiser and re-purposed throughout the data structure. This is also useful for splitting a type into components that are declaratively simpler and require fewer characters:
+
+```
+{
+    "init": {
+        "category": {
+            "type": "string", "cases": [ "birthday", "work", "holiday" ]
+        },
+        "date": {
+            "month": "number", "day": "number", "year": "number"
+        }
+    },
+    "data": {
+        "schedule": {
+            "type": "birthday",
+            "date": {
+                "month": 10, "day": 28, "year": 2005
+            }
+        }
+    }
+}
+```
+
+It is evident...
 
 <br>
 
