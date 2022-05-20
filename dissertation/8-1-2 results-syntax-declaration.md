@@ -93,7 +93,9 @@ As the TXON specification conforms to the JSON specification, there should be ze
 
 [ Text on future directions ]
 
----
+{"break":true}
+
+<!--
 
 `Detailed design:` an enumerated list describing how the proposed changes are expressed, fluxuating between description and samples of code or other material that showcase these expressions. This should include a criticial reflection on the proposed expressions and unsupported expressions if any exist in the implementation.
 
@@ -103,4 +105,4 @@ As the TXON specification conforms to the JSON specification, there should be ze
 
 `Future directions:` a description of further changes that could be or should be made to accomodate this proposal or improve upon the implementation of a certain part of the given language.
 
-{"break":true}
+-->
