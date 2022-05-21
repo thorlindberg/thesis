@@ -1,4 +1,4 @@
-{"sec":"Comparison"}
+{"sec":"Comparison of JSON and TXON"}
 
 [ Text ]
 
