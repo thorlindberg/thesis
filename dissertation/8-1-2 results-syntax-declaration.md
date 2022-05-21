@@ -78,7 +78,55 @@ It is evident from this syntactical approach that despite these strict requireme
 
 <br>
 
-[ Text on detailed design ]
+In aiming to reflect the values of extensible implementations, type declarations were designed to extend existing types with the dot syntax (.), but they are not extensible in the sense that invalid declarations can be ignored. A type can be an extension of another type:
+
+```
+{
+    "init": {
+        "date.number": {
+            "cases": [ "month", "day", "year" ]
+        }
+    },
+    "data": {
+        "date": {
+            "type": "date.number",
+            "month": 10, "day": 28, "year": 2005
+        }
+    }
+}
+```
+
+This results in all enumerated values inheriting typing from the type before the dot in the declared extension. The implication of this is that types do not have to be explicitly declared with a property in a type initialiser, and as such the character count is reduced while maintaining readability. Here are a few examples of the possible type declarations, and how extensions improve the syntax:
+
+```
+"date": {
+    "month": { "type": "number" },
+    "day": { "type": "number" },
+    "year": { "type": "number" }
+}
+```
+```
+"date": {
+    "type": "number",
+    "cases": [ "month", "day", "year" ]
+}
+```
+```
+"date.number": {
+    "cases": [ "month", "day", "year" ]
+}
+```
+
+In evaluating this design it became clear that the complexity in the combination of syntactical features increases greatly with each added feature. As such the actual implementation of this proposal would need to exhaustively demonstrate that the grammatical notation (the "system" of syntax) does not contain conflicting combinations. If we take a more complex data point with differently typed values, such as:
+
+```
+"date": {
+    "month": 10, "day": 28, "year": 2005,
+    "description": "laundry day", "responsible": "adam"
+}
+```
+
+It is already evident that the current implementation of the proposal does not adequately facilitate shared typing or inherting through type extension, when the data structure requires multiple cases with multiple shared types.
 
 <br>
 
@@ -121,9 +169,3 @@ As the TXON specification conforms to the JSON specification, there should be ze
 Actually adopting this proposed syntax for type declarations is quite feasible, as the data can remain otherwise unaltered and the declarations can be ignored. However, this will decrease performance and increase size of file transmissions, so it should not be done unless it clearly demonstrates an improved validation process both now and in the future.
 
 {"break":true}
-
-<!--
-
-`Detailed design:` an enumerated list describing how the proposed changes are expressed, fluxuating between description and samples of code or other material that showcase these expressions. This should include a criticial reflection on the proposed expressions and unsupported expressions if any exist in the implementation.
-
--->

@@ -145,7 +145,62 @@ It is evident that despite being strongly, explicitly, yet dynamically typed, th
 
 <br>
 
-[ Text on detailed design ]
+In aiming to reflect the values of extensible implementations, type instances were designed to be an addition to existing data structures rather than an alternative. The current implementation is not exhaustive, as considering every potential and realistic structure is beyond the scope of this proposal. If we start by declaring a type extension in the initialiser:
+
+```
+{
+    "init": {
+        "date.number": {
+            "cases": [ "month", "day", "year" ]
+        }
+    }
+}
+```
+
+There are several ways to instantiate this type, such as an instance as a property of the root "data" node:
+
+```
+{
+    "data": {
+        "type": "date.number",
+        "month": 10, "day": 28, "year": 2005
+    }
+}
+```
+
+And a nested instance as a non-typed property of the typed data point:
+
+```
+{
+    "data": {
+        "type": "date.number",
+        "month": 10, "day": 28, "year": 2005,
+        "associated": {
+            "type": "date.number",
+            "month": 5, "day": 19, "year": 2003
+        }
+    }
+}
+```
+
+And a data point with related data that does not correspond to any declared type:
+
+```
+{
+    "data": {
+        "users": {
+            "count": 2300678
+        },
+        "date": {
+            "type": "date.number",
+            "month": 10, "day": 28, "year": 2005,
+            "birthdays": 280301, "gifted": true
+        }
+    }
+}
+```
+
+The design of this implementations considers the hierarchy of the data structure, by typing the required properties at the same level as a type reference, and ignoring properties that are not explicitly typed. It is entirely likely that this implementation does not support certain structures, or that the provided syntax creates conflicting conditions.
 
 <br>
 
@@ -201,9 +256,3 @@ As the TXON specification conforms to the JSON specification, there should be ze
 Actually adopting this proposed syntax for type instances is quite feasible, as the data can remain otherwise unaltered and the explicit typing can be ignored. However, this will decrease performance and increase size of file transmissions, so it should not be done unless it clearly demonstrates an improved validation process both now and in the future.
 
 {"break":true}
-
-<!--
-
-`Detailed design:` an enumerated list describing how the proposed changes are expressed, fluxuating between description and samples of code or other material that showcase these expressions. This should include a criticial reflection on the proposed expressions and unsupported expressions if any exist in the implementation.
-
--->
