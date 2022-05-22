@@ -1,4 +1,4 @@
-{"sec":"Conformance Validation Flow"}
+{"sec":"Implementation of Type Conformance"}
 
 "Non-conformance" is defined as incorrect type declaration, incorrect type instantiation, or mismatch between the two.
 
