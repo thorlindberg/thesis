@@ -208,122 +208,6 @@ for (const [propName, propValue] of Object.entries(value)) {
 After validating the case property, the next step is to check if the property value is of type Object. If the value is an object, it is checked in four steps, starting with determining if it has a local type with a value corresponding to a JSON type. This step does not return an error if the local type is not a JSON type, and instead the "type" property is ignored and a shared type or type extension is used instead.
 
 ```
-for (const [propName, propValue] of Object.entries(value)) {
-
-    ∙∙∙
-
-    const isObject = typeof propValue === "object"
-    if (isObject) {
-
-        var hasLocalJSON
-        const hasLocalType = propValue.hasOwnProperty("type")
-        if (hasLocalType) {
-            hasLocalJSON = JSONTypes.includes(propValue.type)
-        }
-
-        const hasDefault = propValue.hasOwnProperty("default")
-        if (hasDefault) { ∙∙∙ }
-
-        const hasMinimum = propValue.hasOwnProperty("minimum")
-        if (hasMinimum) { ∙∙∙ }
-
-        const hasMaximum = propValue.hasOwnProperty("maximum")
-        if (hasMaximum) { ∙∙∙ }
-
-    }
-
-}
-```
-
-{"break":true}
-
-[ Text ]
-
-```
-const isObject = typeof propValue === "object"
-if (isObject) {
-
-    var hasLocalJSON
-    const hasLocalType = propValue.hasOwnProperty("type")
-    if (hasLocalType) {
-        hasLocalJSON = JSONTypes.includes(propValue.type)
-    }
-
-    const hasDefault = propValue.hasOwnProperty("default")
-    if (hasDefault) {
-        const defaultType = typeof propValue.default
-        var typeMismatch
-        if (hasLocalJSON) {
-            typeMismatch = defaultType != propValue.type
-        } else if (isTypeExtensionName) {
-            typeMismatch = defaultType != firstType
-        } else {
-            typeMismatch = defaultType != value.type
-        }
-        if (typeMismatch) {
-            return {
-                valid: true,
-                feedback: `type "${name}" has property "${propName}" with default of mismatched type "${defaultType}"`
-            }
-        }
-    }
-
-    const hasMinimum = propValue.hasOwnProperty("minimum")
-    if (hasMinimum) { ∙∙∙ }
-
-    const hasMaximum = propValue.hasOwnProperty("maximum")
-    if (hasMaximum) { ∙∙∙ }
-
-}
-```
-
-{"break":true}
-
-[ Text ]
-
-```
-const isObject = typeof propValue === "object"
-if (isObject) {
-
-    var hasLocalJSON
-    const hasLocalType = propValue.hasOwnProperty("type")
-    if (hasLocalType) {
-        hasLocalJSON = JSONTypes.includes(propValue.type)
-    }
-
-    const hasDefault = propValue.hasOwnProperty("default")
-    if (hasDefault) { ∙∙∙ }
-
-    const hasMinimum = propValue.hasOwnProperty("minimum")
-    if (hasMinimum) {
-        const minType = typeof propValue.minimum
-        var typeMismatch
-        if (hasLocalJSON) {
-            typeMismatch = minType != propValue.type
-        } else if (isTypeExtensionName) {
-            typeMismatch = minType != firstType
-        } else {
-            typeMismatch = minType != value.type
-        }
-        if (typeMismatch) {
-            return {
-                valid: true,
-                feedback: `type "${name}" has property "${propName}" with minimum of mismatched type "${minType}"`
-            }
-        }
-    }
-
-    const hasMaximum = propValue.hasOwnProperty("maximum")
-    if (hasMaximum) { ∙∙∙ }
-
-}
-```
-
-{"break":true}
-
-[ Text ]
-
-```
 const isObject = typeof propValue === "object"
 if (isObject) {
 
@@ -340,24 +224,83 @@ if (isObject) {
     if (hasMinimum) { ∙∙∙ }
 
     const hasMaximum = propValue.hasOwnProperty("maximum")
-    if (hasMaximum) {
-        const maxType = typeof propValue.maximum
-        var typeMismatch
-        if (hasLocalJSON) {
-            typeMismatch = maxType != propValue.type
-        } else if (isTypeExtensionName) {
-            typeMismatch = maxType != firstType
-        } else {
-            typeMismatch = maxType != value.type
-        }
-        if (typeMismatch) {
-            return {
-                valid: true,
-                feedback: `type "${name}" has property "${propName}" with maximum of mismatched type "${maxType}"`
-            }
+    if (hasMaximum) { ∙∙∙ }
+
+}
+```
+
+{"break":true}
+
+The second step is to check for a local default value, the same way the shared default was validated. The difference is that this check deviates based on whether a valid local type was declared, and if not then based on if the type is an extension, and if not using the shared type. If the check fails it returns an Object that indicates the data structure is valid as it cannot be further validated, but with the feedback that the default value is of a mismatched type.
+
+```
+const hasDefault = propValue.hasOwnProperty("default")
+if (hasDefault) {
+    const defaultType = typeof propValue.default
+    var typeMismatch
+    if (hasLocalJSON) {
+        typeMismatch = defaultType != propValue.type
+    } else if (isTypeExtensionName) {
+        typeMismatch = defaultType != firstType
+    } else {
+        typeMismatch = defaultType != value.type
+    }
+    if (typeMismatch) {
+        return {
+            valid: true,
+            feedback: `type "${name}" has property "${propName}" with default of mismatched type "${defaultType}"`
         }
     }
+}
+```
 
+{"break":true}
+
+The third step is to check for a local minimum value, the same way the shared minimum was validated. The difference is that this check deviates based on whether a valid local type was declared, and if not then based on if the type is an extension, and if not using the shared type. If the check fails it returns an Object that indicates the data structure is valid as it cannot be further validated, but with the feedback that the minimum value is of a mismatched type.
+
+```
+const hasMinimum = propValue.hasOwnProperty("minimum")
+if (hasMinimum) {
+    const minType = typeof propValue.minimum
+    var typeMismatch
+    if (hasLocalJSON) {
+        typeMismatch = minType != propValue.type
+    } else if (isTypeExtensionName) {
+        typeMismatch = minType != firstType
+    } else {
+        typeMismatch = minType != value.type
+    }
+    if (typeMismatch) {
+        return {
+            valid: true,
+            feedback: `type "${name}" has property "${propName}" with minimum of mismatched type "${minType}"`
+        }
+    }
+}
+```
+
+{"break":true}
+
+The fourth step is to check for a local maximum value, the same way the shared maximum was validated. The difference is that this check deviates based on whether a valid local type was declared, and if not then based on if the type is an extension, and if not using the shared type. If the check fails it returns an Object that indicates the data structure is valid as it cannot be further validated, but with the feedback that the maximum value is of a mismatched type.
+
+```
+const hasMaximum = propValue.hasOwnProperty("maximum")
+if (hasMaximum) {
+    const maxType = typeof propValue.maximum
+    var typeMismatch
+    if (hasLocalJSON) {
+        typeMismatch = maxType != propValue.type
+    } else if (isTypeExtensionName) {
+        typeMismatch = maxType != firstType
+    } else {
+        typeMismatch = maxType != value.type
+    }
+    if (typeMismatch) {
+        return {
+            valid: true,
+            feedback: `type "${name}" has property "${propName}" with maximum of mismatched type "${maxType}"`
+        }
+    }
 }
 ```
 
