@@ -52,7 +52,7 @@ const checkInit = (object) => {
 }
 ```
 
-{"break":true}
+<br>
 
 A property value of type Object is checked in three steps, starting with a check for a `shared type` which is a property with the name "type" in the declaration node. This type is inherited by the other properties, so this check also impacts the rest of this validation method.
 
@@ -73,7 +73,7 @@ if (isObject) {
 
 If a type declaration has a shared type it proceeds with the following validation. This starts with validating that its shared type value corresponds to a JSON type. If this is not true it returns an Object that indicates the data structure is valid as it cannot be further validated, but with the feedback that a shared type was incorrectly syntactically declared.
 
-It then proceeds to checking if a shared default, minimum, or maximum exists. If any of these exists, they are validated based on whether their value type corresponds to the shared type. If this is not true for any of these properties, an Object is returned that indicates the data structure is valid as it cannot be further validated, but with the feedback that the respective property has a nonconforming value type.
+It then proceeds to checking if a shared default, minimum, or maximum exists. If any of these exists, they are validated based on whether their value type corresponds to the shared type. If this is not true for any of these properties, an Object is returned that indicates the data structure is valid as it cannot be further validated, but with the feedback that the respective property has a nonconforming value.
 
 ```
 if (hasSharedType) {
