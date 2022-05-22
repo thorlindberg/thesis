@@ -9,4 +9,4 @@ docs: [
 ].join("\n")
 ```
 
-<br>
+{"break":true}
