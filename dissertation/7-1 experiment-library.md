@@ -9,7 +9,7 @@ Users can declare their own extended types (e.g. "date"), or declare extensions 
 
 <br>
 
-The txon.js library "handshakes" a JSON String, validating conformance of its "data property" to extended type declarations from its "init" property. TXON is initialised as an Object with a "docs method", "handshake method", and "tests property".
+The txon.js library "handshakes" a JSON String, validating conformance of its "data" property to extended type declarations from its "init" property. TXON is initialised as an Object with a "docs method", "handshake method", and "tests property".
 
 ```
 const TXON = {
