@@ -1,6 +1,8 @@
-The `handshake()` method takes an input, expected to be of type JSON String. Handshaking requires a String parameter and returns an Object with `valid` and optional `feedback` properties.
+The `handshake()` method takes an input, expected to be of type JSON String. Handshaking requires a String parameter and returns an Object with `valid` (Boolean) and optional `feedback` (String) properties. If all validation steps and checks are passed without detecting nonconformance to types, then the resulting property will have no feedback property. This allows developers to check if the property exists, to determine if validation was successful. A TXON data structure can return "true" for property `valid` for othe reasons, such as the lack of an initialiser, because while its contents may be correctly typed it is not a valid TXON structure.
 
-Before validating the contents of its input, the handshaking method defines its own properties and methods. Its peroperties consist of the parsed JSON Object and an array valid types in the JSON specification. Its methods consist of the three main / top-level steps in TXON validation:
+<br>
+
+Before validating the contents of its input, the handshaking method defines its own properties and methods. Its properties consist of the parsed JSON Object and an array of valid types in the JSON specification. Its methods consist of the three steps in validating a TXON data structure.
 
 `checkJSON` implements a try-catch attempting to parse the input to JSON.
 
