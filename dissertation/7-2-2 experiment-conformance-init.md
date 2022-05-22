@@ -7,7 +7,10 @@ const checkInit = (object) => {
 
     const hasInit = object.hasOwnProperty("init")
     if (!hasInit) {
-        return { valid: true, feedback: '"init" property not found at top level' }
+        return {
+            valid: true,
+            feedback: '"init" property not found at top level'
+        }
     }
 
     ∙∙∙
@@ -89,7 +92,10 @@ if (hasSharedType) {
         const defaultType = typeof value.default
         const defaultMatchesType = defaultType === propertyType
         if (!defaultMatchesType) {
-            return { valid: true, feedback: `type "${name}" has shared default of mismatched type "${defaultType}"` }
+            return {
+                valid: true,
+                feedback: `type "${name}" has shared default of mismatched type "${defaultType}"`
+            }
         }
     }
 
@@ -98,7 +104,10 @@ if (hasSharedType) {
         const minType = typeof value.minimum
         const minMatchesType = minType === propertyType
         if (!minMatchesType) {
-            return { valid: true, feedback: `type "${name}" has shared minimum of mismatched type "${minType}"` }
+            return {
+                valid: true,
+                feedback: `type "${name}" has shared minimum of mismatched type "${minType}"`
+            }
         }
     }
 
@@ -107,7 +116,10 @@ if (hasSharedType) {
         const maxType = typeof value.maximum
         const maxMatchesType = maxType === propertyType
         if (!maxMatchesType) {
-            return { valid: true, feedback: `type "${name}" has shared maximum of mismatched type "${maxType}"` }
+            return {
+                valid: true,
+                feedback: `type "${name}" has shared maximum of mismatched type "${maxType}"`
+            }
         }
     }
 
@@ -128,7 +140,10 @@ if (isTypeExtensionName) {
         const defaultType = typeof value.default
         const defaultMatchesType = defaultType === firstType
         if (!defaultMatchesType) {
-            return { valid: true, feedback: `extension "${name}" has shared default of mismatched type "${defaultType}"` }
+            return {
+                valid: true,
+                feedback: `extension "${name}" has shared default of mismatched type "${defaultType}"`
+            }
         }
     }
 
@@ -137,7 +152,10 @@ if (isTypeExtensionName) {
         const minType = typeof value.minimum
         const minMatchesType = minType === firstType
         if (!minMatchesType) {
-            return { valid: true, feedback: `extension "${name}" has shared minimum of mismatched type "${minType}"` }
+            return {
+                valid: true,
+                feedback: `extension "${name}" has shared minimum of mismatched type "${minType}"`
+            }
         }
     }
 
@@ -146,7 +164,10 @@ if (isTypeExtensionName) {
         const maxType = typeof value.maximum
         const maxMatchesType = maxType === firstType
         if (!maxMatchesType) {
-            return { valid: true, feedback: `extension "${name}" has shared maximum of mismatched type "${maxType}"` }
+            return {
+                valid: true,
+                feedback: `extension "${name}" has shared maximum of mismatched type "${maxType}"`
+            }
         }
     }
 
@@ -166,7 +187,10 @@ for (const [propName, propValue] of Object.entries(value)) {
     if (isCase) {
         const typesMatchString = propValue.filter(n => typeof n === "string").length === propValue.length
         if (!typesMatchString) {
-            return { valid: true, feedback: `type "${propName}" has case declaration array with invalid contents` }
+            return {
+                valid: true,
+                feedback: `type "${propName}" has case declaration array with invalid contents`
+            }
         }
     }
 
