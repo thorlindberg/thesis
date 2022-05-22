@@ -7,10 +7,7 @@ const checkInit = (object) => {
 
     const hasInit = object.hasOwnProperty("init")
     if (!hasInit) {
-        return {
-            valid: true,
-            feedback: '"init" property not found at top level'
-        }
+        return { valid: true, feedback: '"init" property not found at top level' }
     }
 
     ∙∙∙
@@ -67,16 +64,15 @@ if (isObject) {
     for (const [propName, propValue] of Object.entries(value)) { ∙∙∙ }
 
 }
-
 ```
 
 {"break":true}
 
-[ Text ]
+If a type declaration has a shared type it proceeds with the following validation. This starts with validating that its shared type value corresponds to a JSON type. If this is not true it returns an Object that indicates the data structure is valid as it cannot be further validated, but with the feedback that a shared type was incorrectly syntactically declared.
+
+It then proceeds to checking if a shared default, minimum, or maximum exists. If any of these exists, they are validated based on whether their value type corresponds to the shared type. If this is not true for any of these properties, an Object is returned that indicates the data structure is valid as it cannot be further validated, but with the feedback that the respective property has a nonconforming value type.
 
 ```
-// value has property type with value of JSON type
-const hasSharedType = value.hasOwnProperty("type")
 if (hasSharedType) {
 
     const propertyType = value.type
@@ -88,20 +84,15 @@ if (hasSharedType) {
         }
     }
 
-    // value has property default with value of type matching type property
     const hasSharedDefault = value.hasOwnProperty("default")
     if (hasSharedDefault) {
         const defaultType = typeof value.default
         const defaultMatchesType = defaultType === propertyType
         if (!defaultMatchesType) {
-            return {
-                valid: true,
-                feedback: `type "${name}" has shared default of mismatched type "${defaultType}"`
-            }
+            return { valid: true, feedback: `type "${name}" has shared default of mismatched type "${defaultType}"` }
         }
     }
 
-    // value has property minimum with value of type matching type property
     const hasSharedMinimum = value.hasOwnProperty("minimum")
     if (hasSharedMinimum) {
         const minType = typeof value.minimum
@@ -111,7 +102,6 @@ if (hasSharedType) {
         }
     }
 
-    // value has property maximum with value of type matching type property
     const hasSharedMaximum = value.hasOwnProperty("maximum")
     if (hasSharedMaximum) {
         const maxType = typeof value.maximum
@@ -126,47 +116,37 @@ if (hasSharedType) {
 
 {"break":true}
 
-[ Text ]
+If a type declaration is a type extension it proceeds with the following validation. This step being second to the validation of a shared type means it is syntactically possible to declare a shared type for a type extension, but that the declaration will still be validated based on the JSON type in the extension name.
+
+The step is indifferent from the validation of a shared type, except it determines conformance based on the extension name rather than its "type" property. It checks if a shared default, minimum, or maximum exists. If any of these exists, they are validated based on whether their value type corresponds to the shared type. If this is not true for any of these properties, an Object is returned that indicates the data structure is valid as it cannot be further validated, but with the feedback that the respective property has a nonconforming value type.
 
 ```
 if (isTypeExtensionName) {
 
-    // value has property default with value of type matching type property
     const hasSharedDefault = value.hasOwnProperty("default")
     if (hasSharedDefault) {
         const defaultType = typeof value.default
         const defaultMatchesType = defaultType === firstType
         if (!defaultMatchesType) {
-            return {
-                valid: true,
-                feedback: `extension "${name}" has shared default of mismatched type "${defaultType}"`
-            }
+            return { valid: true, feedback: `extension "${name}" has shared default of mismatched type "${defaultType}"` }
         }
     }
 
-    // value has property minimum with value of type matching type property
     const hasSharedMinimum = value.hasOwnProperty("minimum")
     if (hasSharedMinimum) {
         const minType = typeof value.minimum
         const minMatchesType = minType === firstType
         if (!minMatchesType) {
-            return {
-                valid: true,
-                feedback: `extension "${name}" has shared minimum of mismatched type "${minType}"`
-            }
+            return { valid: true, feedback: `extension "${name}" has shared minimum of mismatched type "${minType}"` }
         }
     }
 
-    // value has property maximum with value of type matching type property
     const hasSharedMaximum = value.hasOwnProperty("maximum")
     if (hasSharedMaximum) {
         const maxType = typeof value.maximum
         const maxMatchesType = maxType === firstType
         if (!maxMatchesType) {
-            return {
-                valid: true,
-                feedback: `extension "${name}" has shared maximum of mismatched type "${maxType}"`
-            }
+            return { valid: true, feedback: `extension "${name}" has shared maximum of mismatched type "${maxType}"` }
         }
     }
 
