@@ -29,8 +29,6 @@ const checkInit = (object) => {
 
     for (const [name, value] of Object.entries(object.init)) {
 
-        const isObject = typeof value === "object"
-
         var isTypeExtensionName
         var firstType
         const hasDot = name.includes(".")
@@ -45,6 +43,7 @@ const checkInit = (object) => {
             }
         }
 
+        const isObject = typeof value === "object"
         if (isObject) { ∙∙∙ }
 
     }
@@ -57,6 +56,7 @@ const checkInit = (object) => {
 A property value of type Object is checked in three steps, starting with a check for a `shared type` which is a property with the name "type" in the declaration node. This type is inherited by the other properties, so this check also impacts the rest of this validation method.
 
 ```
+const isObject = typeof value === "object"
 if (isObject) {
 
     const hasSharedType = value.hasOwnProperty("type")
@@ -76,6 +76,7 @@ If a type declaration has a shared type it proceeds with the following validatio
 It then proceeds to checking if a shared default, minimum, or maximum exists. If any of these exists, they are validated based on whether their value type corresponds to the shared type. If this is not true for any of these properties, an Object is returned that indicates the data structure is valid as it cannot be further validated, but with the feedback that the respective property has a nonconforming value.
 
 ```
+const hasSharedType = value.hasOwnProperty("type")
 if (hasSharedType) {
 
     const propertyType = value.type
@@ -176,7 +177,9 @@ if (isTypeExtensionName) {
 
 {"break":true}
 
-[ Text ]
+Once the shared type, default, minimum, and maximum have been checked, the properties of each declaration are looped over to determine if the enumerated values have been correctly declared relative to the type. There are two types of enumerates: property names beyond the reserved names, and names in a "case" entitled property. The `case` property is an array of value names, and was implemented to ensure that values could be enumerated without requiring a local type.
+
+This loop in the validation begins by checking if the property is named "case" and then that it only contains elements of type String. If the check fails it returns an Object that indicates the data structure is valid as it cannot be further validated, but with the feedback that a type was declared with enumeration cases of a different type than String.
 
 ```
 for (const [propName, propValue] of Object.entries(value)) {
@@ -202,10 +205,9 @@ for (const [propName, propValue] of Object.entries(value)) {
 
 {"break":true}
 
-[ Text ]
+After validating the case property, the next step is to check if the property value is of type Object. If the value is an object, it is checked in four steps, starting with determining if it has a local type with a value corresponding to a JSON type. This step does not return an error if the local type is not a JSON type, and instead the "type" property is ignored and a shared type or type extension is used instead.
 
 ```
-// loop through property names and find "case" array or case declaration
 for (const [propName, propValue] of Object.entries(value)) {
 
     ∙∙∙
@@ -238,46 +240,39 @@ for (const [propName, propValue] of Object.entries(value)) {
 [ Text ]
 
 ```
-// loop through property names and find "case" array or case declaration
-for (const [propName, propValue] of Object.entries(value)) {
+const isObject = typeof propValue === "object"
+if (isObject) {
 
-    ∙∙∙
-
-    const isObject = typeof propValue === "object"
-    if (isObject) {
-
-        var hasLocalJSON
-        const hasLocalType = propValue.hasOwnProperty("type")
-        if (hasLocalType) {
-            hasLocalJSON = JSONTypes.includes(propValue.type)
-        }
-
-        const hasDefault = propValue.hasOwnProperty("default")
-        if (hasDefault) {
-            const defaultType = typeof propValue.default
-            var typeMismatch
-            if (hasLocalJSON) {
-                typeMismatch = defaultType != propValue.type
-            } else if (isTypeExtensionName) {
-                typeMismatch = defaultType != firstType
-            } else {
-                typeMismatch = defaultType != value.type
-            }
-            if (typeMismatch) {
-                return {
-                    valid: true,
-                    feedback: `type "${name}" has property "${propName}" with default of mismatched type "${defaultType}"`
-                }
-            }
-        }
-
-        const hasMinimum = propValue.hasOwnProperty("minimum")
-        if (hasMinimum) { ∙∙∙ }
-
-        const hasMaximum = propValue.hasOwnProperty("maximum")
-        if (hasMaximum) { ∙∙∙ }
-
+    var hasLocalJSON
+    const hasLocalType = propValue.hasOwnProperty("type")
+    if (hasLocalType) {
+        hasLocalJSON = JSONTypes.includes(propValue.type)
     }
+
+    const hasDefault = propValue.hasOwnProperty("default")
+    if (hasDefault) {
+        const defaultType = typeof propValue.default
+        var typeMismatch
+        if (hasLocalJSON) {
+            typeMismatch = defaultType != propValue.type
+        } else if (isTypeExtensionName) {
+            typeMismatch = defaultType != firstType
+        } else {
+            typeMismatch = defaultType != value.type
+        }
+        if (typeMismatch) {
+            return {
+                valid: true,
+                feedback: `type "${name}" has property "${propName}" with default of mismatched type "${defaultType}"`
+            }
+        }
+    }
+
+    const hasMinimum = propValue.hasOwnProperty("minimum")
+    if (hasMinimum) { ∙∙∙ }
+
+    const hasMaximum = propValue.hasOwnProperty("maximum")
+    if (hasMaximum) { ∙∙∙ }
 
 }
 ```
@@ -287,46 +282,39 @@ for (const [propName, propValue] of Object.entries(value)) {
 [ Text ]
 
 ```
-// loop through property names and find "case" array or case declaration
-for (const [propName, propValue] of Object.entries(value)) {
+const isObject = typeof propValue === "object"
+if (isObject) {
 
-    ∙∙∙
-
-    const isObject = typeof propValue === "object"
-    if (isObject) {
-
-        var hasLocalJSON
-        const hasLocalType = propValue.hasOwnProperty("type")
-        if (hasLocalType) {
-            hasLocalJSON = JSONTypes.includes(propValue.type)
-        }
-
-        const hasDefault = propValue.hasOwnProperty("default")
-        if (hasDefault) { ∙∙∙ }
-
-        const hasMinimum = propValue.hasOwnProperty("minimum")
-        if (hasMinimum) {
-            const minType = typeof propValue.minimum
-            var typeMismatch
-            if (hasLocalJSON) {
-                typeMismatch = minType != propValue.type
-            } else if (isTypeExtensionName) {
-                typeMismatch = minType != firstType
-            } else {
-                typeMismatch = minType != value.type
-            }
-            if (typeMismatch) {
-                return {
-                    valid: true,
-                    feedback: `type "${name}" has property "${propName}" with minimum of mismatched type "${minType}"`
-                }
-            }
-        }
-
-        const hasMaximum = propValue.hasOwnProperty("maximum")
-        if (hasMaximum) { ∙∙∙ }
-
+    var hasLocalJSON
+    const hasLocalType = propValue.hasOwnProperty("type")
+    if (hasLocalType) {
+        hasLocalJSON = JSONTypes.includes(propValue.type)
     }
+
+    const hasDefault = propValue.hasOwnProperty("default")
+    if (hasDefault) { ∙∙∙ }
+
+    const hasMinimum = propValue.hasOwnProperty("minimum")
+    if (hasMinimum) {
+        const minType = typeof propValue.minimum
+        var typeMismatch
+        if (hasLocalJSON) {
+            typeMismatch = minType != propValue.type
+        } else if (isTypeExtensionName) {
+            typeMismatch = minType != firstType
+        } else {
+            typeMismatch = minType != value.type
+        }
+        if (typeMismatch) {
+            return {
+                valid: true,
+                feedback: `type "${name}" has property "${propName}" with minimum of mismatched type "${minType}"`
+            }
+        }
+    }
+
+    const hasMaximum = propValue.hasOwnProperty("maximum")
+    if (hasMaximum) { ∙∙∙ }
 
 }
 ```
@@ -336,45 +324,38 @@ for (const [propName, propValue] of Object.entries(value)) {
 [ Text ]
 
 ```
-// loop through property names and find "case" array or case declaration
-for (const [propName, propValue] of Object.entries(value)) {
+const isObject = typeof propValue === "object"
+if (isObject) {
 
-    ∙∙∙
+    var hasLocalJSON
+    const hasLocalType = propValue.hasOwnProperty("type")
+    if (hasLocalType) {
+        hasLocalJSON = JSONTypes.includes(propValue.type)
+    }
 
-    const isObject = typeof propValue === "object"
-    if (isObject) {
+    const hasDefault = propValue.hasOwnProperty("default")
+    if (hasDefault) { ∙∙∙ }
 
-        var hasLocalJSON
-        const hasLocalType = propValue.hasOwnProperty("type")
-        if (hasLocalType) {
-            hasLocalJSON = JSONTypes.includes(propValue.type)
+    const hasMinimum = propValue.hasOwnProperty("minimum")
+    if (hasMinimum) { ∙∙∙ }
+
+    const hasMaximum = propValue.hasOwnProperty("maximum")
+    if (hasMaximum) {
+        const maxType = typeof propValue.maximum
+        var typeMismatch
+        if (hasLocalJSON) {
+            typeMismatch = maxType != propValue.type
+        } else if (isTypeExtensionName) {
+            typeMismatch = maxType != firstType
+        } else {
+            typeMismatch = maxType != value.type
         }
-
-        const hasDefault = propValue.hasOwnProperty("default")
-        if (hasDefault) { ∙∙∙ }
-
-        const hasMinimum = propValue.hasOwnProperty("minimum")
-        if (hasMinimum) { ∙∙∙ }
-
-        const hasMaximum = propValue.hasOwnProperty("maximum")
-        if (hasMaximum) {
-            const maxType = typeof propValue.maximum
-            var typeMismatch
-            if (hasLocalJSON) {
-                typeMismatch = maxType != propValue.type
-            } else if (isTypeExtensionName) {
-                typeMismatch = maxType != firstType
-            } else {
-                typeMismatch = maxType != value.type
-            }
-            if (typeMismatch) {
-                return {
-                    valid: true,
-                    feedback: `type "${name}" has property "${propName}" with maximum of mismatched type "${maxType}"`
-                }
+        if (typeMismatch) {
+            return {
+                valid: true,
+                feedback: `type "${name}" has property "${propName}" with maximum of mismatched type "${maxType}"`
             }
         }
-
     }
 
 }
