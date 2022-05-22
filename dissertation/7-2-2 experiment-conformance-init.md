@@ -1,6 +1,6 @@
 {"sub":"checkInit"}
 
-The second process consists of two main / top-level steps. The first step returns an error if the input of type Object does not have an init property.
+The second validation method starts with a check for the existence of an `init` property at the root node of the parsed JSON object. If the check fails it returns an Object that indicates the data structure is valid as it cannot be further validated, but with the feedback that it is missing a type initialiser property.
 
 ```
 const checkInit = (object) => {
@@ -18,24 +18,19 @@ const checkInit = (object) => {
 }
 ```
 
-<br>
-
-The second step validates the type declarations in that init property, and consits of several smaller steps.
-
 {"break":true}
+
+If an initialiser exists as a property of the root node, the method proceeds to validating the structure of types declared as properties of the initialiser. This is accomplished by looping through the initialiser properties, determining if the property name matches the syntax of a type extension (dot syntax), and only proceeding with validation if the property value is of type Object.
 
 ```
 const checkInit = (object) => {
 
     ∙∙∙
 
-    // check: type declaration
     for (const [name, value] of Object.entries(object.init)) {
 
-        // value is of type Object
         const isObject = typeof value === "object"
 
-        // name is extension
         var isTypeExtensionName
         var firstType
         const hasDot = name.includes(".")
@@ -50,65 +45,34 @@ const checkInit = (object) => {
             }
         }
 
-        // validate type declaration
-        if (isObject) {
-
-            ∙∙∙
-
-        }
+        if (isObject) { ∙∙∙ }
 
     }
 
 }
 ```
 
-<br>
-
-[ Text ]
-
 {"break":true}
 
+A property value of type Object is checked in three steps, starting with a check for a `shared type` which is a property with the name "type" in the declaration node. This type is inherited by the other properties, so this check also impacts the rest of this validation method.
+
 ```
-const checkInit = (object) => {
+if (isObject) {
 
-    ∙∙∙
+    const hasSharedType = value.hasOwnProperty("type")
+    if (hasSharedType) { ∙∙∙ }
 
-    // check: type declaration
-    for (const [name, value] of Object.entries(object.init)) {
+    if (isTypeExtensionName) { ∙∙∙ }
 
-        ∙∙∙
-
-        // validate type declaration
-        if (isObject) {
-
-            // value has property type with value of JSON type
-            const hasSharedType = value.hasOwnProperty("type")
-            if (hasSharedType) {
-                ∙∙∙
-            }
-
-            if (isTypeExtensionName) {
-                ∙∙∙
-            }
-
-            // loop through property names and find "case" array or case declaration
-            for (const [propName, propValue] of Object.entries(value)) {
-                ∙∙∙
-            }
-
-        }
-
-    }
+    for (const [propName, propValue] of Object.entries(value)) { ∙∙∙ }
 
 }
 
 ```
 
-<br>
+{"break":true}
 
 [ Text ]
-
-{"break":true}
 
 ```
 // value has property type with value of JSON type

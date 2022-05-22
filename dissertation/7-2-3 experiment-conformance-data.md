@@ -1,6 +1,8 @@
 {"sub":"checkData"}
 
-The third process
+The third validation method...
+
+---
 
 ```
 const checkData = (object) => {
