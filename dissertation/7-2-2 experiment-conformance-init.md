@@ -158,28 +158,20 @@ if (isTypeExtensionName) {
 [ Text ]
 
 ```
-// loop through property names and find "case" array or case declaration
 for (const [propName, propValue] of Object.entries(value)) {
 
-    // prop name is "case" and array and all strings
     const isCaseName = propName === "case"
     const isArray = propValue instanceof Array
     const isCase = isCaseName && isArray
     if (isCase) {
         const typesMatchString = propValue.filter(n => typeof n === "string").length === propValue.length
         if (!typesMatchString) {
-            return {
-                valid: true,
-                feedback: `type "${propName}" has case declaration array with invalid contents`
-            }
+            return { valid: true, feedback: `type "${propName}" has case declaration array with invalid contents` }
         }
     }
 
-    // propValue is object
     const isObject = typeof propValue === "object"
-    if (isObject) {
-        ∙∙∙
-    }
+    if (isObject) { ∙∙∙ }
 
 }
 ```
