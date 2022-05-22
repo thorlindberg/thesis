@@ -210,7 +210,6 @@ for (const [propName, propValue] of Object.entries(value)) {
 
     ∙∙∙
 
-    // propValue is object
     const isObject = typeof propValue === "object"
     if (isObject) {
 
@@ -221,19 +220,13 @@ for (const [propName, propValue] of Object.entries(value)) {
         }
 
         const hasDefault = propValue.hasOwnProperty("default")
-        if (hasDefault) {
-            ∙∙∙
-        }
+        if (hasDefault) { ∙∙∙ }
 
         const hasMinimum = propValue.hasOwnProperty("minimum")
-        if (hasMinimum) {
-            ∙∙∙
-        }
+        if (hasMinimum) { ∙∙∙ }
 
         const hasMaximum = propValue.hasOwnProperty("maximum")
-        if (hasMaximum) {
-            ∙∙∙
-        }
+        if (hasMaximum) { ∙∙∙ }
 
     }
 
@@ -250,7 +243,6 @@ for (const [propName, propValue] of Object.entries(value)) {
 
     ∙∙∙
 
-    // propValue is object
     const isObject = typeof propValue === "object"
     if (isObject) {
 
@@ -280,14 +272,10 @@ for (const [propName, propValue] of Object.entries(value)) {
         }
 
         const hasMinimum = propValue.hasOwnProperty("minimum")
-        if (hasMinimum) {
-            ∙∙∙
-        }
+        if (hasMinimum) { ∙∙∙ }
 
         const hasMaximum = propValue.hasOwnProperty("maximum")
-        if (hasMaximum) {
-            ∙∙∙
-        }
+        if (hasMaximum) { ∙∙∙ }
 
     }
 
@@ -304,7 +292,6 @@ for (const [propName, propValue] of Object.entries(value)) {
 
     ∙∙∙
 
-    // propValue is object
     const isObject = typeof propValue === "object"
     if (isObject) {
 
@@ -315,9 +302,7 @@ for (const [propName, propValue] of Object.entries(value)) {
         }
 
         const hasDefault = propValue.hasOwnProperty("default")
-        if (hasDefault) {
-            ∙∙∙
-        }
+        if (hasDefault) { ∙∙∙ }
 
         const hasMinimum = propValue.hasOwnProperty("minimum")
         if (hasMinimum) {
@@ -339,9 +324,7 @@ for (const [propName, propValue] of Object.entries(value)) {
         }
 
         const hasMaximum = propValue.hasOwnProperty("maximum")
-        if (hasMaximum) {
-            ∙∙∙
-        }
+        if (hasMaximum) { ∙∙∙ }
 
     }
 
@@ -358,7 +341,6 @@ for (const [propName, propValue] of Object.entries(value)) {
 
     ∙∙∙
 
-    // propValue is object
     const isObject = typeof propValue === "object"
     if (isObject) {
 
@@ -369,14 +351,10 @@ for (const [propName, propValue] of Object.entries(value)) {
         }
 
         const hasDefault = propValue.hasOwnProperty("default")
-        if (hasDefault) {
-            ∙∙∙
-        }
+        if (hasDefault) { ∙∙∙ }
 
         const hasMinimum = propValue.hasOwnProperty("minimum")
-        if (hasMinimum) {
-            ∙∙∙
-        }
+        if (hasMinimum) { ∙∙∙ }
 
         const hasMaximum = propValue.hasOwnProperty("maximum")
         if (hasMaximum) {
