@@ -33,7 +33,9 @@ const checkData = (object) => {
 
 {"break":true}
 
-[ Text ]
+The recursion method takes a property value and differentiates between values of type Array and Object. If the value is of type Array, it loops through each element and differentiates between elements of type Array and Object. If the element is of type Array it calls the recursion method, but if the element is of type Object it calls the validation method. If the value is of type Object it calls the validation method.
+
+The purpose of this hierarchy is that only values of type Object can be validated as TXON structures, but arrayrised values are also looped over recursively to detect Objects. <p style="color">This approach is missing a recursive looping of the properties of an Object, as it only considers recursive looping of arrayrised values.</p>
 
 ```
 const recursion = (input) => {
@@ -74,7 +76,7 @@ const recursion = (input) => {
 
 {"break":true}
 
-[ Text ]
+The validation method...
 
 ```
 const validate = (input) => {
