@@ -1,6 +1,12 @@
 {"sub":"checkData"}
 
-The third validation method...
+The third validation method has to accommodate any and all data structures considered valid in the JSON specification. As such the validation must be executed recursively for every nested node in the structure, and it must be applied extensively by only validating data that was intended to be typed with TXON.
+
+It starts with a check for the existence of a `data` property at the root ndoe of the parsed JSON object. If the check fails it returns an Object that indicates the data structure is valid as it cannot be further vlaidated, but with the feedback that it is missing a data structure.
+
+It then defines two of its own methods: a `recursion` method to determine the approach to recursively validating based on the value type of a property, and a recursively-called `validate` method for validating a property.
+
+It ends with an initial call of the recursion method on the data structure, and a check for the return of a nonconformance error detected during recursion.
 
 ```
 const checkData = (object) => {
