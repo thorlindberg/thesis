@@ -229,7 +229,7 @@ if (isObject) {
 }
 ```
 
-{"break":true}
+<br>
 
 The second step is to check for a local default value, the same way the shared default was validated. The difference is that this check deviates based on whether a valid local type was declared, and if not then based on if the type is an extension, and if not using the shared type. If the check fails it returns an Object that indicates the data structure is valid as it cannot be further validated, but with the feedback that the default value is of a mismatched type.
 
@@ -279,7 +279,7 @@ if (hasMinimum) {
 }
 ```
 
-{"break":true}
+<br>
 
 The fourth step is to check for a local maximum value, the same way the shared maximum was validated. The difference is that this check deviates based on whether a valid local type was declared, and if not then based on if the type is an extension, and if not using the shared type. If the check fails it returns an Object that indicates the data structure is valid as it cannot be further validated, but with the feedback that the maximum value is of a mismatched type.
 
