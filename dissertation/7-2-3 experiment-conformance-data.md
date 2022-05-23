@@ -214,7 +214,7 @@ if (inInstance) {
 
 {"break":true}
 
-[ Text ]
+If the type instance has a "values" property, validation proceeds if its value is of type Array. It then proceeds to loop through its elements, validating elements of type Object by looping through their properties. It checks if all required properties have been instantiated. If the check fails it returns an Object that indicates the data structure is invalid, with the feedback that a type was instantiated but is missing a required property. If the check passes for all required properties, it proceeds to check the property values.
 
 ```
 if (hasValues) {
@@ -258,7 +258,7 @@ if (hasValues) {
 
 {"break":true}
 
-[ Text ]
+A property value is validated by first differentiating local, shared, and extension types. It then proceeds to check that the value matches the type declared for the property in the initialiser. If this check fails it returns an Object that indicates the data structure is invalid, with the feedback that a type was instantiated with a property value that does not conform. It then proceeds to check that the value is between a local or shared minimum and maximum, if any have been declared. If this check fails it returns an Object that indicates the data structure is invalid, with the feedback that a type was instantiated with a property value that is either below the minimum or above the maximum.
 
 ```
 if (inInstance) {
