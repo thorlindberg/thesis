@@ -20,53 +20,89 @@ jsonDiagram {
 </style>
 
 {
-  "address": "København, Blegdamsvej 9",
-  "chargePoints": [
-    {
-      "connectors": [
-        { "capacitykW": 43, "connectorId": "1", "typeId": 1, "typeName": "AC", "variantName": "z" },
-        { "capacitykW": 50, "connectorId": "2", "typeId": 2, "typeName": "DC", "variantName": "x" }
-      ],
-      "id": "DKa100",
-      "modelId": "a100",
-      "modelName": "a"
-    },
-    {
-      "connectors": [
-        { "capacitykW": 43, "connectorId": "1", "typeId": 1, "typeName": "AC", "variantName": "z" },
-        { "capacitykW": 50, "connectorId": "2", "typeId": 2, "typeName": "DC", "variantName": "x" }
-      ],
-      "id": "DKb200",
-      "modelId": "b200",
-      "modelName": "b"
-    },
-    {
-      "connectors": [
-        { "connectorId": "1", "typeId": 2, "typeName": "DC", "variantName": "y", "capacitykW": 175 },
-        { "connectorId": "2", "typeId": 2, "typeName": "DC", "variantName": "x", "capacitykW": 175 }
-      ],
-      "id": "DKc300",
-      "modelId": "c300",
-      "modelName": "c"
-    }
-  ],
-  "city": "København",
-  "country": "DK",
-  "houseNumber": "9",
-  "id": 55,
-  "isRoamingLocation": true,
-  "isSemipublic": true,
-  "isFuture": true,
-  "latitude": 55.696914,
-  "locationIdentity": "DKpartner",
-  "longitude": 12.566042,
-  "name": "København",
-  "open24": false,
-  "phoneNumber": "12345",
-  "pictureUrl": "https://image.url",
-  "postalCode": "2100",
-  "roamingPartnerName": "DKpartner",
-  "streetName": "Blegdamsvej"
+    "address": "København, Blegdamsvej 9",
+    "chargePoints": [
+        {
+            "connectors": [
+                {
+                    "capacitykW": 43,
+                    "connectorId": "1",
+                    "typeId": 1,
+                    "typeName": "AC",
+                    "variantName": "z"
+                },
+                {
+                    "capacitykW": 50,
+                    "connectorId": "2",
+                    "typeId": 2,
+                    "typeName": "DC",
+                    "variantName": "x"
+                }
+            ],
+            "id": "DKa100",
+            "modelId": "a100",
+            "modelName": "a"
+        },
+        {
+            "connectors": [
+                {
+                    "capacitykW": 43,
+                    "connectorId": "1",
+                    "typeId": 1,
+                    "typeName": "AC",
+                    "variantName": "z"
+                },
+                {
+                    "capacitykW": 50,
+                    "connectorId": "2",
+                    "typeId": 2,
+                    "typeName": "DC",
+                    "variantName": "x"
+                }
+            ],
+            "id": "DKb200",
+            "modelId": "b200",
+            "modelName": "b"
+        },
+        {
+            "connectors": [
+                {
+                    "connectorId": "1",
+                    "typeId": 2,
+                    "typeName": "DC",
+                    "variantName": "y",
+                    "capacitykW": 175
+                },
+                {
+                    "connectorId": "2",
+                    "typeId": 2,
+                    "typeName": "DC",
+                    "variantName": "x",
+                    "capacitykW": 175
+                }
+            ],
+            "id": "DKc300",
+            "modelId": "c300",
+            "modelName": "c"
+        }
+    ],
+    "city": "København",
+    "country": "DK",
+    "houseNumber": "9",
+    "id": 55,
+    "isRoamingLocation": true,
+    "isSemipublic": true,
+    "isFuture": true,
+    "latitude": 55.696914,
+    "locationIdentity": "DKpartner",
+    "longitude": 12.566042,
+    "name": "København",
+    "open24": false,
+    "phoneNumber": "12345",
+    "pictureUrl": "https://image.url",
+    "postalCode": "2100",
+    "roamingPartnerName": "DKpartner",
+    "streetName": "Blegdamsvej"
 }
 
 @endjson

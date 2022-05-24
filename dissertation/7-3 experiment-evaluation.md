@@ -6,5 +6,13 @@ To evaluate the TXON syntax I leverage the real-world data sample from GitLab, a
 
 These processes be compared on time complexity, character count, and average execution time, but as time is not a factor considered in this implementation, the comparison will only consider character count.
 
+[ WRITE ABOUT HOW THE TYPESCRIPT TYPES HAVE TO BE MOVED TO TXON INITIALISER ]
+
+<p style="color:orange">
+TypeScript types -> TXON types in "init".
+JSON data structure -> TXON instances in "data".
+Combine the two outputs into a TXON data structure.
+</p>
+
 
 {"break":true}
