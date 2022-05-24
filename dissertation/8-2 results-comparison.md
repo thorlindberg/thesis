@@ -7,36 +7,27 @@ Assume this JSON data structure:
 ```
 {
     "Location": {
-        "id": "string",
-        "locationId": "string",
-        "name": "string",
+        "id": "string", "locationId": "string", "name": "string",
         "address": {
             "Address": {
-                "line1": "string",
-                "line2": "string"
+                "line1": "string", "line2": "string"
             }
         },
         "coordinates": {
             "Coordinates": {
-                "lat": "number",
-                "lng": "number"
+                "lat": "number", "lng": "number"
             }
         },
-        "imageUrl": "string | null",
-        "phoneNumber": "string | null",
+        "imageUrl": "string | null", "phoneNumber": "string | null",
         "description": {
             "Localizable":  {
-                "da": "string | null",
-                "en": "string | null"
+                "da": "string | null", "en": "string | null"
             }
         },
-        "roamingPartner": "string | null",
-        "isRoaming": "boolean",
-        "isOpen24": "boolean",
+        "roamingPartner": "string | null", "isRoaming": "boolean", "isOpen24": "boolean",
         "openingHours": {
             "Localizable": {
-                "da": "string | null",
-                "en": "string | null"
+                "da": "string | null", "en": "string | null"
             }
         },
         "chargePoints": {
@@ -47,18 +38,13 @@ Assume this JSON data structure:
                 },
                 "connectors": {
                     "Connector[]": {
-                        "id": "string",
-                        "connectorNo": "string",
-                        "displayId": "string",
-                        "type": "string",
-                        "kW": "number",
-                        "speed": "string"
+                        "id": "string", "connectorNo": "string", "displayId": "string",
+                        "type": "string", "kW": "number", "speed": "string"
                     }
                 }
             }
         },
-        "isRemoteChargingSupported": "boolean",
-        "isFuture": "boolean"
+        "isRemoteChargingSupported": "boolean", "isFuture": "boolean"
     }
 }
 ```
