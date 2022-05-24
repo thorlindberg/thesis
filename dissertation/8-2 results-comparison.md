@@ -4,7 +4,7 @@ In this section I present an evaluation of the implemented syntax through the tx
 
 <br>
 
-{"sec":"Evaluating validation process"}
+{"sub":"Evaluating validation process"}
 
 Features...
 
@@ -14,7 +14,7 @@ Character count..
 
 {"break":true}
 
-{"sec":"Evaluating data structure"}
+{"sub":"Evaluating data structure"}
 
 Assume this JSON data structure:
 

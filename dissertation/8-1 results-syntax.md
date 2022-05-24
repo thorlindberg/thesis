@@ -4,7 +4,7 @@ In this section I present my syntax proposal for extensibly typed JSON data stru
 
 <br>
 
-{"sub":"Blueprint for proposal"}
+{"sub":"Proposal structure"}
 
 As seen in the following the blueprint for a language proposal includes these components with this structure:
 
