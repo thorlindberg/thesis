@@ -41,3 +41,7 @@
 {"bib":"ecma2022json","title":"JavaScript Object Notation","authors":["ECMA"],"year":"2022","publisher":"ECMA","url":"https://www.json.org"}
 
 {"bib":"douglas2020form","title":"McKeeman Form","authors":["C. Douglas"],"year":"2020","publisher":"C. Douglas","url":"https://www.crockford.com/mckeeman.html"}
+
+{"bib":"apple2022swiftevolution","title":"TSON: Typeable Simple Object Notation","authors":["Lyon-Smith, J."],"year":"2014","publisher":"GitHub","url":"https://github.com/apple/swift-evolution"}
+
+{"bib":"apple2022swiftevolution","title":"Swift Programming Language Evolution","authors":["Apple Inc."],"year":"2022","publisher":"Apple","url":"https://github.com/apple/swift-evolution"}

@@ -1,12 +1,14 @@
 {"chp":"Results"}
 
-In this chapter I present the results of my experiment, which include a syntax proposal for utilising the features demonstrated through my JavaScript library, and a critical evaluation through comparison to TypeScript type declarations. As a preface to the results I present the grammatical system established with TXON, as well as the structural blueprint for each component of the collective proposal.
+In this chapter I present the results of my experiment, which includes a syntax proposal for extensibly typed JSON data structures and a critical evaluation of its implementation through the txon.js library. To preface these results I present the Type-Extensible Object Notation (TXON)) grammar derived from this experiment, as well as the system of terminologies used throughout the proposal.
+
+The structure of this proposal is derived from proposals for the Swift Programming Language Evolution {"citep":"apple2022swiftevolution"}. Swift is a relatively young language at 7 years old (released June 2nd 2014), and as such there is an active advancement of its features and syntax. It is also utilised by the iOS development team at the company that provided the data samples and validation code for this project.
 
 <br>
 
 {"sub":"Grammatical notation"}
 
-As a superset of JSON the grammar of TXON can also be expressed with the McKeeman Form {"citep":"douglas2020form"}. As seen in figure {"ref":"txongrammar"} ...
+As a superset format of JSON the TXON grammar can also be expressed with the McKeeman Form {"citep":"douglas2020form"}. As seen in figure {"ref":"txongrammar"} this form implies a hierarchy of declarations, and some elements of the syntax can be recursively declared.
 
 @startuml
 @startjson
@@ -53,80 +55,6 @@ jsonDiagram {
 
 {"fig":"txongrammar","caption":"Grammatical notation of types declared and instantiated with TXON."}
 
-[ Text ]
-
-{"break":true}
-
-{"sub":"Structure of a proposal"}
-
-[ clarify that this was inspired by Swift Evolution proposals ]
-
-A proposal for changes to syntax or grammatical features of a programming language is typically structured as an argument for the conditions that necessitate the proposed change. This includes samples of code that demonstrate the flaws of the current implementation, the proposal applied as a solution in a real-world scenario, and design considerations for both the impact of the proposed change and alternative solutions to the issue. As seen in the following the blueprint for a language proposal includes these components with this structure.
-
-`Introduction:` a brief description of what the proposal aims to address and hows it improves upon a current situation.
-
-`Motivation:` a step-wise description of the conditions necessitating the proposal, fluxuating between description and samples of code or other material that demonstrates the flaws of the current implementation. This argument for change concludes with the goal of the proposal.
-
-`Proposed solution:` a step-wise description of the proposed changes, fluxuating between description and samples of code or other material that demonstrate the new implementation. This argument for the demonstrated proposal concludes with the changes accomplished.
-
-`Detailed design:` an enumerated list describing how the proposed changes are expressed, fluxuating between description and samples of code or other material that showcase these expressions. This should include a criticial reflection on the proposed expressions and unsupported expressions if any exist in the implementation.
-
-`Alternatives considered:` a step-wise description of alternative changes, fluxuating between description and samples of code or other material that demonstrate the alternative implementations. This can vary greatly in how closely the alternatives correlate or do not correlate, as there are often multiple varied paths to achieving the same effect.
-
-`Source compatibility:` a description of the impact on existing code if any, such as changes that deprecate existing code over new preferred approaches or invalidate it syntactically, referred to as "source-breaking".
-
-`Future directions:` a description of further changes that could be or should be made to accomodate this proposal or improve upon the implementation of a certain part of the given language.
-
-{"break":true}
-
-{"sub":"Motivation"}
-
-The syntax or grammar of any language or data format is derived from the ability to validate their correctness or inaccuracies. As such the syntax of type declarations and instances in TXON correspond directly to the features implemented in the JavaScript library. This also places certain restrictions or limitations on the usage of TXON, informed by the structure and flow of processes in the library. Each component of the syntax proposal is structured to provide an example of the valid and invalid data structure, the feedback provided from validating the invalid data, and a diagram illustrating the source of misconformance.
-
-The JavaScript Object Notation (JSON) specifies a format for storing and transmitting JavaScript objects. This format allows the types: "string, number, object, array, boolean, and null". It explicitly precludes the types: "function, date, and undefined". A JSON object is represented as a string of curly brackets with properties inside.
-
-```
-{ "date": "28-10-2005" }
-```
-
-<br>
-
-Inspired by type restrictions/facets in the XML/XSD format, it has become common to explictly embed the intended type as a string-value property in a JSON object. This approach to type annotation enables the recipient to validate the content type based on its intended type, but not beyond the types available in JSON.
-
-```
-<xs:restriction base="xs:string"></xs:restriction>
-```
-```
-{ "type": "string", "date": "28-10-2005" }
-```
-
-<br>
-
-The type limitations of JSON can be circumvented by deconstructing a property value into its components. A date property with a string-value could instead be represented as an object with properties for month, day, and year. Representing these properties with number-values would further clarify the intended values, but does not define a range of valid values. This limitation could be mitigated through properties further specifying a range of numbers.
-
-As evidenced, embedding these restrictions in the data results in more specification properties than useful data. As the amount of information scales linearly, so too does the restrictions, while increasing the chance of syntax errors.
-
-```
-{
-    "type": "number",
-    "date": { "month": 10, "day": 28, "year": 2005 }
-}
-```
-```
-{
-    "type": "number",
-    "date": {
-        "month": { "min": 1, "max": 31, "value": 10 },
-        "day": { "min": 1, "max": 31, "value": 28 },
-        "year": { "value": 2005 }
-    }
-}
-```
-
-<br>
-
-As it turns out, this is not a unique problem, and thus the solution already exists: enumerations. This user-defined data type allows us to declare a specification once, and then instantiate it without repetition of requirements.
-
 {"break":true}
 
 {"sub":"Terminology and definitions in proposal"}
@@ -145,9 +73,9 @@ A `type` differentiates values and deliminates their potential content, such as 
 
 `JSON types` define the acceptable type of values for properties in a JSON/TXON data structure. The seven type names in the JSON specification are: object, array, string, number, true, false, and null.
 
-<br>
+{"break":true}
 
-The `type system` is comprised of all available types presented above. In a TXON data structure this system is expressed through the declaration of one or more types in the "init" property of the root node. These `declarations`can be referenced through `instances` in the "data" property of the root node.
+The `type system` is comprised of all available types presented above. In a TXON data structure this system is expressed through the declaration of one or more types in the "init" property of the root node. These `declarations` are referenced through `instances` in the "data" property of the root node.
 
 `Declarations` act as blueprints for instantiating a type, and must be named with an `extended type` or `type extension`. This blueprint enumerates `value names`, which are either required or `optional values`, with values conforming to the JSON specification. There are two reserved property names in a declaration: "type" for `shared types` and "case" for `case names`.
 

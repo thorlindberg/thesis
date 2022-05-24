@@ -4,8 +4,6 @@ As a step towards improving the safety and usability of the JSON format through 
 
 The motivation for this implementation of types is the current inability to extend or enumerate types in the JSON specification. The result of this flaw is that developers cannot validate whether their data structures are correct or incorrect before they have been received by a client.
 
-<br>
-
 Consider a simple `data structure` that conforms to the JSON specification:
 
 ```
@@ -36,7 +34,7 @@ This is much clearer to both parties, and because the data points have number va
 
 However, this does not ensure that all the properties are present in the data structure, nor does it actually validate types independently. It would be better if the data could better specify its intent with a generic structure that is easily validated without investing time in defensive mechanisms on the recipient end.
 
-<br>
+{"break":true}
 
 I would like to propose a syntax for declaring types with a generic and extensible `type declaration syntax`, altering existing data structures as little as possible, while greatly reducing dependency on additional layers of data validation at multiple points of a distributed system. This syntax is grammatically based on typed values in TypeScript, allowing you to explicitly (but not statically) type and enumerate data points.
 
@@ -76,7 +74,7 @@ Declarations provide a generic and single-location place to specify enumerated a
 
 It is evident from this syntactical approach that despite these strict requirements the data remains readable, by separating the type declaration from the actual data through relation references. Additionally, this syntax scales far better with larger data structures, requiring less repetition and as such a lesser chance of syntax errors. The initialiser can be ignored when casting the data in software, but also acts as embedded documentation of the intent with the data structure. This approach is generic in structure yet flexible to differently structured data and use-cases, while remaining human-readable and conforming to the JSON specification.
 
-<br>
+{"break":true}
 
 In aiming to reflect the values of extensible implementations, type declarations were designed to extend existing types with the dot syntax (.), but they are not extensible in the sense that invalid declarations can be ignored. A type can be an extension of another type:
 
@@ -119,6 +117,8 @@ This results in all enumerated values inheriting typing from the type before the
 
 In evaluating this design it became clear that the complexity in the combination of syntactical features increases greatly with each added feature. As such the actual implementation of this proposal would need to exhaustively demonstrate that the grammatical notation (the "system" of syntax) does not contain conflicting combinations. If we take a more complex data point with differently typed values, such as:
 
+{"break":true}
+
 ```
 "date": {
     "month": 10, "day": 28, "year": 2005,
@@ -128,7 +128,7 @@ In evaluating this design it became clear that the complexity in the combination
 
 It is already evident that the current implementation of the proposal does not adequately facilitate shared typing or inherting through type extension, when the data structure requires multiple cases with multiple shared types.
 
-<br>
+{"break":true}
 
 After experimenting with the implementation of this proposed syntax for type declarations, it became evident that not all type values should be required, and that default values are not an appropiate approach to declaring optional values. With the current implementation you can declare a type:
 

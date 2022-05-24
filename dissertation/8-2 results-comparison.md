@@ -2,6 +2,8 @@
 
 In this section I present a comparison of the differences between JSON and TXON data structures, when the TXON grammar is applied to the sample data provided to me. The purpose of this comparison is to demonstrate that a generic validation approach can replace the existing TypeScript validation on GitLab.
 
+<br>
+
 Assume this JSON data structure:
 
 ```
@@ -49,14 +51,14 @@ Assume this JSON data structure:
 }
 ```
 
-<br>
+{"break":true}
 
 Becomes this data structure when the TXON grammar is applied:
 
 ```
 ```
 
-<br>
+{"break":true}
 
 Explicit subtypes:
 
@@ -94,7 +96,7 @@ Explicit subtypes:
 }
 ```
 
-<br>
+{"break":true}
 
 Implicit subtypes:
 
