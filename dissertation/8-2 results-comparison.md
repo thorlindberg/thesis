@@ -68,6 +68,13 @@ Assume this JSON data structure:
 Becomes this data structure when the TXON grammar is applied:
 
 ```
+```
+
+<br>
+
+Explicit subtypes:
+
+```
 {
     "init": {
         "location": {
@@ -90,97 +97,156 @@ Becomes this data structure when the TXON grammar is applied:
             "isRemoteChargingSupported": "boolean", "isFuture": "boolean"
         },
         "chargepoint": {
-            "id": "string", "type": "string", "connectors": "array<connector>"
+            "id": "string",
+            "connectors": "array<connector>"
         },
         "connector": {
             "id": "string", "connectorNo": "string", "displayId": "string",
-            "type": "string", "kW": "number", "speed": "string"
+            "name": "string", "kW": "number", "speed": "string"
+        }
+    }
+}
+```
+
+<br>
+
+Implicit subtypes:
+
+```
+{
+    "init": {
+        "location": {
+            "id": "string", "locationId": "string", "name": "string",
+            "address": {
+                "line1": "string", "line2": "string"
+            },
+            "coordinates": {
+                "lat": "number", "lng": "number"
+            },
+            "imageUrl?": "string", "phoneNumber?": "string",
+            "description": {
+                "da?": "string", "en?": "string"
+            },
+            "roamingPartner?": "string", "isRoaming": "boolean", "isOpen24": "boolean",
+            "openingHours": {
+                "da?": "string", "en?": "string"
+            },
+            "chargePoints": [
+                {
+                    "id": "string",
+                    "connectors": [
+                        {
+                            "id": "string", "connectorNo": "string", "displayId": "string",
+                            "name": "string", "kW": "number", "speed": "string"
+                        }
+                    ]
+                }
+            ],
+            "isRemoteChargingSupported": "boolean", "isFuture": "boolean"
+        }
+    }
+}
+```
+
+TXON data structure with implicit subtypes:
+
+```
+// some of this data has been modified because it did not match the type props by name :(
+// .speed was made optional because it is missing from the data
+{
+    "init": {
+        "location": {
+            "id": "string", "locationId": "string", "name": "string",
+            "address": {
+                "line1": "string", "line2": "string"
+            },
+            "coordinates": {
+                "lat": "number", "lng": "number"
+            },
+            "imageUrl?": "string", "phoneNumber?": "string",
+            "description": {
+                "da?": "string", "en?": "string"
+            },
+            "roamingPartner?": "string", "isRoaming": "boolean", "isOpen24": "boolean",
+            "openingHours": {
+                "da?": "string", "en?": "string"
+            },
+            "chargePoints": [
+                {
+                    "id": "string",
+                    "connectors": [
+                        {
+                            "id": "string", "connectorNo": "string", "displayId": "string",
+                            "name": "string", "kW": "number", "speed?": "string"
+                        }
+                    ]
+                }
+            ],
+            "isRemoteChargingSupported": "boolean", "isFuture": "boolean"
         }
     },
     "data": {
-        "address": "København, Blegdamsvej 9",
-        "chargePoints": [
-            {
-                "connectors": [
-                    {
-                        "capacitykW": 43,
-                        "connectorId": "1",
-                        "typeId": 1,
-                        "typeName": "AC",
-                        "variantName": "z"
-                    },
-                    {
-                        "capacitykW": 50,
-                        "connectorId": "2",
-                        "typeId": 2,
-                        "typeName": "DC",
-                        "variantName": "x"
-                    }
-                ],
-                "id": "DKa100",
-                "modelId": "a100",
-                "modelName": "a"
+        "location": {
+            "type": "location",
+            "id": "55", "locationId": "DKpartner", "name": "København",
+            "address": {
+                "line1": "København,", "line2": "Blegdamsvej 9"
             },
-            {
-                "connectors": [
-                    {
-                        "capacitykW": 43,
-                        "connectorId": "1",
-                        "typeId": 1,
-                        "typeName": "AC",
-                        "variantName": "z"
-                    },
-                    {
-                        "capacitykW": 50,
-                        "connectorId": "2",
-                        "typeId": 2,
-                        "typeName": "DC",
-                        "variantName": "x"
-                    }
-                ],
-                "id": "DKb200",
-                "modelId": "b200",
-                "modelName": "b"
+            "coordinates": {
+                "lat": "55.696914", "lng": "12.566042"
             },
-            {
-                "connectors": [
-                    {
-                        "connectorId": "1",
-                        "typeId": 2,
-                        "typeName": "DC",
-                        "variantName": "y",
-                        "capacitykW": 175
-                    },
-                    {
-                        "connectorId": "2",
-                        "typeId": 2,
-                        "typeName": "DC",
-                        "variantName": "x",
-                        "capacitykW": 175
-                    }
-                ],
-                "id": "DKc300",
-                "modelId": "c300",
-                "modelName": "c"
-            }
-        ],
-        "city": "København",
-        "country": "DK",
-        "houseNumber": "9",
-        "id": 55,
-        "isRoamingLocation": true,
-        "isSemipublic": true,
-        "isFuture": true,
-        "latitude": 55.696914,
-        "locationIdentity": "DKpartner",
-        "longitude": 12.566042,
-        "name": "København",
-        "open24": false,
-        "phoneNumber": "12345",
-        "pictureUrl": "https://image.url",
-        "postalCode": "2100",
-        "roamingPartnerName": "DKpartner",
-        "streetName": "Blegdamsvej"
+            "imageUrl?": "https://image.url", "phoneNumber?": "12345",
+            "description": {
+                "da?": "string", "en?": "string"
+            },
+            "roamingPartner?": "DKpartner", "isRoaming": true, "isOpen24": false,
+            "openingHours": {
+                "da?": "string", "en?": "string"
+            },
+            "chargePoints": [
+                {
+                    "connectors": [
+                        {
+                            "id": "z", "connectorNo": "1", "displayId": "1", "name": "AC", "kW": 43
+                        },
+                        {
+                            "id": "x", "connectorNo": "2", "displayId": "2", "name": "DC", "kW": 50
+                        }
+                    ],
+                    "id": "DKa100",
+                    "modelId": "a100", // not in type
+                    "modelName": "a" // not in type
+                },
+                {
+                    "connectors": [
+                        {
+                            "id": "z", "connectorNo": "1", "displayId": "1", "name": "AC", "kW": 43
+                        },
+                        {
+                            "id": "x", "connectorNo": "2", "displayId": "2", "name": "DC", "kW": 50
+                        }
+                    ],
+                    "id": "DKb200",
+                    "modelId": "b200", // not in type
+                    "modelName": "b" // not in type
+                },
+                {
+                    "connectors": [
+                        {
+                            "id": "y", "connectorNo": "1", "displayId": "2", "name": "DC", "kW": 175
+                        },
+                        {
+                            "id": "x", "connectorNo": "1", "displayId": "2", "name": "DC", "kW": 175
+                        }
+                    ],
+                    "id": "DKc300",
+                    "modelId": "c300", // not in type
+                    "modelName": "c" // not in type
+                }
+            ],
+            "isRemoteChargingSupported": "boolean", "isFuture": true,
+            "city": "København", "country": "DK", "isSemipublic": true, "postalCode": "2100" // not in type
+        }
     }
 }
 ```
