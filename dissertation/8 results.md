@@ -73,9 +73,11 @@ A `type` differentiates values and deliminates their potential content, such as 
 
 `JSON types` define the acceptable type of values for properties in a JSON/TXON data structure. The seven type names in the JSON specification are: object, array, string, number, true, false, and null.
 
-{"break":true}
+<br>
 
 The `type system` is comprised of all available types presented above. In a TXON data structure this system is expressed through the declaration of one or more types in the "init" property of the root node. These `declarations` are referenced through `instances` in the "data" property of the root node.
+
+{"break":true}
 
 `Declarations` act as blueprints for instantiating a type, and must be named with an `extended type` or `type extension`. This blueprint enumerates `value names`, which are either required or `optional values`, with values conforming to the JSON specification. There are two reserved property names in a declaration: "type" for `shared types` and "case" for `case names`.
 

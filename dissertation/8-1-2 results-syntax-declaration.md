@@ -1,4 +1,4 @@
-{"sub":"Initialisation of type declarations"}
+{"sub":"Proposal for extensible typing"}
 
 As a step towards improving the safety and usability of the JSON format through an extensible approach, this first half of the collective proposal introduces a syntax for declarations as enumerations and specifications of type or type extension initialisation requirements.
 
