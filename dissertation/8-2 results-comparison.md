@@ -1,16 +1,16 @@
 {"sec":"Comparison of JSON and TXON"}
 
-In this section I present an evaluation of the implemented syntax through the txon.js library. It is evaluated on its ability to substitute TypeScript validation and extensibly add explicit typing to a JSON structure with minimal transformation of its data.
+In this section I present an evaluation of the implemented syntax through the `txon.js library`. It is evaluated on its ability to substitute TypeScript validation and extensibly add explicit typing to a JSON structure with minimal transformation of its data.
 
 <br>
 
 {"sub":"Evaluating validation process"}
 
-Features...
+The txon.js features...
 
 Readability...
 
-Character count..
+Character count...
 
 {"break":true}
 
