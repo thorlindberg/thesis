@@ -1,8 +1,20 @@
 {"sec":"Comparison of JSON and TXON"}
 
-In this section I present a comparison of the differences between JSON and TXON data structures, when the TXON grammar is applied to the sample data provided to me. The purpose of this comparison is to demonstrate that a generic validation approach can replace the existing TypeScript validation on GitLab.
+In this section I present an evaluation of the implemented syntax through the txon.js library. It is evaluated on its ability to substitute TypeScript validation and extensibly add explicit typing to a JSON structure with minimal transformation of its data.
 
 <br>
+
+{"sec":"Evaluating validation process"}
+
+Features...
+
+Readability...
+
+Character count..
+
+{"break":true}
+
+{"sec":"Evaluating data structure"}
 
 Assume this JSON data structure:
 
@@ -51,92 +63,9 @@ Assume this JSON data structure:
 }
 ```
 
-{"break":true}
+<br>
 
 Becomes this data structure when the TXON grammar is applied:
-
-```
-```
-
-{"break":true}
-
-Explicit subtypes:
-
-```
-{
-    "init": {
-        "location": {
-            "id": "string", "locationId": "string", "name": "string",
-            "address": {
-                "line1": "string", "line2": "string"
-            },
-            "coordinates": {
-                "lat": "number", "lng": "number"
-            },
-            "imageUrl?": "string", "phoneNumber?": "string",
-            "description": {
-                "da?": "string", "en?": "string"
-            },
-            "roamingPartner?": "string", "isRoaming": "boolean", "isOpen24": "boolean",
-            "openingHours": {
-                "da?": "string", "en?": "string"
-            },
-            "chargePoints": "array<chargepoint>",
-            "isRemoteChargingSupported": "boolean", "isFuture": "boolean"
-        },
-        "chargepoint": {
-            "id": "string",
-            "connectors": "array<connector>"
-        },
-        "connector": {
-            "id": "string", "connectorNo": "string", "displayId": "string",
-            "name": "string", "kW": "number", "speed": "string"
-        }
-    }
-}
-```
-
-{"break":true}
-
-Implicit subtypes:
-
-```
-{
-    "init": {
-        "location": {
-            "id": "string", "locationId": "string", "name": "string",
-            "address": {
-                "line1": "string", "line2": "string"
-            },
-            "coordinates": {
-                "lat": "number", "lng": "number"
-            },
-            "imageUrl?": "string", "phoneNumber?": "string",
-            "description": {
-                "da?": "string", "en?": "string"
-            },
-            "roamingPartner?": "string", "isRoaming": "boolean", "isOpen24": "boolean",
-            "openingHours": {
-                "da?": "string", "en?": "string"
-            },
-            "chargePoints": [
-                {
-                    "id": "string",
-                    "connectors": [
-                        {
-                            "id": "string", "connectorNo": "string", "displayId": "string",
-                            "name": "string", "kW": "number", "speed": "string"
-                        }
-                    ]
-                }
-            ],
-            "isRemoteChargingSupported": "boolean", "isFuture": "boolean"
-        }
-    }
-}
-```
-
-TXON data structure with implicit subtypes:
 
 ```
 // some of this data has been modified because it did not match the type props by name :(
