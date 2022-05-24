@@ -14,6 +14,4 @@ The JSON specification was an obvious choice for my project, as it has widesprea
 
 The problem presented in this project can be solved in many different ways and at different levels. For this reason I include previous work towards extending the JSON syntax. By searching publicly accessible repositories on GitHub, I have found proejcts that worked towards extending the format with more explicit and type-safe syntax features. These projects are presented in the section on ["Attempts at Extensibility of Data Syntax"](#attemptsatextensibilityofdatasyntax).
 
-I anticipated that I would need a strategy for evaluation and presentation of results, once I had developed a solution to address the problem presented in this project. This is why I include literature on strategies for choosing and evaluating data syntax and the implementation of data formats in computer systems. This is presented in the section on ["Evaluation Strategies"](#evaluationstrategies).
-
 {"break":true}
