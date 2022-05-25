@@ -11,7 +11,9 @@
 
 ---
 
-Assume this JSON data structure:
+There are three steps necessary for the comparison of data structures utilising TypeScript and TXON. The first step is to compare type declarations on readability and character count. The second step is to compare type instances on readability and character count. The last step is to compare the efficiency of the entire untyped JSON with TypeScript types and TXON data structure with embedded types.
+
+For this evaluation the data structure examined is the sample data provided to me by the company. This JSON data corresponds to the enumerated TypeScript type `Location` which has properties referencing other typed enumerations named `Address`, `Coordinates`, `Localizable`, `ChargePoint[]`, and  `Connector[]`. It also includes untyped data, that is properties not enumerated for a type, and as such it is suitable for evaluating extensible typing. This is the data structure provided to me:
 
 ```
 {
@@ -60,11 +62,14 @@ Assume this JSON data structure:
 
 <br>
 
+[ Transformation required to achieve this ]
+
+// some of this data has been modified because it did not match the type props by name :(
+// .speed was made optional because it is missing from the data
+
 Becomes this data structure when the TXON grammar is applied:
 
 ```
-// some of this data has been modified because it did not match the type props by name :(
-// .speed was made optional because it is missing from the data
 {
     "init": {
         "location": {
