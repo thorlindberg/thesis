@@ -1,6 +1,8 @@
-{"sub":"Types in TypeScript and TXON"}
+{"sub":"Types from TypeScript to TXON"}
 
-[ Text on type declaration with TypeScript and its role in validation ]
+TypeScript provides extensible and explicit typing of JavaScript structures. Its extensible syntax means that structures like Objects become typed by adding type annotations and the "type" keyword. This also means that TypeScript code becomes valid JavaScript code by removing these annotations and the keyword. As TypeScript is a superset of JavaScript, and the JSON format is derived from JavaScript, a JSON data structure can be parsed and cast directly to a TypeScript structure. Through this process the properties of a JSON structure can be validated on their type based on the typed properties of the TypeScript structure. A property can also be extended with another type, by annotating it with the name of a type.
+
+[ Presentation of the type declaration sample ]
 
 ```
 type Location = {
@@ -97,6 +99,10 @@ type Location = {
 ```
 
 [ Text ]
+
+TXON provides extensible and explicit typing of JSON structures. 
+
+[ Prsentation of the derived type declarations in the initialiser ]
 
 ```
 {

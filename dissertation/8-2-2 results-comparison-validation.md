@@ -1,4 +1,4 @@
-{"sub":"Validation of JSON and TXON"}
+{"sub":"Validation of JSON to TXON"}
 
 [ Text ]
 
