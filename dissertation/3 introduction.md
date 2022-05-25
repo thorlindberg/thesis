@@ -6,12 +6,6 @@ This evolution in computing has implications for how software projects are plann
 
 The data transmitted to these applications is often simple data structures containing small amounts of information, with a high frequency of transmission. In the case of platforms, especially social media platforms, user activity is recorded, batched, and algorithmically processed on-server, meaning user devices only receive the small result. Transmission occurs across layers in a system, referred to as a distributed system due to the distributed nature of communication. A main feature of distributed systems is their ability to handle hardware and software heterogeneity, as information must travel digitally and physically across layers of applications, networks, and hardware. Heterogeneity manifests as differences in protocols, programming language features, and data formats.
 
-<br>
-
-{"sub":"Purpose of this Project"}
-
-Existing research predominantly evaluates data serialisation formats from a feature, performance, and efficiency perspective. While these aspects are quantifiable, measurable, and potentially motivate decisions for designing large-scale data transmission systems, they fail to illustrate the conditions that inform the choice of data format for the common software development team. As performance differences are negligible in small-scale systems, these conditions are likely more abstract and extend beyond development into the organisational structures and division of responsibilities in the team and between levels of developers.
-
 {"break":true}
 
 {"sub":"State-of-the-Art"}

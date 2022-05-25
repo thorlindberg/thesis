@@ -1,4 +1,4 @@
-{"sub":"Evaluating validation process"}
+{"sub":"Validation of JSON with TypeScript and TXON"}
 
 The TypeScript language offers strongly and explicitly typed declarations and structures, which are applicable to a validation process. On their own these structures do not validate, but as data is cast to a typed structure it can be checked based on type conformance. As such they require the writing of more code than declarations. Type declarations support enumerated values and optional values, as well as relational references from one structure to another type or structure, allowing types to inherit from each other.
 

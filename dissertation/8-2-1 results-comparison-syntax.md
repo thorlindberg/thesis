@@ -1,4 +1,4 @@
-{"sub":"Evaluating data structure"}
+{"sub":"Syntax of JSON with TypeScript and TXON"}
 
 There are three steps necessary for the comparison of data structures utilising TypeScript and TXON. The first step is to compare type declarations on readability and character count. The second step is to compare type instances on readability and character count. The last step is to compare the efficiency of the entire untyped JSON with TypeScript types and TXON data structure with embedded types.
 
