@@ -135,7 +135,7 @@ type Location = {
 }
 ```
 
----
+---------------------------------------------------------------------------------
 
 TypeScript offers extensible and explicit typing of its structures, but it is also statitically typed, meaning its code does not compile with type errors. Its typed structures can be applied for validation by parsing and casting JSON data to them. TXON offers extensible and explicit typing of JSON structures, but it is dynamically typed, meaning its code can be parsed with type nonconformance. For this reason TXON requires a generic validation layer, the txon.js library, which standardises validation. TXON stresses minimal transformation of JSON data to add explicit typing.
 
