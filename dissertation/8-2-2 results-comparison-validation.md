@@ -2,11 +2,11 @@
 
 [ Text ]
 
-[ JSON data structure sample ]
+[ JSON data sample ]
 
 [ Text ]
 
-[ JSON data structure transformed to TXON ]
+[ JSON data transformed to TXON ]
 
 ---
 

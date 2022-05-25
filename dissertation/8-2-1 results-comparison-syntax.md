@@ -1,12 +1,138 @@
 {"sub":"Types in TypeScript and TXON"}
 
+[ Text on type declaration with TypeScript and its role in validation ]
+
+```
+type Location = {
+    id: string
+    locationId: string
+    name: string
+    address: Address
+    coordinates: Coordinates
+    imageUrl: string | null
+    phoneNumber: string | null
+    description: Localizable
+    roamingPartner: string | null
+    isRoaming: boolean
+    isOpen24: boolean
+    openingHours: Localizable
+    chargePoints: ChargePoint[]
+    isRemoteChargingSupported: boolean
+    isFuture: boolean
+}
+
+type Address = {
+    line1: string
+    line2: string
+}
+
+type Coordinates = {
+    lat: number
+    lng: number
+}
+
+type Localizable =  {
+    da: string | null
+    en: string | null
+}
+
+type ChargePointType = string
+
+type Connector[] = {
+    id: string
+    connectorNo: string
+    displayId: string
+    type: string
+    kW: number
+    speed: string
+}
+
+type ChargePoint[] = {
+    id: string
+    type: ChargePointType
+    connectors: Connector[]
+}
+```
+
+```
+type Location = {
+    id: string
+    locationId: string
+    name: string
+    address: {
+        line1: string
+        line2: string
+    }
+    coordinates: {
+        lat: number
+        lng: number
+    }
+    imageUrl: string | null
+    phoneNumber: string | null
+    description: Localizable
+    roamingPartner: string | null
+    isRoaming: boolean
+    isOpen24: boolean
+    openingHours: {
+        da: string | null
+        en: string | null
+    }
+    chargePoints: {
+        id: string
+        type: {
+            ChargePointType = string
+        }
+        connectors: {
+            id: string
+            connectorNo: string
+            displayId: string
+            type: string
+            kW: number
+            speed: string
+        }
+    }
+    isRemoteChargingSupported: boolean
+    isFuture: boolean
+}
+```
+
 [ Text ]
 
-[ Types in TypeScript. Diagram? Code ]
-
-[ Text ]
-
-[ Types in TXON. Diagram? Code ]
+```
+{
+    "init": {
+        "location": {
+            "id": "string", "locationId": "string", "name": "string",
+            "address": {
+                "line1": "string", "line2": "string"
+            },
+            "coordinates": {
+                "lat": "number", "lng": "number"
+            },
+            "imageUrl?": "string", "phoneNumber?": "string",
+            "description": {
+                "da?": "string", "en?": "string"
+            },
+            "roamingPartner?": "string", "isRoaming": "boolean", "isOpen24": "boolean",
+            "openingHours": {
+                "da?": "string", "en?": "string"
+            },
+            "chargePoints": [
+                {
+                    "id": "string",
+                    "connectors": [
+                        {
+                            "id": "string", "connectorNo": "string", "displayId": "string",
+                            "name": "string", "kW": "number", "speed?": "string"
+                        }
+                    ]
+                }
+            ],
+            "isRemoteChargingSupported": "boolean", "isFuture": "boolean"
+        }
+    }
+}
+```
 
 ---
 
