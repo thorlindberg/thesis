@@ -13,7 +13,7 @@ const checkInit = (object) => {
         }
     }
 
-    ∙∙∙
+    ...
     
 }
 ```
@@ -25,7 +25,7 @@ If an initialiser exists as a property of the root node, the method proceeds to 
 ```
 const checkInit = (object) => {
 
-    ∙∙∙
+    ...
 
     for (const [name, value] of Object.entries(object.init)) {
 
@@ -44,7 +44,7 @@ const checkInit = (object) => {
         }
 
         const isObject = typeof value === "object"
-        if (isObject) { ∙∙∙ }
+        if (isObject) { ... }
 
     }
 
@@ -60,11 +60,11 @@ const isObject = typeof value === "object"
 if (isObject) {
 
     const hasSharedType = value.hasOwnProperty("type")
-    if (hasSharedType) { ∙∙∙ }
+    if (hasSharedType) { ... }
 
-    if (isTypeExtensionName) { ∙∙∙ }
+    if (isTypeExtensionName) { ... }
 
-    for (const [propName, propValue] of Object.entries(value)) { ∙∙∙ }
+    for (const [propName, propValue] of Object.entries(value)) { ... }
 
 }
 ```
@@ -198,7 +198,7 @@ for (const [propName, propValue] of Object.entries(value)) {
     }
 
     const isObject = typeof propValue === "object"
-    if (isObject) { ∙∙∙ }
+    if (isObject) { ... }
 
 }
 ```
@@ -218,13 +218,13 @@ if (isObject) {
     }
 
     const hasDefault = propValue.hasOwnProperty("default")
-    if (hasDefault) { ∙∙∙ }
+    if (hasDefault) { ... }
 
     const hasMinimum = propValue.hasOwnProperty("minimum")
-    if (hasMinimum) { ∙∙∙ }
+    if (hasMinimum) { ... }
 
     const hasMaximum = propValue.hasOwnProperty("maximum")
-    if (hasMaximum) { ∙∙∙ }
+    if (hasMaximum) { ... }
 
 }
 ```

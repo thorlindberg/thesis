@@ -94,7 +94,7 @@ Type instances can be arrayrised, enabling the explicit typing of multiple data 
 ```
 {
     "init": {
-        "date": { ∙∙∙ }
+        "date": { ... }
     },
     "data": {
         "date": {

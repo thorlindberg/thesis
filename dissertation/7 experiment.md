@@ -8,7 +8,7 @@ The proposal is entitled the `Type-Extensible Object Notation` (TXON) specificat
 This approach is different from the traditional setup of specifying data requirements at each end of the system and validating it with the recipient's specification. This experiment must demonstrate that embedding requirements in data improves guarding and reduces defensive mechanisms for validation on the client side, whether it be a CI/CD system or an application.
 </p>
 
-As seen in figure {"ref":"experimentsetup"} this experiment is set up as two sequential parts: the development of a library for exploring a new grammar and an evaluation strategy for comparing the existing and proposed syntax for typed data. As this implementation heavily relies on code, each section will include an exhaustive presentation, split into smaller and more digestible components. The code samples will include three bulletpoints (`∙∙∙`) to indicate that part of the sample has been excluded and will appear as its own separate sample.
+As seen in figure {"ref":"experimentsetup"} this experiment is set up as two sequential parts: the development of a library for exploring a new grammar and an evaluation strategy for comparing the existing and proposed syntax for typed data. As this implementation heavily relies on code, each section will include an exhaustive presentation, split into smaller and more digestible components. The code samples will include three dots (...) to indicate that part of the sample has been excluded and will appear as its own separate sample.
 
 <br>
 

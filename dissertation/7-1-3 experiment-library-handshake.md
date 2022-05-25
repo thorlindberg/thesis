@@ -22,9 +22,9 @@ handshake: (input) => {
         "string", "integer", "number", "object", "array", "boolean", "null" 
     ]
 
-    const checkJSON = (input) => { ∙∙∙ }
-    const checkInit = (object) => { ∙∙∙ }
-    const checkData = (object) => { ∙∙∙ }
+    const checkJSON = (input) => { ... }
+    const checkInit = (object) => { ... }
+    const checkData = (object) => { ... }
 
     const jsonError = checkJSON(input)
     if (jsonError != null) { return jsonError }

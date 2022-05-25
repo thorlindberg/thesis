@@ -4,7 +4,7 @@ The `docs` property requires no input parameters and returns a String documentin
 docs: [
 
     "How to validate with TXON",
-    ∙∙∙
+    ...
     
 ].join("\n")
 ```

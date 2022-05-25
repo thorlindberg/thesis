@@ -19,9 +19,9 @@ const checkData = (object) => {
         }
     }
 
-    const recursion = (input) => { ∙∙∙ }
+    const recursion = (input) => { ... }
 
-    const validate = (input) => { ∙∙∙ }
+    const validate = (input) => { ... }
                                 
     const recursionError = recursion(object.data)
     if (recursionError != null) {
@@ -99,7 +99,7 @@ const validate = (input) => {
         }
 
         const typeInitialised = object.init.hasOwnProperty(input.type)
-        if (typeInitialised) { ∙∙∙ }
+        if (typeInitialised) { ... }
 
     }
 
@@ -116,9 +116,9 @@ if (typeInitialised) {
 
     const hasValues = input.hasOwnProperty("values")
 
-    if (!hasValues) { ∙∙∙ }
+    if (!hasValues) { ... }
 
-    if (hasValues) { ∙∙∙ }
+    if (hasValues) { ... }
 
 }
 ```
@@ -144,7 +144,7 @@ if (!hasValues) {
                 return { valid: false, feedback: `instance of type "${input.type}" missing required property "${name}"`}
             }
 
-            if (inInstance) { ∙∙∙ }
+            if (inInstance) { ... }
 
         }
 
@@ -243,7 +243,7 @@ if (hasValues) {
                             return { valid: false, feedback: `instance of type "${input.type}" missing required property "${name}"`}
                         }
 
-                        if (inInstance) { ∙∙∙ }
+                        if (inInstance) { ... }
 
                     }
 
