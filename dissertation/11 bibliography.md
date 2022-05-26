@@ -48,3 +48,5 @@ that makes developers happier.","authors":["Alphabet Inc."],"year":"2022","publi
 {"bib":"apple2022swiftevolution","title":"Swift Programming Language Evolution","authors":["Apple Inc."],"year":"2022","publisher":"Apple","url":"https://github.com/apple/swift-evolution"}
 
 {"bib":"guernsey2013testdriven","title":"Test-driven Database Development: Unlocking Agility","authors":["Guernsey, M."],"year":"2013","publisher":"Addison-Wesley","url":"https://books.google.dk/books/about/Test_driven_Database_Development.html?id=RYUvLgEACAAJ&redir_esc=y"}
+
+{"bib":"beck2003testdriven","title":"Test-driven Database Development: Unlocking Agility","authors":["Guernsey, M."],"year":"2013","publisher":"Addison-Wesley","url":"https://books.google.dk/books/about/Test_driven_Development.html?id=gFgnde_vwMAC&redir_esc=y"}
