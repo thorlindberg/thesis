@@ -1,6 +1,6 @@
 {"sec":"Programming Languages and Development"}
 
-[ Text ]
+In this section I present the terminology...
 
 <br>
 
