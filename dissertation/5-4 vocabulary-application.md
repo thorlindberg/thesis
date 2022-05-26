@@ -1,16 +1,16 @@
-{"sec":"Application Development and Languages"}
+{"sec":"Programming Languages and Development"}
 
 [ Text ]
 
 <br>
 
-{"sub":"Swift Enumeration Structure"}
+{"sub":"TypeScript enumerations"}
 
 [ Text ]
 
 <br>
 
-{"sub":"Swift Codable Protocol"}
+{"sub":"Casting data to type "}
 
 [ Text ]
 
