@@ -4,7 +4,7 @@ In this section I present the terminology used for planning and conducing a deve
 
 <br>
 
-{"sec":"Why to test and approaches to testing"}
+{"sub":"Why to test and approaches to testing"}
 
 {"cite":"guernsey2013testdriven"} presents test-driven development as the process of writing tests that inform the criteria for a succesful functional implementation, as opposed to the traditional approach of testing for validation. He argues for various perspectives on TDD by presenting it as a `design approach` and `programming technique`. As a design approach it is used to derive specification of requirements from writing tests with success criteria. As a programming technique it is used to write `clean code` by reiterating and refactoring the code until it functionally passes test criteria.
 
@@ -43,7 +43,7 @@ Start --> [ Add a test ]
 
 <br>
 
-{"sec":"How to write tests"}
+{"sub":"How to write tests"}
 
 Development driven by testing has implications not only for the approach to implementation, but also the structure of the code itself and the overall practices surrounding projects. As each feature needs to be developed on a foundation of demonstrable necessity, the process must be divided into small enough steps for testing to be possible. The testing of a smaller component in a large codebase is referred to as `unit tests`, as each component becomes a testable `unit`. They provide a clear and measurable success criteria, which ensures that the requirements for a project are met with confidence. {"ref":"beck2003testdriven"} popularised TDD nad his rules for writing unit tests are:
 
