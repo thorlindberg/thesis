@@ -34,8 +34,7 @@
 
 {"bib":"apple2022swift","title":"The Swift Programming Language","authors":["Apple Inc."],"year":"2022","publisher":"Apple","url":"https://docs.swift.org/swift-book/"}
 
-{"bib":"alpha2022kotlin","title":"A modern programming language
-that makes developers happier.","authors":["Alphabet Inc."],"year":"2022","publisher":"Alphabet","url":"https://kotlinlang.org"}
+{"bib":"alpha2022kotlin","title":"A modern programming language that makes developers happier.","authors":["Alphabet Inc."],"year":"2022","publisher":"Alphabet","url":"https://kotlinlang.org"}
 
 {"bib":"micro2022typescript","title":"TypeScript Handbook: Object Types","authors":["Microsoft"],"year":"2022","publisher":"Microsoft","url":"https://www.typescriptlang.org/docs/handbook/2/objects.html"}
 
@@ -49,4 +48,4 @@ that makes developers happier.","authors":["Alphabet Inc."],"year":"2022","publi
 
 {"bib":"guernsey2013testdriven","title":"Test-driven Database Development: Unlocking Agility","authors":["Guernsey, M."],"year":"2013","publisher":"Addison-Wesley","url":"https://books.google.dk/books/about/Test_driven_Database_Development.html?id=RYUvLgEACAAJ&redir_esc=y"}
 
-{"bib":"beck2003testdriven","title":"Test-driven Database Development: Unlocking Agility","authors":["Guernsey, M."],"year":"2013","publisher":"Addison-Wesley","url":"https://books.google.dk/books/about/Test_driven_Development.html?id=gFgnde_vwMAC&redir_esc=y"}
+{"bib":"beck2003testdriven","title":"Test-driven Development: By Example","authors":["Beck, K."],"year":"2003","publisher":"Addison-Wesley Professional","url":"https://books.google.dk/books/about/Test_driven_Development.html?id=gFgnde_vwMAC&redir_esc=y"}
