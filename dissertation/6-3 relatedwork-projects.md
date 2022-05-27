@@ -68,6 +68,54 @@ An interesting finding here is the inclusion of a DateTime type, as dates are co
 
 {"sub":"The \"Typeable Simple Object Notation\" (TSON)"}
 
-[ Text ] {"cite":"lyon2014typeable"}
+Developed by {"cite":"lyon2014typeable"} this project proposes an alternative data interchange format derived from the JSON specification. The `Typeable Simple Object Notation` (TSON) is grammatically similar to JSON, but its node names are syntactically more akin to JavaScript objects. Where as JSON requires names to be of type String, the TSON specification makes this optional as long as a name does not contain double-quotes (") between characters, or any of the characters reserved for denoting structure or types in JSON (,:[]{}).
+
+This proposal implies that a TSON data structure does not conform to the JSON specification, and as such it is incompatible with existing JSON parsers. As a result the developer has implemented their own library specifically targeting the C# programming language. This effectively limits the use of TSON to a single programming language, and as such it cannot be considered interoperable outside systems that are exclusively written in C#.
+
+The library contains its own C# parsing and classes, providing developers with the tools to construct typed classes in C# and cast TSON data structures to classes after parsing. As seen in this example the contents of a class can be typed with the predefined TSON classes or extended with a custom class that conforms to TSON by being typed with its classes.
+
+```
+class Data : TsonTypedObjectNode {
+    [TsonNotNull]
+    public TsonNumberNode NumNode { get; set; }
+    [TsonNotNull]
+    public TsonStringNode StringNode { get; set; }
+    [TsonNotNull]
+    public TsonBooleanNode BoolNode { get; set; }
+    [TsonNotNull]
+    public TsonObjectNode ObjectNode { get; set; }
+    [TsonNotNull]
+    public TsonArrayNode ArrayNode { get; set; }
+    public CustomData CustomData { get; set; }
+    public TsonArrayNode<TsonStringNode> StringNodeList { get; set; }
+    public TsonArrayNode<TsonNumberNode> NumberNodeList { get; set; }
+    public TsonArrayNode<CustomData> CustomDataList { get; set; }
+    public TsonArrayNode<TsonObjectNode> ObjectNodeList { get; set; }
+}
+
+class CustomData : TsonTypedObjectNode {
+    public TsonStringNode Thing1 { get; set; }
+    public TsonNumberNode Thing2 { get; set; }
+}
+```
+
+<br>
+
+A data structure that conforms to the TSON specification and these classes is seen in the following, along with the method for parsing and initialising a TSON structure to the C# class. It is evident that this approach results in a more readable format, as less characters that do not denote information or types is included, but that this comes at the heavy cost of interoperability and compatibility with JSON parsers. The proposal for this format does not include anything that demonstrates an expanded feature set or other improvements when compared to the JSON specification and format, not even when only considering a C# implementation.
+
+```
+NumNode: 10,
+StringNode: abc,
+BoolNode: true,
+ObjectNode: { a: 1, b: 2 },
+ArrayNode: [ 1, 2 ],
+CustomData: { Thing1: a, Thing2: 2 },
+StringNodeList: [ a, b, c ],
+NumberNodeList: [ 1, 2, 3 ],
+CustomDataList: [ { Thing1: a, Thing2: 1 }, { Thing1: b, Thing2: 2 } ]
+```
+```
+Tson.ToObjectNode<Data>(File.ReadAllText("data.tson"))
+```
 
 {"break":true}
