@@ -31,6 +31,10 @@ The JavaScript language implements a built-in `JSON` object with a method for en
 
 {"sub":"Decoding and Encoding in Server Software"}
 
+<!--
+https://docs.gitlab.com/ee/ci/
+-->
+
 [ `Continuous Integration and Development` (CI/CD) ]
 
 {"break":true}
