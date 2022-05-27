@@ -12,7 +12,7 @@ https://docs.oracle.com/cd/E57471_01/bigData.100/extensions_bdd/src/cext_transfo
 
 {"sub":"Decoding and Encoding in Local Software"}
 
-I preface this presentation of how data is processed at the local level of software in system, by covering how data structures are typed in software. Programming languages differentiate between two type systems: `static` and `dynamic` typing.
+Programming languages differentiate between two type systems: `static` and `dynamic` typing.
 
 In the static type system the declaration, instantiation and processing of a value throughout the application is checked when the software is compiled. This implies that the software cannot be executed if type checking fails, as the software must first be succesfully compiled with valid type checks. As such this type system is typical of `compiled programming languages`.
 
@@ -29,12 +29,10 @@ The JavaScript language implements a built-in `JSON` object with a method for en
 
 {"break":true}
 
-{"sub":"Decoding and Encoding in Server Software"}
+{"sub":"Decoding and Encoding in Server-side Software"}
 
-<!--
-https://docs.gitlab.com/ee/ci/
--->
+When developing software the continuous validation of implementations guides the process, and as such the `Continuous Integration and Deployment` (CI/CD) system has been popularised as of recent. This approach aims to automate the processes in-between pushing changes to code and `integration` or `deployment`. The automated integration is achieved by defining a set of checks and validation methods that are applied to code changes. The automated deployment of changes goes a step further, by actually deploying these changes. Both of these processes require no human intervention, but there is a step process of `delivery` that only deploys after manual review.
 
-[ `Continuous Integration and Development` (CI/CD) ]
+[ GitLab as a CI/CD service ]
 
 {"break":true}
