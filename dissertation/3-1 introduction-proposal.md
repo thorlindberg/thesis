@@ -1,4 +1,4 @@
-{"sec":"Proposal for Type-Extensible Notation"}
+{"sec":"Proposal for Type-Extensible Format"}
 
 In the following section I present my proposal for a data interchange format, motivated and informed by these current conditions in the field of software development. This does not include an exhaustive implementation in a distributed system, but rather illustrates and argues for a data object notation that is both safer and easier to use.
 
