@@ -120,30 +120,19 @@ As the values of an object can reference other objects as properties or function
 
 <br>
 
-@startuml
-@startjson
+```
+const value = "Hello, World!"
+const doubleNumber = (number) => number * 2
 
-<style>
-jsonDiagram {
-    BackGroundColor transparent
-    node {
-        BackGroundColor white
-    }
-}
-</style>
-
-{
-    "function": "double()",
-    "object": {
-        "property": "value",
-        "method": "double()"
-    }
+const objectLiteral = {
+    property: value,
+    method: doubleNumber
 }
 
-@endjson
-@enduml
+objectLiteral.doubleNumber(12) // returns 24
+```
 
-{"fig":"relationalobject","caption":"Objects in JavaScript can contain properties and methods that reference structures or functions."}
+{"fig":"relationalobject","caption":"Objects in JavaScript can contain properties and methods that reference structures or functions. This object has a method to double a number value."}
 
 {"break":true}
 
