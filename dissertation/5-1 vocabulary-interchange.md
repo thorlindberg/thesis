@@ -106,10 +106,6 @@ As seen in figure {"ref":"relationalarrays"} a `header` can be added as the firs
 
 {"fig":"relationalarrays","caption":"Multi-dimensional arrays for students and courses, connected in a multi-dimensional array through relational keys (identifiers). An instance in the array of connected identifiers represents the connection between student and course. Each student can be connected to multiple courses, but should only be connected once per course."}
 
-<!--
-https://www.pragimtech.com/blog/mongodb-tutorial/relational-and-non-relational-databases/
--->
-
 {"break":true}
 
 {"sub":"Objects and relational types"}
@@ -118,30 +114,33 @@ Where as arrays can be useful for compact storage of data, they are not the opti
 
 {"cite":"mozilla2022objects"} presents objects in the context of the JavaScript programming language, but this description is also applicable to other programming languages. The structure of an object is a `declaration` which does not contain any values. An object is assigned its values through the process of `initialisation` where the object becomes an `instance` of itself. If an object is not intended to be reused, it can be initialised without declaration as an `object literal`.
 
-An object can contain both values and functions, each with their own name. The values are referred to as `properties` of the object, and the functions are referred to as its `methods`. These can be accessed by name through the `dot syntax` (object.name) or the `bracket syntax` (object.["name"]). This approach is considered "safe" because a value can always be accessed by name even if the collection is unordered. In other words there is no implicit meaning assigned to the index position in the collection.
+As seen in figure {"ref":"relationalobject"} an object can contain both values and functions, each with their own name. The values are referred to as `properties` of the object, and the functions are referred to as its `methods`. These can be accessed by name through the `dot syntax` (object.name) or the `bracket syntax` (object.["name"]). This approach is considered "safe" because a value can always be accessed by name even if the collection is unordered. In other words there is no implicit meaning assigned to the index position in the collection.
 
 As the values of an object can reference other objects as properties or functions as methods, they become relational without having to rely on identifiers. This allows developers to abstract a collection into multiple collections, referred to as `components`. This is the main motivation for applying objects through object-oriented programming, as this relationship between data structures is considered safe, easy to interpret, and can be mapped to real-world objects.
 
 <br>
 
 @startuml
-
-skinparam linetype ortho
+@startjson
 
 <style>
-classDiagram {
+jsonDiagram {
     BackGroundColor transparent
-    class {
+    node {
         BackGroundColor white
     }
 }
 </style>
 
-[ UML diagram of object-oriented branching data structures ]
+{
+    "function": "double()",
+    "object": {
+        "property": "value",
+        "method": "double()"
+    }
+}
 
-@enduml
-
-{"fig":"...","caption":"..."}
+{"fig":"relationalobject","caption":"Objects in JavaScript can contain properties and methods that reference structures or functions."}
 
 {"break":true}
 

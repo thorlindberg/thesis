@@ -45,7 +45,7 @@ Start --> [ Add a test ]
 
 {"sub":"How to write tests"}
 
-Development driven by testing has implications not only for the approach to implementation, but also the structure of the code itself and the overall practices surrounding projects. As each feature needs to be developed on a foundation of demonstrable necessity, the process must be divided into small enough steps for testing to be possible. The testing of a smaller component in a large codebase is referred to as `unit tests`, as each component becomes a testable `unit`. They provide a clear and measurable success criteria, which ensures that the requirements for a project are met with confidence. {"ref":"beck2003testdriven"} popularised TDD nad his rules for writing unit tests are:
+Development driven by testing has implications not only for the approach to implementation, but also the structure of the code itself and the overall practices surrounding projects. As each feature needs to be developed on a foundation of demonstrable necessity, the process must be divided into small enough steps for testing to be possible. The testing of a smaller component in a large codebase is referred to as `unit tests`, as each component becomes a testable `unit`. They provide a clear and measurable success criteria, which ensures that the requirements for a project are met with confidence. {"cite":"beck2003testdriven"} popularised TDD and his rules for writing unit tests are:
 
 - Execution time should be short, resulting in fast testing.
 - Tests should be executed in isolation from each other, resulting in reordable tests.
