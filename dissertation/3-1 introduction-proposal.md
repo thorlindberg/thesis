@@ -81,6 +81,8 @@ The TXON format provides support for type declarations and instances, which are 
 
 As seen in figure {"ref":"txonjson"} the TXON data structure mirrors the JSON data structure, but adds an `initialiser` through its "init" property for type declarations and explicit selective typing of the corresponding node. A TXON data structure must contain an "init" and "data" property to be validated, but this is not expected to cause issue as JSON structures typically branch from a "data" property at the root node. As such the format is extensibly adding information on types, while maintaing as much of the original structure as possible.
 
+<br>
+
 @startuml
 @startjson
 
