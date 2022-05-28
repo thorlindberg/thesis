@@ -104,7 +104,7 @@ As seen in figure {"ref":"relationalarrays"} a `header` can be added as the firs
 </table>
 </div>
 
-{"fig":"relationalarrays","caption":"Multi-dimensional arrays for students and courses, connected in a multi-dimensional array through relational keys (identifiers). An instance in the array of connected identifiers represents the connection between student and course. Each student can be connected to multiple courses, but should only be connected once per course."}
+{"fig":"relationalarrays","caption":"Multi-dimensional arrays for students and courses, connected in a multi-dimensional array through relational keys (identifiers). Each student can be connected to multiple courses, but should only be connected once per course."}
 
 {"break":true}
 
@@ -132,7 +132,7 @@ const objectLiteral = {
 objectLiteral.doubleNumber(12) // returns 24
 ```
 
-{"fig":"relationalobject","caption":"Objects in JavaScript can contain properties and methods that reference structures or functions. This object has a method to double a number value."}
+{"fig":"relationalobject","caption":"Objects in JavaScript can contain properties and methods that reference structures or functions. This object has a relational vlaue and relational method to double a number value."}
 
 {"break":true}
 
@@ -143,6 +143,8 @@ When data structures leave the confines of a specific programming language, it m
 Formats for serialised data are best differentiated on their features, as they typically serve similar purposes and one format can accomodate similar needs as another format. The two main categories of formats are `plain-text` or `binary`, where plaint-text refers to formats that are readable to humans and binary referes to formats that are not readable because they use binary serisalisation.
 
 Plain-text formats are intrinsically less efficient but more interoperable and their readability makes them easy to interpret when looking directly at the data. In interchange and transmission of data interoperability is an important feature, as a standardised format needs to be applicable to as many potential languages and systems as possible. This does not mean that plain-text formats are always the optimal choice, but for a standardised format they are typically the ideal.
+
+<br>
 
 {"cite":"mozilla2022xml"} presents the `Extensible Markup Language` (XML) as a markup language, meaning its values are explicitly assigned meaning by placing each value between an opening and closing tag. Unlike other markup languages, the names of tags in XML refer to value names rather than being predefined tags. This syntax provides a standardised and extensible language for expressing objects and their properties, by nesting named tags and their values inside each other. As such, an object is represented as a tag whose value is other tagged values. Each tag can be heavily specified with an extensible syntax, with requirements such as the character length of the tagged value.
 
