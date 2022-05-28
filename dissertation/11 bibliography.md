@@ -57,3 +57,7 @@
 {"bib":"mozilla2022json","title":"JavaScript Object Notation","authors":["Mozilla"],"year":"2022","publisher":"Mozilla Foundation","url":"https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON"}
 
 {"bib":"mozilla2022xml","title":"Extensible Markup Langauge","authors":["Mozilla"],"year":"2022","publisher":"Mozilla Foundation","url":"https://developer.mozilla.org/en-US/docs/Web/XML/XML_introduction"}
+
+{"bib":"oracle2015typing","title":"Dynamic typing vs. static typing","authors":["Oracle"],"year":"2015","publisher":"Oracle","url":"https://docs.oracle.com/cd/E57471_01/bigData.100/extensions_bdd/src/cext_transform_typing.html"}
+
+{"bib":"apple2022codable","title":"Encoding and Decoding Custom Types","authors":["Apple Inc."],"year":"2022","publisher":"Apple","url":"https://developer.apple.com/documentation/foundation/archives_and_serialization/encoding_and_decoding_custom_types"}
