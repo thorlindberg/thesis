@@ -4,7 +4,7 @@ In this chapter I present the background for this project by introducing the com
 
 The company specialises in native multi-platform mobile application development. They operate two separate development teams, working in parallel on the same case. One team writes in the `Swift programming language` targeting the `iOS mobile operating system` {"citep":"apple2022swift"}, while another writes in the `Kotlin programming language` targeting the `Android mobile operating system` {"citep":"alpha2022kotlin"}.
 
-As seen in figure {"ref":"companystructure"} the company consists of five departments: `management` `project management` `human resources` `engineering` and `design`. Management negotitates case-work with clients and manages the project managers, who manage the remaining three departments at the comapny. As clients differ from each other and their internal operations are unknown to me, this overview is not exhaustive and only cosists of the two departments known to me at a specific client: `product management` and `back-end engineering`. Product management is responsible for negotating product development with company managemnet, and back-end engineering negotitates software development with company engineering.
+As seen in figure {"ref":"companystructure"} the company consists of five departments: `management` `project management` `human resources` `engineering` and `design`. Management negotitates case-work with clients and manages the project managers, who manage the remaining three departments at the company. As clients differ from each other and their internal operations are unknown to me, this overview is not exhaustive and only cosists of the two departments known to me at a specific client: `product management` and `back-end engineering`. Product management is responsible for negotating product development with company managemnet, and back-end engineering negotitates software development with company engineering.
 
 <br>
 
@@ -66,18 +66,22 @@ jsonDiagram {
 </style>
 
 {
-    "Cases": {
-        "Deliverables": {
-            "iOS Development": 23,
-            "Android Development": 18,
-            "UI/UX Design": 19,
-            "Project Management": 16,
-            "Quality Assurance (QA)": 7,
-            "Backend Development": 6,
-            "Business Development": 4,
-            "Technical Leadership": 2
+    "Case": [
+        "Client",
+        "Description",
+        {
+            "Deliverables": {
+                "iOS Development": 23,
+                "Android Development": 18,
+                "UI/UX Design": 19,
+                "Project Management": 16,
+                "Quality Assurance (QA)": 7,
+                "Backend Development": 6,
+                "Business Development": 4,
+                "Technical Leadership": 2
+            }
         }
-    }
+    ]
 }
 
 @endjson

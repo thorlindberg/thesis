@@ -81,15 +81,11 @@ type EnumeratedTypeName = "a" | "b" | "c"
 type ObjectTypeName = {
     requiredValue: EnumeratedTypeName
     optionalValue: string | null
-    nestedValue: NestedTypeName
     arrayrizedValue: ArrayTypeName[]
 }
 ```
-```
-type NestedTypeName = {
-    requiredValue: string
-}
-```
+
+<br>
 
 As seen in figure {"ref":"typehierarchy"}  there is a hierarchy of type declarations on the company GitLab, representing information on the location of an installation by the client. These declarations are used during validation of incoming JSON data, as the specify type requirements. I have chosen to exclude enumerated type declarations, but this concept is explored in my proposal. It is evident that a location has multiple installed chargers, which is the longest branching of types within this structure.
 
