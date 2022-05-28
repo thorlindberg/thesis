@@ -62,30 +62,4 @@ The take away from the OSI model is that as data flows through a distributed sys
 
 {"cite":"tarkoma2012publish"} presents the "Representational State Transfer" (REST) "Application Programming Interface" (API), an architectural model and web technology for implementing publish-subscribe systems. This model consists of resources and representations of their state. "Resources" are akin to objects, whose current or future state is represented in the system. State is altered through API requests sent by a client, which becomes transitional once it awaits at least one server response. As a web technology, REST is typically seen with the HTTP protocol.
 
-...
-
-<br>
-
-{"sub":"Data parsing"}
-
-...
-
-<br>
-
-{"sub":"Typesetting"}
-
-...
-
-<br>
-
-{"sub":"Backwards compatibility"}
-
-...
-
-<br>
-
-{"sub":"Language extensibility"}
-
-...
-
 {"break":true}

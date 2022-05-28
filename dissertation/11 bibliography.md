@@ -49,3 +49,11 @@
 {"bib":"guernsey2013testdriven","title":"Test-driven Database Development: Unlocking Agility","authors":["Guernsey, M."],"year":"2013","publisher":"Addison-Wesley","url":"https://books.google.dk/books/about/Test_driven_Database_Development.html?id=RYUvLgEACAAJ&redir_esc=y"}
 
 {"bib":"beck2003testdriven","title":"Test-driven Development: By Example","authors":["Beck, K."],"year":"2003","publisher":"Addison-Wesley Professional","url":"https://books.google.dk/books/about/Test_driven_Development.html?id=gFgnde_vwMAC&redir_esc=y"}
+
+{"bib":"mozilla2022arrays","title":"Arrays","authors":["Mozilla"],"year":"2022","publisher":"Mozilla Foundation","url":"https://developer.mozilla.org/en-US/docs/Learn/JavaScript/First_steps/Arrays"}
+
+{"bib":"mozilla2022objects","title":"Objects","authors":["Mozilla"],"year":"2022","publisher":"Mozilla Foundation","url":"https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Basics"}
+
+{"bib":"mozilla2022json","title":"JavaScript Object Notation","authors":["Mozilla"],"year":"2022","publisher":"Mozilla Foundation","url":"https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON"}
+
+{"bib":"mozilla2022xml","title":"Extensible Markup Langauge","authors":["Mozilla"],"year":"2022","publisher":"Mozilla Foundation","url":"https://developer.mozilla.org/en-US/docs/Web/XML/XML_introduction"}
