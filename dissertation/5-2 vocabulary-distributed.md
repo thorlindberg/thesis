@@ -24,7 +24,7 @@ A distributed system achieves asynchronous collaboration through a communication
 
 {"sub":"Layers of a distributed system"}
 
-As seen in figure {"fig":"distributedlayers"} the network layer is one of multiple layers typical of networking systems. {"cite":"alani2014guide"} presents the 7 layers of the "Open Systems Interconnection" (OSI) model relative to the 4 layers of the "Transmission Control Protocol" (TCP). The OSI model abstracts networking systems into a conceptual framework, to describe and standardise the functional relationship between these layers.
+As seen in figure {"ref":"distributedlayers"} the network layer is one of multiple layers typical of networking systems. {"cite":"alani2014guide"} presents the 7 layers of the "Open Systems Interconnection" (OSI) model relative to the 4 layers of the "Transmission Control Protocol" (TCP). The OSI model abstracts networking systems into a conceptual framework, to describe and standardise the functional relationship between these layers.
 
 {"fig":"distributedlayers","url":"figures/encapsulation.png","caption":"..."}
 
