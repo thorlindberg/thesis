@@ -18,9 +18,97 @@ For this reason it is more common to utilise multi-dimensional arrays for repres
 
 As seen in figure {"ref":"relationalarrays"} a `header` can be added as the first entry in the array, describing the categories of values, and an `identifier` category can be added as the first category in the opposite dimension. The purpose of this is to minimise the array, and split it into multiple two-dimensional arrays, linked together by their identifier values. As these data structures increase size, it becomes paramount to minimise wasted space, and this process ensures explicit linking of data when their implicit meaning is lost with their relative positioning.
 
-[ UML diagram of relational multi-dimensional arrays ]
+<br>
 
-{"fig":"relationalarrays","caption":"..."}
+<div class="table" style="display:flex;justify-content:space-evenly">
+<table>
+    <caption>Students</caption>
+    <tr>
+        <td>identifier</td>
+        <td>name</td>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>Sam</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>Mary</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>Tine</td>
+    </tr>
+</table>
+<table>
+    <caption>Student Courses</caption>
+    <tr>
+        <td>student</td>
+        <td>course</td>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>1</td>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>2</td>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>3</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>3</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>4</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>3</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>5</td>
+    </tr>
+</table>
+<table>
+    <caption>Courses</caption>
+    <tr>
+        <td>identifier</td>
+        <td>name</td>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>SQL Server</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>ASP.NET MVC</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>MongoDB</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>Java</td>
+    </tr>
+    <tr>
+        <td>5</td>
+        <td>PHP</td>
+    </tr>
+</table>
+</div>
+
+{"fig":"relationalarrays","caption":"Multi-dimensional arrays for students and courses, connected in a multi-dimensional array through relational keys (identifiers)."}
+
+<!--
+https://www.pragimtech.com/blog/mongodb-tutorial/relational-and-non-relational-databases/
+-->
 
 {"break":true}
 
@@ -34,7 +122,26 @@ An object can contain both values and functions, each with their own name. The v
 
 As the values of an object can reference other objects as properties or functions as methods, they become relational without having to rely on identifiers. This allows developers to abstract a collection into multiple collections, referred to as `components`. This is the main motivation for applying objects through object-oriented programming, as this relationship between data structures is considered safe, easy to interpret, and can be mapped to real-world objects.
 
+<br>
+
+@startuml
+
+skinparam linetype ortho
+
+<style>
+classDiagram {
+    BackGroundColor transparent
+    class {
+        BackGroundColor white
+    }
+}
+</style>
+
 [ UML diagram of object-oriented branching data structures ]
+
+@enduml
+
+{"fig":"...","caption":"..."}
 
 {"break":true}
 
