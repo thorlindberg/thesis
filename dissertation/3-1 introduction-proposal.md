@@ -8,9 +8,9 @@ In this section I present my proposal for a new data interchange format, motivat
 
 I approached this project with understanding and respect for the existing structures and practices wherein I seek to contribute. It is crucial to acknowledge that the importance of data interchange has resulted in extensive work into the grammar, transmission and universiality of data formats. For this reason I developed my proposal with emphasis on causing the least disruption of existing implementations in systems and languages.
 
-The popularity of the JavaScript Object Notation (JSON) made it an obvious choice for this project. As the web became ubiquitous, so too did the JavaScript language, from which the JSON data format is derived. The specification for the JSON format stresses human-readability and universiality across systems and programming languages {"citep":"ecma2022json"}. JSON is a plain-text format, meaning it can be displayed and edited in any text processing application. The seven value types available in JSON are `object` `array` `string` `number` `true` `false` and `null`.
+The popularity of the `JavaScript Object Notation` (JSON) made it an obvious choice for this project. As the web became ubiquitous, so too did the `JavaScript programming language`, from which the JSON data format is derived. The specification for the JSON format stresses human-readability and universiality across systems and programming languages {"citep":"ecma2022json"}. JSON is a plain-text format, meaning it can be displayed and edited in any text processing application. The seven value types available in JSON are `object` `array` `string` `number` `true` `false` and `null`.
 
-{"cite":"douglas2020form"} presents the grammar of JSON in the McKeeman Form, which is a notation for expressing grammars While JSON specifies a clear hierarchy of data nodes, this notation is necessary as some of the grammar includes recursion. As seen in figure {"ref":"jsontypes"} I have attempted to hierarchally present this grammatical notation, but this should be viewed as an abstractation that does not exhaustively portray the grammar of JSON.
+{"cite":"douglas2020form"} presents the grammar of JSON in the `McKeeman Form`, which is a notation for expressing grammars. While JSON specifies a clear hierarchy of data nodes, this notation is necessary as some of the grammar includes recursion. As seen in figure {"ref":"jsontypes"} I have attempted to hierarchally represent this grammatical notation, but this should be viewed as an abstractation that does not exhaustively portray the grammar of JSON.
 
 <br>
 
@@ -22,9 +22,6 @@ jsonDiagram {
     BackGroundColor transparent
     node {
         BackGroundColor white
-        highlight {
-            BackGroundColor #ffdc7d
-        }
     }
 }
 </style>
@@ -76,30 +73,13 @@ jsonDiagram {
 
 {"sub":"Purpose of this Project"}
 
-This project contributes with a proposal for type declarations within the JavaScript Object Notation (JSON) specification, by defining a syntax for extensible declaration and relation references. The result is a superset JSON data format, the Type-Extensible Object Notation (TXON), paired with a JavaScript library to validate the conformance of a data structure to this format. Type declarations in this format can contain enumerated values and extensible types, while remaining compatible with JSON parsers.
+This project contributes to existing implementations of the JSON specification by proposing a grammar for explicit and extensible typing of values. This proposal is phrased as the `Type-Extensibe Object Notation` (TXON) which is a format that conforms completely to the JSON specification, and as such it maintains full compatibility with existing JSON encoders and decoders. The TXON format is paired with a library written in JavaScript for validating correct syntactical application and conformance within its embedded type system.
 
-The proposal was directly inspired by the TypeScript programming language, which is a superset of the JavaScript language, from which the JSON specification is derived {"citep":"micro2022typescript"}. TypeScript takes an extensible approach to declaring strongly-typed JavaScript properties, by maintaing the structure of JavaScript, allowing developers to add as many or no declarations at all. This also means that TypeScript code becomes JavaScript code with slight modifications to declarations.
+The proposal was directly inspired by the `TypeScript programming language`, which is a superset of the JavaScript language, from which the JSON specification is derived {"citep":"micro2022typescript"}. TypeScript takes an extensible approach to declaring strongly-typed JavaScript properties, by maintaing the structure of JavaScript, allowing developers to add as many or no declarations at all. This also means that TypeScript code becomes JavaScript code with slight modifications.
 
 The TXON format provides support for type declarations and instances, which are validated and compared for conformance. The syntax itself is extensible, meaning all, some, or none of the data can be typed with TXON, just as it is with TypeScript. The type declarations are also extensible, meaning they can extend existing declarations or JSON types with enumerated values, minimum to maximum value ranges, and default values.
 
-{"break":true}
-
-As seen in figure {"ref":"txonsyntax"} a TXON data structure contains at least two root nodes: "init" and "data". It is typical of JSON data structures to contain data in a root "data" property, and the "init" property was added to contain type declarations. As seen in figure {"ref":"txonjson"} the TXON syntax requires fewer characters than JSON at scale, when it is assumed that both structures require validation. This illustrates how the TXON approach to generalised validation saves both development time and reduces file sizes, relative to utilising JSON and writing custom validation code.
-
-```
-{
-    "init": {
-        "number.date": { "case": "month" }
-    },
-    "data": {
-        "date": { "type": "number.date", "month": 4 },
-        "description": "The month of my birth"
-    }
-}
-```
-{"fig":"txonsyntax","caption":"Example of the extensible approach to both type declaration and initialisation, as the type inherits from the JSON \"number\" type and not all of the data references a type."}
-
-<br>
+As seen in figure {"ref":"txonjson"} the TXON data structure mirrors the JSON data structure, but adds an `initialiser` through its "init" property for type declarations and explicit selective typing of the corresponding node. A TXON data structure must contain an "init" and "data" property to be validated, but this is not expected to cause issue as JSON structures typically branch from a "data" property at the root node. As such the format is extensibly adding information on types, while maintaing as much of the original structure as possible.
 
 @startuml
 @startjson
@@ -109,40 +89,51 @@ jsonDiagram {
     BackGroundColor transparent
     node {
         BackGroundColor white
-        highlight {
-            BackGroundColor #ffdc7d
-        }
     }
 }
 </style>
 
 {
-    "txon": {
-        "init": {
-            "number.date": {
-                "case": "month"
-            }
-        },
-        "data": {
-            "date": {
-                "type": "number.date",
-                "month": 4
-            },
-            "description": "The month of my birth"
+    "init": {
+        "number.date": {
+            "case": "month"
         }
     },
-    "json": {
-        "data": {
-            "month": 4,
-            "description": "The month of my birth"
-        }
+    "data": {
+        "date": {
+            "type": "number.date",
+            "month": 4
+        },
+        "description": "The month of my birth"
     }
 }
 
 @endjson
 @enduml
 
-{"fig":"txonjson","caption":"Comparison of a strongly-typed TXON data structure and a weakly-typed JSON data structure."}
+@startuml
+@startjson
+
+<style>
+jsonDiagram {
+    BackGroundColor transparent
+    node {
+        BackGroundColor white
+    }
+}
+</style>
+
+{
+    "data": {
+        "month": 4,
+        "description": "The month of my birth"
+    }
+}
+
+@endjson
+@enduml
+
+{"fig":"txonjson","caption":"Comparison of a TXON data structure and JSON data structure."}
 
 {"break":true}
 
