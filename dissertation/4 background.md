@@ -45,3 +45,42 @@ frame Company {
 {"fig":"companystructure","caption":"Responsibilities of involved parties and how parties relate and interact."}
 
 {"break":true}
+
+As seen in figure {"ref":"casedelivery"} the most represented deliverables across all published case-work reflects the departments at the company, as presented in figure {"ref":"companystructure"}. This only includes deliverables occuring in multiple cases, and there is greater variance in deliverables when considering single occurences.
+
+<br>
+
+@startuml
+@startjson
+
+<style>
+jsonDiagram {
+    BackGroundColor transparent
+    node {
+        BackGroundColor white
+        highlight {
+            BackGroundColor #ff9999
+        }
+    }
+}
+</style>
+
+{
+    "Cases": {
+        "Deliverables": {
+            "iOS Development": 23,
+            "Android Development": 18,
+            "UI/UX Design": 19,
+            "Project Management": 16,
+            "Quality Assurance (QA)": 7,
+            "Backend Development": 6,
+            "Business Development": 4,
+            "Technical Leadership": 2
+        }
+    }
+}
+
+@endjson
+@enduml
+
+{"fig":"casedelivery","caption":"Deliverables that occur in multiple case descriptions published by the contracted company."}
