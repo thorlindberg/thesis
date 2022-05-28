@@ -1,18 +1,16 @@
 {"sec":"Proposal for Type-Extensible Format"}
 
-In the following section I present my proposal for a data interchange format, motivated and informed by these current conditions in the field of software development. This does not include an exhaustive implementation in a distributed system, but rather illustrates and argues for a data object notation that is both safer and easier to use.
-
-In this section I introduce my proposal for the notation and syntax of a strongly- and extensibly-typed data interchange format, as documented with this report. This format is the result of a process involving exploration of the field and development in collaboration with software developers.
+In this section I present my proposal for a new data interchange format, motivated and informed by the changes occouring the field of software development. This format provides a grammar and syntax for declaring and instantiating strong, extensible and explicit types. It is the result of deriving tests from existing data structures to demonstrate type weaknesses, followed by functional implementation that validates its syntax when applied to data structures.
 
 <br>
 
 {"sub":"State-of-the-Art"}
 
-I approached this project with understanding of and respect for the existing structures and practices wherein I seek to contribute. It is crucial to acknowledge that the importance of data interchange has resulted in extensive work into the grammar, transmission and universiality of data formats. For this reason I developed my proposal with emphasis on humility and causing the least disruption of existing implementations in systems and languages.
+I approached this project with understanding and respect for the existing structures and practices wherein I seek to contribute. It is crucial to acknowledge that the importance of data interchange has resulted in extensive work into the grammar, transmission and universiality of data formats. For this reason I developed my proposal with emphasis on causing the least disruption of existing implementations in systems and languages.
 
-The popularity of the JavaScript Object Notation (JSON) made it an obvious choice for this project. As the web became ubiquitous, so too did the JavaScript language, from which the JSON data format is derived. The specification for the JSON format stresses human-readability and universiality across systems and programming languages {"citep":"ecma2022json"}. JSON is a plain-text format, meaning it can be displayed and edited in any text processing application. The seven value types available in JSON are: object, array, string, number, true, false, and null.
+The popularity of the JavaScript Object Notation (JSON) made it an obvious choice for this project. As the web became ubiquitous, so too did the JavaScript language, from which the JSON data format is derived. The specification for the JSON format stresses human-readability and universiality across systems and programming languages {"citep":"ecma2022json"}. JSON is a plain-text format, meaning it can be displayed and edited in any text processing application. The seven value types available in JSON are `object` `array` `string` `number` `true` `false` and `null`.
 
-{"cite":"douglas2020form"} presents the grammar of JSON in the McKeeman Form, which is a notation for expressing grammars While JSON specifies a clear hierarchy of data nodes, this notation is necessary as some of the grammar includes recursion. As seen in figure {"ref":"jsontypes"} I have attempted to hierarchally present this grammatical notation, but this should be viewed as an abstractation that does not accurately portray the exhaustive grammar of JSON.
+{"cite":"douglas2020form"} presents the grammar of JSON in the McKeeman Form, which is a notation for expressing grammars While JSON specifies a clear hierarchy of data nodes, this notation is necessary as some of the grammar includes recursion. As seen in figure {"ref":"jsontypes"} I have attempted to hierarchally present this grammatical notation, but this should be viewed as an abstractation that does not exhaustively portray the grammar of JSON.
 
 <br>
 
@@ -32,27 +30,40 @@ jsonDiagram {
 </style>
 
 {
-    "json": "element",
-    "ws": {
-        "members": [ "member", "member , members" ],
-        "member": "ws string ws : element",
-        "elements": [ "element", "element , elements" ],
-        "element" : "ws value ws",
-        "characters": [ "character characters" ],
-        "character": ""
-    },
-    "value": {
-        "object": [ "{ ws }", "{ ws }" ],
-        "array": "[ member ]",
-        "string": "\" characters \"",
-        "number": {
-            "integer": [ "digit", "onenine digits", "- digit", "- onenine digits" ],
-            "fraction": [ ". digits" ],
-            "exponent": [ "E sign digits", "e sign digits" ]
-        },
-        "true": "true",
-        "false": "false",
-        "null": "null"
+    "json": {
+        "element": [
+            "ws",
+            {
+                "value": {
+                    "object": [
+                        "{ ws }",
+                        "{ members }"
+                    ],
+                    "array": [
+                        "[ ws ]",
+                        "[ elements ]"
+                    ],
+                    "string": "\" characters \"",
+                    "number": {
+                        "integer": [
+                            "digit",
+                            "onenine digits",
+                            "- digit",
+                            "- onenine digits"
+                        ],
+                        "fraction": ". digits",
+                        "exponent": [
+                            "E sign digits",
+                            "e sign digits"
+                        ]
+                    },
+                    "true": "true",
+                    "false": "false",
+                    "null": "null"
+                }
+            },
+            "ws"
+        ]
     }
 }
 
