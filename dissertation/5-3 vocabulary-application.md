@@ -6,11 +6,11 @@ In this section I present the terminology used for processing serialised data st
 
 {"sub":"Decoding and Encoding in Local Software"}
 
-{"cite":"oracle2015typing"} presents two type systems in programming languages: `static typing` and `dynamic typing`.
+{"cite":"oracle2015typing"} presents two type systems in programming languages: `static` and `dynamic`.
 
-In the static type system the declaration, instantiation and processing of a value throughout the application is checked when the software is compiled. This implies that the software cannot be executed if type checking fails, as the software must first be succesfully compiled with valid type checks. As such this type system is typical of `compiled programming languages`.
+In the `static type system` the declaration, instantiation and processing of a value throughout the application is checked when the software is compiled. This implies that the software cannot be executed if type checking fails, as the software must first be succesfully compiled with valid type checks. As such this type system is typical of `compiled programming languages`.
 
-In the dynamic type system the declaration, instantiating and processing of a value throughout the application is checked at `runtime`, which is when the software is executed. This system is typical of `interpreted programming languages`, which are designed to be implicitly typed and to continue execution by ignoring the parts that fail during checking.
+In the `dynamic type system` the declaration, instantiating and processing of a value throughout the application is checked at `runtime`, which is when the software is executed. This system is typical of `interpreted programming languages`, which are designed to be implicitly typed and to continue execution by ignoring the parts that fail during checking.
 
 Both compiled and interpreted programming languages have their use cases. The JSON specification is modelled on the dynamically typed JavaScript programming language, and as such is itself dynamically typed with no support for explicit types. This is of course ideal for processing JSON data in JavaScript, as the language does not expect types before runtime. However this introduces interoperability challenges when JSON needs to be received by and cast to structures in statically typed languages such as Swift and Kotlin.
 
