@@ -148,6 +148,8 @@ Plain-text formats are intrinsically less efficient but more interoperable and t
 
 {"cite":"mozilla2022xml"} presents the `Extensible Markup Language` (XML) as a markup language, meaning its values are explicitly assigned meaning by placing each value between an opening and closing tag. Unlike other markup languages, the names of tags in XML refer to value names rather than being predefined tags. This syntax provides a standardised and extensible language for expressing objects and their properties, by nesting named tags and their values inside each other. As such, an object is represented as a tag whose value is other tagged values. Each tag can be heavily specified with an extensible syntax, with requirements such as the character length of the tagged value.
 
+<br>
+
 {"cite":"mozilla2022json"} presents the `JavaScript Object Notation` (JSON) as an interoperable representation of JavaScript objects, with the differences being that names are expressed with the `String` type, trailing commas are not allowed, and objects cannot be assigned methods. JSON is syntactically and structrually similar to the XML format, but differs in that its tags are curly brackets. This allows JSON to express data structures with fewer characters, but also removes the specification and requirements that can be included in a tag. As a result the JSON structure is hypothetically less safe than a corresponding XML structure could be, and this is the sacrifice made in return for a more readable data structure.
 
 {"break":true}
