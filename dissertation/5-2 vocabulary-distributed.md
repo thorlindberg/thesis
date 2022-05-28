@@ -2,6 +2,8 @@
 
 In this section I present the terminology used to describe the structure of a distributed computing system and its processes. This is included because data interchange formats act as intermediaries between programming languages and layers in a distributed system, which results in the data being transformed. These transformations can influence how we process and validate the data, and as such the structure of the system must inform the design and development of a data format proposal.
 
+<br>
+
 {"sub":"Coordination in a distributed system"}
 
 {"cite":"kshemkalyani2011distributed"} define the `distributed system` as "a collection of independent entities that cooperate to solve a problem that cannot be individually solved." They characterise distributed computing as  "a collection of mostly autonomous processors communicating over a communication network". They identify common features of distributed systems, notably a lack of `shared resources` which necessitates `communication` `autonomy` and `heterogeneity`.
@@ -10,7 +12,11 @@ In characterising distributed systems they raise the notion that the physical di
 
 A distributed system achieves asynchronous collaboration through a communication network. This network structure creates the potential for both `hardware heterogeneity` and `software heterogeneity`, which necessitates coordination and distribution of tasks and responsibilities.
 
+<br>
+
 `Hardware heterogeneity` manifests as a variation in physical resources and thus implicitly a variation in computational capability. This can of course be a cognitive decision made by system architects and engineers, facilitating a more efficient distribution, as computational tasks are inherently varied in requirements.
+
+<br>
 
 `Software heterogeneity` manifests as a variation in programming languages and frameworks. Distributed systems use a layered architecture, with a middle layer driving the software distribution, the so-called `middleware`. As seen in figure {"ref":"processinteraction"}, the middleware layer exists as an addition to the protocol-oriented application layer, which handles the communication protocols such as `HTTP`. Additionally, as data flows in a heterogeneous distributed system, it must adhere to a standardised and yet interoperable format, modelled on the software systems used in the network.
 
@@ -20,13 +26,9 @@ A distributed system achieves asynchronous collaboration through a communication
 
 The network layer is one of multiple layers typical of networking systems. As seen in figure {"ref":"ositcilayers"}, {"cite":"alani2014guide"} presents the 7 layers of the "Open Systems Interconnection" (OSI) model relative to the 4 layers of the "Transmission Control Protocol" (TCP). The OSI model abstracts networking systems into a conceptual framework, to describe and standardise the functional relationship between these layers.
 
-{"fig":"ositcilayers","url":"figures/ositcilayers.png","caption":"Comparison between layers in the OSI model and TCI/IP model, providing a standard communication architecture for distributed processing systems.","width":"100%"}
+{"fig":"encapsulation","url":"figures/encapsulation.png","caption":"Encapsulation with headers and trailers."}
 
 As data in a distributed systems flows from the software ("application layer") to the hardware ("physical layer"), it is transformed by protocols which add additional information to the data. This process is referred to as "encapsulation", and consists of "capsulation" from the source host and "decapsulation" towards the destination host. As data flows from source host's application layer and towards the physical layer, protocols prepend headers (leading information) and append trailers (trailing information) to the data. This additional information indicates the purpose of communicating the data and how it should be interpreted by the next layer. The take away from the OSI model is that as data flows through a distributed system, it is transformed by protocols utilised in the layers. These protocols inform the state of the data.
-
-{"fig":"dataflow","url":"figures/endtoendflow.png","caption":"End-to-end data flow.","width":"100%"}
-
-{"fig":"encapsulation","url":"figures/encapsulation.png","caption":"Encapsulation with headers and trailers.","width":"100%"}
 
 {"cite":"tarkoma2012publish"} presents the `Representational State Transfer` (REST) API as an architectural model and web technology for implementing publish-subscribe systems. This model consists of `resources` and `representations` of their state. Resources are akin to objects, whose current or future state is represented in the system. State is altered through API requests sent by a client, which becomes transitional once it awaits at least one server response.
 
@@ -44,7 +46,7 @@ He notes that participants in this type of distributed system would appear sourc
 
 {"cite":"tarkoma2012publish"} illustrates the structural components of a pub/sub system as seen in figure {"ref":"pubsubsystem"}, as well as how the participants interact through events and notifications. Publishers and subscribers are referred to as the "main entities", and publishers are the starting point for the chain of events in the system. As a situation occurs, referred to as an "event", the publisher detects it and publishes a notification to the service, also referred to as the "event message". Events denote "discrete" measurable changes in the "state" of a situation. The pub/sub service handles the communication infrastructure, and subscribers must express interest in a publisher before an event.
 
-{"fig":"pubsubsystem","url":"figures/pubsubsystem.png","caption":"Components of a \"publish-subscribe\" system.","width":"100%"}
+{"fig":"pubsubsystem","url":"figures/pubsubsystem.png","caption":"Components of a \"publish-subscribe\" system."}
 
 The nature of this relationship between publishers and subscribers introduces coordination challenges, as publishers and subscribers must agree on event expectations before a situation occurs. The pub/sub system does not take responsibility for these challenges, as it can only set expectations but not solve conflicts. The system is only responsible for delivering the communicated event between publishers and their subscribers.
 
