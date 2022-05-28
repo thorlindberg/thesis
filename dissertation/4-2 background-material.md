@@ -30,37 +30,38 @@ componentDiagram {
 }
 </style>
 
-frame Backend {
-    frame Client  {
-        [Database]
-    }
-    frame Developer {
-        [GitLab]
-    }
+frame Database {
+    [Application Programming Interface (API)]
+}
+
+frame GitLab {
+    [Data structures]
+    [TypeScript objects]
+    [Data structure]
 }
 
 frame Application {
-    frame View {
-        [User Interface]
-    }
-    frame "View Model" {
-        [Observable]
-    }
+    [User Interface]
+    [View Model]
     frame Model {
+        [Object structure]
         [HTTP request]
-        [HTTP response] -left-> [Protocol]
-        [Protocol] -up-> [Class]
+        [HTTP response]
     }
 }
 
-[Protocol] -left-> [Observable]
-[Observable] -up-> [User Interface]
-[User Interface] -right-> [Class]
+[User Interface] -left-> [View Model]
+[View Model] -right-> [User Interface] 
+[View Model] --> [Object structure]
+[Object structure] -down-> [HTTP request]
+[HTTP request] --> [Application Programming Interface (API)]
+[HTTP response] -left-> [Object structure]
 
-[Class] -right-> [HTTP request]
-[HTTP request] -right-> [Database]
-[Database] -down-> [GitLab]
-[GitLab] -left-> [HTTP response]
+[Data structure] -left-> [HTTP response]
+[Application Programming Interface (API)] -right-> [Data structures]
+
+[Data structures] -up-> [TypeScript objects]
+[TypeScript objects] -up-> [Data structure]
 
 @enduml
 
