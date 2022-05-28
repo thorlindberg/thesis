@@ -142,8 +142,8 @@ Inspired by the syntax and implementation of TypeScript the proposed Type-Extens
 The proposal presented in this report aims to demonstrate these features:
 
 1. Type declarations and instances (through relational references).
-2. Extensible typing (as little or much as wanted) and extensible types (inheritance).
-3. Enumerated values with required or optional cases.
+2. Extensible typing (as little or much as wanted) and extensible types (relational inheritance).
+3. Enumerated values, minimum to maximum ranges, and default value insertion.
 
 The proposed features are demonstrated through the `txon.js` validation library, and critically evaluated with a comparison to TypeScript validation in the CI/CD environment of GitLab. This is not an exhaustive review of the format, but this should not be necessary as it conforms to the JSON specification.
 
