@@ -16,23 +16,22 @@ TDD can viewed as not just an approach to writing tests that define success crit
 
 skinparam linetype ortho
 
+left to right direction
+
 <style>
 componentDiagram {
     BackGroundColor transparent
     component {
         BackGroundColor white
     }
-    interface {
-        BackGroundColor white
-    }
 }
 </style>
 
-Start --> [ Add a test ]
+Start -right-> [ Add a test ]
 [ Add a test ] --> [ Run the tests ]
 [ Run the tests ] --> [ Make a little change ] : [Fail]
 [ Make a little change ] --> [ Run the tests again ]
-[ Run the tests again ] --> End : [Pass, development stops]
+[ Run the tests again ] -right-> End : [Pass, development stops]
 [ Run the tests ] --> [ Add a test ] : [Pass]
 [ Run the tests again ] --> [ Make a little change ] : [Fail]
 [ Run the tests again ] --> [ Add a test ] : [Pass, development continues]

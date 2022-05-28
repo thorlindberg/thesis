@@ -31,13 +31,14 @@ componentDiagram {
 </style>
 
 frame Database {
-    [Application Programming Interface (API)]
+    [Application Programming Interface] -down-> [JSON data]
 }
 
 frame GitLab {
     [Data structures]
     [TypeScript objects]
     [Data structure]
+    [JSON file]
 }
 
 frame Application {
@@ -54,11 +55,12 @@ frame Application {
 [View Model] -right-> [User Interface] 
 [View Model] --> [Object structure]
 [Object structure] -down-> [HTTP request]
-[HTTP request] --> [Application Programming Interface (API)]
+[HTTP request] -right-> [Application Programming Interface]
 [HTTP response] -left-> [Object structure]
 
-[Data structure] -left-> [HTTP response]
-[Application Programming Interface (API)] -right-> [Data structures]
+[Data structure] -up-> [JSON file]
+[JSON file] -left-> [HTTP response]
+[JSON data] -right-> [Data structures]
 
 [Data structures] -up-> [TypeScript objects]
 [TypeScript objects] -up-> [Data structure]
@@ -325,7 +327,6 @@ frame Application {
     frame Model {
         [HTTP request]
         [HTTP response]
-        [Class]
         frame Protocol {
             [Codable] -up-> [Data Structure]
         }
