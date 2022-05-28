@@ -20,8 +20,43 @@ Both compiled and interpreted programming languages have their use cases. The JS
 
 {"sub":"Decoding and Encoding in Server-side Software"}
 
-When developing software the continuous validation of implementations guides the process, and as such the `Continuous Integration and Deployment` (CI/CD) system has been popularised as of recent. This approach aims to automate the processes in-between pushing changes to code and `integration` or `deployment`. The automated integration is achieved by defining a set of checks and validation methods that are applied to code changes. The automated deployment of changes goes a step further, by actually deploying these changes. Both of these processes require no human intervention, but there is a step process of `delivery` that only deploys after manual review.
+When developing software it is important to validate during development, to ensure that a feature or component is working as intended. Validation requires resources in the form of written code, acceptance tests, and traditionally a human would have to manual conduct the process. A more modern approach is to automate the continuous process of integrating, validating, and deploying if applicable. This approach is expressed as services such as GitLab, which is a `Continuous Integration and Deployment` (CI/CD) service {"citep":"github2022gitlab"}.
 
-[ GitLab as a CI/CD service ]
+GitLab automates the processes in-between pushing changes to code and `integration` or `deployment`. The automated integration is achieved by defining a set of checks and validation methods that are applied to code changes. The automated deployment of changes goes a step further, by actually deploying these changes. Both of these processes require no human intervention, but there is also a step process of `delivery` that only deploys after manual review.
+
+{"cite":"amirault2021template"} provides a GitLab template for continously integrating a project written in the Swift programming language. It is evident from this template that a setup on GitLab can be configured by individually specifying the executable events for each stage in the continuous process.
+
+```
+stages:
+    - build
+    - test
+    - archive
+    - deploy
+
+build_project:
+    stage: build
+    script:
+        - xcodebuild clean -project ProjectName.xcodeproj -scheme SchemeName | xcpretty
+        - xcodebuild test -project ProjectName.xcodeproj -scheme SchemeName -destination 'platform=iOS Simulator,name=iPhone 8,OS=11.3' | xcpretty -s
+    tags:
+        - ios_11-3
+        - xcode_9-3
+        - macos_10-13
+
+archive_project:
+    stage: archive
+    script:
+        - xcodebuild clean archive -archivePath build/ProjectName -scheme SchemeName
+        - xcodebuild -exportArchive -exportFormat ipa -archivePath "build/ProjectName.xcarchive" -exportPath "build/ProjectName.ipa" -exportProvisioningProfile "ProvisioningProfileName"
+    rules:
+        - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+    artifacts:
+        paths:
+            - build/ProjectName.ipa
+    tags:
+        - ios_11-3
+        - xcode_9-3
+        - macos_10-13
+```
 
 {"break":true}

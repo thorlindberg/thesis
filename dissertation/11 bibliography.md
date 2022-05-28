@@ -61,3 +61,7 @@
 {"bib":"oracle2015typing","title":"Dynamic typing vs. static typing","authors":["Oracle"],"year":"2015","publisher":"Oracle","url":"https://docs.oracle.com/cd/E57471_01/bigData.100/extensions_bdd/src/cext_transform_typing.html"}
 
 {"bib":"apple2022codable","title":"Encoding and Decoding Custom Types","authors":["Apple Inc."],"year":"2022","publisher":"Apple","url":"https://developer.apple.com/documentation/foundation/archives_and_serialization/encoding_and_decoding_custom_types"}
+
+{"bib":"github2022gitlab","title":"GitLab CI/CD","authors":["GitHub"],"year":"2022","publisher":"GitHub","url":"https://docs.gitlab.com/ee/ci/"}
+
+{"bib":"amirault2021template","title":"Swift CI/CD Template","authors":["Amirault, M."],"year":"2021","publisher":"Marcel Amirault","url":"https://gitlab.com/gitlab-org/gitlab/-/blob/master/lib/gitlab/ci/templates/Swift.gitlab-ci.yml"}
