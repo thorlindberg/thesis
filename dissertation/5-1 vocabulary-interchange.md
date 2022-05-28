@@ -140,6 +140,9 @@ jsonDiagram {
     }
 }
 
+@endjson
+@enduml
+
 {"fig":"relationalobject","caption":"Objects in JavaScript can contain properties and methods that reference structures or functions."}
 
 {"break":true}
