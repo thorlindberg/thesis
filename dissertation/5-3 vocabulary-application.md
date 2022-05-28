@@ -20,11 +20,13 @@ Both compiled and interpreted programming languages have their use cases. The JS
 
 {"sub":"Decoding and Encoding in Server-side Software"}
 
-When developing software it is important to validate during development, to ensure that a feature or component is working as intended. Validation requires resources in the form of written code, acceptance tests, and traditionally a human would have to manual conduct the process. A more modern approach is to automate the continuous process of integrating, validating, and deploying if applicable. This approach is expressed as services such as GitLab, which is a `Continuous Integration and Deployment` (CI/CD) service {"citep":"github2022gitlab"}.
+When developing software it is important to validate during development, to ensure that a feature or component is working as intended. Validation requires resources in the form of written code, acceptance tests, and traditionally a human would have to manual conduct the process. A more modern approach is to automate this through a `Continuous Integration and Deployment` (CI/CD) service such as `GitLab` {"citep":"github2022gitlab"}.
 
 GitLab automates the processes in-between pushing changes to code and `integration` or `deployment`. The automated integration is achieved by defining a set of checks and validation methods that are applied to code changes. The automated deployment of changes goes a step further, by actually deploying these changes. Both of these processes require no human intervention, but there is also a step process of `delivery` that only deploys after manual review.
 
 {"cite":"amirault2021template"} provides a GitLab template for continously integrating a project written in the Swift programming language. It is evident from this template that a setup on GitLab can be configured by individually specifying the executable events for each stage in the continuous process.
+
+<br>
 
 ```
 stages:
