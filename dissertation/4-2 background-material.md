@@ -31,11 +31,11 @@ componentDiagram {
 </style>
 
 frame Database {
-    [Application Programming Interface] -down-> [JSON data]
+    [Application Programming Interface]
+    [JSON data structure]
 }
 
 frame GitLab {
-    [Data structures]
     [TypeScript objects]
     [Data structure]
     [JSON file]
@@ -58,12 +58,14 @@ frame Application {
 [HTTP request] -right-> [Application Programming Interface]
 [HTTP response] -left-> [Object structure]
 
-[Data structure] -up-> [JSON file]
-[JSON file] -left-> [HTTP response]
-[JSON data] -right-> [Data structures]
+[JSON file] -left-> [Application Programming Interface]
+[Application Programming Interface] -left-> [HTTP response]
 
-[Data structures] -up-> [TypeScript objects]
+[Application Programming Interface] -down-> [JSON data structure]
+[JSON data structure] -right-> [TypeScript objects]
+
 [TypeScript objects] -up-> [Data structure]
+[Data structure] -up-> [JSON file]
 
 @enduml
 
