@@ -83,28 +83,28 @@ As seen in figure {"ref":"relationalarrays"} a `header` can be added as the firs
     </tr>
     <tr>
         <td>1</td>
-        <td>SQL Server</td>
+        <td>Mathematics</td>
     </tr>
     <tr>
         <td>2</td>
-        <td>ASP.NET MVC</td>
+        <td>History</td>
     </tr>
     <tr>
         <td>3</td>
-        <td>MongoDB</td>
+        <td>Physics</td>
     </tr>
     <tr>
         <td>4</td>
-        <td>Java</td>
+        <td>Chemistry</td>
     </tr>
     <tr>
         <td>5</td>
-        <td>PHP</td>
+        <td>English</td>
     </tr>
 </table>
 </div>
 
-{"fig":"relationalarrays","caption":"Multi-dimensional arrays for students and courses, connected in a multi-dimensional array through relational keys (identifiers)."}
+{"fig":"relationalarrays","caption":"Multi-dimensional arrays for students and courses, connected in a multi-dimensional array through relational keys (identifiers). An instance in the array of connected identifiers represents the connection between student and course. Each student can be connected to multiple courses, but should only be connected once per course."}
 
 <!--
 https://www.pragimtech.com/blog/mongodb-tutorial/relational-and-non-relational-databases/
