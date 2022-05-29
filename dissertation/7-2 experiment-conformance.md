@@ -67,12 +67,11 @@ Tests can be iterated through to validate both type declarations and conformance
 TXON.tests.forEach(test => {
     
     const validation = TXON.handshake(test.json)
-    console.log("expected\t", test.valid, test.feedback)
     const checksPassed = validation.valid && validation.feedback == null
     if (checksPassed) {
-        console.log("outcome\t\t", true, "no feedback, all checks passed")
+        console.log(true, "no feedback, all checks passed")
     } else {
-        console.log("outcome\t\t", validation.valid, validation.feedback)
+        console.log(validation.valid, validation.feedback)
     }
 
 })
