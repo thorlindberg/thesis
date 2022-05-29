@@ -34,7 +34,7 @@ Suppose you are transmitting this to a client but you decide to alter the date f
 
 {"break":true}
 
-This is much clearer to both parties, and because the data points have number values they are less likely to be invalidated. Text editors and data parsers that implement the JSON specification will highlight or throw an error if the properties include characters beyond numbers. As data interchange formats are typically not manually typed, it is possible for any value to end up as an unintended type. As such, the recipient would likely validate the types independently to ensure that they are indeed correct. This could be eased by including a `type declaration` that explicitly states the intended value:
+This is much clearer to both parties, and because the data points have number values they are less likely to be invalidated. Text editors and data parsers that implement the JSON specification will highlight or throw an error if the properties include characters beyond numbers. As data interchange formats are typically not manually typed, it is possible for any value to end up as an unintended type. As such, the recipient would likely validate the types independently to ensure that they are indeed correct. This could be eased with a `type declaration` that explicitly states the value type:
 
 ```
 {
@@ -76,6 +76,8 @@ Suppose that this structure was used to type an entire data structure that may c
 
 This greatly reduces the character count by 48% to 92 characters of which the information represents 8 characters or 8.6% of the data. While this is certainly an improvement, it is also a best-case scenario and only works if all properties of an object can be identically typed. If this is not the case, the data structure would have to independently type each property or collections of properties:
 
+<br>
+
 ```
 {
     "date": {
@@ -102,6 +104,8 @@ This greatly reduces the character count by 48% to 92 characters of which the in
     }
 }
 ```
+
+<br>
 
 These can be considered safe structures, but also increasingly prone to syntax errors. All parties involved would have to agree to use identical structures for data points, to ensure compatibility with validation processes. The former structure with individual typing contains 301 characters of which the information represents 19 characters or 6.3% of the data. The latter structure with collections of properties through inverted typing contains 224 characters of which the information represents 19 characters or 8.48% of the data. It is evident that efficient explicit typing is possible with JSON, but that it necessitates a relational and generic approach for scalability and to guard against syntax errors. In addition, properties of types such as String can vary greatly in content, but typically match an enumerated list of values. As such, it would be apt to enumerate values in a type declaration.
 
@@ -147,6 +151,8 @@ Declarations provide a generic and single-location place to specify enumerated a
 }
 ```
 
+{"break":true}
+
 It is evident from this syntactical approach that despite these strict requirements the data remains readable, by separating the type declaration from the actual data through relation references. Additionally, this syntax scales far better with larger data structures, requiring less repetition and as such a lesser chance of syntax errors. The initialiser can be ignored when casting the data in software, but also acts as embedded documentation of the intent with the data structure. This approach is generic in structure yet flexible to differently structured data and use-cases, while remaining human-readable and conforming to the JSON specification.
 
 <br>
@@ -175,7 +181,11 @@ Types can be instantiated in the `data property`at the root of the data structur
 }
 ```
 
+<br>
+
 This greatly reduces the character count of the data instance by 66.5% to 149 characters of which the information represents 19 characters or % of the data. The data is also safer because the property of type String has enumerated values, allowing it to be validated base on whether its case conforms to the enumeration. This approach is not without fault, as the data structure including the type declarations is larger at 454 characters, but this trade-off is offset by the reduction in repetition of type declarations as the data scales up in size.
+
+{"break":true}
 
 Type instances can be arrayrised, enabling the explicit typing of multiple data points with identical structure with only a single declaration:
 
@@ -199,6 +209,8 @@ Type instances can be arrayrised, enabling the explicit typing of multiple data 
     }
 }
 ```
+
+<br>
 
 As this syntax aims to be extensible by selectively typing data, type instances can be nested inside each other, so that types can be declared once in the initialiser and repurposed throughout the data structure. This is also useful for splitting a type into components that are declaratively simpler and require fewer characters:
 
@@ -227,9 +239,11 @@ As this syntax aims to be extensible by selectively typing data, type instances 
 }
 ```
 
+<br>
+
 It is evident that despite being strongly, explicitly, yet dynamically typed, this data structure is readable and the typing can be utilised for validation ignored. A major advantage of this approach is that it is generic, by leveraging grammatical standards for typing data. This centralised approach means the involved parties can invest fewer resources in defensive mechanisms, as they can expect typed data in a standard format with TXON.
 
-<br>
+{"break":true}
 
 {"sub":"Detailed design"}
 
@@ -277,9 +291,11 @@ This results in all enumerated values inheriting typing from the type before the
 }
 ```
 
+{"break":true}
+
 In evaluating this design it became clear that the complexity in the combination of syntactical features increases greatly with each added feature. As such the actual implementation of this proposal would need to exhaustively demonstrate that the grammatical notation (the "system" of syntax) does not contain conflicting combinations. If we take a more complex data point with differently typed values, such as:
 
-{"break":true}
+<br>
 
 ```
 "date": {
@@ -315,6 +331,8 @@ There are several ways to instantiate this type, such as an instance as a proper
 }
 ```
 
+{"break":true}
+
 And a nested instance as a non-typed property of the typed data point:
 
 ```
@@ -329,6 +347,8 @@ And a nested instance as a non-typed property of the typed data point:
     }
 }
 ```
+
+<br>
 
 And a data point with related data that does not correspond to any declared type:
 
@@ -347,9 +367,11 @@ And a data point with related data that does not correspond to any declared type
 }
 ```
 
+<br>
+
 The design of this implementations considers the hierarchy of the data structure, by typing the required properties at the same level as a type reference, and ignoring properties that are not explicitly typed. It is entirely likely that this implementation does not support certain structures, or that the provided syntax creates conflicting conditions.
 
-<br>
+{"break":true}
 
 {"sub":"Alternatives considered"}
 
@@ -385,7 +407,7 @@ Instead you should be able to declare a type value as optional by appending a qu
 
 This is easier to read and interpret than providing default values, which do not make much sense in an enumeration case anyway.
 
-<br>
+{"break":true}
 
 If you were to type a single value:
 
@@ -416,6 +438,8 @@ The explicit typing does not make sense in this situation, and it would be far m
 }
 ```
 
+<br>
+
 This is however not without fault as the type name would become a reserved property name for the entire data structure, as there is nothing to indicate whether it is a type reference or not. This is not in keeping with the extensible approach of TXON, so the property name would need some other non-typical indicator such as an exclamation mark (!) to indicate it is initialising a type:
 
 ```
@@ -430,7 +454,7 @@ This is however not without fault as the type name would become a reserved prope
 }
 ```
 
-<br>
+{"break":true}
 
 {"sub":"Source compatibility"}
 

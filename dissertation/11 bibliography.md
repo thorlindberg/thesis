@@ -32,7 +32,7 @@
 
 {"bib":"lyon2014typeable","title":"TSON: Typeable Simple Object Notation","authors":["Lyon-Smith, J."],"year":"2014","publisher":"GitHub","url":"https://github.com/jlyonsmith/Tson"}
 
-{"bib":"apple2022swift","title":"The Swift Programming Language","authors":["Apple Inc."],"year":"2022","publisher":"Apple","url":"https://docs.swift.org/swift-book/"}
+{"bib":"apple2022swift","title":"The Swift Programming Language","authors":["Apple Inc."],"year":"2022a","publisher":"Apple","url":"https://docs.swift.org/swift-book/"}
 
 {"bib":"alpha2022kotlin","title":"A modern programming language that makes developers happier.","authors":["Alphabet Inc."],"year":"2022","publisher":"Alphabet","url":"https://kotlinlang.org"}
 
@@ -44,23 +44,23 @@
 
 {"bib":"apple2022swiftevolution","title":"TSON: Typeable Simple Object Notation","authors":["Lyon-Smith, J."],"year":"2014","publisher":"GitHub","url":"https://github.com/apple/swift-evolution"}
 
-{"bib":"apple2022swiftevolution","title":"Swift Programming Language Evolution","authors":["Apple Inc."],"year":"2022","publisher":"Apple","url":"https://github.com/apple/swift-evolution"}
+{"bib":"apple2022swiftevolution","title":"Swift Programming Language Evolution","authors":["Apple Inc."],"year":"2022b","publisher":"Apple","url":"https://github.com/apple/swift-evolution"}
 
 {"bib":"guernsey2013testdriven","title":"Test-driven Database Development: Unlocking Agility","authors":["Guernsey, M."],"year":"2013","publisher":"Addison-Wesley","url":"https://books.google.dk/books/about/Test_driven_Database_Development.html?id=RYUvLgEACAAJ&redir_esc=y"}
 
 {"bib":"beck2003testdriven","title":"Test-driven Development: By Example","authors":["Beck, K."],"year":"2003","publisher":"Addison-Wesley Professional","url":"https://books.google.dk/books/about/Test_driven_Development.html?id=gFgnde_vwMAC&redir_esc=y"}
 
-{"bib":"mozilla2022arrays","title":"Arrays","authors":["Mozilla"],"year":"2022","publisher":"Mozilla Foundation","url":"https://developer.mozilla.org/en-US/docs/Learn/JavaScript/First_steps/Arrays"}
+{"bib":"mozilla2022arrays","title":"Arrays","authors":["Mozilla"],"year":"2022a","publisher":"Mozilla Foundation","url":"https://developer.mozilla.org/en-US/docs/Learn/JavaScript/First_steps/Arrays"}
 
-{"bib":"mozilla2022objects","title":"Objects","authors":["Mozilla"],"year":"2022","publisher":"Mozilla Foundation","url":"https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Basics"}
+{"bib":"mozilla2022objects","title":"Objects","authors":["Mozilla"],"year":"2022b","publisher":"Mozilla Foundation","url":"https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Basics"}
 
-{"bib":"mozilla2022json","title":"JavaScript Object Notation","authors":["Mozilla"],"year":"2022","publisher":"Mozilla Foundation","url":"https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON"}
+{"bib":"mozilla2022json","title":"JavaScript Object Notation","authors":["Mozilla"],"year":"2022c","publisher":"Mozilla Foundation","url":"https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON"}
 
-{"bib":"mozilla2022xml","title":"Extensible Markup Langauge","authors":["Mozilla"],"year":"2022","publisher":"Mozilla Foundation","url":"https://developer.mozilla.org/en-US/docs/Web/XML/XML_introduction"}
+{"bib":"mozilla2022xml","title":"Extensible Markup Langauge","authors":["Mozilla"],"year":"2022d","publisher":"Mozilla Foundation","url":"https://developer.mozilla.org/en-US/docs/Web/XML/XML_introduction"}
 
 {"bib":"oracle2015typing","title":"Dynamic typing vs. static typing","authors":["Oracle"],"year":"2015","publisher":"Oracle","url":"https://docs.oracle.com/cd/E57471_01/bigData.100/extensions_bdd/src/cext_transform_typing.html"}
 
-{"bib":"apple2022codable","title":"Encoding and Decoding Custom Types","authors":["Apple Inc."],"year":"2022","publisher":"Apple","url":"https://developer.apple.com/documentation/foundation/archives_and_serialization/encoding_and_decoding_custom_types"}
+{"bib":"apple2022codable","title":"Encoding and Decoding Custom Types","authors":["Apple Inc."],"year":"2022c","publisher":"Apple","url":"https://developer.apple.com/documentation/foundation/archives_and_serialization/encoding_and_decoding_custom_types"}
 
 {"bib":"github2022gitlab","title":"GitLab CI/CD","authors":["GitHub"],"year":"2022","publisher":"GitHub","url":"https://docs.gitlab.com/ee/ci/"}
 
