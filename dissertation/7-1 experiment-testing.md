@@ -1,6 +1,6 @@
 {"sec":"Unit Testing for Validation"}
 
-In this section I illustrate the `unit tests` that I constructed for this experiment. Each test consists of a JSON data structure and a corresponding error message based on the TXON syntax. As such when I describe a `unit` in this experiment, I am referring to a sample data structure that either does not meet the minimum requirements to be validated with `txon.js` or validation was attempted but a nonconformance case was encountered.
+In this section I present the `unit tests` that I constructed for this experiment. Each test consists of a JSON data structure and a corresponding error message based on the TXON syntax. As such when I describe a `unit` in this experiment, I am referring to a sample data structure that either does not meet the minimum requirements to be validated with `txon.js` or validation was attempted but a nonconformance case was encountered.
 
 <br>
 

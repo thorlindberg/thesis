@@ -1,33 +1,25 @@
-{"sec":"Implementation of Conformance Library"}
+{"sec":"Implementation of Type Conformance"}
 
-The validation process consists of steps. Each step corresponds to a feature from the proposed syntax, and can return its own descriptive error if nonconformance is encountered. In the case of nonconformance, the process will not continue with the next step if any, thus reducing unnecessary computation. If nonconformance is not encountered in any step, no error will be returned and the data structure is valid.
-
-There are three steps in this implementation, which are the aforementioned `checkJSON`, `checkInit` and `checkData`. Each step is a hierarchy of checks, and each check can returns its own descriptive nonconformance. After a step has been called, it will be checked for a return value, which will be returned if nonconformance was detected in a check.
-
-Developers may desire for validation to continue despite nonconformance, and can in this case utilise the syntax for default values. If nonconformance is encountered but a default is defined, the process will continue with the inserted default value.
-
-The extensible nature of the proposed syntax necessitates that validation be performed recursively, so that developers do not have to re-architect their existing data structures. As a result, the following steps may appear repetitive and validation performance scales non-linearly with data size.
+In this section I present the implementation of the TXON syntax through the development of a JavaScript library. The purpose of this implementation is to apply its validation method to the constructed unit tests, and achieve the predefined feedback when an error is detected. This method can then be applied to real data structures utilising the same syntax as in the tests, and should return the same errors corresponding to the features of the validation.
 
 <br>
 
-Handshaking is structured to interrupt validation at the first sign of nonconformance, rather than collecting errors and returning them arraryised. `Nonconformance` is when a type has been declared and instantiated, but the instance does not match the specification of the type. This choice has little impact on small amounts of information with near-instantaneous parsing, but greatly improves usability and reduces validation times as received information scale up in size.
+{"sub":"The txon.js validation library"}
 
-Alternatively the method could asynchronously return errors as/if nonconformance is encountered. As the user is informed of an error, corrects the error, and re-calls the method, the advantage is that the user does not need to care about completion, and only needs to respond to errors. For large amounts of information, the re-call would without issue run in parallel with the initial call if the initial call has not yet completed.
-
-{"break":true}
-
-{"sub":"Library and features"}
-
-A library is a collection of utilities that in combination achieve a shared goal. In this instance, the TXON library is instantiated as a TXON object and its method provides validation of a JSON String. In the following I present the features, intent and structure of my library. This library supports the following validation features, reflecting syntactical features in the TXON format.
+A library is a collection of utilities that in combination achieve a shared goal. In this instance, the txon.js library is instantiated as a JavaScript object and its method provide validation of a TXON String. In the following I present the features, intent and structure of my library. This library supports the following validation features, corresponding to the grammatical notation of the TXON format.
 
 - Type declarations in the `initialiser property`.
 - Type instances in the `data property`.
 
 Users can declare their own extended types (e.g. "date"), or declare extensions of JSON types or extended types using a dot-syntax (e.g. "string.date" or "date.month"). `Extended types` are specified as enumerations and instantiated by associating data with the type. This is further presented in the syntax proposal. `Type extensions` allow you to inherit the requirements of an existing type, while extending it as a sub-type with an enumeration. This is further presented in the syntax proposal.
 
+Developers may desire for validation to continue despite nonconformance, and can in this case utilise the syntax for a `default value`. If nonconformance is encountered but a default is defined, the process will continue with the inserted default value.
+
 <br>
 
 The txon.js library `handshakes` a JSON String, validating conformance of its `data` property to extended type declarations from its `init` property. TXON is initialised as an Object providing a `docs method` `handshake method` and `tests property`.
+
+Handshaking is structured to interrupt validation at the first sign of nonconformance, rather than collecting errors and returning them arraryised. `Nonconformance` is when a type has been declared and instantiated, but the instance does not match the specification of the type. This choice has little impact on small amounts of information with near-instantaneous parsing, but greatly improves usability and reduces validation times as received information scale up in size.
 
 ```
 const TXON = {
@@ -93,13 +85,13 @@ TXON.tests.forEach(test => {
 
 {"break":true}
 
-The `handshake()` method takes an input, expected to be of type JSON String. If all validation checks are passed without detecting nonconformance to types, then the resulting property will have no feedback property. Handshaking requires a String as input parameter, and returns an Object with "valid" and optional "feedback" properties. The `valid` property is of type Boolean, indicating success (true) or failure (false). The `feedback` property is of type String and describes the first encountered nonconformance issue. 
+The `handshake()` method takes an input, expected to correspond to a JSON string. If all validation checks are passed without detecting nonconformance to types, then the resulting property will have no feedback property. Handshaking requires a String as input parameter, and returns an Object with `valid` and optional `feedback` properties. The `valid` property is of type Boolean, indicating success (true) or failure (false). The `feedback` property is of type String and describes the first encountered nonconformance issue. 
 
 ```
 { "valid": true, "feedback": '"init" property not found at top level' }
 ```
 
-A TXON data structure can return "true" for property `valid` for other reasons, such as the lack of an initialiser, because while its contents may be correctly typed it is not a valid TXON structure. This allows developers to check if the property exists, to determine if validation was successful.
+A TXON data structure can return `true` for property `valid` for other reasons, such as the lack of an initialiser, because while its contents may be correctly typed it is not a valid TXON structure. This allows developers to check if the property exists, to determine if validation was successful.
 
 Before validating the contents of its input, the handshaking method defines its own properties and methods. Its properties consist of the parsed JSON Object and an array of valid types in the JSON specification. Its methods consist of the three requirements in validating a TXON data structure.
 
