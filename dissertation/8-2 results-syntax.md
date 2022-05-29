@@ -12,7 +12,7 @@ As a step towards evolving the type-extensibility of the JSON specification, thi
 
 {"sub":"Motivation"}
 
-The motivation for this implementation of types is the current inability to extend or enumerate types in the JSON specification. The result of this flaw is that developers cannot validate whether their data structures are correct or incorrect before they have been received by a client.
+The motivation for this implementation of types is the current inability to extend or enumerate types in the JSON specification. The result of this flaw is that developers cannot validate whether their data structures are correct or incorrect before they have been decoded in a software application.
 
 Consider a simple `data structure` that conforms to the JSON specification:
 
@@ -32,6 +32,8 @@ Suppose you are transmitting this to a client but you decide to alter the date f
 }
 ```
 
+{"break":true}
+
 This is much clearer to both parties, and because the data points have number values they are less likely to be invalidated. Text editors and data parsers that implement the JSON specification will highlight or throw an error if the properties include characters beyond numbers. As data interchange formats are typically not manually typed, it is possible for any value to end up as an unintended type. As such, the recipient would likely validate the types independently to ensure that they are indeed correct. This could be eased by including a `type declaration` that explicitly states the intended value:
 
 ```
@@ -43,10 +45,6 @@ This is much clearer to both parties, and because the data points have number va
 ```
 
 However, this does not ensure that all the properties are present in the data structure, nor does it actually validate types independently. It would be better if the data could better specify its intent with a generic structure that is easily validated without investing time in defensive mechanisms on the recipient end.
-
----
-
-The motivation for this implementation of types is the current lack of a standardised and generic syntax for explicitly typing dynamically typed data. The result of this is multiple independent approaches to typing, such as including requirements as properties of objects. This lack of standardisation means each involved party in a development process must independently verify their data structures.
 
 <br>
 
@@ -73,6 +71,8 @@ Suppose that this structure was used to type an entire data structure that may c
     }
 }
 ```
+
+{"break":true}
 
 This greatly reduces the character count by 48% to 92 characters of which the information represents 8 characters or 8.6% of the data. While this is certainly an improvement, it is also a best-case scenario and only works if all properties of an object can be identically typed. If this is not the case, the data structure would have to independently type each property or collections of properties:
 
@@ -105,11 +105,13 @@ This greatly reduces the character count by 48% to 92 characters of which the in
 
 These can be considered safe structures, but also increasingly prone to syntax errors. All parties involved would have to agree to use identical structures for data points, to ensure compatibility with validation processes. The former structure with individual typing contains 301 characters of which the information represents 19 characters or 6.3% of the data. The latter structure with collections of properties through inverted typing contains 224 characters of which the information represents 19 characters or 8.48% of the data. It is evident that efficient explicit typing is possible with JSON, but that it necessitates a relational and generic approach for scalability and to guard against syntax errors. In addition, properties of types such as String can vary greatly in content, but typically match an enumerated list of values. As such, it would be apt to enumerate values in a type declaration.
 
-<br>
+{"break":true}
 
 {"sub":"Proposed solution"}
 
-I would like to propose a syntax for declaring types with a generic and extensible `type declaration syntax`, altering existing data structures as little as possible, while greatly reducing dependency on additional layers of data validation at multiple points of a distributed system. This syntax is grammatically based on typed values in TypeScript, allowing you to explicitly (but not statically) type and enumerate data points.
+I would like to propose a syntax for declaring types with a generic and extensible syntax for `type declarations`, altering existing data structures as little as possible, while greatly reducing dependency on additional layers of data validation at multiple points of a distributed system. This syntax is grammatically based on typed values in TypeScript, allowing you to explicitly type and enumerate data points. This is paired with a syntax for `type instances`, with relational references to type specifications outside the immediate data point and structure. This syntax is grammatically designed to accommodate different data structures, especially as pertaining to inheritance and shared typing of data points.
+
+<br>
 
 Types can be declared in the `initialiser property` at the root of the data structure:
 
@@ -147,9 +149,7 @@ Declarations provide a generic and single-location place to specify enumerated a
 
 It is evident from this syntactical approach that despite these strict requirements the data remains readable, by separating the type declaration from the actual data through relation references. Additionally, this syntax scales far better with larger data structures, requiring less repetition and as such a lesser chance of syntax errors. The initialiser can be ignored when casting the data in software, but also acts as embedded documentation of the intent with the data structure. This approach is generic in structure yet flexible to differently structured data and use-cases, while remaining human-readable and conforming to the JSON specification.
 
----
-
-I would like to propose a syntax for instantiating types with a generic and minimal `type instance syntax`, with relational references to type specifications outside the immediate data point and structure. This syntax is grammatically designed to accommodate different data structures, especially as pertaining to inheritance and shared typing of data points.
+<br>
 
 Types can be instantiated in the `data property`at the root of the data structure:
 
@@ -233,7 +233,12 @@ It is evident that despite being strongly, explicitly, yet dynamically typed, th
 
 {"sub":"Detailed design"}
 
-In aiming to reflect the values of extensible implementations, type declarations were designed to extend existing types with the dot syntax (.), but they are not extensible in the sense that invalid declarations can be ignored. A type can be an extension of another type:
+In aiming to reflect the values of extensible implementations, 
+type declarations can become type extensions with the dot syntax (.), and type instances can be extensibly added to the data. The current implementation is not exhaustive, as considering every potential and realistic structure is beyond the scope of this proposal. 
+
+<br>
+
+A type can be an extension of another type:
 
 ```
 {
@@ -285,9 +290,9 @@ In evaluating this design it became clear that the complexity in the combination
 
 It is already evident that the current implementation of the proposal does not adequately facilitate shared typing or inheriting through type extension, when the data structure requires multiple cases with multiple shared types.
 
----
+<br>
 
-In aiming to reflect the values of extensible implementations, type instances were designed to be an addition to existing data structures rather than an alternative. The current implementation is not exhaustive, as considering every potential and realistic structure is beyond the scope of this proposal. If we start by declaring a type extension in the initialiser:
+If we start by declaring a type extension in the initialiser:
 
 ```
 {
@@ -348,7 +353,9 @@ The design of this implementations considers the hierarchy of the data structure
 
 {"sub":"Alternatives considered"}
 
-After experimenting with the implementation of this proposed syntax for type declarations, it became evident that not all type values should be required, and that default values are not an appropriate approach to declaring optional values. With the current implementation you can declare a type:
+After experimenting with the implementation of this proposed syntax for types, it became evident that not all type values should be required, and that default values are not an appropriate approach to declaring optional values. It also became evident that instances with a single value requiring an explicit type reference is not the optimal grammatical approach. 
+
+With the current implementation you can declare a type:
 
 ```
 {
@@ -378,9 +385,9 @@ Instead you should be able to declare a type value as optional by appending a qu
 
 This is easier to read and interpret than providing default values, which do not make much sense in an enumeration case anyway.
 
----
+<br>
 
-After experimenting with the implementation of this proposed syntax for type instances, it became evident that instances with a single value requiring an explicit type reference is not the optimal grammatical approach. If you were to type a single value:
+If you were to type a single value:
 
 ```
 {
