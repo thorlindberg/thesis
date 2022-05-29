@@ -13,10 +13,6 @@ A library is a collection of utilities that in combination achieve a shared goal
 
 Users can declare their own extended types (e.g. "date"), or declare extensions of JSON types or extended types using a dot-syntax (e.g. "string.date" or "date.month"). `Extended types` are specified as enumerations and instantiated by associating data with the type. This is further presented in the syntax proposal. `Type extensions` allow you to inherit the requirements of an existing type, while extending it as a sub-type with an enumeration. This is further presented in the syntax proposal.
 
-Developers may desire for validation to continue despite nonconformance, and can in this case utilise the syntax for a `default value`. If nonconformance is encountered but a default is defined, the process will continue with the inserted default value.
-
-<br>
-
 The txon.js library `handshakes` a JSON String, validating conformance of its `data` property to extended type declarations from its `init` property. TXON is initialised as an Object providing a `docs method` `handshake method` and `tests property`.
 
 Handshaking is structured to interrupt validation at the first sign of nonconformance, rather than collecting errors and returning them arraryised. `Nonconformance` is when a type has been declared and instantiated, but the instance does not match the specification of the type. This choice has little impact on small amounts of information with near-instantaneous parsing, but greatly improves usability and reduces validation times as received information scale up in size.
@@ -31,7 +27,7 @@ const TXON = {
 }
 ```
 
-<br>
+{"break":true}
 
 The `docs` property requires no input parameters and returns a String documenting the intended use of my library. This approach ensures that the code is documented as it is written, but it exists only at the top-level of the library rather than in individual components.
 
@@ -44,7 +40,7 @@ docs: [
 ].join("\n")
 ```
 
-{"break":true}
+<br>
 
 The `tests` property is of type Array\<Object> and is intended to demonstrate each syntactical feature of TXON being validated throug the library. Each Object contains the intended result of the test (properties `valid`and `feedback`), as well as a sample data structure (`json`).
 
@@ -65,7 +61,7 @@ tests: [
 
 <br>
 
-Tests can be iterated through to validate both type declarations and conformance of instances, to demonstrate the resulting feedback when the respective error is found. This can be useful for people wanting to learn TXON, and writing tests was instrumental in developing the library and validation flow.
+Tests can be iterated through to validate both type declarations and conformance of instances, to demonstrate the resulting feedback when the respective error is found. This can be useful for people wanting to learn TXON, and writing tests was instrumental in developing the validation library.
 
 ```
 TXON.tests.forEach(test => {
@@ -105,9 +101,7 @@ Before validating the contents of its input, the handshaking method defines its 
 handshake: (input) => {
 
     var object
-    const JSONTypes = [
-        "string", "integer", "number", "object", "array", "boolean", "null" 
-    ]
+    const JSONTypes = [ "string", "integer", "number", "object", "array", "boolean", "null"  ]
 
     const checkJSON = (input) => { ... }
     const checkInit = (object) => { ... }
@@ -234,10 +228,7 @@ if (hasSharedType) {
     const propertyType = value.type
     const typeMatchesJSON = JSONTypes.includes(propertyType)
     if (!typeMatchesJSON) {
-        return {
-            valid: true,
-            feedback: `type "${name}" has invalid shared JSON "type" declaration "${propertyType}"`
-        }
+        return { valid: true, feedback: `type "${name}" has invalid shared JSON "type" declaration "${propertyType}"` }
     }
 
     const hasSharedDefault = value.hasOwnProperty("default")
@@ -245,10 +236,7 @@ if (hasSharedType) {
         const defaultType = typeof value.default
         const defaultMatchesType = defaultType === propertyType
         if (!defaultMatchesType) {
-            return {
-                valid: true,
-                feedback: `type "${name}" has shared default of mismatched type "${defaultType}"`
-            }
+            return { valid: true, feedback: `type "${name}" has shared default of mismatched type "${defaultType}"` }
         }
     }
 
@@ -257,10 +245,7 @@ if (hasSharedType) {
         const minType = typeof value.minimum
         const minMatchesType = minType === propertyType
         if (!minMatchesType) {
-            return {
-                valid: true,
-                feedback: `type "${name}" has shared minimum of mismatched type "${minType}"`
-            }
+            return { valid: true, feedback: `type "${name}" has shared minimum of mismatched type "${minType}"` }
         }
     }
 
@@ -269,10 +254,7 @@ if (hasSharedType) {
         const maxType = typeof value.maximum
         const maxMatchesType = maxType === propertyType
         if (!maxMatchesType) {
-            return {
-                valid: true,
-                feedback: `type "${name}" has shared maximum of mismatched type "${maxType}"`
-            }
+            return { valid: true, feedback: `type "${name}" has shared maximum of mismatched type "${maxType}"` }
         }
     }
 
@@ -371,10 +353,8 @@ if (isObject) {
 
     const hasDefault = propValue.hasOwnProperty("default")
     if (hasDefault) { ... }
-
     const hasMinimum = propValue.hasOwnProperty("minimum")
     if (hasMinimum) { ... }
-
     const hasMaximum = propValue.hasOwnProperty("maximum")
     if (hasMaximum) { ... }
 
@@ -585,7 +565,7 @@ if (typeInitialised) {
 
 {"break":true}
 
-If the type instance does not have a "values" property, the validation loops through the instance properties instead, checking if all required properties have been instantiated. If the check fails it returns an Object that indicates the data structure is invalid, with the feedback that a type was instantiated but is missing a required property. If the check passes for all required properties, it proceeds to check the property values.
+If the type instance does not have a `values` property, the validation loops through the instance properties instead, checking if all required properties have been instantiated. If the check fails it returns an Object that indicates the data structure is invalid, with the feedback that a type was instantiated but is missing a required property. If the check passes for all required properties, it proceeds to check the property values.
 
 ```
 if (!hasValues) {
@@ -676,7 +656,7 @@ if (inInstance) {
 
 {"break":true}
 
-If the type instance has a `values` property, validation proceeds if its value is of type Array. It then proceeds to loop through its elements, validating elements of type Object by looping through their properties. It checks if all required properties have been instantiated. If the check fails it returns an Object that indicates the data structure is invalid, with the feedback that a type was instantiated but is missing a required property. If the check passes for all required properties, it proceeds to check the property values.
+If the type instance has a `values` property, validation proceeds if its value is of type Array. It then proceeds to loop through its elements, validating elements of type Object by looping through their properties. It checks if all required properties have been instantiated. If the check fails it returns an Object that indicates the data structure is invalid, with the feedback that a type instance is missing a required property. If the check passes for required properties it proceeds to check arrayrised values.
 
 ```
 if (hasValues) {
@@ -685,12 +665,10 @@ if (hasValues) {
     if (isArray) {
         
         for (const element of input.values) {
-
             const isObject = typeof element === "object"
             if (isObject) {
 
                 for (const [name, value] of Object.entries(object.init[input.type])) {
-
                     const isObject = typeof value === "object"
                     if (isObject) {
 
@@ -706,11 +684,9 @@ if (hasValues) {
                         if (inInstance) { ... }
 
                     }
-
                 }
 
             }
-
         }
 
     }
@@ -718,9 +694,11 @@ if (hasValues) {
 }
 ```
 
-{"break":true}
+<br>
 
 A property value is validated by first differentiating local, shared, and extension types. It then proceeds to check that the value matches the type declared for the property in the initialiser. If this check fails it returns an Object that indicates the data structure is invalid, with the feedback that a type was instantiated with a property value that does not conform. It then proceeds to check that the value is between a local or shared minimum and maximum, if any have been declared. If this check fails it returns an Object that indicates the data structure is invalid, with the feedback that a type was instantiated with a property value that is either below the minimum or above the maximum.
+
+{"break":true}
 
 ```
 if (inInstance) {
