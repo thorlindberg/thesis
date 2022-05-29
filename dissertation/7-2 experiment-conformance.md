@@ -6,7 +6,7 @@ In this section I present the implementation of the TXON syntax through the deve
 
 {"sub":"The txon.js validation library"}
 
-A library is a collection of utilities that in combination achieve a shared goal. In this instance, the txon.js library is instantiated as a JavaScript object and its method provide validation of a TXON String. In the following I present the features, intent and structure of my library. This library supports the following validation features, corresponding to the grammatical notation of the TXON format.
+A library is a collection of utilities that in combination achieve a shared goal. In this instance, the `txon.js` library is instantiated as a JavaScript object and its method provide validation of a TXON String. In the following I present the features, intent and structure of my library. This library supports the following validation features, corresponding to the grammatical notation of the TXON format.
 
 - Type declarations in the `initialiser property`.
 - Type instances in the `data property`.
@@ -42,7 +42,7 @@ docs: [
 
 <br>
 
-The `tests` property is of type Array\<Object> and is intended to demonstrate each syntactical feature of TXON being validated throug the library. Each Object contains the intended result of the test (properties `valid`and `feedback`), as well as a sample data structure (`json`).
+The `tests` property is of type Array\<Object> and is intended to demonstrate each syntactical feature of TXON being validated through the library. Each Object contains the intended result of the test (properties `valid`and `feedback`), as well as a sample data structure (`json`).
 
 ```
 tests: [
@@ -74,7 +74,6 @@ TXON.tests.forEach(test => {
     } else {
         console.log("outcome\t\t", validation.valid, validation.feedback)
     }
-    console.log("-")
 
 })
 ```
@@ -442,7 +441,7 @@ if (hasMaximum) {
 
 The third validation method has to accommodate any and all data structures considered valid in the JSON specification. As such the validation must be executed recursively for every nested node in the structure, and it must be applied extensively by only validating data that was intended to be typed with TXON.
 
-It starts with a check for the existence of a `data` property at the root ndoe of the parsed JSON object. If the check fails it returns an Object that indicates the data structure is valid as it cannot be further vlaidated, but with the feedback that it is missing a data structure.
+It starts with a check for the existence of a `data` property at the root node of the parsed JSON object. If the check fails it returns an Object that indicates the data structure is valid as it cannot be further validated, but with the feedback that it is missing a data structure.
 
 It then defines two of its own methods: a `recursion` method to determine the approach to recursively validating based on the value type of a property, and a recursively-called `validate` method for validating a property.
 
