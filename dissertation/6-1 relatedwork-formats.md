@@ -12,7 +12,7 @@ The overarching point he argues is that the similarities and difference between 
 
 {"break":true}
 
-Beyond the syntax differences, he also notes that YAML implements an extensible data type entitled "relational trees" by allowing declaration of an anchor data node which can be referenced and inserted elsewhere. He argues that this increases readability, compactness and clarity while reducing the risk of syntax errors {"citep":"eriksson2011comparison","page":"9"}. The format I propose is inspired by such a data type, but aims to not transform the actual information in a data structure for the purpose of validation.
+Beyond the syntax differences, he also notes that YAML implements an extensible data type entitled `relational trees` by allowing declaration of an anchor data node which can be referenced and inserted elsewhere. He argues that this increases readability, compactness and clarity while reducing the risk of syntax errors {"citep":"eriksson2011comparison","page":"9"}. The format I propose also aims for relation type references, but without transforming actual information in a data structure.
 
 <br>
 
