@@ -130,7 +130,7 @@ jsonDiagram {
 
 {"break":true}
 
-As seen in figure {"ref":"sharedextension"} ...
+As seen in figure {"ref":"sharedextension"} the properties of a declared extension must either conform to a shared requirement, if one has been declared, or declare its own local requirements.
 
 @startuml
 @startjson
@@ -196,7 +196,7 @@ jsonDiagram {
 
 {"fig":"sharedextension","caption":"Unit tests for type extensions with shared minimum, maximum or default value."}
 
-As seen in figure {"ref":"declarationmismatch"} ...
+As seen in figure {"ref":"declarationmismatch"} the properties or cases of a declared type or extension must conform to their local requirements.
 
 @startuml
 @startjson
@@ -412,7 +412,7 @@ jsonDiagram {
 
 {"sub":"Type instance units"}
 
-As seen in figure {"ref":"instanceproperty"} ...
+As seen in figure {"ref":"instanceproperty"} a node that references a type in the data node must instantiate all required properties from the respective type declaration.
 
 @startuml
 @startjson
@@ -460,7 +460,7 @@ jsonDiagram {
 
 {"fig":"instanceproperty","caption":"Unit test for conformance of required properties in instance."}
 
-As seen in figure {"ref":"instancevalue"} ...
+As seen in figure {"ref":"instancevalue"} a node that references a type in the data node must instantiate a property with its declared value type and within its range.
 
 @startuml
 @startjson
@@ -553,7 +553,7 @@ jsonDiagram {
 
 {"fig":"instancevalue","caption":"Unit tests for conformance of value type and range in instance."}
 
-As seen in figure {"ref":"instancevaluearray"} ...
+As seen in figure {"ref":"instancevaluearray"} a node that references a type in the data node must instantiate an arrayrised property with its declared value type and within its range.
 
 @startuml
 @startjson
