@@ -1,4 +1,4 @@
-{"sec":"Syntax Proposal"}
+{"sec":"Proposal for a Type-Extensible Syntax"}
 
 In this section I present my syntax proposal for extensibly typed JSON data structures. A proposal for changes to syntax or grammatical features of a programming language is typically structured as an argument for the conditions that necessitate the proposed change. This includes samples of code that demonstrate the flaws of the current implementation, the proposal applied as a solution in a real-world scenario, and design considerations for both the impact of the proposed change and alternative solutions to the issue.
 
@@ -6,11 +6,7 @@ In this section I present my syntax proposal for extensibly typed JSON data stru
 
 {"sub":"Introduction"}
 
-As a step towards improving the safety and usability of the JSON format through an extensible approach, this first half of the collective proposal introduces a syntax for declarations as enumerations and specifications of type or type extension initialisation requirements.
-
----
-
-As a step towards improving the safety and usability of the JSON format through an extensible approach, this second half of the collective proposal introduces a syntax for instances as data points that reference a type initialisation specification.
+As a step towards evolving the type-extensibility of the JSON specification, this proposal introduces a grammar for type declarations, type extensions, and explicit type instances. The syntax for this type-extensible grammar was designed to have minimal impact on the structure and no transformation of the information contained in a JSON data structure. 
 
 <br>
 
@@ -431,20 +427,12 @@ This is however not without fault as the type name would become a reserved prope
 
 {"sub":"Source compatibility"}
 
-As the TXON specification conforms to the JSON specification, there should be zero compatibility issues with existing implementations of JSON for editing, serialising or parsing data. Existing JSON data structures cannot be validated with the txon.js validation library, as it requires the declaration of types, but since it is not a TXON structure this would be unnecessary regardless. However, data structures with type declarations/instances are still valid JSON structures, and as such they can be parsed and the explicit typing can be ignored or utilised with other validation implementations or for other purposes.
-
----
-
-As the TXON specification conforms to the JSON specification, there should be zero compatibility issues with existing implementations of JSON for editing, serialising or parsing data. Existing JSON data structures cannot be validated with the txon.js validation library, as it requires the declaration of types, but since it is not a TXON structure this would be unnecessary regardless. However, data structures with type declarations/instances are still valid JSON structures, and as such they can be parsed and the explicit typing can be ignored or utilised with other validation implementations or for other purposes.
+As the TXON specification conforms to the JSON specification, there should be zero compatibility issues with existing implementations of JSON for editing, decoding or encoding objects. Existing JSON data structures cannot be validated with the txon.js library, as it requires the declaration of types, but since they do not contain type references anyway the library is not applicable regardless. However, typed data structures are still valid JSON structures, and as such they can be parsed and the explicit typing can be ignored or utilised with other validation implementations or for other purposes.
 
 <br>
 
 {"sub":"Future directions"}
 
-Actually adopting this proposed syntax for type declarations is quite feasible, as the data can remain otherwise unaltered and the declarations can be ignored. However, this will decrease performance and increase size of file transmissions, so it should not be done unless it clearly demonstrates an improved validation process both now and in the future.
-
----
-
-Actually adopting this proposed syntax for type instances is quite feasible, as the data can remain otherwise unaltered and the explicit typing can be ignored. However, this will decrease performance and increase size of file transmissions, so it should not be done unless it clearly demonstrates an improved validation process both now and in the future.
+Actually adopting this proposed syntax for type declarations is quite feasible, as the data structure can remain otherwise unaltered and the type declarations and references can be ignored. However, this will decrease performance and increase size of file transmissions, so it should not be done unless it clearly demonstrates an improved validation process both now and in the future.
 
 {"break":true}
