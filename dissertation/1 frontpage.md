@@ -17,7 +17,7 @@ Thor Wessel Lindberg
 <br>
 IT University of Copenhagen
 <br>
-student no.: 17858
+Student no.: 17858
 </p>
 
 <br>

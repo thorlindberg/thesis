@@ -6,7 +6,7 @@ In this section I illustrate the `unit tests` that I constructed for this experi
 
 {"sub":"Type declaration units"}
 
-As seen in figure {"ref":"requirementsunits"} the first set of units demonstrate the minimum requirements of a TXON data structure. Only structures containing an `init` property and `data` property at the root node can be validated.
+As seen in figure {"ref":"requirementsunits"} these units demonstrate that a TXON data structure must contain an `init` property and `data` property at its root node, before it can be validated.
 
 @startuml
 @startjson
@@ -47,7 +47,7 @@ jsonDiagram {
 
 {"fig":"requirementsunits","caption":"Unit tests for a type initialiser or data at the root node."}
 
-As seen in figure {"ref":"sharedvalues"} ...
+As seen in figure {"ref":"sharedvalues"} the properties of a declared type must either conform to a shared requirement, if one has been declared, or declare its own local requirements.
 
 @startuml
 @startjson
@@ -85,7 +85,7 @@ jsonDiagram {
                 "init": {
                     "date": {
                         "type": "number",
-                        "default": "10"
+                        "default": "\"10\""
                     }
                 },
                 "data": []
@@ -99,7 +99,7 @@ jsonDiagram {
                     "date": {
                         "type": "number",
                         "default": 10,
-                        "minimum": "1"
+                        "minimum": "\"1\""
                     }
                 },
                 "data": []
@@ -114,7 +114,7 @@ jsonDiagram {
                         "type": "number",
                         "default": 10,
                         "minimum": 5,
-                        "maximum": "15"
+                        "maximum": "\"15\""
                     }
                 },
                 "data": []
@@ -126,7 +126,7 @@ jsonDiagram {
 @endjson
 @enduml
 
-{"fig":"shared values","caption":"Unit tests for type declarations with shared type, minimum, maximum or default value."}
+{"fig":"sharedvalues","caption":"Unit tests for type declarations with shared type, minimum, maximum or default value."}
 
 {"break":true}
 
@@ -155,7 +155,7 @@ jsonDiagram {
             "json": {
                 "init": {
                     "number.date": {
-                        "default": "10"
+                        "default": "\"10\""
                     }
                 },
                 "data": []
@@ -168,7 +168,7 @@ jsonDiagram {
                 "init": {
                     "number.date": {
                         "default": 10,
-                        "minimum": "5"
+                        "minimum": "\"5\""
                     }
                 },
                 "data": []
@@ -182,7 +182,7 @@ jsonDiagram {
                     "number.date": {
                         "default": 10,
                         "minimum": 5,
-                        "maximum": "15"
+                        "maximum": "\"15\""
                     }
                 },
                 "data": []
@@ -243,7 +243,7 @@ jsonDiagram {
                         "maximum": 15,
                         "month": {
                             "type": "number",
-                            "default": "8"
+                            "default": "\"8\""
                         }
                     }
                 },
@@ -262,7 +262,7 @@ jsonDiagram {
                         "month": {
                             "type": "number",
                             "default": 8,
-                            "minimum": "1"
+                            "minimum": "\"1\""
                         }
                     }
                 },
@@ -282,7 +282,7 @@ jsonDiagram {
                             "type": "number",
                             "default": 8,
                             "minimum": 1,
-                            "maximum": "12"
+                            "maximum": "\"12\""
                         }
                     }
                 },
@@ -299,7 +299,7 @@ jsonDiagram {
                         "minimum": 5,
                         "maximum": 15,
                         "month": {
-                            "default": "8"
+                            "default": "\"8\""
                         }
                     }
                 },
@@ -317,7 +317,7 @@ jsonDiagram {
                         "maximum": 15,
                         "month": {
                             "default": 8,
-                            "minimum": "1"
+                            "minimum": "\"1\""
                         }
                     }
                 },
@@ -336,7 +336,7 @@ jsonDiagram {
                         "month": {
                             "default": 8,
                             "minimum": 1,
-                            "maximum": "12"
+                            "maximum": "\"12\""
                         }
                     }
                 },
@@ -354,7 +354,7 @@ jsonDiagram {
                         "minimum": 5,
                         "maximum": 15,
                         "month": {
-                            "default": "8"
+                            "default": "\"8\""
                         }
                     }
                 },
@@ -373,7 +373,7 @@ jsonDiagram {
                         "maximum": 15,
                         "month": {
                             "default": 8,
-                            "minimum": "1"
+                            "minimum": "\"1\""
                         }
                     }
                 },
@@ -393,7 +393,7 @@ jsonDiagram {
                         "month": {
                             "default": 8,
                             "minimum": 1,
-                            "maximum": "12"
+                            "maximum": "\"12\""
                         }
                     }
                 },
@@ -497,7 +497,7 @@ jsonDiagram {
                 },
                 "data": {
                     "type": "date",
-                    "month": "10"
+                    "month": "\"10\""
                 }
             }
         },
@@ -592,7 +592,7 @@ jsonDiagram {
                     "type": "date",
                     "values": [
                         {
-                            "month": "10"
+                            "month": "\"10\""
                         }
                     ]
                 }
