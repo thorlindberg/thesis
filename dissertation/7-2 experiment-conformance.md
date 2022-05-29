@@ -1,4 +1,4 @@
-{"sec":"Implementation of Type Conformance"}
+{"sec":"Implementation of Conformance Library"}
 
 The validation process consists of steps. Each step corresponds to a feature from the proposed syntax, and can return its own descriptive error if nonconformance is encountered. In the case of nonconformance, the process will not continue with the next step if any, thus reducing unnecessary computation. If nonconformance is not encountered in any step, no error will be returned and the data structure is valid.
 
