@@ -2,7 +2,7 @@
 
 The validation process consists of steps. Each step corresponds to a feature from the proposed syntax, and can return its own descriptive error if nonconformance is encountered. In the case of nonconformance, the process will not continue with the next step if any, thus reducing unnecessary computation. If nonconformance is not encountered in any step, no error will be returned and the data structure is valid.
 
-There are three steps in this implementation, which are the aforementioned `checkJSON`, `checkInit` and `checkData`. Each step is a hierarchy of checks, and each check can returns its own descriptive misconformance. After a step has been called, it will be checked for a return value, which will be returned if misconformance was detected in a check.
+There are three steps in this implementation, which are the aforementioned `checkJSON`, `checkInit` and `checkData`. Each step is a hierarchy of checks, and each check can returns its own descriptive nonconformance. After a step has been called, it will be checked for a return value, which will be returned if nonconformance was detected in a check.
 
 Developers may desire for validation to continue despite nonconformance, and can in this case utilise the syntax for default values. If nonconformance is encountered but a default is defined, the process will continue with the inserted default value.
 
