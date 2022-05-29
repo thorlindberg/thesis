@@ -68,6 +68,6 @@ jsonDiagram {
 @endjson
 @enduml
 
-{"fig":"typedjson","caption":"..."}
+{"fig":"typedjson","caption":"JSON data structure where each value is an explicitly typed node."}
 
 {"break":true}

@@ -8,7 +8,7 @@ Previous projects have focused on documenting and comparing object serialisation
 
 Developed by {"cite":"miou2019tson"} this project proposes a syntax for declaring explicitly typed property values in the JSON format. These types correspond to types from the C# programming language. This is a simple approach to a syntactical extension of the JSON specification, but it also transform the data itself to a format only reflecting types in one specific language or languages that may declare types in an identical manner. As such it reduces the scope of JSON to a point where its users would likely be better served by an entirely new format.
 
-He provides an example of how to declare a valid TSON root node, and as evidenced it is semantically identical to a JSON root node, with the exception of explicit C# types surrounding property values {"citep":"miou2019tson"}. As this syntax transforms the actual data, it also invalidates it as a JSON object, and as such it is not compatible with JSON parsers.
+As seen in table {"ref":"tsonexample"} he provides an example of how to declare a valid TSON root node, and as evidenced it is semantically identical to a JSON root node, with the exception of explicit C# types surrounding property values {"citep":"miou2019tson"}. As this syntax transforms the actual data, it also invalidates it as a JSON object, and as such it is not compatible with JSON parsers.
 
 <br>
 
@@ -36,9 +36,9 @@ jsonDiagram {
 @endjson
 @enduml
 
-{"fig":"...","caption":"..."}
+{"tbl":"tsonexample","caption":"TSON data structure where values match value instances in C#."}
 
-He provides a list of the types available in the TSON specification, including the C# types that are not available in the JSON specification {"citep":"miou2019tson"}. As seen in table {"ref":"tsonjson"} comparing these two specifications, but I note that as JSON does not distinguish between floats and doubles for its "number" type, meaning integers and numbers are implicitly typed, I have marked them as available in the JSON specification.
+He provides a list of the types available in the TSON specification, including the C# types that are not available in the JSON specification {"citep":"miou2019tson"}. As seen in figure {"ref":"tsonjson"} comparing these two specifications, but I note that as JSON does not distinguish between floats and doubles for its "number" type, meaning integers and numbers are implicitly typed, I have marked them as available in the JSON specification.
 
 <br>
 
@@ -56,22 +56,18 @@ jsonDiagram {
 
 {
 	"JSON": [
-		"object, array",
-		"string, boolean, int",
-		"float, double, null"
-	],
-	"TSON": [
-		"object, array",
-		"string, boolean, int",
-		"float, double, null",
-		"uint, long, ulong, char, short, ushort, sbyte, byte, byte[], datetime, uri"
-	]
+        "object, array, string, boolean, int, float, double, null"
+    ],
+    "TSON": [
+        "object, array, string, boolean, int, float, double, null",
+        "long, ulong, char, short, ushort, sbyte, byte, byte[], datetime, uri"
+    ]
 }
 
 @endjson
 @enduml
 
-{"fig":"tsonjson","caption":"..."}
+{"fig":"tsonjson","caption":"Comparison of value types in JSON and TSON data structure."}
 
 An interesting finding here is the inclusion of a DateTime type, as dates are complex structures with a high degree of variance in declaration between programming languages and data formats. While this can be expected to ease validation of dates when parsed, this specification in general does not provide much in terms of extensibility, as it only extends the type declarations available in JSON, when it could extend the syntax itself to support declaration of any type desirable.
 
