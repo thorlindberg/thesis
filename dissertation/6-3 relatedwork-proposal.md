@@ -6,7 +6,7 @@ As the outcome of my project is intended as a proposal for the evolution of the 
 
 {"sub":"Proposal structure"}
 
-The follow is a generic description of the structure I have derived by reading existing proposals. Not every proposal is identical in structure, so I have chosen the elements that are in general applicable to a proposal.
+The follow is a generic description of the structure I have derived by reading existing proposals. The structure of proposal is not identical, so I have chosen a subset that is generally present across proposals.
 
 `Introduction:` a brief description of what the proposal aims to address and hows it improves upon a current situation.
 
