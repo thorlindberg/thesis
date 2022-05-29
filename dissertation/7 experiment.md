@@ -67,7 +67,7 @@ Inspired by type restrictions/facets in the XML/XSD format, it has become common
 { "type": "string", "date": "28-10-2005" }
 ```
 
-<br>
+{"break":true}
 
 The type limitations of JSON can be circumvented by deconstructing a property value into its components. A date property with a string-value could instead be represented as an object with properties for month, day, and year. Representing these properties with number-values would further clarify the intended values, but does not define a range of valid values. This limitation could be mitigated through properties further specifying a range of numbers.
 
