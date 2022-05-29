@@ -18,7 +18,7 @@ A distributed system achieves asynchronous collaboration through a communication
 
 <br>
 
-`Software heterogeneity` manifests as a variation in programming languages and frameworks. Distributed systems use a layered architecture, with a middle layer driving the software distribution, the so-called `middleware`. The middleware layer exists as an addition to the protocol-oriented application layer, which handles the communication protocols such as `HTTP`. Additionally, as data flows in a heterogeneous distributed system, it must adhere to a standardised and yet interoperable format, modelled on the software systems used in the network.
+`Software heterogeneity` manifests as a variation in programming languages and frameworks. Distributed systems use a layered architecture, with a middle layer driving the software distribution, the so-called `middleware`. The middleware layer exists as an addition to the protocol-oriented application layer, which handles the communication protocols such as `HTTP`. Additionally, as data flows in a heterogeneous distributed system, it must adhere to a standardised and yet interoperable format, modeled on the software systems used in the network.
 
 {"break":true}
 

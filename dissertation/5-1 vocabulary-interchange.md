@@ -132,7 +132,7 @@ const objectLiteral = {
 objectLiteral.doubleNumber(12) // returns 24
 ```
 
-{"fig":"relationalobject","caption":"Objects in JavaScript can contain properties and methods that reference structures or functions. This object has a relational vlaue and relational method to double a number value."}
+{"fig":"relationalobject","caption":"Objects in JavaScript can contain properties and methods that reference structures or functions. This object has a relational value and relational method to double a number value."}
 
 {"break":true}
 
@@ -150,6 +150,6 @@ Plain-text formats are intrinsically less efficient but more interoperable and t
 
 <br>
 
-{"cite":"mozilla2022json"} presents the `JavaScript Object Notation` (JSON) as an interoperable representation of JavaScript objects, with the differences being that names are expressed with the `String` type, trailing commas are not allowed, and objects cannot be assigned methods. JSON is syntactically and structrually similar to the XML format, but differs in that its tags are curly brackets. This allows JSON to express data structures with fewer characters, but also removes the specification and requirements that can be included in a tag. As a result the JSON structure is hypothetically less safe than a corresponding XML structure could be, and this is the sacrifice made in return for a more readable data structure.
+{"cite":"mozilla2022json"} presents the `JavaScript Object Notation` (JSON) as an interoperable representation of JavaScript objects, with the differences being that names are expressed with the `String` type, trailing commas are not allowed, and objects cannot be assigned methods. JSON is syntactically and structurally similar to the XML format, but differs in that its tags are curly brackets. This allows JSON to express data structures with fewer characters, but also removes the specification and requirements that can be included in a tag. As a result the JSON structure is hypothetically less safe than a corresponding XML structure could be, and this is the sacrifice made in return for a more readable data structure.
 
 {"break":true}

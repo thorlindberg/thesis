@@ -1,6 +1,6 @@
 {"sec":"Source Material and Developer Perspectives"}
 
-In this section I present the information I have gathered from interviews at the company with their two engineering teams (iOS and Android), as well as the backend engineers, on the topic of interchangable data and guarding against invalid data. I spoke with the lead engineer on the iOS team about handling data responses in software clients, and with engineers on both the iOS and the Android team about experiences with software crashes caused by invalid data structures.
+In this section I present the information I have gathered from interviews at the company with their two engineering teams (iOS and Android), as well as the backend engineers, on the topic of interchangeable data and guarding against invalid data. I spoke with the lead engineer on the iOS team about handling data responses in software clients, and with engineers on both the iOS and the Android team about experiences with software crashes caused by invalid data structures.
 
 <br>
 
@@ -77,7 +77,7 @@ frame Application {
 
 As data is transmitted from the client database to the company backend, it reaches GitLab where it is validated based on type requirements. The company utilises the TypeScript language to declare types, which is a superset language of JavaScript {"citep":"micro2022typescript"}. These types are predominantly Objects specifying value types, but some types are akin to enumerations specifying a range of values.
 
-Types can specify required values with a non-null type, but also specify optional values by assigning a non-null type and a type null. Developers can declare two types and assign a type to the value of another type. Type names can be declared with "TypeName[]" to type arrayrized data structures.
+Types can specify required values with a non-null type, but also specify optional values by assigning a non-null type and a type null. Developers can declare two types and assign a type to the value of another type. Type names can be declared with "TypeName[]" to type arrayrised data structures.
 
 ```
 type EnumeratedTypeName = "a" | "b" | "c"
@@ -348,6 +348,6 @@ frame Application {
 
 {"fig":"codablestruct","caption":"Process of casting data structure to Codable protocol in the Swift language."}
 
-I anticipated that the engineers would not be concerned with interchangable data if asked directly, so instead I asked them about their experiences with software crashes and pushing updates to correct these errors. This lead to a discussion of the utilities they have to test and deploy API calls, as well as how they negotiate data structures with their client. It was evident from this discussion that potential invalid data structures are not of immediate concern to the engineers, but espite this the engineers had previous experiences with invalid data structures. They explained that the result was a high amount of time invest in debugging the software, but from their perspective these issues should ideally be handled by their backend engineers or the client engineers.
+I anticipated that the engineers would not be concerned with interchangeable data if asked directly, so instead I asked them about their experiences with software crashes and pushing updates to correct these errors. This lead to a discussion of the utilities they have to test and deploy API calls, as well as how they negotiate data structures with their client. It was evident from this discussion that potential invalid data structures are not of immediate concern to the engineers, but despite this the engineers had previous experiences with invalid data structures. They explained that the result was a high amount of time invest in debugging the software, but from their perspective these issues should ideally be handled by their backend engineers or the client engineers.
 
 {"break":true}
