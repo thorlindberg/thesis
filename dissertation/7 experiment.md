@@ -50,7 +50,7 @@ jsonDiagram {
 
 The syntax or grammar of any language or data format is derived from the ability to validate their correctness or inaccuracies. As such the syntax of type declarations and instances in TXON correspond directly to the features implemented in the JavaScript library. This also places certain restrictions or limitations on the usage of TXON, informed by the structure and flow of processes in the library. Each component of the syntax proposal is structured to provide an example of the valid and invalid data structure, the feedback provided from validating the invalid data, and a diagram illustrating the source of nonconformance.
 
-The JavaScript Object Notation (JSON) specifies a format for storing and transmitting JavaScript objects. This format allows the types: "string, number, object, array, boolean, and null". It explicitly precludes the types: "function, date, and undefined". A JSON object is represented as a string of curly brackets with properties inside.
+The JavaScript Object Notation (JSON) specifies a format for storing and transmitting JavaScript objects. This format allows the types `string` `number` `object` `array` `boolean` and `null`. This precludes the JavaScript types `function` `date` and `undefined`.
 
 ```
 { "date": "28-10-2005" }
@@ -61,10 +61,14 @@ The JavaScript Object Notation (JSON) specifies a format for storing and transmi
 Inspired by type restrictions/facets in the XML/XSD format, it has become common to explicitly embed the intended type as a string-value property in a JSON object. This approach to type annotation enables the recipient to validate the content type based on its intended type, but not beyond the types available in JSON.
 
 ```
-<xs:restriction base="xs:string"></xs:restriction>
+<xs:restriction base="xs:string">
+</xs:restriction>
 ```
 ```
-{ "type": "string", "date": "28-10-2005" }
+{
+    "type": "string",
+    "date": "28-10-2005"
+}
 ```
 
 {"break":true}
@@ -89,9 +93,5 @@ As evidenced, embedding these restrictions in the data results in more specifica
     }
 }
 ```
-
-<br>
-
-As it turns out, this is not a unique problem, and thus the solution already exists: enumerations. This user-defined data type allows us to declare a specification once, and then instantiate it without repetition of requirements.
 
 {"break":true}

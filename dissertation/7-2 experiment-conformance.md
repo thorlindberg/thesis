@@ -18,7 +18,7 @@ Alternatively the method could asynchronously return errors as/if nonconformance
 
 {"sub":"Library and features"}
 
-A library is a collection of utilities that in combination achieve a shared goal. In this instance, the TXON library is instantiated as a TXON object and its method provides validation of a JSON String. In the following I present the features, intent and structure of my library. This library supports the following validation features, reflecting syntactical features in the .txon data format.
+A library is a collection of utilities that in combination achieve a shared goal. In this instance, the TXON library is instantiated as a TXON object and its method provides validation of a JSON String. In the following I present the features, intent and structure of my library. This library supports the following validation features, reflecting syntactical features in the TXON format.
 
 - Type declarations in the `initialiser property`.
 - Type instances in the `data property`.
@@ -27,7 +27,7 @@ Users can declare their own extended types (e.g. "date"), or declare extensions 
 
 <br>
 
-The txon.js library "handshakes" a JSON String, validating conformance of its "data" property to extended type declarations from its "init" property. TXON is initialised as an Object with a "docs method", "handshake method", and "tests property".
+The txon.js library `handshakes` a JSON String, validating conformance of its `data` property to extended type declarations from its `init` property. TXON is initialised as an Object providing a `docs method` `handshake method` and `tests property`.
 
 ```
 const TXON = {
@@ -684,7 +684,7 @@ if (inInstance) {
 
 {"break":true}
 
-If the type instance has a "values" property, validation proceeds if its value is of type Array. It then proceeds to loop through its elements, validating elements of type Object by looping through their properties. It checks if all required properties have been instantiated. If the check fails it returns an Object that indicates the data structure is invalid, with the feedback that a type was instantiated but is missing a required property. If the check passes for all required properties, it proceeds to check the property values.
+If the type instance has a `values` property, validation proceeds if its value is of type Array. It then proceeds to loop through its elements, validating elements of type Object by looping through their properties. It checks if all required properties have been instantiated. If the check fails it returns an Object that indicates the data structure is invalid, with the feedback that a type was instantiated but is missing a required property. If the check passes for all required properties, it proceeds to check the property values.
 
 ```
 if (hasValues) {
