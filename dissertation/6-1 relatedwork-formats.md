@@ -18,15 +18,11 @@ Beyond the syntax differences, he also notes that YAML implements an extensible 
 
 {"sub":"Scope of data format with strict requirements"}
 
-{"cite":"goff2001xmlserialization"} describes document object serialisation processes with the eXtensible Markup Language (XML) data format, assessing its implementation in heterogeneous distributed systems. While this paper focuses heavily on the serialisation process, it also illustrates why more strict and "heavy" data formats are applicable for data interchange, as well as the extent of their scope.
+{"cite":"goff2001xmlserialization"} describes document object serialisation processes with the `Extensible Markup Language` (XML) data format, assessing its implementation in heterogeneous distributed systems. While this paper focuses heavily on the serialisation process, it also illustrates why more strict and "heavy" data formats are applicable for data interchange, as well as the extent of their scope.
 
 He identifies three capabilities required of an object representation, and notes that these are evident in ongoing research into the XML specification {"citep":"goff2001xmlserialization","page":"3"}. These three capabilities are `language neutrality` `verifiable validity` and the `ability to be deserialised`.
 
-This description is not far from the design goals of the JSON specification, which also aims to be neutral and easily deserialised. However they differ vastly in the extent of their ability to be easily verified. This is evident in the limited extent of pre-defined capabilities for specifying node requirements in JSON. While it is entirely possible to specify any requirements within JSON semantics, the specification does not officially support these stricter requirements, which means there is no universal syntax to expect when parsing.
-
-<!--
-The following is an example of a JSON with typed data, but everything is just type of String
--->
+This description is not far from the design goals of the JSON specification, which also aims to be neutral and easily deserialised. However they differ vastly in the extent of their ability to be easily verified. This is evident in the limited extent of pre-defined capabilities for specifying node requirements in JSON. As seen in {"ref":"typedjson"} it is entirely possible to specify any requirements within JSON semantics, but the specification does facilitate validation of these requirements.
 
 <br>
 
@@ -72,6 +68,4 @@ jsonDiagram {
 @endjson
 @enduml
 
-{"fig":"...","caption":"..."}
-
-{"break":true}
+{"fig":"typedjson","caption":"..."}
