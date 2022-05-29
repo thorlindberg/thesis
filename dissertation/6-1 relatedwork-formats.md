@@ -12,7 +12,7 @@ The overarching point he argues is that the similarities and difference between 
 
 {"break":true}
 
-Beyond the syntax differences, he also notes that YAML implements an extensible data type entitled `relational trees` by allowing declaration of an anchor data node which can be referenced and inserted elsewhere. He argues that this increases readability, compactness and clarity while reducing the risk of syntax errors {"citep":"eriksson2011comparison","page":"9"}.
+Beyond the syntax differences, he also notes that YAML implements an extensible data type entitled `relational trees` by allowing declaration of an anchor data node which can be referenced and inserted elsewhere. He argues that this increases readability, compactness and clarity while reducing the risk of syntax errors {"citep":"eriksson2011comparison","page":"9"}. The format I propose also aims for relation type references, but without transforming actual information in a data structure.
 
 <br>
 
@@ -39,29 +39,31 @@ jsonDiagram {
 </style>
 
 {
-    "name": {
-        "type": "string",
-        "value": "My Cool Adventure"
-    },
-    "plays": {
-        "type": "uint",
-        "value": 150
-    },
-    "reputation": {
-        "type": "int",
-        "value": -2
-    },
-    "visible": {
-        "type": "bool",
-        "value": false
-    },
-    "data": {
-        "type": "bytes",
-        "value": "UTIHCQsOEBIUFxkbHSAiJCYHCQsOEBIUFxkbHSAiJCYICAg="
-    },
-    "created": {
-        "type": "datetime",
-        "value": "2020-05-13T10:06:09.5137659-04:00"
+    "JSON": {
+        "name": {
+            "type": "string",
+            "value": "My Cool Adventure"
+        },
+        "plays": {
+            "type": "uint",
+            "value": 150
+        },
+        "reputation": {
+            "type": "int",
+            "value": -2
+        },
+        "visible": {
+            "type": "bool",
+            "value": false
+        },
+        "data": {
+            "type": "bytes",
+            "value": "UTIHCQsOEBIUFxkbHSAiJCYHCQsOEBIUFxkbHSAiJCYICAg="
+        },
+        "created": {
+            "type": "datetime",
+            "value": "2020-05-13T10:06:09.5137659-04:00"
+        }
     }
 }
 
