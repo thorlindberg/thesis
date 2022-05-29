@@ -18,16 +18,29 @@ Developed by {"cite":"miou2019tson"} this project proposes a syntax for declarin
 
 He provides an example of how to declare a valid TSON root node, and as evidenced it is semantically identical to a JSON root node, with the exception of explicit C# types surrounding property values {"citep":"miou2019tson"}. As this syntax transforms the actual data, it also invalidates it as a JSON object, and as such it is not compatible with JSON parsers.
 
-```
-{
-    "name": string("My Cool Adventure"),
-    "plays": uint(150),
-    "reputation": int(-2),
-    "visible": bool(false),
-    "data": bytes("UTIHCQsOEBIUFxkbHSAiJCYHCQsOEBIUFxkbHSAiJCYICAg="),
-    "created": datetime("2020-05-13T10:06:09.5137659-04:00")
+@startuml
+@startjson
+
+<style>
+jsonDiagram {
+    BackGroundColor transparent
+    node {
+        BackGroundColor white
+    }
 }
-```
+</style>
+
+{
+    "name": "string(\"My Cool Adventure\")",
+    "plays": "uint(150)",
+    "reputation": "int(-2)",
+    "visible": "bool(false)",
+    "data": "bytes(\"UTIHCQsOEBIUFxkbHSAiJCYHCQsOEBIUFxkbHSAiJCYICAg=\")",
+    "created": "datetime(\"2020-05-13T10:06:09.5137659-04:00\")"
+}
+
+@endjson
+@enduml
 
 <br>
 

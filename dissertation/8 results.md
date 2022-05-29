@@ -2,8 +2,6 @@
 
 In this chapter I present the results of my experiment, which includes a syntax proposal for extensibly typed JSON data structures and a critical evaluation of its implementation through the txon.js library. To preface these results I present the Type-Extensible Object Notation (TXON)) grammar derived from this experiment, as well as the system of terminologies used throughout the proposal.
 
-The structure of this proposal is derived from proposals for the Swift Programming Language Evolution {"citep":"apple2022swiftevolution"}. Swift is a relatively young language at 7 years old (released June 2nd 2014), and as such there is an active advancement of its features and syntax. It is also utilised by the iOS development team at the company that provided the data samples and validation code for this project.
-
 <br>
 
 {"sub":"Grammatical notation"}

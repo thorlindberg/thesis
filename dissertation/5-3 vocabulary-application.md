@@ -26,8 +26,6 @@ GitLab automates the processes in-between pushing changes to code and `integrati
 
 {"cite":"amirault2021template"} provides a GitLab template for continuously integrating a project written in the Swift programming language. It is evident from this template that a setup on GitLab can be configured by individually specifying the executable events for each stage in the continuous process.
 
-<br>
-
 ```
 stages:
     - build

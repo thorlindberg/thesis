@@ -12,6 +12,8 @@ In this section I present the terminology used for planning and conducing a deve
 
 TDD can viewed as not just an approach to writing tests that define success criteria before implementation, but also an approach to defining current failures in existing systems before extending or improving features {"citep":"guernsey2013testdriven"}. This approach forces developers to demonstrate the need for a functional implementation, before investing resources into one, which helps guard against wasting resources on unnecessary or insufficient implementations. As seen in figure {"ref":"testcycle"} the full TDD cycle starts with a test for failure, which informs the design of an acceptance test that drives the agile functional implementation.
 
+{"break":true}
+
 @startuml
 
 skinparam linetype ortho

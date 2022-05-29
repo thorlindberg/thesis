@@ -18,8 +18,6 @@ Thor Wessel Lindberg
 IT University of Copenhagen
 <br>
 Student no.: 17858
-<br>
-<a href="mailto:mawl@itu.dk">mawl@itu.dk</a>
 </p>
 
 <br>

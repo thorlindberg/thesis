@@ -30,15 +30,48 @@ This description is not far from the design goals of the JSON specification, whi
 
 [ The following is an example of a JSON with typed data, but everything is just type of String ]
 
-```
-{
-    "name": { "type": "string", "value": "My Cool Adventure" },
-    "plays": { "type": "uint", "value": 150 },
-    "reputation": { "type": "int", "value": -2 },
-    "visible": { "type": "bool", "value": false },
-    "data": { "type": "bytes", "value": "UTIHCQsOEBIUFxkbHSAiJCYHCQsOEBIUFxkbHSAiJCYICAg=" },
-    "created": { "type": "datetime", "value": "2020-05-13T10:06:09.5137659-04:00" }
+<br>
+
+@startuml
+@startjson
+
+<style>
+jsonDiagram {
+    BackGroundColor transparent
+    node {
+        BackGroundColor white
+    }
 }
-```
+</style>
+
+{
+    "name": {
+        "type": "string",
+        "value": "My Cool Adventure"
+    },
+    "plays": {
+        "type": "uint",
+        "value": 150
+    },
+    "reputation": {
+        "type": "int",
+        "value": -2
+    },
+    "visible": {
+        "type": "bool",
+        "value": false
+    },
+    "data": {
+        "type": "bytes",
+        "value": "UTIHCQsOEBIUFxkbHSAiJCYHCQsOEBIUFxkbHSAiJCYICAg="
+    },
+    "created": {
+        "type": "datetime",
+        "value": "2020-05-13T10:06:09.5137659-04:00"
+    }
+}
+
+@endjson
+@enduml
 
 {"break":true}
