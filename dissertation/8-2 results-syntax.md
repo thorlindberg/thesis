@@ -50,7 +50,7 @@ However, this does not ensure that all the properties are present in the data st
 
 ---
 
-The motivation for this implementation of types is the current lack of a standardised and generic syntax for explicitly typing dynamically typed data. The result of this is multiple independent approaches to typing, such as including requirements as properties ofobjects. This lack of standardisation means each involved party in a development process must independently verify their data structures.
+The motivation for this implementation of types is the current lack of a standardised and generic syntax for explicitly typing dynamically typed data. The result of this is multiple independent approaches to typing, such as including requirements as properties of objects. This lack of standardisation means each involved party in a development process must independently verify their data structures.
 
 <br>
 
@@ -153,7 +153,7 @@ It is evident from this syntactical approach that despite these strict requireme
 
 ---
 
-I would like to propose a syntax for instantiating types with a generic and minimal `type instance syntax`, with relational references to type specifications outside the immediate data point and structure. This syntax is grammatically designed to accomodate different data structures, especially as pertaining to inheritance and shared typing of data points.
+I would like to propose a syntax for instantiating types with a generic and minimal `type instance syntax`, with relational references to type specifications outside the immediate data point and structure. This syntax is grammatically designed to accommodate different data structures, especially as pertaining to inheritance and shared typing of data points.
 
 Types can be instantiated in the `data property`at the root of the data structure:
 
@@ -287,7 +287,7 @@ In evaluating this design it became clear that the complexity in the combination
 }
 ```
 
-It is already evident that the current implementation of the proposal does not adequately facilitate shared typing or inherting through type extension, when the data structure requires multiple cases with multiple shared types.
+It is already evident that the current implementation of the proposal does not adequately facilitate shared typing or inheriting through type extension, when the data structure requires multiple cases with multiple shared types.
 
 ---
 
@@ -352,7 +352,7 @@ The design of this implementations considers the hierarchy of the data structure
 
 {"sub":"Alternatives considered"}
 
-After experimenting with the implementation of this proposed syntax for type declarations, it became evident that not all type values should be required, and that default values are not an appropiate approach to declaring optional values. With the current implementation you can declare a type:
+After experimenting with the implementation of this proposed syntax for type declarations, it became evident that not all type values should be required, and that default values are not an appropriate approach to declaring optional values. With the current implementation you can declare a type:
 
 ```
 {
@@ -413,7 +413,7 @@ The explicit typing does not make sense in this situation, and it would be far m
 }
 ```
 
-This is however not without fault as the type name would become a reserved property name for the entire data structure, as there is nothing to indicate whether it is a type reference or not. This is not in keeping with the extensible approach of TXON, so the propery name would need some other non-typical indicator such as an exclamation mark (!) to indicate it is initialising a type:
+This is however not without fault as the type name would become a reserved property name for the entire data structure, as there is nothing to indicate whether it is a type reference or not. This is not in keeping with the extensible approach of TXON, so the property name would need some other non-typical indicator such as an exclamation mark (!) to indicate it is initialising a type:
 
 ```
 {
