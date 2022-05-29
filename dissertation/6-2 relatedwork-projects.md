@@ -10,6 +10,8 @@ Developed by {"cite":"miou2019tson"} this project proposes a syntax for declarin
 
 He provides an example of how to declare a valid TSON root node, and as evidenced it is semantically identical to a JSON root node, with the exception of explicit C# types surrounding property values {"citep":"miou2019tson"}. As this syntax transforms the actual data, it also invalidates it as a JSON object, and as such it is not compatible with JSON parsers.
 
+<br>
+
 @startuml
 @startjson
 
@@ -34,7 +36,7 @@ jsonDiagram {
 @endjson
 @enduml
 
-<br>
+{"fig":"...","caption":"..."}
 
 He provides a list of the types available in the TSON specification, including the C# types that are not available in the JSON specification {"citep":"miou2019tson"}. As seen in table {"ref":"tsonjson"} comparing these two specifications, but I note that as JSON does not distinguish between floats and doubles for its "number" type, meaning integers and numbers are implicitly typed, I have marked them as available in the JSON specification.
 
@@ -69,7 +71,7 @@ jsonDiagram {
 @endjson
 @enduml
 
-{"tbl":"tsonjson","caption":"Description."}
+{"fig":"tsonjson","caption":"..."}
 
 An interesting finding here is the inclusion of a DateTime type, as dates are complex structures with a high degree of variance in declaration between programming languages and data formats. While this can be expected to ease validation of dates when parsed, this specification in general does not provide much in terms of extensibility, as it only extends the type declarations available in JSON, when it could extend the syntax itself to support declaration of any type desirable.
 
@@ -81,9 +83,9 @@ Developed by {"cite":"lyon2014typeable"} this project proposes an alternative da
 
 This proposal implies that a TSON data structure does not conform to the JSON specification, and as such it is incompatible with existing JSON parsers. As a result the developer has implemented their own library specifically targeting the C# programming language. This effectively limits the use of TSON to a single programming language, and as such it cannot be considered interoperable outside systems that are exclusively written in C#.
 
-{"break":true}
-
 The library contains its own C# parsing and classes, providing developers with the tools to construct typed classes in C# and cast TSON data structures to classes after parsing. As seen in this example the contents of a class can be typed with the predefined TSON classes or extended with a custom class that conforms to TSON by being typed with its classes.
+
+{"break":true}
 
 ```
 class Data : TsonTypedObjectNode {
