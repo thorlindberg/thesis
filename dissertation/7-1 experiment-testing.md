@@ -4,7 +4,7 @@ In this section I illustrate the `unit tests` that I constructed for this experi
 
 <br>
 
-{"sec":"Type declaration units"}
+{"sub":"Type declaration units"}
 
 As seen in figure {"ref":"requirementsunits"} the first set of units demonstrate the minimum requirements of a TXON data structure. Only structures containing an `init` property and `data` property at the root node can be validated.
 
@@ -127,6 +127,8 @@ jsonDiagram {
 @enduml
 
 {"fig":"shared values","caption":"Unit tests for type declarations with shared type, minimum, maximum or default value."}
+
+{"break":true}
 
 As seen in figure {"ref":"sharedextension"} ...
 
@@ -406,7 +408,9 @@ jsonDiagram {
 
 {"fig":"declarationmismatch","caption":"Unit tests for property names of declaration and conformance of types."}
 
-{"sec":"Type instance units"}
+{"break":true}
+
+{"sub":"Type instance units"}
 
 As seen in figure {"ref":"instanceproperty"} ...
 
