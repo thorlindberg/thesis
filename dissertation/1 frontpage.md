@@ -1,5 +1,7 @@
 <p align="center">
-<b style="font-size: 1.515em">Type-Extensible Object Notation: JSON with Syntax for Types</b>
+<b style="font-size: 1.515em">
+Type-Extensible Object Notation: JSON with Syntax for Types
+</b>
 </p>
 
 <p align="center">

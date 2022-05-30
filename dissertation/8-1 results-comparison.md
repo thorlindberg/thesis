@@ -137,7 +137,7 @@ jsonDiagram {
 @endjson
 @enduml
 
-{"fig":"embedtypes","caption":"TXON data structure with type declarations embedded in its initialiser, as derived from TypeScript types."}
+{"fig":"embedtypes","caption":"TXON data structure with type declarations embedded in its initialiser."}
 
 <!--
 3. Transform JSON data structure by embedding its content in a data property at its root node.
@@ -146,9 +146,7 @@ jsonDiagram {
 4. Translate objects in data property to type instances by extending with type references.
 -->
 
-As seen in figure {"ref":"embeddedjson"}
-
-[ Text ]
+With the type declarations moved from TypeScript to the TXON data structure, we can now embed the original JSON data structure in the data property of the TXON data structure. As seen in figure {"ref":"embeddedjson"} this structure currently does not contain any information on the intended value types for its properties.
 
 @startuml
 @startjson
@@ -222,9 +220,7 @@ jsonDiagram {
 
 {"break":true}
 
-As seen in figure {"ref":"typedjson"}
-
-[ Text ]
+We can then extend the JSON data by adding explicit relational references to type names that we declared in the initialiser of the TXON structure. As seen in figure {"ref":"typedjson"} the resulting data structure required minimal transformation, and the information was only altered when a type required its value be split into multiple values.
 
 @startuml
 @startjson
@@ -310,7 +306,7 @@ jsonDiagram {
 
 {"fig":"typedjson","caption":"TXON data structure with typed data through type instances of relational references."}
 
-As seen in figure {"ref":"txonstructure"}
+With both types declared in the initialiser and instances of types initialised in the data property, we now have a complete TXON data structure. If we compare this resulting structure to the original TypeScript declarations and the original JSON data structure, there was not much necessity for their transformation. As seen in figure {"ref":"txonstructure"} this representation is easier to cross-reference and thus debug, as everything is embedded into one structure.
 
 [ Text ]
 
