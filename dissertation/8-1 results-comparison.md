@@ -74,8 +74,6 @@ type Connector[] = {
 }
 ```
 
-<br>
-
 <!--
 2. Transform JSON data structure by embedding TXON types in an initialiser property at its root node.
 
@@ -220,7 +218,7 @@ jsonDiagram {
 
 {"break":true}
 
-We can then extend the JSON data by adding explicit relational references to type names that we declared in the initialiser of the TXON structure. As seen in figure {"ref":"typedjson"} the resulting data structure required minimal transformation, and the information was only altered when a type required its value be split into multiple values.
+We can then extend the JSON data by adding explicit relational references to type names that we declared in the initialiser of the TXON structure. As seen in figure {"ref":"typedjson"} the information was only altered when a type required its value be split into multiple values.
 
 @startuml
 @startjson
