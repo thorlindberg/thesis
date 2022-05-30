@@ -1,9 +1,13 @@
 {"chp":"Introduction"}
 
+<div style="color:red">
+
 As humanity increasingly becomes reliant on smartphones and internet-of-things (IOT) devices for communication, the software industry must pivot towards development of applications centered on data transmission. These applications can be completely reliant on a consistent internet connection, acting as clients receiving and presenting transmitted information to users. These clients typically serve purposes such as social media communication, content consumption, user account access etc.
 
 This evolution in computing has implications for how software projects are planned, conducted and maintained. As the server becomes the predominant source of both information and computation, the software itself plays a diminishing role in delivering content to consumers. Deployment of software applications on mobile platforms requires publishing approval, as well as the consent of users for updates. For these reasons mobile applications must be heavily tested before deployment, which discourages the development of complex applications prone to errors (referred to as "hard-coded"). The software industry has instead moved towards developing simple applications (referred to as "soft-coded") that are flexible to server-driven changes and updates.
 
 The data transmitted to these applications is often simple data structures containing small amounts of information, with a high frequency of transmission. In the case of platforms, especially social media platforms, user activity is recorded, batched, and algorithmically processed on-server, meaning user devices only receive the small result. Transmission occurs across layers in a system, referred to as a distributed system due to the distributed nature of communication. A main feature of distributed systems is their ability to handle hardware and software heterogeneity, as information must travel digitally and physically across layers of applications, networks, and hardware. Heterogeneity manifests as differences in protocols, programming language features, and data formats.
+
+</div>
 
 {"break":true}
