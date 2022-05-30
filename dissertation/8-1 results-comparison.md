@@ -481,7 +481,7 @@ export const validate = <T extends { [key: string]: any }>(
 }
 ```
 
-<br>
+{"break":true}
 
 ```
 for (const k of Object.keys(against)) {
@@ -526,7 +526,7 @@ if (value === undefined) {
 }
 ```
 
-<br>
+{"break":true}
 
 ```
 const specType = spec.type
