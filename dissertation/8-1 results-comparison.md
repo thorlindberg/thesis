@@ -40,30 +40,25 @@ type Address = {
     line1: string
     line2: string
 }
-```
-```
+
 type Coordinates = {
     lat: number
     lng: number
 }
-```
-```
+
 type Localizable =  {
     da: string | null
     en: string | null
 }
-```
-```
+
 type ChargePoint[] = {
     id: string
     type: ChargePointType
     connectors: Connector[]
 }
-```
-```
+
 type ChargePointType = string
-```
-```
+
 type Connector[] = {
     id: string
     connectorNo: string
@@ -146,7 +141,7 @@ jsonDiagram {
 4. Translate objects in data property to type instances by extending with type references.
 -->
 
-With the type declarations moved from TypeScript to the TXON data structure, we can now embed the original JSON data structure in the data property of the TXON data structure. As seen in figure {"ref":"embeddedjson"} this structure currently does not contain any information on the intended value types for its properties.
+With the type declarations moved from TypeScript to the TXON data structure, we can now embed the original JSON data structure in the data property of the TXON data structure. As seen in figure {"ref":"embeddedjson"} this structure does not contain any information on the intended value types for its properties.
 
 @startuml
 @startjson
@@ -306,7 +301,9 @@ jsonDiagram {
 
 {"fig":"typedjson","caption":"TXON data structure with typed data through type instances of relational references."}
 
-With both types declared in the initialiser and instances of types initialised in the data property, we now have a complete TXON data structure. If we compare this resulting structure to the original TypeScript declarations and the original JSON data structure, there was not much necessity for their transformation. As seen in figure {"ref":"txonstructure"} this representation is easier to cross-reference and thus debug, as everything is embedded into one structure.
+With both types declared in the initialiser and instances of types initialised in the data property, we now have a complete TXON data structure. If we compare this resulting structure to the original TypeScript declarations and the original JSON data structure, there was not much necessity for their transformation.
+
+As seen in figure {"ref":"txonstructure"} this representation is easier to cross-reference and thus debug, as everything is embedded into one structure.
 
 [ Text ]
 
