@@ -457,7 +457,7 @@ type TypeValidationErrorMessage =
 
 The validation library on GitLab then implements a `validate` method, which is one of several helper functions in the library. The `validate` method defines checks for validating an incoming JSON data structure, and also defines the conditions for detecting nonconformance in the data. The implication is that this process is selective, meaning it allows some leeway of errors to be present, as long as the required properties can be cast to its typed object. The method can be summarised as:
 
-<br>
+{"break":true}
 
 ```
 export const validate = <T extends { [key: string]: any }>(
@@ -474,9 +474,6 @@ export const validate = <T extends { [key: string]: any }>(
 
 }
 ```
-
-{"break":true}
-
 ```
 for (const k of Object.keys(against)) {
         
@@ -500,9 +497,6 @@ for (const k of Object.keys(against)) {
 
 }
 ```
-
-<br>
-
 ```
 const value: T[string] | undefined | null = data[k]
 const spec = against[k]
