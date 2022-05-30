@@ -578,11 +578,9 @@ if (isTypeSpecArray(specType)) {
 }
 ```
 
-<br>
+{"break":true}
 
 It is evident from this method that validation is performed recursively, and that validation does not continue once a nonconformance error has been returned or exception has been thrown. The implications of this implementation are that if a data structure was to be found invalid, the developer would have to look at the type declarations in TypeScript, and then look at the data structure that is invalid. The developer would then have to compare the two, and determine the reason for the respective nonconformance issue.
-
-{"break":true}
 
 The validation of a TXON data structure can be achieved through the TXON.js validation library. As described in the experiment, the library provides a handshake method that takes a stringified data structure as its input parameter, and returns an object denoting the validity of the data structure. This object contains both a boolean value that is always `true` unless nonconformance was detected, and a string of feedback describing why validation failed or could not be performed. The implication is that if no feedback is returned, the data structure has completed validation and passed all checks.
 
