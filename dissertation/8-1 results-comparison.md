@@ -430,13 +430,7 @@ jsonDiagram {
 
 {"sub":"Validation processes and debugging"}
 
-<!--
-Introduction
-
-TypeScript provides extensible and explicit typing of JavaScript structures. Its extensible syntax means that structures like Objects become typed by adding type annotations and the "type" keyword. This also means that TypeScript code becomes valid JavaScript code by removing these annotations and the keyword. As TypeScript is a superset of JavaScript, and the JSON format is derived from JavaScript, a JSON data structure can be decoded and cast directly to a typed object. Through this process the properties of a JSON structure can be validated on their type based on the typed properties of the TypeScript object. A property can be annotated with another typed structure, resulting in relational references between structures.
--->
-
-[ Text ]
+An object in TypeScript is the end-point for the validation on GitLab, because it provides a statically typed, strong and explicit target on which JSON data structures can be cast. Only the data that matches this object on both value types and structure will be initialised, and as such it provides a powerful guard against errors. This is important because the object is encoded again, and then forwarded to the database that drives the end-user client application. If we could not guard against errors before the data reaches the application, it could cause the customer software to become unusable.
 
 {"break":true}
 
