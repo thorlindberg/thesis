@@ -1,6 +1,6 @@
 {"chp":"Results"}
 
-In this chapter I present the results of my experiment, which includes a syntax proposal for extensibly typed JSON data structures and a critical evaluation of its implementation through the txon.js library. To preface these results I present the Type-Extensible Object Notation (TXON)) grammar derived from this experiment, as well as the system of terminologies used throughout the proposal.
+In this chapter I present the results of my experiment, which includes a syntax proposal for extensibly typed JSON data structures and a critical evaluation of its implementation through the TXON.js library. To preface these results I present the Type-Extensible Object Notation (TXON)) grammar derived from this experiment, as well as the system of terminologies used throughout the proposal.
 
 <br>
 

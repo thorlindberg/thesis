@@ -458,7 +458,7 @@ This is however not without fault as the type name would become a reserved prope
 
 {"sub":"Source compatibility"}
 
-As the TXON specification conforms to the JSON specification, there should be zero compatibility issues with existing implementations of JSON for editing, decoding or encoding objects. Existing JSON data structures cannot be validated with the txon.js library, as it requires the declaration of types, but since they do not contain type references anyway the library is not applicable regardless. However, typed data structures are still valid JSON structures, and as such they can be parsed and the explicit typing can be ignored or utilised with other validation implementations or for other purposes.
+As the TXON specification conforms to the JSON specification, there should be zero compatibility issues with existing implementations of JSON for editing, decoding or encoding objects. Existing JSON data structures cannot be validated with the TXON.js library, as it requires the declaration of types, but since they do not contain type references anyway the library is not applicable regardless. However, typed data structures are still valid JSON structures, and as such they can be parsed and the explicit typing can be ignored or utilised with other validation implementations or for other purposes.
 
 <br>
 

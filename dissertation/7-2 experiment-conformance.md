@@ -4,16 +4,16 @@ In this section I present the implementation of the TXON syntax through the deve
 
 <br>
 
-{"sub":"The txon.js validation library"}
+{"sub":"The TXON.js validation library"}
 
-A library is a collection of utilities that in combination achieve a shared goal. In this instance, the `txon.js` library is instantiated as a JavaScript object and its method provide validation of a TXON String. In the following I present the features, intent and structure of my library. This library supports the following validation features, corresponding to the grammatical notation of the TXON format.
+A library is a collection of utilities that in combination achieve a shared goal. In this instance, the `TXON.js` library is instantiated as a JavaScript object and its method provide validation of a TXON String. In the following I present the features, intent and structure of my library. This library supports the following validation features, corresponding to the grammatical notation of the TXON format.
 
 - Type declarations in the `initialiser property`.
 - Type instances in the `data property`.
 
 Users can declare their own extended types (e.g. "date"), or declare extensions of JSON types or extended types using a dot-syntax (e.g. "string.date" or "date.month"). `Extended types` are specified as enumerations and instantiated by associating data with the type. This is further presented in the syntax proposal. `Type extensions` allow you to inherit the requirements of an existing type, while extending it as a sub-type with an enumeration. This is further presented in the syntax proposal.
 
-The txon.js library `handshakes` a JSON String, validating conformance of its `data` property to extended type declarations from its `init` property. TXON is initialised as an Object providing a `docs method` `handshake method` and `tests property`.
+The TXON.js library `handshakes` a JSON String, validating conformance of its `data` property to extended type declarations from its `init` property. TXON is initialised as an Object providing a `docs method` `handshake method` and `tests property`.
 
 Handshaking is structured to interrupt validation at the first sign of nonconformance, rather than collecting errors and returning them arraryised. `Nonconformance` is when a type has been declared and instantiated, but the instance does not match the specification of the type. This choice has little impact on small amounts of information with near-instantaneous parsing, but greatly improves usability and reduces validation times as received information scale up in size.
 

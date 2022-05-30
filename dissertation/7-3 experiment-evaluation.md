@@ -1,6 +1,6 @@
 {"sec":"Evaluation Strategy"}
 
-In this section I present my strategy for evaluating the results of this experiment, through an example of its use. The purpose of this evaluation is to evaluate the impact of implementing the TXON format in an existing system. This is accomplished by assessing the transformation of a JSON to TXON data structure, and assessing to which degree the `txon.js` library can substitute an existing validation process that casts the JSON data structure to TypeScript types. As the proposed grammar provides a standardised and generic approach to typed data and its validation, I demonstrate that when a data structure is invalid it is easier to debug if it conforms to the TXON specification.
+In this section I present my strategy for evaluating the results of this experiment, through an example of its use. The purpose of this evaluation is to evaluate the impact of implementing the TXON format in an existing system. This is accomplished by assessing the transformation of a JSON to TXON data structure, and assessing to which degree the `TXON.js` library can substitute an existing validation process that casts the JSON data structure to TypeScript types. As the proposed grammar provides a standardised and generic approach to typed data and its validation, I demonstrate that when a data structure is invalid it is easier to debug if it conforms to the TXON specification.
 
 <br>
 
@@ -17,11 +17,11 @@ While a TXON data structure conforms to the JSON specification, its contents are
 
 <br>
 
-As a JSON data structure is typically not written by hand but rather an automated intermediary, this transformation functionally occurs in the software. The implication of this is that a TXON data structure is achieved by extending the object being encoded to JSON in a programming language. As TXON conforms to the JSON specification it is already compatible with JSON encoders, so the functional implementation only requires extending the encoded object with an initialiser and type references. During the modification of this object, the encoded JSON structure can be continuously validated by utilising the txon.js library.
+As a JSON data structure is typically not written by hand but rather an automated intermediary, this transformation functionally occurs in the software. The implication of this is that a TXON data structure is achieved by extending the object being encoded to JSON in a programming language. As TXON conforms to the JSON specification it is already compatible with JSON encoders, so the functional implementation only requires extending the encoded object with an initialiser and type references. During the modification of this object, the encoded JSON structure can be continuously validated by utilising the TXON.js library.
 
 {"break":true}
 
-{"sub":"Debugging with TypeScript and TXON"}
+{"sub":"Debugging with TypeScript and TXON.js"}
 
 [ TypeScript types ]
 
@@ -29,7 +29,7 @@ As a JSON data structure is typically not written by hand but rather an automate
 
 ---
 
-The strategy for assessing the ability of txon.js to substitute TypeScript validation is to apply the TXON grammar to the sample data structure from GitLab. This is accomplished by moving the corresponding type declarations from TypeScript to a TXON initialiser in the data structure, and then transforming the data with references to types. The purpose of this is to compare the JSON structure and TXON structure in terms of features, readability, and character count.
+The strategy for assessing the ability of TXON.js to substitute TypeScript validation is to apply the TXON grammar to the sample data structure from GitLab. This is accomplished by moving the corresponding type declarations from TypeScript to a TXON initialiser in the data structure, and then transforming the data with references to types. The purpose of this is to compare the JSON structure and TXON structure in terms of features, readability, and character count.
 
 Of course the data is not the only component in a validation process, and as such the TXON library and TypeScript validation must also be compared. These processes be compared on time complexity, character count, and execution time, but as time is not a factor considered in this implementation, the comparison will only consider character count.
 
