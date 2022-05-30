@@ -474,80 +474,113 @@ export const validate = <T extends { [key: string]: any }>(
 
     ...
 
-    for (const k of Object.keys(against)) {
-        
-        const value: T[string] | undefined | null = data[k]
-        const spec = against[k]
-
-        if (value === null) {
-            const nullable = spec.nullable ?? false
-            if (!nullable) { return typeValidationErrors.nullFound(k) }
-            continue
-        }
-
-        if (value === undefined) {
-            const mandatory = spec.mandatory ?? true
-            if (mandatory) { return typeValidationErrors.mandatoryMissing(k) }
-            continue
-        }
-
-        const specType = spec.type
-        const valueType = typeof value
-
-        if (isPrimitive(specType)) {
-            if (valueType !== specType) {
-                return typeValidationErrors.typeMismatch(k)
-            }
-            if (spec.regex !== undefined && !spec.regex.test(value)) {
-                return typeValidationErrors.regexMismatch(k)
-            }
-            continue
-        }
-
-        if (isPrimitiveArray(specType)) {
-            if (!Array.isArray(value)) {
-                return typeValidationErrors.typeMismatch(k)
-            }
-            const array = value as any[]
-            const elemType = specType.replace("[]", "")
-            const invalidElement = array.find((e) => typeof e !== elemType)
-            if (invalidElement) {
-                return typeValidationErrors.typeMismatch(k)
-            }
-            continue
-        }
-
-        if (isTypeSpec(specType)) {
-            if (valueType !== "object" || Array.isArray(value)) {
-                return typeValidationErrors.typeMismatch(k)
-            }
-            const result = validate(value as Partial<any>, specType, options)
-            if (isError(result)) {
-                return result
-            }
-            continue
-        }
-
-        if (isTypeSpecArray(specType)) {
-            if (!Array.isArray(value)) {
-                return typeValidationErrors.typeMismatch(k)
-            }
-            if (specType.length === 0) {
-                throw Error(`PropertySpec for ${k} must be non-empty.`)
-            }
-            const array = value as Partial<any>[]
-            for (let i = 0; i < array.length; ++i) {
-                const specIdx = Math.min(i, specType.length - 1)
-                const result = validate(array[i], specType[specIdx], options)
-                if (isError(result)) {
-                    return result
-                }
-            }
-        }
-    }
+    for (const k of Object.keys(against)) { ... }
 
     return data as T
 
+}
+```
+
+<br>
+
+```
+for (const k of Object.keys(against)) {
+        
+    const value: T[string] | undefined | null = data[k]
+    const spec = against[k]
+
+    if (value === null) { ... }
+
+    if (value === undefined) { ... }
+
+    const specType = spec.type
+    const valueType = typeof value
+
+    if (isPrimitive(specType)) { ... }
+
+    if (isPrimitiveArray(specType)) { ... }
+
+    if (isTypeSpec(specType)) { ... }
+
+    if (isTypeSpecArray(specType)) { ... }
+
+}
+```
+
+<br>
+
+```
+const value: T[string] | undefined | null = data[k]
+const spec = against[k]
+
+if (value === null) {
+    const nullable = spec.nullable ?? false
+    if (!nullable) { return typeValidationErrors.nullFound(k) }
+    continue
+}
+
+if (value === undefined) {
+    const mandatory = spec.mandatory ?? true
+    if (mandatory) { return typeValidationErrors.mandatoryMissing(k) }
+    continue
+}
+```
+
+<br>
+
+```
+const specType = spec.type
+const valueType = typeof value
+
+if (isPrimitive(specType)) {
+    if (valueType !== specType) {
+        return typeValidationErrors.typeMismatch(k)
+    }
+    if (spec.regex !== undefined && !spec.regex.test(value)) {
+        return typeValidationErrors.regexMismatch(k)
+    }
+    continue
+}
+
+if (isPrimitiveArray(specType)) {
+    if (!Array.isArray(value)) {
+        return typeValidationErrors.typeMismatch(k)
+    }
+    const array = value as any[]
+    const elemType = specType.replace("[]", "")
+    const invalidElement = array.find((e) => typeof e !== elemType)
+    if (invalidElement) {
+        return typeValidationErrors.typeMismatch(k)
+    }
+    continue
+}
+
+if (isTypeSpec(specType)) {
+    if (valueType !== "object" || Array.isArray(value)) {
+        return typeValidationErrors.typeMismatch(k)
+    }
+    const result = validate(value as Partial<any>, specType, options)
+    if (isError(result)) {
+        return result
+    }
+    continue
+}
+
+if (isTypeSpecArray(specType)) {
+    if (!Array.isArray(value)) {
+        return typeValidationErrors.typeMismatch(k)
+    }
+    if (specType.length === 0) {
+        throw Error(`PropertySpec for ${k} must be non-empty.`)
+    }
+    const array = value as Partial<any>[]
+    for (let i = 0; i < array.length; ++i) {
+        const specIdx = Math.min(i, specType.length - 1)
+        const result = validate(array[i], specType[specIdx], options)
+        if (isError(result)) {
+            return result
+        }
+    }
 }
 ```
 
