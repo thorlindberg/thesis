@@ -6,9 +6,9 @@ A TXON data structure contains an initialiser and a data property, and as such t
 
 <br>
 
-{"sub":"Types from TypeScript to TXON"}
+{"sub":"Type-safety and transformation of JSON"}
 
-TypeScript provides extensible and explicit typing of JavaScript structures. Its extensible syntax means that structures like Objects become typed by adding type annotations and the "type" keyword. This also means that TypeScript code becomes valid JavaScript code by removing these annotations and the keyword. As TypeScript is a superset of JavaScript, and the JSON format is derived from JavaScript, a JSON data structure can be parsed and cast directly to a TypeScript structure. Through this process the properties of a JSON structure can be validated on their type based on the typed properties of the TypeScript structure. A property can be annotated with another typed structure, resulting in relational references between structures.
+TypeScript provides extensible and explicit typing of JavaScript structures. Its extensible syntax means that structures like Objects become typed by adding type annotations and the "type" keyword. This also means that TypeScript code becomes valid JavaScript code by removing these annotations and the keyword. As TypeScript is a superset of JavaScript, and the JSON format is derived from JavaScript, a JSON data structure can be decoded and cast directly to a typed object. Through this process the properties of a JSON structure can be validated on their type based on the typed properties of the TypeScript object. A property can be annotated with another typed structure, resulting in relational references between structures.
 
 <!--
 1. Translate statically typed objects to TXON type declarations.
@@ -426,14 +426,34 @@ jsonDiagram {
 
 {"fig":"txonstructure","caption":"TXON data structure with type declarations in initialiser and type instances in data property."}
 
-{"break":true}
+<br>
 
-{"sub":"Validation of JSON to TXON"}
+{"sub":"Validation processes and debugging"}
+
+<!--
+Introduction
+-->
 
 [ Text ]
 
----------------------------------------------------------------------------------
+{"break":true}
 
-The `TXON.js library` supports type conformance validation of typed JSON data structures, as long as they contain an initialiser property and data property at the root node. TXON types must be correctly declared before conformance of references to them can be checked. Type declarations support enumerated values, minimum to maximum ranges, and default value insertion.
+<!--
+TypeScript decoding and casting to object -> feedback?
+-->
+
+[ Text ]
+
+<!--
+Invocation of TXON.js for validation -> feedback?
+-->
+
+[ Text ]
+
+<!--
+Comparison of debugging for each validation process
+-->
+
+[ Text ]
 
 {"break":true}
