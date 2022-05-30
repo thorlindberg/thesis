@@ -432,6 +432,8 @@ jsonDiagram {
 
 <!--
 Introduction
+
+TypeScript provides extensible and explicit typing of JavaScript structures. Its extensible syntax means that structures like Objects become typed by adding type annotations and the "type" keyword. This also means that TypeScript code becomes valid JavaScript code by removing these annotations and the keyword. As TypeScript is a superset of JavaScript, and the JSON format is derived from JavaScript, a JSON data structure can be decoded and cast directly to a typed object. Through this process the properties of a JSON structure can be validated on their type based on the typed properties of the TypeScript object. A property can be annotated with another typed structure, resulting in relational references between structures.
 -->
 
 [ Text ]
@@ -442,17 +444,128 @@ Introduction
 TypeScript decoding and casting to object -> feedback?
 -->
 
-[ Text ]
+The validation of a JSON structure on GitLab is achieved by compared the decoded data to a typed object declared with the TypeScript programming language. The validation is its own `TypeScript library`, which is continuously executed as new data structures are integrated and need to be validated before deployment to a `Firebase` database. The validation is paired with a `validate library of predefined feedback messages, which are applied when a data structure is invalid but the developers do not want to throw an exception, which would stop the validation process. Once validation has completed and if no exceptions have been thrown, the library casts the data to a typed object and forwards it to the database.
 
-<!--
-Invocation of TXON.js for validation -> feedback?
--->
+The validation library on GitHub contains an enumeration of the error messages that can be returned during validation, and these are:
 
-[ Text ]
+<br>
+
+```
+type TypeValidationErrorMessage =
+    | "Extra key was found"
+    | "Null found for a non-nullable field"
+    | "Mandatory field not found"
+    | "Regex mismatch"
+    | "Type mismatch"
+```
+
+<br>
+
+The validation library on GitLab then implements a `validate` method, which is one of several helper functions in the library. The `validate` method defines checks for validating an incoming JSON data structure, and also defines the conditions for detecting nonconformance in the data. The implication is that this process is selective, meaning it allows some leeway of errors to be present, as long as the required properties can be cast to its typed object. The method can be summarised as:
+
+<br>
+
+```
+export const validate = <T extends { [key: string]: any }>(
+    data: Partial<T>,
+    against: TypeSpec<T>,
+    options?: ValidationOptions
+): Result<T, TypeValidationError> => {
+
+    ...
+
+    for (const k of Object.keys(against)) {
+        
+        const value: T[string] | undefined | null = data[k]
+        const spec = against[k]
+
+        if (value === null) {
+            const nullable = spec.nullable ?? false
+            if (!nullable) { return typeValidationErrors.nullFound(k) }
+            continue
+        }
+
+        if (value === undefined) {
+            const mandatory = spec.mandatory ?? true
+            if (mandatory) { return typeValidationErrors.mandatoryMissing(k) }
+            continue
+        }
+
+        const specType = spec.type
+        const valueType = typeof value
+
+        if (isPrimitive(specType)) {
+            if (valueType !== specType) {
+                return typeValidationErrors.typeMismatch(k)
+            }
+            if (spec.regex !== undefined && !spec.regex.test(value)) {
+                return typeValidationErrors.regexMismatch(k)
+            }
+            continue
+        }
+
+        if (isPrimitiveArray(specType)) {
+            if (!Array.isArray(value)) {
+                return typeValidationErrors.typeMismatch(k)
+            }
+            const array = value as any[]
+            const elemType = specType.replace("[]", "")
+            const invalidElement = array.find((e) => typeof e !== elemType)
+            if (invalidElement) {
+                return typeValidationErrors.typeMismatch(k)
+            }
+            continue
+        }
+
+        if (isTypeSpec(specType)) {
+            if (valueType !== "object" || Array.isArray(value)) {
+                return typeValidationErrors.typeMismatch(k)
+            }
+            const result = validate(value as Partial<any>, specType, options)
+            if (isError(result)) {
+                return result
+            }
+            continue
+        }
+
+        if (isTypeSpecArray(specType)) {
+            if (!Array.isArray(value)) {
+                return typeValidationErrors.typeMismatch(k)
+            }
+            if (specType.length === 0) {
+                throw Error(`PropertySpec for ${k} must be non-empty.`)
+            }
+            const array = value as Partial<any>[]
+            for (let i = 0; i < array.length; ++i) {
+                const specIdx = Math.min(i, specType.length - 1)
+                const result = validate(array[i], specType[specIdx], options)
+                if (isError(result)) {
+                    return result
+                }
+            }
+        }
+    }
+
+    return data as T
+
+}
+```
+
+<br>
+
+It is evident from this method that validation is performed recursively, and that validation does not continue once a nonconformance error has been returned or exception has been thrown. The implications of this implementation are that if a data structure was to be found invalid, the developer would have to look at the type declarations in TypeScript, and then look at the data structure that is invalid. The developer would then have to compare the two, and determine the reason for the respective nonconformance issue.
+
+{"break":true}
+
+The validation of a TXON data structure can be achieved through the TXON.js validation library. As described in the experiment, the library provides a handshake method that takes a stringified data structure as its input parameter, and returns an object denoting the validity of the data structure. This object contains both a boolean value that is always `true` unless nonconformance was detected, and a string of feedback describing why validation failed or could not be performed. The implication is that if no feedback is returned, the data structure has completed validation and passed all checks.
+
+This approach is different from what is described with TypeScript on GitLab, in that the aim is not to decode, validate, cast to an object, and then encode the data structure before forwarding, but rather to validate it and then forward it to the end-user client. As a consequence this validation process does not initialise an object with the JavaScript programming language, but this could be achieved if the developer chooses to do so post-validation.
 
 <!--
 Comparison of debugging for each validation process
 -->
+
+If we compare these two validation processes, it is evident that...
 
 [ Text ]
 

@@ -29,6 +29,8 @@ As a result of this dependency on validation, the substitution of JSON with TXON
 
 As an alternative, these validation processes can be assessed on how they inform the `debugging` of data structures. When an actor validates a data structure and finds it incompatible with their own expected object, the actor must react by `debugging` the data structure. This process requires human intervention to determine and demonstrate where and why an error occurred, and solve the issue at its source. As such the evaluation must assess the validation processes by asking these questions:
 
+<!--
+
 <br>
 
 1. What is the expected feedback from validation?
@@ -38,5 +40,7 @@ As an alternative, these validation processes can be assessed on how they inform
 <br>
 
 This assessment demonstrates that the TXON implementation is easier to debug than the existing JSON and TypeScript setup. I also take into consideration that the aim of the JSON format is to be human-readable. As a result the TXON format is not a suitable alternative if it only achieves type-extensibility by sacrificing readability.
+
+-->
 
 {"break":true}
