@@ -69,9 +69,7 @@ Inspired by type restrictions/facets in the XML/XSD format, it has become common
 The type limitations of JSON can be circumvented by deconstructing a property value into its components. A `date` property with a string-value could instead be represented as an object with properties for `month` `day` and `year`. Representing these properties with number-values would further clarify the intended values, but does not define a range of valid values. This limitation could be mitigated through properties further specifying a range of numbers. Embedding these restrictions in the data results in more specification properties than useful data. As the amount of information scales linearly, so too does the restrictions, while increasing the chance of syntax errors.
 
 ```
-{
-    "type": "number", "date": { "month": 10, "day": 28, "year": 2005 }
-}
+{ "type": "number", "date": { "month": 10, "day": 28, "year": 2005 } }
 ```
 ```
 {

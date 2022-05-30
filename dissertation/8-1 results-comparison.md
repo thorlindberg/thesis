@@ -122,7 +122,18 @@ TXON provides extensible and explicit typing of JSON structures.
 
 [ Text ]
 
-```
+@startuml
+@startjson
+
+<style>
+jsonDiagram {
+    BackGroundColor transparent
+    node {
+        BackGroundColor white
+    }
+}
+</style>
+
 {
     "address": "København, Blegdamsvej 9",
     "chargePoints": [
@@ -172,7 +183,11 @@ TXON provides extensible and explicit typing of JSON structures.
     "name": "København", "open24": false, "phoneNumber": "12345", "pictureUrl": "https://image.url",
     "postalCode": "2100", "roamingPartnerName": "DKpartner", "streetName": "Blegdamsvej"
 }
-```
+
+@endjson
+@enduml
+
+{"fig":"...","caption":"..."}
 
 [ Text ]
 
