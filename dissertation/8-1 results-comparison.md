@@ -40,25 +40,30 @@ type Address = {
     line1: string
     line2: string
 }
-
+```
+```
 type Coordinates = {
     lat: number
     lng: number
 }
-
+```
+```
 type Localizable =  {
     da: string | null
     en: string | null
 }
-
+```
+```
 type ChargePoint[] = {
     id: string
     type: ChargePointType
     connectors: Connector[]
 }
-
+```
+```
 type ChargePointType = string
-
+```
+```
 type Connector[] = {
     id: string
     connectorNo: string
@@ -301,7 +306,7 @@ jsonDiagram {
 
 {"fig":"typedjson","caption":"TXON data structure with typed data through type instances of relational references."}
 
-With both types declared in the initialiser and instances of types initialised in the data property, we now have a complete TXON data structure. If we compare this resulting structure to the original TypeScript declarations and the original JSON data structure, there was not much necessity for their transformation.
+With both types declared in the initialiser and instances of types initialised in the data property, we now have a complete TXON data structure. If we compare this result to the original TypeScript declarations and the JSON data structure, the structure has been barely transformed.
 
 As seen in figure {"ref":"txonstructure"} this structure representing the typed object from TypeScript and the intermediary JSON data structure, offers an overview that is more optimal for debugging an invalid data sample. This is especially true as the data structure is transmitted between actors, and each actor has to determine if their expectations align with what the sender has embedded in the initialiser. As such this format serves to both validate the data with the generic features of the TXON.js library, but it also serves as a contract between actors in a distributed system, embedding the purpose of the data through explicit and relational types.
 
