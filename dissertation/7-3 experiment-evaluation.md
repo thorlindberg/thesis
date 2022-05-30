@@ -23,18 +23,20 @@ As a JSON data structure is typically not written by hand but rather an automate
 
 {"sub":"Debugging with TypeScript and TXON.js"}
 
-[ TypeScript types ]
+When a data structure exists as an intermediary between programming languages, it can be encoded and decoded by different actors in the transmission process. Each actor has an expectation of the data structure, so when they receive it they must validate that the encoded object within can be decoded and cast to an object in their programming language.
 
-[ Casting to TypeScript types ]
+As a result of this dependency on validation, the substitution of JSON with TXON must also involve the processes that validate their contents. The TypeScript and TXON.js validation processes can be compared on their character count, time complexity, universality or execution time, but these measures are unlikely to have a real-world impact on developer practices because the differences would be negligible.
 
----
+As an alternative, these validation processes can be assessed on how they inform the `debugging` of data structures. When an actor validates a data structure and finds it incompatible with their own expected object, the actor must react by `debugging` the data structure. This process requires human intervention to determine and demonstrate where and why an error occurred, and solve the issue at its source. As such the evaluation must assess the validation processes by asking these questions:
 
-The strategy for assessing the ability of TXON.js to substitute TypeScript validation is to apply the TXON grammar to the sample data structure from GitLab. This is accomplished by moving the corresponding type declarations from TypeScript to a TXON initialiser in the data structure, and then transforming the data with references to types. The purpose of this is to compare the JSON structure and TXON structure in terms of features, readability, and character count.
+<br>
 
-Of course the data is not the only component in a validation process, and as such the TXON library and TypeScript validation must also be compared. These processes be compared on time complexity, character count, and execution time, but as time is not a factor considered in this implementation, the comparison will only consider character count.
+1. What is the expected feedback from validation?
+2. What is the expected reaction to an invalid data structure?
+3. What is the expected approach to debugging an invalid data structure?
 
-The process of determining the transformation from JSON to TXON is split into two steps that can be individually assessed. The first step is to move type declarations from TypeScript to the TXON initialiser, and then evaluate it on whether the resulting structure: supports all the features applied on GitLab, is as readable, and by comparing character counts. The second step is to move data from the JSON structure to the TXON data, and then transform implicitly typed data into explicitly type instances by adding references to TXON types. The resulting data is evaluated on its readability and the difference in character count between the data structures.
+<br>
 
-The combined data structure, containing both the initialiser and data property at the root node, can be evaluated on its character count. As both the original JSON data structure and the resulting TXON data structure conform to the JSON specification, this is suitable for comparing their efficiencies and inefficiencies. Their readability is defined as the ability to both understand and manually debug the data structure, and as such the TXON format has a clear advantage due to its embedded type declarations. For this reason and because TXON aims to minimally transform existing data structures, the two formats as a whole are not compared on readability, because the data is expected to be near identical.
+This assessment demonstrates that the TXON implementation is easier to debug than the existing JSON and TypeScript setup. I also take into consideration that the aim of the JSON format is to be human-readable. As a result the TXON format is not a suitable alternative if it only achieves type-extensibility by sacrificing readability.
 
 {"break":true}
