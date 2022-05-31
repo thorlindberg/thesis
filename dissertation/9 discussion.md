@@ -2,6 +2,8 @@
 
 [ Text ]
 
+<div style="color:red">
+
 Alternatively the method could asynchronously return errors as/if nonconformance is encountered. As the user is informed of an error, corrects the error, and re-calls the method, the advantage is that the user does not need to care about completion, and only needs to respond to errors. For large amounts of information, the re-call would without issue run in parallel with the initial call if the initial call has not yet completed.
 
 Explicit subtypes:
@@ -78,5 +80,6 @@ Implicit subtypes:
 }
 ```
 
+</div>
 
 {"break":true}

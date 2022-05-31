@@ -137,7 +137,7 @@ Declarations provide a generic and single-location place to specify enumerated a
     "init": {
         "date": {
             "type": "number",
-            "cases": [ "month", "day", "year" ]
+            "case": [ "month", "day", "year" ]
         }
     },
     "data": {
@@ -167,7 +167,7 @@ Types can be instantiated in the `data property`at the root of the data structur
             "day": "number",
             "year": "number",
             "category": {
-                "type": "string", "cases": [ "birthday", "work", "holiday" ]
+                "type": "string", "case": [ "birthday", "work", "holiday" ]
             },
             "gifted": "boolean"
         }
@@ -218,7 +218,7 @@ As this syntax aims to be extensible by selectively typing data, type instances 
 {
     "init": {
         "category": {
-            "type": "string", "cases": [ "birthday", "work", "holiday" ]
+            "type": "string", "case": [ "birthday", "work", "holiday" ]
         },
         "date": {
             "month": "number", "day": "number", "year": "number"
@@ -258,7 +258,7 @@ A type can be an extension of another type:
 {
     "init": {
         "date.number": {
-            "cases": [ "month", "day", "year" ]
+            "case": [ "month", "day", "year" ]
         }
     },
     "data": {
@@ -282,12 +282,12 @@ This results in all enumerated values inheriting typing from the type before the
 ```
 "date": {
     "type": "number",
-    "cases": [ "month", "day", "year" ]
+    "case": [ "month", "day", "year" ]
 }
 ```
 ```
 "date.number": {
-    "cases": [ "month", "day", "year" ]
+    "case": [ "month", "day", "year" ]
 }
 ```
 
@@ -314,7 +314,7 @@ If we start by declaring a type extension in the initialiser:
 {
     "init": {
         "date.number": {
-            "cases": [ "month", "day", "year" ]
+            "case": [ "month", "day", "year" ]
         }
     }
 }
