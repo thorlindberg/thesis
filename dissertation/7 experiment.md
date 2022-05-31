@@ -57,7 +57,7 @@ The JavaScript Object Notation (JSON) specifies a format for storing and transmi
 { "date": "28-10-2005" }
 ```
 
-Inspired by type restrictions/facets in the XML/XSD format, it has become common to explicitly embed the intended type as a string-value property in a JSON object. This approach to type annotation enables the recipient to validate the content type based on its intended type, but not beyond the types available in JSON.
+Inspired by type restrictions/facets in the XML/XSD format, it has become common to explicitly embed the intended type as a string-value property in a JSON object. This approach to type annotation enables the recipient to validate the content type based on its intended type.
 
 ```
 <xs:restriction base="xs:string"></xs:restriction>
