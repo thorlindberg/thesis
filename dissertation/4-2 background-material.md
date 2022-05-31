@@ -96,7 +96,7 @@ type ObjectTypeName = {
 
 <br>
 
-As seen in figure {"ref":"typehierarchy"}  there is a hierarchy of type declarations on the company GitLab, representing information on the location of an installation by the client. These declarations are used during validation of incoming JSON data, as the specify type requirements. I have chosen to exclude enumerated type declarations, but this concept is explored in my proposal. It is evident that a location has multiple installed chargers, which is the longest branching of types within this structure.
+As seen in figure {"ref":"typehierarchy"}  there is a hierarchy of type declarations on the company GitLab, representing information on the location of an installation by the client. These declarations are used during validation of incoming JSON data, as the specify type requirements. I have excluded the enumerated type declarations, as my proposal does not explore this concept. It is evident that a location has multiple installed chargers, which is the longest branching of types within this structure.
 
 <br>
 
@@ -178,9 +178,9 @@ jsonDiagram {
 
 {"sub":"Sample data structure"}
 
-In order to investigate how the data interchanged between the application client and backends, I needed a data sample and the validation code utilised on the GitLab platform. The company provides several data samples, from which I have chosen a sample that contains what appears to be multiple objects akin to enumerations. This is a prime example of a data structure that is prone to syntax errors, and as such it is an ideal source for investigating an improved syntax.
+In order to investigate how the data transmitted between the backend and application, I needed a data sample and the validation code utilised on the GitLab platform. The company provides several data samples, from which I have chosen a sample that contains a hierarchy of typed objects with nested type properties. This is a good example of a data structure that could be prone to syntax errors, as some of its properties represents complex types such as dates.
 
-As seen in figure {"ref":"samplejson"} the root node of this data structure contains information about a proprietary charger installation by the client, in addition to arrays of nodes that appear identical in structure. This data structure can be considered safe from an application developer perspective, as it likely mirrors the structures the data will be cast to inside the application. However it does not contain explicit information about the intended type of values, and this is an area that I will aim to improve with my proposal.
+As seen in figure {"ref":"samplejson"} the root node of this data structure contains information about a proprietary charger installation by the client, in addition to arrays of nodes that appear identical in structure. This data structure can be considered safe from an application developer perspective, as it likely mirrors the structures the data will be cast to inside the application. However it does not contain explicit information about the intended type of values, and this is an area that I will aim to improve .
 
 <br>
 
@@ -292,9 +292,79 @@ jsonDiagram {
 
 {"break":true}
 
+TypeScript provides extensible and explicit typing of JavaScript structures. Its extensible syntax means that structures like Objects become typed by adding type annotations and the "type" keyword. This also means that TypeScript code becomes valid JavaScript code by removing these annotations and the keyword. As TypeScript is a superset of JavaScript, and the JSON format is derived from JavaScript, a JSON data structure can be decoded and cast directly to a typed object. Through this process the properties of a JSON structure can be validated on their type based on the typed properties of the TypeScript object. A property can be annotated with another typed structure, resulting in relational references between structures.
+
+<!--
+1. Translate statically typed objects to TXON type declarations.
+-->
+
+In the following is the typed objects declared in TypeScript for validating the sample data structure provided to me by the company I partnered with on this project. The main typed object is `Location` which has properties annotated with the types `Address` `Coordinates` `Localizable` `ChargePoint[]` and `Connector[]`.
+
+```
+type Location = {
+    id: string
+    locationId: string
+    name: string
+    address: Address
+    coordinates: Coordinates
+    imageUrl: string | null
+    phoneNumber: string | null
+    description: Localizable
+    roamingPartner: string | null
+    isRoaming: boolean
+    isOpen24: boolean
+    openingHours: Localizable
+    chargePoints: ChargePoint[]
+    isRemoteChargingSupported: boolean
+    isFuture: boolean
+}
+```
+```
+type Address = {
+    line1: string
+    line2: string
+}
+```
+```
+type Coordinates = {
+    lat: number
+    lng: number
+}
+```
+```
+type Localizable =  {
+    da: string | null
+    en: string | null
+}
+```
+```
+type ChargePoint[] = {
+    id: string
+    type: ChargePointType
+    connectors: Connector[]
+}
+```
+```
+type ChargePointType = string
+```
+```
+type Connector[] = {
+    id: string
+    connectorNo: string
+    displayId: string
+    type: string
+    kW: number
+    speed: string
+}
+```
+
+{"break":true}
+
 {"sub":"Developer perspectives on data interchange"}
 
-I asked the lead engineer on the iOS team how data is handled once it reaches their application on iOS. He explained to me that they utilise the Codable protocol, which is used to declare data structures within the Swift language {"citep":"apple2022swift"}. As seen in figure {"ref":"codablestruct"} when a data structure is received as an API response, he said that it is cast to the Codable structure, which attempts to find and draw out properties that match the Codable declaration. The implications of this approach are that developers must anticipate a specific structure of data, and guard against missing properties throughout the application. If the application attempts to access properties that were not initialised with the Codable protocol, the entire application may crash and its components become inaccessible.
+I asked the lead engineer on the iOS team how data is handled once it reaches their application on iOS. He explained to me that they utilise the Codable protocol, which is used to declare data structures within the Swift language {"citep":"apple2022swift"}.
+
+As seen in figure {"ref":"codablestruct"} when a data structure is received as an API response, he said that it is cast to the Codable structure, which attempts to find and draw out properties that match the Codable declaration. The implications of this approach are that developers must anticipate a specific structure of data, and guard against missing properties throughout the application. If the application attempts to access properties that were not initialised with the Codable protocol, the entire application may crash and its components become inaccessible.
 
 <br>
 
