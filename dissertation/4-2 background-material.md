@@ -300,6 +300,8 @@ TypeScript provides extensible and explicit typing of JavaScript structures. Its
 
 In the following is the typed objects declared in TypeScript for validating the sample data structure provided to me by the company I partnered with on this project. The main typed object is `Location` which has properties annotated with the types `Address` `Coordinates` `Localizable` `ChargePoint[]` and `Connector[]`.
 
+<br>
+
 ```
 type Location = {
     id: string
@@ -319,6 +321,9 @@ type Location = {
     isFuture: boolean
 }
 ```
+
+<br>
+
 ```
 type Address = {
     line1: string
@@ -331,6 +336,9 @@ type Coordinates = {
     lng: number
 }
 ```
+
+{"break":true}
+
 ```
 type Localizable =  {
     da: string | null
