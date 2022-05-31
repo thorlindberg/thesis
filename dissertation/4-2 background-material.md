@@ -1,6 +1,6 @@
 {"sec":"Source Material and Developer Perspectives"}
 
-In this section I present the information I have gathered from interviews at the company with their two engineering teams (iOS and Android), as well as the backend engineers, on the topic of interchangeable data. I spoke with the lead engineer on the iOS team about handling data responses in software clients.
+In this section I present the information I have gathered from interviews at the company with their two engineering teams (iOS and Android), as well as the backend engineers, on the topic of interchangeable data. I spoke with the lead engineer on the iOS team about decoding data.
 
 <br>
 
