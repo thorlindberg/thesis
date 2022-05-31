@@ -26,7 +26,7 @@ A distributed system achieves asynchronous collaboration through a communication
 
 As seen in figure {"ref":"distributedlayers"} the network layer is one of multiple layers typical of networking systems. {"cite":"alani2014guide"} presents the 7 layers of the` Open Systems Interconnection` (OSI) model relative to the 4 layers of the `Transmission Control Protocol` (TCP). The OSI model abstracts networking systems into a conceptual framework, to describe and standardise the functional relationship between these layers.
 
-{"fig":"distributedlayers","url":"figures/encapsulation.png","caption":"..."}
+{"fig":"distributedlayers","url":"figures/encapsulation.png","caption":"Layers of a distributed computing system and the transformation of data intermediaries."}
 
 As data in a distributed systems flows from the software `application layer` to the hardware `physical layer`, it is transformed by protocols which add additional information to the data. This process is referred to as `encapsulation`, and consists of `capsulation` from the source host and `decapsulation` towards the destination host. As data flows from source host's application layer and towards the physical layer, protocols prepend headers (leading information) and append trailers (trailing information) to the data. This additional information indicates the purpose of communicating the data and how it should be interpreted by the next layer. The take away from the OSI model is that as data flows through a distributed system, it is transformed by protocols utilised in the layers. These protocols inform the state of the data.
 

@@ -38,7 +38,7 @@ Start -right-> [ Add a test ]
 
 @enduml
 
-{"fig":"testcycle","caption":"A test-driven cycle from demonstrating a test that necessitates change, to the final functional implementation after agile development."}
+{"fig":"testcycle","caption":"A recursive test-driven development cycle."}
 
 {"sub":"How to write tests"}
 
