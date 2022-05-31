@@ -51,7 +51,25 @@ jsonDiagram {
                 "name": "string", "kW": "number", "speed": "string"
             }
         }
-    },
+    }
+}
+
+@endjson
+@enduml
+
+@startuml
+@startjson
+
+<style>
+jsonDiagram {
+    BackGroundColor transparent
+    node {
+        BackGroundColor white
+    }
+}
+</style>
+
+{
     "relational": {
         "init": {
             "location": {
@@ -66,7 +84,25 @@ jsonDiagram {
                 "name": "string", "kW": "number", "speed": "string"
             }
         }
-    },
+    }
+}
+
+@endjson
+@enduml
+
+@startuml
+@startjson
+
+<style>
+jsonDiagram {
+    BackGroundColor transparent
+    node {
+        BackGroundColor white
+    }
+}
+</style>
+
+{
     "hierarchal": {
         "init": {
             "location": {
