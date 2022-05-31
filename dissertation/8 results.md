@@ -8,7 +8,7 @@ In this chapter I present the result of my experiment, which is a syntax proposa
 
 As TXON is a superset of the JSON format, the grammatical notation for the JSON specification is also applicable to a TXON data structure. However the functional implementation of TXON through its validation library imposes certain strict requirements on the structure, hierarchy and contents of a TXON data structure. These requirements include an initialiser property and data property at the root node of the structure, as well as a specific format for type declarations.
 
-As seen in figure {"ref":"txongrammar"} the grammar of TXON can be modeled on the grammar defined in the JSON specification, but it is extended with type declarations and type instances. The type declarations must follow a strict format, both for their names and contents. If a type is incorrectly declared, the validation library cannot proceed to validate its instances. If a type is incorrectly instanced, the validation library should not throw an error and instead continue validation.
+As seen in figure {"ref":"txongrammar"} the grammar of TXON adds type declarations and type instances, which is in addition to the existing grammar from the JSON specification. The type declarations must follow a strict format, both for their names and contents. If a type declaration is incorrect, the validation library cannot proceed to validate its instances. If a type instance is incorrect, the validation library should continue validation.
 
 @startuml
 @startjson
@@ -95,15 +95,15 @@ As a preface to the resulting syntax proposal, I provide the following system of
 
 <br>
 
-A `type` differentiates values and deliminates their potential content, such as characters, numbers, or more complex types like arrays and objects. Types are properties that derive meaning from their names, referred to as their `type names`, and values that conform to `JSON types`.
+A `type` differentiates values and delimits their potential content, such as characters, numbers, or more complex types like arrays and objects. Types are properties that derive meaning from their names, referred to as their `type names`, and values that conform to `JSON types`.
 
 <br>
 
 `Type names` establish a reference point for utilising types, and syntactically differentiate between `extended types` and `type extensions`. Type names from the JSON specification are reserved, so they can only be utilised in an extension.
 
-- `Extended types` extend JSON types with enumerated properties. A local type can be declared for each case of an enumerated property, with the optional addition of a shared type for all cases.
+- `Extended types` extend JSON types with typed properties. A local type can be declared for each case of a property, with the optional addition of a shared type for all cases.
 
-- `Type extensions` extend a JSON type with enumerated properties using the dot (.) syntax. A local type can be declared for each case of an enumerated property, but no additional or shared type declaration is necessary as the extension inherits from the JSON type.
+- `Type extensions` extend a JSON type with typed properties using the dot (.) syntax. A local type can be declared for each case of a property, but no additional or shared type declaration is necessary as the extension inherits from the JSON type.
 
 <br>
 
@@ -115,17 +115,17 @@ The `type system` is comprised of all available types presented above. In a TXON
 
 {"break":true}
 
-`Declarations` act as blueprints for instantiating a type, and must be named with an `extended type` or `type extension`. This blueprint enumerates `value names`, which are either required or `optional values`, with values conforming to the JSON specification. There are two reserved property names in a declaration: "type" for `shared types` and "case" for `case names`.
+`Declarations` act as reference points for instantiating a type, and must be named with an `extended type` or `type extension`. This declaration contains `value names`, which are either required or `optional values`, with values conforming to the JSON specification. There are two reserved property names in a declaration: "type" for `shared types` and "case" for `case names`.
 
-- `Value names` are the names of enumerated properties of a type utilised during instantiation, and specify a JSON type that their values must conform to in an instance.
+- `Value names` are the names of typed properties of a type utilised during instantiation, and specify a JSON type that their values must conform to in an instance.
 
 - `Optional values` are the properties of a type not required during instantiation, and as such they are optional. They specify a JSON type name, which they must conform to if included in an instance. Their names are similar to required values, but utilise the question mark syntax (?) appended to their name.
 
-- `Shared types` are properties with the name "type" declared at the root of an extended type. Their values must conform to type names in the JSON specification, and all enumerated properties inherit this type.
+- `Shared types` are properties with the name "type" declared at the root of an extended type. Their values must conform to type names in the JSON specification, and all properties inherit this type.
 
-- `Local types` are properties with the name "type" declared with enumerated properties or the values of enumerated properties. These types override shared types or type extensions, or can be the sole source of typing for extended types with no shared type.
+- `Local types` are properties with the name "type" declared with typed properties or the values of properties. These types override shared types or type extensions, or can be the sole source of typing for extended types with no shared type.
 
-- `Case names` are the names of enumerated properties of a type, declared as the arrayrised value of a "case" property at the root of a type. This is useful when a type is an extension or an extended type with a shared type and all values share the same JSON type. As such their values must conform to type names in the JSON specification.
+- `Case names` are the names of properties with a shared type, declared as the arrayrised value of a "case" property at the root of a type. This is useful when a type is an extension or an extended type with a shared type and all values share the same JSON type. As such their values must conform to type names in the JSON specification.
 
 <br>
 
