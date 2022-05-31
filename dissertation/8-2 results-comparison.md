@@ -6,7 +6,7 @@ A TXON data structure contains an initialiser and a data property, and as such t
 
 <br>
 
-{"sub":"Type-safety and transformation of JSON"}
+{"sub":"Embedding types and data structure in TXON"}
 
 <!--
 2. Transform JSON data structure by embedding TXON types in an initialiser property at its root node.
@@ -364,15 +364,9 @@ jsonDiagram {
 
 {"break":true}
 
-{"sub":"Validation processes and debugging"}
+{"sub":"Features of the validation processes"}
 
 An object in TypeScript is the end-point for the validation on GitLab, because it provides a statically typed, strong and explicit target on which JSON data structures can be cast. Only the data that matches this object on both value types and structure will be initialised, and as such it provides a powerful guard against errors. This is important because the object is encoded again, and then forwarded to the database that drives the end-user client application. If we could not guard against errors before the data reaches the application, it could cause the customer software to become unusable.
-
-{"break":true}
-
-<!--
-TypeScript decoding and casting to object -> feedback?
--->
 
 The validation of a JSON structure on GitLab is achieved by compared the decoded data to a typed object declared with the TypeScript programming language. The validation is its own `TypeScript library`, which is continuously executed as new data structures are integrated and need to be validated before deployment to a `Firebase` database. The validation is paired with a `validate library of predefined feedback messages, which are applied when a data structure is invalid but the developers do not want to throw an exception, which would stop the validation process. Once validation has completed and if no exceptions have been thrown, the library casts the data to a typed object and forwards it to the database.
 
@@ -391,7 +385,7 @@ type TypeValidationErrorMessage =
 
 <br>
 
-The validation library on GitLab then implements a `validate` method, which is one of several helper functions in the library. The `validate` method defines checks for validating an incoming JSON data structure, and also defines the conditions for detecting nonconformance in the data. The implication is that this process is selective, meaning it allows some leeway of errors to be present, as long as the required properties can be cast to its typed object. The method can be summarised as:
+The validation library on GitLab then implements a `validate` method, which is one of several helper functions in the library. The `validate` method defines checks for validating an incoming JSON data structure, and also defines the conditions for detecting nonconformance in the data. The implication is that this process is selective, meaning it allows some leeway of errors to be present, as long as the required properties can be cast to its typed object. The method is comprised of these code blocks:
 
 {"break":true}
 
@@ -508,20 +502,20 @@ if (isTypeSpecArray(specType)) {
 }
 ```
 
-{"break":true}
+From the enumerated error messages and the `typeValidationErrors` returned in these code blocks, I can identify the following features of this validation process. The `validate` method is capable of determining nonconformance based on value types and a `regular expression` (regex), which is sequence of patterns in a value of type String. It is also capable of determining if a required property is missing, or if a required property has the value `null`. It is evident from the enumerated error messages that this approach to validation is not extensible, in that it returns an error message if the data structure contains more property names than its respective type declarations.
 
-It is evident from this method that validation is performed recursively, and that validation does not continue once a nonconformance error has been returned or exception has been thrown. The implications of this implementation are that if a data structure was to be found invalid, the developer would have to look at the type declarations in TypeScript, and then look at the data structure that is invalid. The developer would then have to compare the two, and determine the reason for the respective nonconformance issue.
+{"break":true}
 
 The validation of a TXON data structure can be achieved through the TXON.js validation library. As described in the experiment, the library provides a handshake method that takes a stringified data structure as its input parameter, and returns an object denoting the validity of the data structure. This object contains both a boolean value that is always `true` unless nonconformance was detected, and a string of feedback describing why validation failed or could not be performed. The implication is that if no feedback is returned, the data structure has completed validation and passed all checks.
 
 This approach is different from what is described with TypeScript on GitLab, in that the aim is not to decode, validate, cast to an object, and then encode the data structure before forwarding, but rather to validate it and then forward it to the end-user client. As a consequence this validation process does not initialise an object with the JavaScript programming language, but this could be achieved if the developer chooses to do so post-validation.
 
-<!--
-Comparison of debugging for each validation process
--->
+<br>
 
-If we compare these two validation processes, it is evident that...
+If we compare these two validation processes, it is evident that both processes can validate `value types` and `missing properties`, but the TypeScript implementation can also apply regular expressions to values of type String. The approach taken with the TypeScript implementation also implies that the data structure can only contain the declared properties, and the engineers have chosen to specifically check null values. As such the implementation of TXON does not cover all of the features present in the TypeScript implementation. The lack of regular expressions is the most notable feature difference between these two processes, but the TXON implementation should still be able to check type nonconformance and missing required properties. These two validation features are the most crucial when casting data to a typed object, as a differently typed or missing property can cause software to crash and become unusable.
 
-[ Text ]
+<br>
+
+If we compare these two validation processes on their ability to provide feedback to engineers, they are not too different in their approach. Each process assumes that its goal is to detect nonconformance between the data structure and the typed object, and both processes return a descriptive error message. Neither of the two processes are capable of returning errors continuously, as they both stop validating once an error has been returned.
 
 {"break":true}
