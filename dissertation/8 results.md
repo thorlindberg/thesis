@@ -1,12 +1,16 @@
 {"chp":"Results"}
 
-In this chapter I present the results of my experiment, which includes a syntax proposal for extensibly typed JSON data structures and a critical evaluation of its implementation through the TXON.js library. To preface these results I present the Type-Extensible Object Notation (TXON)) grammar derived from this experiment, as well as the system of terminologies used throughout the proposal.
+In this chapter I present the result of my experiment, which is a syntax proposal for the evolution of the JSON specification. This proposal aims to demonstrate that the JSON format can be extended to the `TXON format`, through generic type declarations and relational references to these types through extensible type instances. The proposal is followed by a critical evaluation of its implementation, as the syntax is derived from its functional implementation through the `TXON.js validation library`. To preface these results I present the grammatical system of the `Type-Extensible Object Notation` (TXON) as derived from its implementation, and a summary of the definitions I propose for describing types in the TXON format.
 
 <br>
 
 {"sub":"Grammatical notation"}
 
-As a superset format of JSON the TXON grammar can also be expressed with the McKeeman Form {"citep":"douglas2020form"}. As seen in figure {"ref":"txongrammar"} this form implies a hierarchy of declarations, and some elements of the syntax can be recursively declared.
+As TXON is a superset of the JSON format, the grammatical notation for the JSON specification is also applicable to a TXON data structure. However the functional implementation of TXON through its validation library imposes certain strict requirements on the structure, hierarchy and contents of a TXON data structure. These requirements include an initialiser property and data property at the root node of the structure, as well as a specific format for type declarations.
+
+As seen in figure {"ref":"txongrammar"} the grammar of TXON can be modeled on the grammar defined in the JSON specification, but it is extended with type declarations and type instances. The type declarations must follow a strict format, both for their names and contents. If a type is incorrectly declared, the validation library cannot proceed to validate its instances. If a type is incorrectly instanced, the validation library should not throw an error and instead continue validation. This implementation was chosen because type instances are an extension of existing JSON data structures, and as such the grammar must be an extension rather than a strict requirement.
+
+<br>
 
 @startuml
 @startjson
@@ -24,27 +28,57 @@ jsonDiagram {
 </style>
 
 {
-    "json": "element",
-    "ws": {
-        "members": [ "member", "member , members" ],
-        "member": "ws string ws : element",
-        "elements": [ "element", "element , elements" ],
-        "element" : "ws value ws",
-        "characters": [ "character characters" ],
-        "character": ""
+    "\"initialiser\"": {
+        "type": {
+            "type": {
+                "typeName": {
+                    "\"type\"": "jsonType",
+                    "minimum": "number",
+                    "maximum": "number",
+                    "default": "value",
+                    "property": {
+                        "\"type\"": "jsonType",
+                        "minimum": "number",
+                        "maximum": "number",
+                        "default": "value"
+                    },
+                    "case": [
+                        "property"
+                    ]
+                }
+            },
+            "extension": {
+                "jsonType.typeName": {
+                    "property": "jsonType",
+                    "minimum": "number",
+                    "maximum": "number",
+                    "default": "value",
+                    "case": [
+                        "property"
+                    ]
+                }
+            }
+        }
     },
-    "value": {
-        "object": [ "{ ws }", "{ ws }" ],
-        "array": "[ member ]",
-        "string": "\" characters \"",
-        "number": {
-            "integer": [ "digit", "onenine digits", "- digit", "- onenine digits" ],
-            "fraction": [ ". digits" ],
-            "exponent": [ "E sign digits", "e sign digits" ]
-        },
-        "true": "true",
-        "false": "false",
-        "null": "null"
+    "\"data\"": {
+        "instance": [
+            {
+                "\"type\"": "name",
+                "property": "value"
+            },
+            {
+                "\"values\"": [
+                    {
+                        "\"type\"": "name",
+                        "property": "value"
+                    },
+                    {
+                        "\"type\"": "name",
+                        "property": "value"
+                    }
+                ]
+            }
+        ]
     }
 }
 
@@ -55,7 +89,7 @@ jsonDiagram {
 
 {"break":true}
 
-{"sub":"Terminology and definitions in proposal"}
+{"sub":"Definition of terminologies in proposal"}
 
 As a preface to the resulting syntax proposal, I provide the following system of terms and define the meaning I prescribe to them in my proposal. The purpose of these definitions is to alleviate any potential confusion of terminology, as it is crucial to understand the language used to understand the proposal as a whole. This system of terms reflects the grammatical notation of the TXON data structure, but also covers the intricacies of applying it to existing data structures with untyped data points.
 
