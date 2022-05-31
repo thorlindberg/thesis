@@ -12,7 +12,7 @@ As a step towards evolving the type-extensibility of the JSON specification, thi
 
 {"sub":"Motivation"}
 
-The motivation for this implementation of types is the current inability to extend or enumerate types in the JSON specification. The result of this flaw is that developers cannot validate whether their data structures are correct or incorrect before they have been decoded in a software application.
+The motivation for this implementation of types is the current inability to explicitly or relationally type data in the JSON specification. The result of this flaw is that developers cannot validate whether their data structures are correct or incorrect before they have been decoded in a software application.
 
 Consider a simple `data structure` that conforms to the JSON specification:
 
@@ -22,7 +22,7 @@ Consider a simple `data structure` that conforms to the JSON specification:
 }
 ```
 
-Suppose you are transmitting this to a client but you decide to alter the date format. This would cause the data to be invalidated by the recipient, but this is easily fixed by altering the expected structure. You may have altered the data structure to `split properties` of the original:
+Suppose you are transmitting this to a client but you decide to alter the date format. This would cause the data to be invalidated by the recipient, but this is easily fixed by altering the expected structure. Let us assume you alter the date property by splitting it into its components:
 
 ```
 {
@@ -34,7 +34,7 @@ Suppose you are transmitting this to a client but you decide to alter the date f
 
 {"break":true}
 
-This is much clearer to both parties, and because the data points have number values they are less likely to be invalidated. Text editors and data parsers that implement the JSON specification will highlight or throw an error if the properties include characters beyond numbers. As data interchange formats are typically not manually typed, it is possible for any value to end up as an unintended type. As such, the recipient would likely validate the types independently to ensure that they are indeed correct. This could be eased with a `type declaration` that explicitly states the value type:
+This is much clearer to both parties, and because the data points have number values they are less likely to be invalidated. Text editors and data encoders that implement the JSON specification will highlight or throw an error if the properties include string characters without quotation marks. As data interchange formats are typically not manually typed, it is possible for any value to end up as an unintended type. As such, the recipient would likely validate the types independently to ensure that they are indeed correct. This could be eased with an explicit `type declaration` stating the value type:
 
 ```
 {
@@ -44,7 +44,7 @@ This is much clearer to both parties, and because the data points have number va
 }
 ```
 
-However, this does not ensure that all the properties are present in the data structure, nor does it actually validate types independently. It would be better if the data could better specify its intent with a generic structure that is easily validated without investing time in defensive mechanisms on the recipient end.
+However, this does not ensure that all the properties are present in the data structure, nor does it actually validate types without the recipient constructing a custom validation process. It would be better if the data could better specify its intent with a generic structure, that can be validated without each recipient investing resources into their own validation process.
 
 <br>
 
@@ -60,7 +60,7 @@ Consider this simple explicitly typed `data structure` that conforms to the JSON
 }
 ```
 
-Suppose that this structure was used to type an entire data structure that may contain 100-1000 properties. This would be a poorly performing data format, as the information necessary for validating the data is much more prevalent than the actual information stored within it. In fact, in this example the data contains 177 characters of which the information only represents 8 characters or 4.5% of the data. You may alter this structure to reduce repetition, as in this specific instance all values are typed identically:
+Suppose that this structure was used to type an entire data structure that may contain 100-1000 properties. This would be a poorly performing data format, as the information necessary for validating the data is more prevalent than the actual information it stores. In fact, in this example the data contains 177 characters of which the information only represents 8 characters or 4.5% of the data. You may alter this structure to reduce repetition, as in this specific instance all values are typed identically:
 
 
 ```
@@ -89,6 +89,10 @@ This greatly reduces the character count by 48% to 92 characters of which the in
     }
 }
 ```
+
+<br>
+
+
 ```
 {
     "date": {
@@ -107,13 +111,13 @@ This greatly reduces the character count by 48% to 92 characters of which the in
 
 <br>
 
-These can be considered safe structures, but also increasingly prone to syntax errors. All parties involved would have to agree to use identical structures for data points, to ensure compatibility with validation processes. The former structure with individual typing contains 301 characters of which the information represents 19 characters or 6.3% of the data. The latter structure with collections of properties through inverted typing contains 224 characters of which the information represents 19 characters or 8.48% of the data. It is evident that efficient explicit typing is possible with JSON, but that it necessitates a relational and generic approach for scalability and to guard against syntax errors. In addition, properties of types such as String can vary greatly in content, but typically match an enumerated list of values. As such, it would be apt to enumerate values in a type declaration.
+These can be considered safe structures, but also increasingly prone to syntax errors. All parties involved would have to agree to use identical structures for data points, to ensure compatibility with validation processes. The former structure with individual typing contains 301 characters of which the information represents 19 characters or 6.3% of the data. The latter structure with collections of properties through inverted typing contains 224 characters of which the information represents 19 characters or 8.48% of the data. It is evident that efficient explicit typing is possible with JSON, but that it necessitates a relational and generic approach for scalability and to guard against syntax errors.
 
 {"break":true}
 
 {"sub":"Proposed solution"}
 
-I would like to propose a syntax for declaring types with a generic and extensible syntax for `type declarations`, altering existing data structures as little as possible, while greatly reducing dependency on additional layers of data validation at multiple points of a distributed system. This syntax is grammatically based on typed values in TypeScript, allowing you to explicitly type and enumerate data points. This is paired with a syntax for `type instances`, with relational references to type specifications outside the immediate data point and structure. This syntax is grammatically designed to accommodate different data structures, especially as pertaining to inheritance and shared typing of data points.
+I propose a syntax for declaring types with a generic and extensible syntax for `type declarations`, altering existing data structures as little as possible, while greatly reducing dependency on additional layers of data validation at multiple points of a distributed system. This syntax is grammatically based on typed values in TypeScript, allowing you to explicitly type data points representing objects. This is paired with a syntax for `type instances`, with relational references to type specifications outside the immediate data point and structure. This syntax is grammatically designed to accommodate different data structures, especially as pertaining to inheritance and shared typing of data points.
 
 <br>
 
@@ -130,7 +134,7 @@ Types can be declared in the `initialiser property` at the root of the data stru
 }
 ```
 
-Declarations provide a generic and single-location place to specify enumerated and explicitly typed values in a data structure. For example, the "date" type can be instantiated in the `data property`at the root of the data structure:
+Declarations provide a single source and reference point when explicitly typing values in a data structure. For example, the "date" type can be instantiated in the `data property`at the root of the data structure:
 
 ```
 {
@@ -153,7 +157,7 @@ Declarations provide a generic and single-location place to specify enumerated a
 
 {"break":true}
 
-It is evident from this syntactical approach that despite these strict requirements the data remains readable, by separating the type declaration from the actual data through relation references. Additionally, this syntax scales far better with larger data structures, requiring less repetition and as such a lesser chance of syntax errors. The initialiser can be ignored when casting the data in software, but also acts as embedded documentation of the intent with the data structure. This approach is generic in structure yet flexible to differently structured data and use-cases, while remaining human-readable and conforming to the JSON specification.
+It is evident from this syntactical approach that despite these strict requirements the data remains readable, by separating the type declaration from the actual data through relation references. Additionally, this syntax scales far better with larger data structures, by requiring less repetition, which also lowers the risk of syntax errors. The initialiser can be ignored when casting the data in software, but also acts as embedded documentation for the intent with the data structure. This approach is generic in structure, yet flexible to differently structured data and use-cases, while remaining human-readable and conforming to the JSON specification.
 
 <br>
 
@@ -183,7 +187,7 @@ Types can be instantiated in the `data property`at the root of the data structur
 
 <br>
 
-This greatly reduces the character count of the data instance by 66.5% to 149 characters of which the information represents 19 characters or % of the data. The data is also safer because the property of type String has enumerated values, allowing it to be validated base on whether its case conforms to the enumeration. This approach is not without fault, as the data structure including the type declarations is larger at 454 characters, but this trade-off is offset by the reduction in repetition of type declarations as the data scales up in size.
+This greatly reduces the character count of the data instance by 66.5% to 149 characters of which the information represents 19 characters or 12.7% of the data. This approach is not without fault, as the data structure including the type declarations is larger at 454 characters, but this trade-off is offset by the reduction in repetition of type declarations as the data scales up in size.
 
 {"break":true}
 
@@ -239,16 +243,12 @@ As this syntax aims to be extensible by selectively typing data, type instances 
 }
 ```
 
-<br>
-
-It is evident that despite being strongly, explicitly, yet dynamically typed, this data structure is readable and the typing can be utilised for validation ignored. A major advantage of this approach is that it is generic, by leveraging grammatical standards for typing data. This centralised approach means the involved parties can invest fewer resources in defensive mechanisms, as they can expect typed data in a standard format with TXON.
-
 {"break":true}
 
 {"sub":"Detailed design"}
 
 In aiming to reflect the values of extensible implementations, 
-type declarations can become type extensions with the dot syntax (.), and type instances can be extensibly added to the data. The current implementation is not exhaustive, as considering every potential and realistic structure is beyond the scope of this proposal. 
+type declarations can become type extensions with the dot syntax (.), and type instances can be extensibly added to the data.
 
 <br>
 
@@ -269,6 +269,8 @@ A type can be an extension of another type:
     }
 }
 ```
+
+<br>
 
 This results in all enumerated values inheriting typing from the type before the dot in the declared extension. The implication of this is that types do not have to be explicitly declared with a property in a type initialiser, and as such the character count is reduced while maintaining readability. Here are a few examples of the possible type declarations, and how extensions improve the syntax:
 
