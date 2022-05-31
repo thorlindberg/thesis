@@ -1,12 +1,12 @@
 {"sec":"Evaluation Strategy"}
 
-In this section I present my strategy for evaluating the results of this experiment, through an example of its use. The purpose of this evaluation is to evaluate the impact of implementing the TXON format in an existing system. This is accomplished by assessing the transformation of a JSON to TXON data structure, and assessing to which degree the `TXON.js` library can substitute an existing validation process that casts the JSON data structure to TypeScript types. As the proposed grammar provides a standardised and generic approach to typed data and its validation, I demonstrate that when a data structure is invalid it is easier to debug if it conforms to the TXON specification.
+In this section I present my strategy for evaluating the results of this experiment, which is a proposal for an evolution of the JSON specification. The purpose of this evaluation is to assess to which degree the functional implementation of TXON succeeds at substituting the current setup with JSON and TypeScript validation on GitLab. This assessment is accomplished by illustrating the transformation of a JSON structure to a TXON structure, and then demonstrating that the TXON structure does not depend on a custom validation process. I expect that this transformation will have minimal impact on the information contained in the structure, and that the `TXON.js` library is a suitable substitution for the features of TypeScript that I have chosen to implement.
 
 <br>
 
 {"sub":"Transformation from JSON to TXON"}
 
-While a TXON data structure conforms to the JSON specification, its contents are extended with type declarations and explicitly typed data through type instances. The implication of this is that types that would otherwise exist in a statically typed programming language such as TypeScript, have to be embedded into the JSON data structure. Once these types are part of the data structure, they can be instantiated through relational references by extending the contents of the data with types. This process can be summarised with these steps:
+While a `TXON` data structure conforms to the `JSON` specification, its contents are extended with type declarations and explicitly typed data through type instances. The implication of this is that types that would otherwise exist in a statically typed programming language such as TypeScript, have to be embedded into the JSON data structure. Once these types are part of the data structure, they can be instantiated through relational references by extending the contents of the data with types. This process can be summarised with these steps:
 
 <br>
 
@@ -21,26 +21,22 @@ As a JSON data structure is typically not written by hand but rather an automate
 
 {"break":true}
 
-{"sub":"Debugging with TypeScript and TXON.js"}
+{"sub":"Validation with TypeScript and TXON.js"}
 
-When a data structure exists as an intermediary between programming languages, it can be encoded and decoded by different actors in the transmission process. Each actor has an expectation of the data structure, so when they receive it they must validate that the encoded object within can be decoded and cast to an object in their programming language.
+When a data structure exists as an intermediary between programming languages, it can be encoded and decoded by different actors in the transmission process. Each actor has an expectation of the data structure, so when they receive it they must validate that the encoded object within can be decoded and cast to an object in their programming language. As a result of this dependency on validation, the substitution of JSON with TXON must also involve the processes that validate their contents.
 
-As a result of this dependency on validation, the substitution of JSON with TXON must also involve the processes that validate their contents. The TypeScript and TXON.js validation processes can be compared on their character count, time complexity, universality or execution time, but these measures are unlikely to have a real-world impact on developer practices because the differences would be negligible.
+The `TypeScript` and `TXON.js` validation processes could be compared on their `character count` `time complexity` `universality` or `execution time`. I expect that these measures would have a negligible difference due to the relative small size of the data structures. Further this would not impact the developers practices and time investment required to accommodate JSON as an intermediary format, so these comparisons are not included in this evaluation.
 
-As an alternative, these validation processes can be assessed on how they inform the `debugging` of data structures. When an actor validates a data structure and finds it incompatible with their own expected object, the actor must react by `debugging` the data structure. This process requires human intervention to determine and demonstrate where and why an error occurred, and solve the issue at its source. As such the evaluation must assess the validation processes by asking these questions:
-
-<!--
+As an alternative I have chosen to assess the TXON.js library by comparing it to the existing library of validation features utilised on the company GitHub. The purpose of this assessment is to determine to which degree my implementation of its features serve as a suitable generic substitution for the TypeScript implementation. This comparison aims to answer these questions:
 
 <br>
 
-1. What is the expected feedback from validation?
-2. What is the expected reaction to an invalid data structure?
-3. What is the expected approach to debugging an invalid data structure?
+1. What are the features of the TypeScript validation implementation?
+2. Which of these features can be substituted by the TXON.js validation implementation?
+3. How do these validation processes provide useful feedback when encountering invalid data structures?
 
 <br>
 
-This assessment demonstrates that the TXON implementation is easier to debug than the existing JSON and TypeScript setup. I also take into consideration that the aim of the JSON format is to be human-readable. As a result the TXON format is not a suitable alternative if it only achieves type-extensibility by sacrificing readability.
-
--->
+This evaluation is performed with the perspective on validation that an invalid data structure returns an error, which must be acted upon by a developer. As such the assessment of a validation process must take into account how the implementation affects the people responsible for its maintenance, as well as the degree of resource investment into correcting the implementation.
 
 {"break":true}
