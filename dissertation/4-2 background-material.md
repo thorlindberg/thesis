@@ -12,8 +12,6 @@ As illustrated in figure {"ref":"informationflow"} the flow of information in th
 
 The implication of this architecture is that the company achieves final control of data validation, which allows them to align their full stack of software (frontend and backend), despite not having control over the data storage system. This situation inspired me to investigate how the existing validation process could become more generic and embedded in their data structures.
 
-<br>
-
 @startuml
 
 skinparam linetype ortho
