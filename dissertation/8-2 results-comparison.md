@@ -17,7 +17,7 @@ A TXON data structure contains an initialiser and a data property, and as such t
 
 As seen in figure {"ref":"embedtypes"} these TypeScript types can be translated to TXON and embedded in the initialiser of a data structure. The TXON grammar does not support relational references within type declarations, but these types can be individually declared and then referenced in the hierarchy of the typed data structure. The TXON types derived from these TypeScript declarations have been slightly modified, as the TXON grammar does cannot declare a type value as an array of another type. Instead the TXON type declaration must be of type array and then another type must be declared, which can be referenced when arrayrising typed data.
 
-{"break":true}
+<br>
 
 @startuml
 @startjson
@@ -70,6 +70,8 @@ jsonDiagram {
 @enduml
 
 {"fig":"embedtypes","caption":"TXON data structure with type declarations embedded in its initialiser."}
+
+{"break":true}
 
 <!--
 3. Transform JSON data structure by embedding its content in a data property at its root node.
@@ -360,7 +362,7 @@ jsonDiagram {
 
 {"fig":"txonstructure","caption":"TXON data structure with type declarations in initialiser and type instances in data property."}
 
-<br>
+{"break":true}
 
 {"sub":"Validation processes and debugging"}
 
