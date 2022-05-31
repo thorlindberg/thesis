@@ -468,4 +468,4 @@ As the TXON specification conforms to the JSON specification, there should be ze
 
 Actually adopting this proposed syntax for type declarations is quite feasible, as the data structure can remain otherwise unaltered and the type declarations and references can be ignored. However, this will decrease performance and increase size of file transmissions, so it should not be done unless it clearly demonstrates an improved validation process both now and in the future.
 
-{"break":true}
+<br>

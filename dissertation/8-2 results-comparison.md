@@ -4,7 +4,7 @@ In this section I present a comparison of the data formatting and validation of 
 
 A TXON data structure contains an initialiser and a data property, and as such the following results will compare the declaration of types in TypeScript and the initialiser, and then the instantiation of types in JSON and the data property. It is crucial to preface these results by reiterating that TXON is not final in its current implementation, but is rather a proposal presented for discussion.
 
-<br>
+{"break":true}
 
 {"sub":"Embedding types and data structure in TXON"}
 
@@ -502,9 +502,11 @@ if (isTypeSpecArray(specType)) {
 }
 ```
 
+{"break":true}
+
 From the enumerated error messages and the `typeValidationErrors` returned in these code blocks, I can identify the following features of this validation process. The `validate` method is capable of determining nonconformance based on value types and a `regular expression` (regex), which is sequence of patterns in a value of type String. It is also capable of determining if a required property is missing, or if a required property has the value `null`. It is evident from the enumerated error messages that this approach to validation is not extensible, in that it returns an error message if the data structure contains more property names than its respective type declarations.
 
-{"break":true}
+<br>
 
 The validation of a TXON data structure can be achieved through the TXON.js validation library. As described in the experiment, the library provides a handshake method that takes a stringified data structure as its input parameter, and returns an object denoting the validity of the data structure. This object contains both a boolean value that is always `true` unless nonconformance was detected, and a string of feedback describing why validation failed or could not be performed. The implication is that if no feedback is returned, the data structure has completed validation and passed all checks.
 
