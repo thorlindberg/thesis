@@ -18,84 +18,77 @@ This implementation reflects the sentiments expressed by {"cite":"guernsey2013te
 
 {"sub":"Typed objects and relational properties"}
 
-[ Text ]
+As I began to transfer the type declarations from TypeScript to my TXON data structure, I noticed that the typed object in TypeScript had properties referencing other typed objects, and that TypeScript provided support for declaring a property as an array of its referenced type. These two features are not present in my implementation, just as I chose to not include enumerated values in my implementation because of time constraints.
 
-<!--
+Despite the inability of the current implementation to declare arrayrised typed properties and relational type declarations, I wanted to illustrate how these features could be implemented with the current grammatical notation. As seen in figure {"ref":"relationalhierarchal"} the `current` TXON grammar requires individual types to be declared one-by-one, and these can then be combined and nested in a type instance. The `relational` implementation would also declare types one-by-one, but would be capable of providing type declarations as property types. The `hierarchal` implementation can go one step further, by combining these declarations and implicitly deriving that a property is arrayrised by declaring it as an array.
 
-Explicit subtypes:
+<br>
 
-```
+@startuml
+@startjson
+
+<style>
+jsonDiagram {
+    BackGroundColor transparent
+    node {
+        BackGroundColor white
+    }
+}
+</style>
+
 {
-    "init": {
-        "location": {
-            "id": "string", "locationId": "string", "name": "string",
-            "address": {
-                "line1": "string", "line2": "string"
+    "txon": {
+        "init": {
+            "location": {
+                "chargePoints": "array"
             },
-            "coordinates": {
-                "lat": "number", "lng": "number"
+            "chargepoint": {
+                "id": "string",
+                "connectors": "array"
             },
-            "imageUrl?": "string", "phoneNumber?": "string",
-            "description": {
-                "da?": "string", "en?": "string"
+            "connector": {
+                "id": "string", "connectorNo": "string", "displayId": "string",
+                "name": "string", "kW": "number", "speed": "string"
+            }
+        }
+    },
+    "relational": {
+        "init": {
+            "location": {
+                "chargePoints": "array<chargepoint>"
             },
-            "roamingPartner?": "string", "isRoaming": "boolean", "isOpen24": "boolean",
-            "openingHours": {
-                "da?": "string", "en?": "string"
+            "chargepoint": {
+                "id": "string",
+                "connectors": "array<connector>"
             },
-            "chargePoints": "array<chargepoint>",
-            "isRemoteChargingSupported": "boolean", "isFuture": "boolean"
-        },
-        "chargepoint": {
-            "id": "string",
-            "connectors": "array<connector>"
-        },
-        "connector": {
-            "id": "string", "connectorNo": "string", "displayId": "string",
-            "name": "string", "kW": "number", "speed": "string"
+            "connector": {
+                "id": "string", "connectorNo": "string", "displayId": "string",
+                "name": "string", "kW": "number", "speed": "string"
+            }
+        }
+    },
+    "hierarchal": {
+        "init": {
+            "location": {
+                "chargePoints": [
+                    {
+                        "id": "string",
+                        "connectors": [
+                            {
+                                "id": "string", "connectorNo": "string", "displayId": "string",
+                                "name": "string", "kW": "number", "speed": "string"
+                            }
+                        ]
+                    }
+                ]
+            }
         }
     }
 }
-```
 
-Implicit subtypes:
+@endjson
+@enduml
 
-```
-{
-    "init": {
-        "location": {
-            "id": "string", "locationId": "string", "name": "string",
-            "address": {
-                "line1": "string", "line2": "string"
-            },
-            "coordinates": {
-                "lat": "number", "lng": "number"
-            },
-            "imageUrl?": "string", "phoneNumber?": "string",
-            "description": {
-                "da?": "string", "en?": "string"
-            },
-            "roamingPartner?": "string", "isRoaming": "boolean", "isOpen24": "boolean",
-            "openingHours": {
-                "da?": "string", "en?": "string"
-            },
-            "chargePoints": [
-                {
-                    "id": "string",
-                    "connectors": [
-                        {
-                            "id": "string", "connectorNo": "string", "displayId": "string",
-                            "name": "string", "kW": "number", "speed": "string"
-                        }
-                    ]
-                }
-            ],
-            "isRemoteChargingSupported": "boolean", "isFuture": "boolean"
-        }
-    }
-}
-```
-
--->
+{"fig":"relationalhierarchal","caption":"Current and alternative implementation of relational type declarations."}
 
 {"break":true}
