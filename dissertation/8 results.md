@@ -125,12 +125,12 @@ The `type system` is comprised of all available types presented above. In a TXON
 
 - `Local types` are properties with the name "type" declared with typed properties or the values of properties. These types override shared types or type extensions, or can be the sole source of typing for extended types with no shared type.
 
-- `Case names` are the names of properties with a shared type, declared as the arrayrised value of a "case" property at the root of a type. This is useful when a type is an extension or an extended type with a shared type and all values share the same JSON type. As such their values must conform to type names in the JSON specification.
+- `Case names` are the names of properties with a shared type, declared as the arrayised value of a "case" property at the root of a type. This is useful when a type is an extension or an extended type with a shared type and all values share the same JSON type. As such their values must conform to type names in the JSON specification.
 
 <br>
 
 `Instances` act as initialisers based on the specification of the type declaration they reference. An instance is a data point of the JSON value type "Object" containing the property name "type" that references an extended type or type extension. Instances must at minimum initialise the required properties of the type they reference. Instead of separate instances for multiple data points initialising the same referenced type, `shared instances` can be utilised with a "values" property name.
 
-- `Shared instances` are initialised with a data point of the JSON value type "Object" that contains the property names "type" and "values". The "type" property must reference an extended type or type extension, and will be inherited by all initialised data points. The "values" property has an arrayrised value containing one or more data points of the JSON value type "Object". Each data point is an instance of the inherited type, and as such they must initialise all required properties of that type, but they do not need individual type references.
+- `Shared instances` are initialised with a data point of the JSON value type "Object" that contains the property names "type" and "values". The "type" property must reference an extended type or type extension, and will be inherited by all initialised data points. The "values" property has an arrayised value containing one or more data points of the JSON value type "Object". Each data point is an instance of the inherited type, and as such they must initialise all required properties of that type, but they do not need individual type references.
 
 {"break":true}

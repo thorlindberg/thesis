@@ -553,7 +553,7 @@ jsonDiagram {
 
 {"fig":"instancevalue","caption":"Unit tests for conformance of value type and range in instance."}
 
-As seen in figure {"ref":"instancevaluearray"} a node that references a type in the data node must instantiate an arrayrised property with its declared value type and within its range.
+As seen in figure {"ref":"instancevaluearray"} a node that references a type in the data node must instantiate an arrayised property with its declared value type and within its range.
 
 @startuml
 @startjson
@@ -656,6 +656,6 @@ jsonDiagram {
 @endjson
 @enduml
 
-{"fig":"instancevaluearray","caption":"Unit tests for conformance of arrayrised value type and range in instance."}
+{"fig":"instancevaluearray","caption":"Unit tests for conformance of arrayised value type and range in instance."}
 
 {"break":true}

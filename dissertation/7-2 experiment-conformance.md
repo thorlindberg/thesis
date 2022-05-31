@@ -471,7 +471,7 @@ const checkData = (object) => {
 
 The recursion method takes a property value and differentiates between values of type Array and Object. If the value is of type Array, it loops through each element and differentiates between elements of type Array and Object. If the element is of type Array it calls the recursion method, but if the element is of type Object it calls the validation method. If the value is of type Object it calls the validation method.
 
-The purpose of this hierarchy is that only values of type Object can be validated as TXON structures, but arrayrised values are also looped over recursively to detect Objects. <p style="color">This approach is missing a recursive looping of the properties of an Object, as it only considers recursive looping of arrayrised values.</p>
+The purpose of this hierarchy is that only values of type Object can be validated as TXON structures, but arrayised values are also looped over recursively to detect Objects. <p style="color">This approach is missing a recursive looping of the properties of an Object, as it only considers recursive looping of arrayised values.</p>
 
 ```
 const recursion = (input) => {
@@ -652,7 +652,7 @@ if (inInstance) {
 
 {"break":true}
 
-If the type instance has a `values` property, validation proceeds if its value is of type Array. It then proceeds to loop through its elements, validating elements of type Object by looping through their properties. It checks if all required properties have been instantiated. If the check fails it returns an Object that indicates the data structure is invalid, with the feedback that a type instance is missing a required property. If the check passes for required properties it proceeds to check arrayrised values.
+If the type instance has a `values` property, validation proceeds if its value is of type Array. It then proceeds to loop through its elements, validating elements of type Object by looping through their properties. It checks if all required properties have been instantiated. If the check fails it returns an Object that indicates the data structure is invalid, with the feedback that a type instance is missing a required property. If the check passes for required properties it proceeds to check arrayised values.
 
 ```
 if (hasValues) {

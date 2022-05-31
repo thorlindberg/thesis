@@ -191,7 +191,7 @@ This greatly reduces the character count of the data instance by 66.5% to 149 ch
 
 {"break":true}
 
-Type instances can be arrayrised, enabling the explicit typing of multiple data points with identical structure with only a single declaration:
+Type instances can be arrayised, enabling the explicit typing of multiple data points with identical structure with only a single declaration:
 
 ```
 {
