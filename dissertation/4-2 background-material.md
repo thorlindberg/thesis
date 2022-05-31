@@ -10,7 +10,7 @@ For this case the company engineers have chosen to utilise the platform "GitLab"
 
 As illustrated in figure {"ref":"informationflow"} the flow of information in this system involves the `users` `client` and `company`. When users attempt to authenticate themselves within the software application, a request for information is sent to the client backend. If authentication succeeds, the information is forwarded to the company backend, wherein the information is validated based on requirements defined in TypeScript. If the information meets all specified requirements it is returned as a response to the application. When information is received by the application, its model attempts to cast correctly specified objects and forward them to the view model, which presents them in the user interface.
 
-The implication of this architecture is that the company achieves final control of data validation, which allows them to align their full stack of software (frontend and backend), despite not having control over the data storage system. This situation inspired me to investigate the data structures processed in the company backend, and how the validation processed could be reduced or eliminated by explicitly typing the data itself.
+The implication of this architecture is that the company achieves final control of data validation, which allows them to align their full stack of software (frontend and backend), despite not having control over the data storage system. This situation inspired me to investigate how the existing validation process could become more generic and embedded in their data structures.
 
 <br>
 
@@ -30,15 +30,20 @@ componentDiagram {
 }
 </style>
 
-frame Database {
+frame Client {
     [Application Programming Interface]
-    [JSON data structure]
+    frame Backend {
+        [Initial data structure]
+    }
 }
 
 frame GitLab {
-    [TypeScript objects]
-    [Data structure]
-    [JSON file]
+    [TypeScript validation]
+    [Validated data structure]
+}
+
+frame Firebase {
+    [Database] -up-> [Final data structure]
 }
 
 frame Application {
@@ -58,14 +63,13 @@ frame Application {
 [HTTP request] -right-> [Application Programming Interface]
 [HTTP response] -left-> [Object structure]
 
-[JSON file] -left-> [Application Programming Interface]
-[Application Programming Interface] -left-> [HTTP response]
+[Final data structure] -left-> [HTTP response]
 
-[Application Programming Interface] -down-> [JSON data structure]
-[JSON data structure] -right-> [TypeScript objects]
+[Application Programming Interface] -down-> [Initial data structure]
+[Initial data structure] -right-> [TypeScript validation]
 
-[TypeScript objects] -up-> [Data structure]
-[Data structure] -up-> [JSON file]
+[TypeScript validation] -up-> [Validated data structure]
+[Validated data structure] -up-> [Database]
 
 @enduml
 

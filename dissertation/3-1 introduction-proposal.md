@@ -73,7 +73,7 @@ jsonDiagram {
 
 {"sub":"Purpose of this Project"}
 
-This project contributes to existing implementations of the JSON specification by proposing a grammar for explicit and extensible typing of values. This proposal is phrased as the `Type-Extensibe Object Notation` (TXON) which is a format that conforms completely to the JSON specification, and as such it maintains full compatibility with existing JSON encoders and decoders. The TXON format is paired with the `TXON.js` library written in JavaScript, to validate the syntactical application in a data structure and conformance within its embedded type system.
+This project contributes to existing implementations of the JSON specification by proposing a grammar for explicit and extensible typing of values. This proposal is phrased as the `Type-Extensibe Object Notation` (TXON) which is a format that conforms completely to the JSON specification, and as such it maintains full compatibility with existing JSON encoders and decoders. The TXON format is paired with the `TXON.js` library written in JavaScript, to validate the functional implementation and its use in a data structure, by checking conformance to its embedded type system.
 
 The proposal was directly inspired by the `TypeScript programming language`, which is a superset of the JavaScript language, from which the JSON specification is derived {"citep":"micro2022typescript"}. TypeScript takes an extensible approach to declaring strongly-typed JavaScript properties, by maintaining the structure of JavaScript, allowing developers to add as many or no declarations at all. This also means that TypeScript code becomes JavaScript code with slight modifications.
 
@@ -135,7 +135,7 @@ An ideal reader would have an educational background (either degree or current p
 
 {"sub":"Problem Statement"}
 
-Before the proposal was developed it was crucial to delimit the problem area, to ensure continuity from exploration to development to evaluation. This project explores the problem area of a strongly-typed data interchange format conforming to the JSON specification. The result of this development is a proposal for the grammar, implementation and validation of such a format.
+Before the proposal was developed it was crucial to delimit the problem area, to ensure continuity from exploration to development to evaluation. This project explores the problem area of debugging invalid intermediary data structures, through the implementation of a strongly-typed data interchange format conforming to the JSON specification. The result of this development is a proposal for the grammar, implementation and validation of such a format.
 
 Inspired by the syntax and implementation of TypeScript the proposed Type-Extensible Object Notation (TXON) emphasises the values of extensibility, human-readability, and interoperability across systems and programming languages. This is expressed in my approach to altering as few existing structures and practices as possible, while providing a safer and easier to use syntax than JSON. The proposal presented in this report aims to implement validation of a typed JSON superset syntax providing:
 
@@ -147,6 +147,6 @@ Inspired by the syntax and implementation of TypeScript the proposed Type-Extens
 
 <br>
 
-The proposed features are demonstrated and validated through the `TXON.js` library, and critically evaluated with a comparison to TypeScript validation in the CI/CD environment of GitLab. This is not an exhaustive review of the format, but this should not be necessary as it conforms to the JSON specification.
+The proposed features are demonstrated and validated through the `TXON.js` library, and critically evaluated with a comparison to TypeScript validation in the CI/CD environment of GitLab. This is not an exhaustive review of the format, but aims to demonstrate that a more explicitly typed JSON format can improve the process of debugging, by acting as a communication tool for alignment of expectations between teams of developers.
 
 {"break":true}
