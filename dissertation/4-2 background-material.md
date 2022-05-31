@@ -6,7 +6,7 @@ In this section I present the information I have gathered from interviews at the
 
 {"sub":"System architecture and information flow"}
 
-For this case the company engineers have chosen to utilise the `GitLab` platform, which acts as an automated software application for validating incoming data and forwarding it to the company `Firebase` database.
+For this case the company engineers have chosen to utilise the `GitLab` platform, which acts as an automated application for validating data and forwarding it to the company `Firebase` database.
 
 As illustrated in figure {"ref":"informationflow"} the flow of information in this system involves the `users` `client` and `company`. When users attempt to authenticate themselves within the software application, a request for information is sent to the client backend. If authentication succeeds, the information is forwarded to the company backend, wherein the information is validated based on requirements defined in TypeScript. If the information meets all specified requirements it is returned as a response to the application. When information is received by the application, its model attempts to cast correctly specified objects and forward them to the view model, which presents them in the user interface.
 
@@ -73,7 +73,7 @@ frame Application {
 
 @enduml
 
-{"fig":"informationflow","caption":"Flow of information from the initial request sent from application to backend, to a response from the data validation backend (GitLab)."}
+{"fig":"informationflow","caption":"Flow of information from a request in the client to a response from Firebase."}
 
 {"break":true}
 

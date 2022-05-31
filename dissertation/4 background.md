@@ -6,8 +6,6 @@ The company specialises in native multi-platform mobile application development,
 
 As seen in figure {"ref":"companystructure"} the company consists of five departments: `management` `project management` `human resources` `engineering` and `design`. Management negotiates case-work with clients and manages the project managers, who manage the remaining three departments at the company. As clients differ from each other and their internal operations are unknown to me, this overview is not exhaustive and only consists of the two departments known to me at a specific client: `product management` and `back-end engineering`. Product management is responsible for negotiating product development with company management, and back-end engineering negotiates software development with company engineering. The `Application Programming Interface (API)` acts as a channel for communication between the two teams of engineers, and a datastream between the client database, company servers, and company application.
 
-<br>
-
 @startuml
 
 skinparam linetype ortho
