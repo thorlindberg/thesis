@@ -1,17 +1,9 @@
 {"chp":"Conclusion"}
 
-[ Text ]
+With the `Type-Extensible Object Notation` (TXON) I aimed to address the lack of extensible types and requirements in the `JavaScript Object Notation` (JSON). In order to investigate this problem area, I sampled an existing JSON data structure and corresponding typed object and validation process written in TypeScript. The implementation I developed succeeded in translating the typed object to the embedded type initialisation, by transforming the existing data structure. I partially succeeded in implementing a generic version of the TypeScript validation features, but due to time constraints I could not validate `regular expressions` (regex).
 
-<div style="color:red">
+Through the evaluation of the implementation, it became evident that my implementation of default values were not appropriate for validation. This concept was borrowed from software development, where default values are provided when an optional value is not or cannot be initialised. In the TXON proposal I suggested that a better alternative would be to utilise the question mark (?) symbol to denote a property that does not need to be instantiated for validation.
 
-[ Why default values aren't a good goal? They are handled at the application level! ]
-
-[ Static vs Dynamic typing. If we knew that our data structure was invalid while we were declaring it, that would be helpful. This is an implementation question ]
-
-[ State-driven to server-driven UI. How can we optimise JSON for design workflows? ]
-
-[ Regular expressions? ]
-
-</div>
+As a final point I motivate further interest in this problem area, by illustrating my perspective on the future of data interchange formats in software development. With the increasing prevalence of mobile software applications and interest in server-driven applications, it is crucial that the industry and the tools we use can facilitate this evolution. In the field of design there has also been an increasing focus on the role of servers in mobile applications, and I anticipate that as applications becomes more generic in structure, their user interfaces will rely increasingly on server-driven information and updates.
 
 {"break":true}
