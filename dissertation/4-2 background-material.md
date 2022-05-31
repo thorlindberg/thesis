@@ -10,7 +10,7 @@ For this case the company engineers have chosen to utilise the `GitLab` platform
 
 As illustrated in figure {"ref":"informationflow"} the flow of information in this system involves the `users` `client` and `company`. When users attempt to authenticate themselves within the software application, a request for information is sent to the client backend. If authentication succeeds, the information is forwarded to the company backend, wherein the information is validated based on requirements defined in TypeScript. If the information meets all specified requirements it is returned as a response to the application. When information is received by the application, its model attempts to cast correctly specified objects and forward them to the view model, which presents them in the user interface.
 
-The implication of this process structure is that the company maintains final control of the data their software receives, by inserting their own validating step through GitLab. This situation inspired me to investigate how the existing validation process could become more generic and embedded in their data structures.
+The implication of this process structure is that the company maintains final control of the data their software receives, by inserting their own validating step through GitLab. This inspired me to investigate how the existing validation process can become generic by embedding types.
 
 @startuml
 
