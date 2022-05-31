@@ -16,15 +16,6 @@ As described by {"cite":"guernsey2013testdriven"} this approach to development a
 
 The resulting unit tests were able to act as acceptance tests, which allowed me to confidently develop and implement each feature of the syntax proposal. However I failed in applying the test-driven approach exhaustively, as {"cite":"guernsey2013testdriven"} notes that tests should not only be about the features we implement but also demonstrate the necessity for an implementation to address flaws in the existing TypeScript system on GitLab.
 
-<!--
-
-- Execution time should be short, resulting in fast testing.
-- Tests should be executed in isolation from each other, resulting in unordered tests.
-- Use production data when applicable, and ensure data is readable and understandable.
-- Each test should represent a component of a larger overall goal with the project.
-
--->
-
 <br>
 
 {"sub":"Quantitative measurements in comparison"}
