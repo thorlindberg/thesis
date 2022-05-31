@@ -25,7 +25,7 @@ The resulting unit tests were able to act as acceptance tests, which allowed me 
 
 -->
 
-{"break":true}
+<br>
 
 {"sub":"Quantitative measurements in comparison"}
 
