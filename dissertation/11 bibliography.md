@@ -28,7 +28,7 @@
 
 {"bib":"norman2013design","title":"The design of everyday things","authors":["Norman, Donald A."],"year":"2002","publisher":"Basic Books","url":""}
 
-{"bib":"miou2019tson","title":"...","authors":["..."],"year":"2019","publisher":"GitHub","url":"https://github.com/miou-gh/tson"}
+{"bib":"miou2019tson","title":"TSON","authors":["Miou"],"year":"2019","publisher":"GitHub","url":"https://github.com/miou-gh/tson"}
 
 {"bib":"lyon2014typeable","title":"TSON: Typeable Simple Object Notation","authors":["Lyon-Smith, J."],"year":"2014","publisher":"GitHub","url":"https://github.com/jlyonsmith/Tson"}
 

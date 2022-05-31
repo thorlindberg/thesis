@@ -119,7 +119,9 @@ The `type system` is comprised of all available types presented above. In a TXON
 
 - `Value names` are the names of typed properties of a type utilised during instantiation, and specify a JSON type that their values must conform to in an instance.
 
+<!--
 - `Optional values` are the properties of a type not required during instantiation, and as such they are optional. They specify a JSON type name, which they must conform to if included in an instance. Their names are similar to required values, but utilise the question mark syntax (?) appended to their name.
+-->
 
 - `Shared types` are properties with the name "type" declared at the root of an extended type. Their values must conform to type names in the JSON specification, and all properties inherit this type.
 
