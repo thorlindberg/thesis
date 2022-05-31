@@ -22,8 +22,6 @@ As I began to transfer the type declarations from TypeScript to my TXON data str
 
 Despite the inability of the current implementation to declare arrayised typed properties and relational type declarations, I wanted to illustrate how these features could be implemented with the current grammatical notation. As seen in figure {"ref":"relationalhierarchal"} the `current` TXON grammar requires individual types to be declared one-by-one, and these can then be combined and nested in a type instance. The `relational` implementation would also declare types one-by-one, but would be capable of providing type declarations as property types. The `hierarchal` implementation can combine these declarations, with arrayised properties declared as arrays of typed objects.
 
-<br>
-
 @startuml
 @startjson
 
