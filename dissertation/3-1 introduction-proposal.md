@@ -1,6 +1,6 @@
-{"sec":"Proposal for Type-Extensible Format"}
+{"sec":"Development of a Type-Extensible Format"}
 
-In this section I present my proposal for a new data interchange format, motivated and informed by the changes occurring the field of software development. This format provides a grammar and syntax for declaring and instantiating strong, extensible and explicit types. It is the result of deriving tests from existing data structures to demonstrate type weaknesses, followed by functional implementation that validates its syntax when applied to data structures.
+In this section I present my plan for developing a new data interchange format, motivated and informed by the changes occurring the field of software development. This format provides a grammar and syntax for declaring and instantiating strong, extensible and explicit types. It is the result of deriving tests from existing data structures to demonstrate type weaknesses, followed by functional implementation that validates its syntax when applied to data structures.
 
 <br>
 

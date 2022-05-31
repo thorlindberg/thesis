@@ -27,8 +27,12 @@ The resulting unit tests were able to act as acceptance tests, which allowed me 
 
 {"break":true}
 
-{"sub":"Quantitative measurements"}
+{"sub":"Quantitative measurements in comparison"}
 
-[ Text ]
+The result of my experiment included a comparison of the validation process when utilising TypeScript for JSON validation and TXON.js for TXON validation. These were compared on the validation features they provided, which are necessary to ensure that invalid data structures are not forwarded to the end-user application where the software can crash and become unusable. I chose this qualitative assessment because I do not believe that there is any significant efficiency differences between the two validation processes and data structures.
+
+This perception is supported by the previous work I presented, such as {"cite":"eriksson2011comparison"} who compared the JSON and YAML format quantitatively, and found no significant performance differences. While this may be true, the qualitative comparison I produced only provides an assessment of the hypothetical conditions when validating a data structure.
+
+As an alternative to this qualitative comparison, I could have validated a larger and more diverse amount of representative data structures, and then quantitatively measured differences between the TXON.js library and the TypeScript implementation. I did not choose this approach because I do not believe the data provided to me through GitLab would be large or diverse enough in order to conduct an exhaustive comparison. However I expect that the results of such a comparison could illustrate the frequency at which the TXON implementation cannot substitute TypeScript, due to its smaller subset of validation features.
 
 {"break":true}
