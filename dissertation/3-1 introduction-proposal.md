@@ -77,7 +77,7 @@ This project contributes to existing implementations of the JSON specification b
 
 The proposal was directly inspired by the `TypeScript programming language`, which is a superset of the JavaScript language, from which the JSON specification is derived {"citep":"micro2022typescript"}. TypeScript takes an extensible approach to declaring strongly-typed JavaScript properties, by maintaining the structure of JavaScript, allowing developers to add as many or no declarations at all. This also means that TypeScript code becomes JavaScript code with slight modifications.
 
-The TXON format provides support for type declarations and instances, which are validated and compared for conformance. The syntax itself is extensible, meaning all, some, or none of the data can be typed with TXON, just as it is with TypeScript. The type declarations are also extensible, meaning they can extend existing declarations or JSON types with enumerated values, minimum to maximum value ranges, and default values.
+The TXON format provides support for type declarations and instances, which are validated and compared for conformance. The syntax itself is extensible, meaning all, some, or none of the data can be typed with TXON, just as it is with TypeScript. The type declarations are also extensible, meaning they can extend existing declarations or JSON types with typed values, minimum to maximum value ranges, and default values.
 
 As seen in figure {"ref":"txonjson"} the TXON data structure mirrors the JSON data structure, but adds an `initialiser` through its "init" property for type declarations and explicit selective typing of the corresponding node. A TXON data structure must contain an "init" and "data" property to be validated, but this is not expected to cause issue as JSON structures typically branch from a "data" property at the root node. As such the format is extensibly adding information on types, while maintaining as much of the original structure as possible.
 
@@ -143,7 +143,7 @@ Inspired by the syntax and implementation of TypeScript the proposed Type-Extens
 
 1. Type declarations and instances (through relational references).
 2. Extensible typing (as little or much as wanted) and extensible types (relational inheritance).
-3. Enumerated values, minimum to maximum ranges, and default value insertion.
+3. Typed values, minimum to maximum ranges, and default value insertion.
 
 <br>
 

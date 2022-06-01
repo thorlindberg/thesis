@@ -274,7 +274,7 @@ A type can be an extension of another type:
 
 <br>
 
-This results in all enumerated values inheriting typing from the type before the dot in the declared extension. The implication of this is that types do not have to be explicitly declared with a property in a type initialiser, and as such the character count is reduced while maintaining readability. Here are a few examples of the possible type declarations, and how extensions improve the syntax:
+This results in all typed values inheriting typing from the type before the dot in the declared extension. The implication of this is that types do not have to be explicitly declared with a property in a type initialiser, and as such the character count is reduced while maintaining readability. Here are a few examples of the possible type declarations, and how extensions improve the syntax:
 
 ```
 "date": {
@@ -409,7 +409,7 @@ Instead you should be able to declare a type value as optional by appending a qu
 }
 ```
 
-This is easier to read and interpret than providing default values, which do not make much sense in an enumeration case anyway.
+This is easier to read and interpret than providing default values, which does not make sense in an enumerated case anyway.
 
 {"break":true}
 
