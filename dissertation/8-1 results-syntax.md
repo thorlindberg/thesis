@@ -119,7 +119,7 @@ These can be considered safe structures, but also increasingly prone to syntax e
 
 {"sub":"Proposed solution"}
 
-I propose a syntax for declaring types with a generic and extensible syntax for `type declarations`, altering existing data structures as little as possible, while greatly reducing dependency on additional layers of data validation at multiple points of a distributed system. This syntax is grammatically based on typed values in TypeScript, allowing you to explicitly type data points representing objects. This is paired with a syntax for `type instances`, with relational references to type specifications outside the immediate data point and structure. This syntax is grammatically designed to accommodate different data structures, especially as pertaining to inheritance and shared typing of data points.
+I propose a syntax for declaring types with a generic and extensible syntax for `type declarations`, altering existing data structures as little as possible, while greatly reducing dependency on additional layers of data validation at multiple points of a distributed system. This syntax is grammatically based on typed values in TypeScript, allowing you to explicitly type data points representing objects. This is paired with a syntax for `type instances`, with relational references to type specifications outside the immediate data point and structure. This syntax is grammatically designed to accommodate different data structures, especially as pertaining to type inheritance and shared typing of data points. As these instances are applied extensibly, they must co-exist with untyped data points, without forcing a strict transformation of existing data structures.
 
 <br>
 
