@@ -196,7 +196,7 @@ jsonDiagram {
 
 {"fig":"sharedextension","caption":"Unit tests for type extensions with shared minimum, maximum or default value."}
 
-As seen in figure {"ref":"declarationmismatch"} the properties or cases of a declared type or extension must conform to their local requirements.
+As seen in figure {"ref":"declarationmismatch"} the properties or cases of a declared type or extension must conform to their local requirements, which can be `minimum` `maximum` and `default` values.
 
 @startuml
 @startjson
@@ -460,7 +460,7 @@ jsonDiagram {
 
 {"fig":"instanceproperty","caption":"Unit test for conformance of required properties in instance."}
 
-As seen in figure {"ref":"instancevalue"} a node that references a type in the data node must instantiate a property with its declared value type and within its range.
+As seen in figure {"ref":"instancevalue"} a node that references a type in the data node must instantiate a property with its declared value type and within its range of `minimum` to `maximum` values.
 
 @startuml
 @startjson
@@ -553,7 +553,7 @@ jsonDiagram {
 
 {"fig":"instancevalue","caption":"Unit tests for conformance of value type and range in instance."}
 
-As seen in figure {"ref":"instancevaluearray"} a node that references a type in the data node must instantiate an arrayised property with its declared value type and within its range.
+As seen in figure {"ref":"instancevaluearray"} a node that references a type in the data node must instantiate an arrayised property with its declared value type and within its range of `minimum` to `maximum` values.
 
 @startuml
 @startjson
