@@ -4,16 +4,9 @@ In this section I present a comparison of the data formatting and validation of 
 
 A TXON data structure contains an initialiser and a data property, and as such the following results will compare the declaration of types in TypeScript and the initialiser, and then the instantiation of types in JSON and the data property. It is crucial to preface these results by reiterating that TXON is not final in its current implementation, but is rather a proposal presented for discussion.
 
-{"break":true}
+<br>
 
 {"sub":"Embedding types and data structure in TXON"}
-
-<!--
-2. Transform JSON data structure by embedding TXON types in an initialiser property at its root node.
-
-// some of this data has been modified because it did not match the type props by name :(
-// .speed was made optional because it is missing from the data
--->
 
 As seen in figure {"ref":"embedtypes"} these TypeScript types can be translated to TXON and embedded in the initialiser of a data structure. The TXON grammar does not support relational references within type declarations, but these types can be individually declared and then referenced in the hierarchy of the typed data structure. The TXON types derived from these TypeScript declarations have been slightly modified, as the TXON grammar does cannot declare a type value as an array of another type. Instead the TXON type declaration must be of type array and then another type must be declared, which can be referenced when arrayrising typed data.
 
