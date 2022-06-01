@@ -163,68 +163,13 @@ It is evident from this syntactical approach that despite these strict requireme
 
 <br>
 
-Types can be instantiated in the `data property`at the root of the data structure:
-
-```
-{
-    "init": {
-        "date": {
-            "month": "number",
-            "day": "number",
-            "year": "number",
-            "category": {
-                "type": "string", "case": [ "birthday", "work", "holiday" ]
-            },
-            "gifted": "boolean"
-        }
-    },
-    "data": {
-        "date": {
-            "type": "date",
-            "month": 10, "day": 28, "year": 2005, "category": "birthday", "gifted": true
-        }
-    }
-}
-```
-
-<br>
-
-This greatly reduces the character count of the data instance by 66.5% to 149 characters of which the information represents 19 characters or 12.7% of the data. This approach is not without fault, as the data structure including the type declarations is larger at 454 characters, but this trade-off is offset by the reduction in repetition of type declarations as the data scales up in size.
-
-{"break":true}
-
-Type instances can be arrayised, enabling the explicit typing of multiple data points with identical structure with only a single declaration:
-
-```
-{
-    "init": {
-        "date": { ... }
-    },
-    "data": {
-        "date": {
-            "type": "date",
-            "values": [
-                {
-                    "month": 10, "day": 28, "year": 2005, "category": "birthday", "gifted": true
-                },
-                {
-                    "month": 12, "day": 25, "year": 2004, "category": "holiday", "gifted": false
-                }
-            ]
-        }
-    }
-}
-```
-
-<br>
-
 As this syntax aims to be extensible by selectively typing data, type instances can be nested inside each other, so that types can be declared once in the initialiser and repurposed throughout the data structure. This is also useful for splitting a type into components that are declaratively simpler and require fewer characters:
 
 ```
 {
     "init": {
         "category": {
-            "type": "string", "case": [ "birthday", "work", "holiday" ]
+            "type": "string",
         },
         "date": {
             "month": "number", "day": "number", "year": "number"
@@ -232,10 +177,7 @@ As this syntax aims to be extensible by selectively typing data, type instances 
     },
     "data": {
         "schedule": {
-            "category": {
-                "type": "category",
-                "value": "birthday"
-            },
+            "category": "birthday",
             "date": {
                 "type": "date",
                 "month": 10, "day": 28, "year": 2005
