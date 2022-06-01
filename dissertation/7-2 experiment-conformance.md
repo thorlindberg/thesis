@@ -6,12 +6,16 @@ In this section I present the implementation of the TXON syntax through the deve
 
 {"sub":"The TXON.js validation library"}
 
-A library is a collection of utilities that in combination achieve a shared goal. In this instance, the `TXON.js` library is instantiated as a JavaScript object and its method provide validation of a TXON String. In the following I present the features, intent and structure of my library. This library supports the following validation features, corresponding to the grammatical notation of the TXON format.
+A library is a collection of utilities that in combination achieve a shared goal. In this instance, the `TXON.js` library is instantiated as a JavaScript object and its method provides validation of a stringified TXON object. A TXON data structure requires these two nodes as properties of its root node, before it can be validated:
+
+<br>
 
 - Type declarations in the `initialiser property`.
 - Type instances in the `data property`.
 
-Users can declare their own extended types (e.g. "date"), or declare extensions of JSON types or extended types using a dot-syntax (e.g. "string.date" or "date.month"). `Extended types` are specified as enumerations and instantiated by associating data with the type. This is further presented in the syntax proposal. `Type extensions` allow you to inherit the requirements of an existing type, while extending it as a sub-type with an enumeration. This is further presented in the syntax proposal.
+<br>
+
+Users can declare their own extended types (e.g. "date"), or declare extensions of JSON types or extended types using a dot-syntax (e.g. "string.date" or "date.month"). `Extended types` are objects with typed properties, which is is further presented in the proposal. `Type extensions` allow you to inherit the requirements of an existing type, while extending it with required property names.
 
 The TXON.js library `handshakes` a JSON String, validating conformance of its `data` property to extended type declarations from its `init` property. TXON is initialised as an Object providing a `docs method` `handshake method` and `tests property`.
 
@@ -29,7 +33,7 @@ const TXON = {
 
 {"break":true}
 
-The `docs` property requires no input parameters and returns a String documenting the intended use of my library. This approach ensures that the code is documented as it is written, but it exists only at the top-level of the library rather than in individual components.
+The `docs` property requires no input parameters and returns a String documenting the intended use of the library. This approach ensures that the library remains accessible, by providing documentation that can be updated with the code and integrating it into the library.
 
 ```
 docs: [
@@ -42,7 +46,7 @@ docs: [
 
 <br>
 
-The `tests` property is of type Array\<Object> and is intended to demonstrate each syntactical feature of TXON being validated through the library. Each Object contains the intended result of the test (properties `valid`and `feedback`), as well as a sample data structure (`json`).
+The `tests` property is of type arrayised Object, and is intended to demonstrate each syntactical feature of TXON being validated through the library. Each Object contains the intended result of the unit test (properties `valid`and `feedback`), as well as a sample data structure (`json`).
 
 ```
 tests: [
@@ -61,7 +65,7 @@ tests: [
 
 <br>
 
-Tests can be iterated through to validate both type declarations and conformance of instances, to demonstrate the resulting feedback when the respective error is found. This can be useful for people wanting to learn TXON, and writing tests was instrumental in developing the validation library.
+Tests can be iterated through to validate both type declarations and conformance of instances, to demonstrate the resulting feedback when the respective issue is encountered.
 
 ```
 TXON.tests.forEach(test => {
@@ -79,13 +83,13 @@ TXON.tests.forEach(test => {
 
 {"break":true}
 
-The `handshake()` method takes an input, expected to correspond to a JSON string. If all validation checks are passed without detecting nonconformance to types, then the resulting property will have no feedback property. Handshaking requires a String as input parameter, and returns an Object with `valid` and optional `feedback` properties. The `valid` property is of type Boolean, indicating success (true) or failure (false). The `feedback` property is of type String and describes the first encountered nonconformance issue. 
+The `handshake()` method takes an input, expected to be of type stringified TXON object. If all validation checks are passed without detecting nonconformance to types, then the resulting property will have no feedback property. Handshaking returns an Object with `valid` and optional `feedback` properties. The `valid` property is of type Boolean, indicating success (true) or failure (false). The `feedback` property is of type String and describes the first encountered nonconformance issue. This is an example of the returned object:
 
 ```
 { "valid": true, "feedback": '"init" property not found at top level' }
 ```
 
-A TXON data structure can return `true` for property `valid` for other reasons, such as the lack of an initialiser, because while its contents may be correctly typed it is not a valid TXON structure. This allows developers to check if the property exists, to determine if validation was successful.
+A TXON data structure can return `true` for property `valid` for other reasons, such as the lack of an initialiser, because it is not a valid TXON structure. This enables developers to check if `feedback` was returned to determine if validation passed all checks.
 
 Before validating the contents of its input, the handshaking method defines its own properties and methods. Its properties consist of the parsed JSON Object and an array of valid types in the JSON specification. Its methods consist of the three requirements in validating a TXON data structure.
 
@@ -309,9 +313,9 @@ if (isTypeExtensionName) {
 
 {"break":true}
 
-Once the shared type, default, minimum, and maximum have been checked, the properties of each declaration are looped over to determine if the enumerated values have been correctly declared relative to the type. There are two types of enumerates: property names beyond the reserved names, and names in a "case" entitled property. The `case` property is an array of value names, and was implemented to ensure that values could be enumerated without requiring a local type.
+Once the shared type, default, minimum, and maximum have been checked, the properties of each declaration are looped over to determine if the typed properties have been correctly declared relative to the type. There are two syntaxes for declaring typed properties: property names, and names in a "case" property. The `case` property is an array of value names, and was implemented for properties name declared without a local type.
 
-This loop in the validation begins by checking if the property is named "case" and then that it only contains elements of type String. If the check fails it returns an Object that indicates the data structure is valid as it cannot be further validated, but with the feedback that a type was declared with enumeration cases of a different type than String.
+This loop in the validation begins by checking if the property is named "case" and then that it only contains elements of type String. If the check fails it returns an Object that indicates the data structure is valid as it cannot be further validated, but with the feedback that a type was declared with cases of a different type than String.
 
 ```
 for (const [propName, propValue] of Object.entries(value)) {
