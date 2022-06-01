@@ -4,7 +4,7 @@ In this chapter I document the reproducible conditions and efforts put towards t
 
 The proposal is entitled the `Type-Extensible Object Notation` (TXON) format, and specifies a grammatical notation for declaring types and referencing them in type instances. The features and syntax of this grammar is directly derived from the unit tests and the ability to invalidate a nonconforming data structure through the `TXON.js` validation library. This specification serves to embed explicit types directly in transmitted JSON data structures, for the purpose of standardising the validation of an otherwise weakly typed format.
 
-As seen in figure {"ref":"experimentsetup"} this experiment describes three sequential parts: the unit tests that need to be invalidated by the library, the development of the validation library, and a strategy for evaluating the resulting proposal and its functional implementation. As this implementation heavily relies on code, each section will include an exhaustive presentation, split into smaller and more digestible components. The samples use three dots (...) to indicate redacted code blocks, but all code is documented.
+As seen in figure {"ref":"experimentsetup"} this experiment is described in three parts: the `unit tests` that need to be invalidated by the library, the development of the `validation library`, and a `strategy for evaluating` the resulting proposal and its functional implementation. The implementation relies heavily on code, which is exhaustively presented in smaller code blocks. The code contains three dots (...) to indicate that a code block is presented somewhere else.
 
 <br>
 
