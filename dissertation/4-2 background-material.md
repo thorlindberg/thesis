@@ -57,6 +57,7 @@ frame Application {
 [User Interface] -left-> [View Model]
 [View Model] -right-> [User Interface] 
 [View Model] --> [Object structure]
+[View Model] <-- [Object structure]
 [Object structure] -down-> [HTTP request]
 [HTTP request] -right-> [Application Programming Interface]
 [HTTP response] -left-> [Object structure]
@@ -390,39 +391,49 @@ componentDiagram {
 }
 </style>
 
-frame Backend {
-    frame Client  {
-        [Database]
+frame Client {
+    [Application Programming Interface]
+    frame Backend {
+        [Initial data structure]
     }
-    frame Developer {
-        [GitLab]
-    }
+}
+
+frame GitLab {
+    [TypeScript validation]
+    [Validated data structure]
+}
+
+frame Firebase {
+    [Database] -up-> [Final data structure]
 }
 
 frame Application {
-    frame View {
-        [User Interface]
-    }
-    frame "View Model" {
-        [Observable]
-    }
+    [User Interface]
+    [View Model]
     frame Model {
+        [Object structure]
         [HTTP request]
         [HTTP response]
-        frame Protocol {
-            [Codable] -up-> [Data Structure]
-        }
+        [Codable]
     }
 }
 
-[Class] -left-> [Observable]
-[Observable] -up-> [User Interface]
-[User Interface] -right-> [HTTP request]
-[HTTP request] -right-> [Database]
-[Database] -down-> [GitLab]
-[GitLab] -left-> [HTTP response]
+[User Interface] -left-> [View Model]
+[View Model] -right-> [User Interface] 
+[View Model] -down-> [Object structure]
+[View Model] <-up- [Object structure]
+[Object structure] -right-> [HTTP request]
+[HTTP request] -right-> [Application Programming Interface]
 [HTTP response] -left-> [Codable]
-[Data Structure] -left-> [Class]
+[Codable] -down-> [Object structure]
+
+[Final data structure] -left-> [HTTP response]
+
+[Application Programming Interface] -down-> [Initial data structure]
+[Initial data structure] -right-> [TypeScript validation]
+
+[TypeScript validation] -up-> [Validated data structure]
+[Validated data structure] -up-> [Database]
 
 @enduml
 
