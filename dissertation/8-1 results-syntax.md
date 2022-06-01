@@ -74,7 +74,7 @@ Suppose that this structure was used to type an entire data structure that may c
 
 {"break":true}
 
-This greatly reduces the character count by 48% to 92 characters of which the information represents 8 characters or 8.6% of the data. While this is certainly an improvement, it is also a best-case scenario and only works if all properties of an object can be identically typed. If this is not the case, the data structure would have to independently type each property or collections of properties:
+This greatly reduces the character count by 48% to 92 characters of which the information represents 8 characters or 8.6% of the data. While this is certainly an improvement, it is also a best-case scenario and only works if all properties of an object can be identically typed. If this is not the case, the data structure would have to independently type each property:
 
 <br>
 
@@ -91,6 +91,8 @@ This greatly reduces the character count by 48% to 92 characters of which the in
 ```
 
 <br>
+
+Alternatively the data structure could be inverted, so that each value inherits from an explicit type, by nesting the values as properties of a type object:
 
 
 ```

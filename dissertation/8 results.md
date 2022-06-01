@@ -41,7 +41,7 @@ jsonDiagram {
                             "maximum": "number",
                             "default": "value"
                         },
-                        "case": [
+                        "\"case\"": [
                             "property"
                         ]
                     }
@@ -52,7 +52,7 @@ jsonDiagram {
                         "minimum": "number",
                         "maximum": "number",
                         "default": "value",
-                        "case": [
+                        "\"case\"": [
                             "property"
                         ]
                     }
