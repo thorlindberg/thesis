@@ -26,34 +26,33 @@ jsonDiagram {
 
 {
     "init": {
+        "address": {
+            "line1": "string", "line2": "string"
+        },
+        "coordinates": {
+            "lat": "number", "lng": "number"
+        },
+        "localisation": {
+            "da": "string", "en": "string"
+        },
         "location": {
             "id": "string", "locationId": "string", "name": "string",
-            "address": {
-                "line1": "string", "line2": "string"
-            },
-            "coordinates": {
-                "lat": "number", "lng": "number"
-            },
-            "imageUrl?": "string", "phoneNumber?": "string",
-            "description": {
-                "da?": "string", "en?": "string"
-            },
-            "roamingPartner?": "string", "isRoaming": "boolean", "isOpen24": "boolean",
-            "openingHours": {
-                "da?": "string", "en?": "string"
-            },
-            "chargePoints": [
-                {
-                    "id": "string",
-                    "connectors": [
-                        {
-                            "id": "string", "connectorNo": "string", "displayId": "string",
-                            "name": "string", "kW": "number", "speed?": "string"
-                        }
-                    ]
-                }
-            ],
+            "address": "object",
+            "coordinates": "object",
+            "imageUrl": "string", "phoneNumber": "string",
+            "description": "object",
+            "roamingPartner": "string", "isRoaming": "boolean", "isOpen24": "boolean",
+            "openingHours": "object",
+            "chargePoints": "array",
             "isRemoteChargingSupported": "boolean", "isFuture": "boolean"
+        },
+        "chargepoint": {
+            "id": "string",
+            "connectors": "array"
+        },
+        "connector": {
+            "id": "string", "connectorNo": "string", "displayId": "string",
+            "name": "string", "kW": "number", "speed": "string"
         }
     },
     "data": {}
@@ -168,21 +167,26 @@ jsonDiagram {
             "type": "location",
             "id": "55", "locationId": "DKpartner", "name": "København",
             "address": {
+                "type": "address",
                 "line1": "København,", "line2": "Blegdamsvej 9"
             },
             "coordinates": {
+                "type": "coordinates",
                 "lat": "55.696914", "lng": "12.566042"
             },
-            "imageUrl?": "https://image.url", "phoneNumber?": "12345",
+            "imageUrl": "https://image.url", "phoneNumber": "12345",
             "description": {
-                "da?": "string", "en?": "string"
+                "type": "localisation",
+                "da": "string", "en": "string"
             },
-            "roamingPartner?": "DKpartner", "isRoaming": true, "isOpen24": false,
+            "roamingPartner": "DKpartner", "isRoaming": true, "isOpen24": false,
             "openingHours": {
-                "da?": "string", "en?": "string"
+                "type": "localisation",
+                "da": "string", "en": "string"
             },
             "chargePoints": [
                 {
+                    "type": "chargepoint",
                     "connectors": [
                         {
                             "id": "z", "connectorNo": "1", "displayId": "1", "name": "AC", "kW": 43
@@ -196,11 +200,14 @@ jsonDiagram {
                     "modelName": "a"
                 },
                 {
+                    "type": "chargepoint",
                     "connectors": [
                         {
+                            "type": "connector",
                             "id": "z", "connectorNo": "1", "displayId": "1", "name": "AC", "kW": 43
                         },
                         {
+                            "type": "connector",
                             "id": "x", "connectorNo": "2", "displayId": "2", "name": "DC", "kW": 50
                         }
                     ],
@@ -209,11 +216,14 @@ jsonDiagram {
                     "modelName": "b"
                 },
                 {
+                    "type": "chargepoint",
                     "connectors": [
                         {
+                            "type": "connector",
                             "id": "y", "connectorNo": "1", "displayId": "2", "name": "DC", "kW": 175
                         },
                         {
+                            "type": "connector",
                             "id": "x", "connectorNo": "1", "displayId": "2", "name": "DC", "kW": 175
                         }
                     ],
@@ -255,34 +265,33 @@ jsonDiagram {
 
 {
     "init": {
+        "address": {
+            "line1": "string", "line2": "string"
+        },
+        "coordinates": {
+            "lat": "number", "lng": "number"
+        },
+        "localisation": {
+            "da": "string", "en": "string"
+        },
         "location": {
             "id": "string", "locationId": "string", "name": "string",
-            "address": {
-                "line1": "string", "line2": "string"
-            },
-            "coordinates": {
-                "lat": "number", "lng": "number"
-            },
-            "imageUrl?": "string", "phoneNumber?": "string",
-            "description": {
-                "da?": "string", "en?": "string"
-            },
-            "roamingPartner?": "string", "isRoaming": "boolean", "isOpen24": "boolean",
-            "openingHours": {
-                "da?": "string", "en?": "string"
-            },
-            "chargePoints": [
-                {
-                    "id": "string",
-                    "connectors": [
-                        {
-                            "id": "string", "connectorNo": "string", "displayId": "string",
-                            "name": "string", "kW": "number", "speed?": "string"
-                        }
-                    ]
-                }
-            ],
+            "address": "object",
+            "coordinates": "object",
+            "imageUrl": "string", "phoneNumber": "string",
+            "description": "object",
+            "roamingPartner": "string", "isRoaming": "boolean", "isOpen24": "boolean",
+            "openingHours": "object",
+            "chargePoints": "array",
             "isRemoteChargingSupported": "boolean", "isFuture": "boolean"
+        },
+        "chargepoint": {
+            "id": "string",
+            "connectors": "array"
+        },
+        "connector": {
+            "id": "string", "connectorNo": "string", "displayId": "string",
+            "name": "string", "kW": "number", "speed": "string"
         }
     },
     "data": {
@@ -290,21 +299,26 @@ jsonDiagram {
             "type": "location",
             "id": "55", "locationId": "DKpartner", "name": "København",
             "address": {
+                "type": "address",
                 "line1": "København,", "line2": "Blegdamsvej 9"
             },
             "coordinates": {
+                "type": "coordinates",
                 "lat": "55.696914", "lng": "12.566042"
             },
-            "imageUrl?": "https://image.url", "phoneNumber?": "12345",
+            "imageUrl": "https://image.url", "phoneNumber": "12345",
             "description": {
-                "da?": "string", "en?": "string"
+                "type": "localisation",
+                "da": "string", "en": "string"
             },
-            "roamingPartner?": "DKpartner", "isRoaming": true, "isOpen24": false,
+            "roamingPartner": "DKpartner", "isRoaming": true, "isOpen24": false,
             "openingHours": {
-                "da?": "string", "en?": "string"
+                "type": "localisation",
+                "da": "string", "en": "string"
             },
             "chargePoints": [
                 {
+                    "type": "chargepoint",
                     "connectors": [
                         {
                             "id": "z", "connectorNo": "1", "displayId": "1", "name": "AC", "kW": 43
@@ -318,11 +332,14 @@ jsonDiagram {
                     "modelName": "a"
                 },
                 {
+                    "type": "chargepoint",
                     "connectors": [
                         {
+                            "type": "connector",
                             "id": "z", "connectorNo": "1", "displayId": "1", "name": "AC", "kW": 43
                         },
                         {
+                            "type": "connector",
                             "id": "x", "connectorNo": "2", "displayId": "2", "name": "DC", "kW": 50
                         }
                     ],
@@ -331,11 +348,14 @@ jsonDiagram {
                     "modelName": "b"
                 },
                 {
+                    "type": "chargepoint",
                     "connectors": [
                         {
+                            "type": "connector",
                             "id": "y", "connectorNo": "1", "displayId": "2", "name": "DC", "kW": 175
                         },
                         {
+                            "type": "connector",
                             "id": "x", "connectorNo": "1", "displayId": "2", "name": "DC", "kW": 175
                         }
                     ],
