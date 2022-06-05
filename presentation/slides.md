@@ -15,6 +15,7 @@
     <div style="
         display: flex;
         justify-content: space-between;
+        padding: 1.5cm;
     ">
         <div style="
             font-size: 3em;
@@ -29,7 +30,7 @@
         display: flex;
         justify-content: space-between;
     ">
-        <div style="color: rgb(175, 175, 175)">
+        <div style="color: rgb(195, 195, 195)">
             https://github.com/thorlindberg/thesis
         </div>
         <div class="author">
@@ -57,6 +58,7 @@
     <div style="
         display: flex;
         justify-content: space-between;
+        padding: 1.5cm;
     ">
         <div style="width: 45%">
             <div style="font-size: 2em">
@@ -75,7 +77,7 @@
         display: flex;
         justify-content: space-between;
     ">
-        <div style="color: rgb(175, 175, 175)">
+        <div style="color: rgb(195, 195, 195)">
             Source
         </div>
         <div class="author">
@@ -103,6 +105,7 @@
     <div style="
         display: flex;
         justify-content: space-between;
+        padding: 1.5cm;
     ">
         <img src="
             http://www.plantuml.com/plantuml/svg/TOx1YeCm48RlynG3UzPz0Lb4XJqjx2iCEYkooQHaaeEqldlJr5eiTauXyt_p_RK6yY5Q0r1fc0r_0VQ6LBk9HayMpz1G___jNPIXTSPv39v4J-HP0YnGVQuOP0mRKcvlBm0XoodOCmg7SeZMplZHvKbdCKsvfR6w50N-ibSdUVN372OPqJs_3v1739PNtPzpMRAfo_iLpDWcUjDW1nvKIRezcEDHelAmYg1cIRov0W00
@@ -112,7 +115,7 @@
         display: flex;
         justify-content: space-between;
     ">
-        <div style="color: rgb(175, 175, 175)">
+        <div style="color: rgb(195, 195, 195)">
             Source
         </div>
         <div class="author">
@@ -124,19 +127,19 @@
 
     var dates = document.querySelectorAll(".date");
     for (var i = 0; i < dates.length; i++) {
-        dates[i].style.color = "rgb(175, 175, 175)"
+        dates[i].style.color = "rgb(195, 195, 195)"
         dates[i].innerHTML = `Compiled on ${new Date().toLocaleString('en-US', {month: 'long'})} ${new Date().getDate()}. ${new Date().getFullYear()}`
     }
 
     var names = document.querySelectorAll(".name");
     for (var i = 0; i < names.length; i++) {
-        names[i].style.color = "rgb(175, 175, 175)"
+        names[i].style.color = "rgb(195, 195, 195)"
         names[i].innerHTML = "Master's Thesis for Master's in Information Technology"
     }
 
     var authors = document.querySelectorAll(".author");
     for (var i = 0; i < authors.length; i++) {
-        authors[i].style.color = "rgb(175, 175, 175)"
+        authors[i].style.color = "rgb(195, 195, 195)"
         authors[i].innerHTML = "Authored by Thor Wessel Lindberg"
     }
 
