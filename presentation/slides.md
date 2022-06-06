@@ -172,7 +172,7 @@
 
     var names = document.querySelectorAll(".name");
     for (var i = 0; i < names.length; i++) {
-        names[i].style.color = "rgb(145, 145, 145)"
+        names[i].style.color = "rgb(195, 195, 195)"
         names[i].innerHTML = "Master's Thesis for Master's in Information Technology"
     }
 
