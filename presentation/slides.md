@@ -5,7 +5,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    width: 100vw;
+    width: 100%;
     height: 100vh;
 ">
     <div style="
@@ -38,7 +38,6 @@
         <i style="color: rgb(195, 195, 195)">
             https://github.com/thorlindberg/thesis
         </i>
-        <div class="page"></div>
         <div class="date"></div>
     </div>
 </div>
@@ -50,7 +49,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    width: 100vw;
+    width: 100%;
     height: 100vh;
 ">
     <div style="
@@ -87,7 +86,6 @@
         <i style="color: rgb(195, 195, 195)">
             Source
         </i>
-        <div class="page"></div>
         <div class="date"></div>
     </div>
 </div>
@@ -99,7 +97,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    width: 100vw;
+    width: 100%;
     height: 100vh;
 ">
     <div style="
@@ -127,7 +125,6 @@
         <i style="color: rgb(195, 195, 195)">
             http://www.plantuml.com/
         </i>
-        <div class="page"></div>
         <div class="date"></div>
     </div>
 </div>
@@ -139,7 +136,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    width: 100vw;
+    width: 100%;
     height: 100vh;
 ">
     <div style="
@@ -167,7 +164,6 @@
         <i style="color: rgb(195, 195, 195)">
             http://www.plantuml.com/
         </i>
-        <div class="page"></div>
         <div class="date"></div>
     </div>
 </div>
@@ -178,15 +174,6 @@
     for (var i = 0; i < names.length; i++) {
         names[i].style.color = "rgb(145, 145, 145)"
         names[i].innerHTML = "Master's Thesis for Master's in Information Technology"
-    }
-
-    var pages = document.querySelectorAll(".page");
-    for (var i = 0; i < pages.length; i++) {
-        pages[i].style.width = "100%"
-        pages[i].style.position = "absolute"
-        pages[i].style.textAlign = "center"
-        pages[i].style.color = "rgb(195, 195, 195)"
-        pages[i].innerHTML = `${i+1} of ${pages.length}`
     }
 
     var dates = document.querySelectorAll(".date");
