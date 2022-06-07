@@ -13,7 +13,7 @@
         justify-content: space-between;
     ">
         <div style="color: rgb(145, 145, 145)">
-            Text
+            Master's Thesis for Master's in Information Technology
         </div>
         <div class="name"></div>
     </div>
@@ -77,6 +77,102 @@
         </div>
         <img style="width: 45%" src="
             http://www.plantuml.com/plantuml/svg/FSjH2i8m3CRnzvoY5nXUO8oX0rzy4Zn0MBivJ9kIfiWGxsvWctdw_Zz8NnH5QoI0jkXAeOEHi9HXmLamkWyukpEEhwjmJVx2nE9KC9MC4fB25zhJ_WaJisieJDfqpjSOrvljJMMPdt--M-nUyu6Fl8ddTpfii0rzI1Rq0m00
+        ">
+    </div>
+    <div style="
+        display: flex;
+        justify-content: space-between;
+    ">
+        <i style="color: rgb(195, 195, 195)">
+            Source
+        </i>
+        <div class="date"></div>
+    </div>
+</div>
+
+<div style="page-break-after: always">
+</div>
+
+<div style="
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    height: 100vh;
+">
+    <div style="
+        display: flex;
+        justify-content: space-between;
+    ">
+        <div style="color: rgb(145, 145, 145)">
+            Text
+        </div>
+        <div class="name"></div>
+    </div>
+    <div style="
+        display: flex;
+        justify-content: space-between;
+        padding: 1.5cm;
+    ">
+        <div style="width: 45%">
+            <div style="font-size: 2em">
+                Data Structure
+            </div>
+            <br><br>
+            Phasellus aliquet convallis arcu in aliquam. Pellentesque lectus orci, vulputate a blandit eget, pretium vel lectus. Aenean ultricies augue at elit rhoncus, quis hendrerit erat egestas. Sed sit amet efficitur sem. Pellentesque euismod, odio eu imperdiet facilisis, mi tortor mattis arcu, a tincidunt sem mauris id est. Maecenas sollicitudin eros ut bibendum sagittis. Suspendisse mattis, risus et luctus lacinia, nisl neque dictum nibh, non hendrerit orci libero non nibh. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Sed volutpat, ex a sodales semper, turpis mauris accumsan erat, quis malesuada tellus mi non augue.
+            <br><br>
+            In ultrices dictum dui, quis lacinia mauris hendrerit ac. Donec malesuada viverra elementum. Cras erat turpis, euismod eu tempus vel, cursus non neque. Sed semper tellus bibendum mi consectetur aliquet. Suspendisse interdum auctor turpis sed ultrices. Vestibulum sollicitudin nisi at tellus dictum auctor vel sit amet tellus.
+        </div>
+        <img style="width: 45%" src="
+            http://www.plantuml.com/plantuml/svg/tLF1IiH03BtdAygS5xnBAOiAuaMyUOvjw8uxJKecHOlqtztf5kb0mRteONjAyjxBItdCFXgg3Ls0S_KUXG7AQ6EW2bBtuB5Lx8elA4xV7TR7HvM1cti9eeKfSknHYMt6MHfQg5lqZuCtcj499YXl5XyuAvnz2hlRbTvvzfPDvccG6irdt1LQ7r1RUX7F5ayCXweukemtxM13qYV9zaxVf4tHr7FhTXkUmaorYLxYc0akyLlHdoK76X_xWEFJB_SnTfGBZw-fvw5x8qrzx8dMI_Bh8Q-Mlt5AOGu2mn_5LgwIgVu_m_9dLbrrd301x8cR-VcdOkZ2Dm00
+        ">
+    </div>
+    <div style="
+        display: flex;
+        justify-content: space-between;
+    ">
+        <i style="color: rgb(195, 195, 195)">
+            Source
+        </i>
+        <div class="date"></div>
+    </div>
+</div>
+
+<div style="page-break-after: always">
+</div>
+
+<div style="
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    height: 100vh;
+">
+    <div style="
+        display: flex;
+        justify-content: space-between;
+    ">
+        <div style="color: rgb(145, 145, 145)">
+            Text
+        </div>
+        <div class="name"></div>
+    </div>
+    <div style="
+        display: flex;
+        justify-content: space-between;
+        padding: 1.5cm;
+    ">
+        <div style="width: 45%">
+            <div style="font-size: 2em">
+                Relational Types
+            </div>
+            <br><br>
+            Phasellus aliquet convallis arcu in aliquam. Pellentesque lectus orci, vulputate a blandit eget, pretium vel lectus. Aenean ultricies augue at elit rhoncus, quis hendrerit erat egestas. Sed sit amet efficitur sem. Pellentesque euismod, odio eu imperdiet facilisis, mi tortor mattis arcu, a tincidunt sem mauris id est. Maecenas sollicitudin eros ut bibendum sagittis. Suspendisse mattis, risus et luctus lacinia, nisl neque dictum nibh, non hendrerit orci libero non nibh. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Sed volutpat, ex a sodales semper, turpis mauris accumsan erat, quis malesuada tellus mi non augue.
+            <br><br>
+            In ultrices dictum dui, quis lacinia mauris hendrerit ac. Donec malesuada viverra elementum. Cras erat turpis, euismod eu tempus vel, cursus non neque. Sed semper tellus bibendum mi consectetur aliquet. Suspendisse interdum auctor turpis sed ultrices. Vestibulum sollicitudin nisi at tellus dictum auctor vel sit amet tellus.
+        </div>
+        <img style="width: 45%" src="
+            http://www.plantuml.com/plantuml/svg/tLF1IiH03BtdAygS5xnBAOiAuaMyUOvjw8uxJKecHOlqtztf5kb0mRteONjAyjxBItdCFXgg3Ls0S_KUXG7AQ6EW2bBtuB5Lx8elA4xV7TR7HvM1cti9eeKfSknHYMt6MHfQg5lqZuCtcj499YXl5XyuAvnz2hlRbTvvzfPDvccG6irdt1LQ7r1RUX7F5ayCXweukemtxM13qYV9zaxVf4tHr7FhTXkUmaorYLxYc0akyLlHdoK76X_xWEFJB_SnTfGBZw-fvw5x8qrzx8dMI_Bh8Q-Mlt5AOGu2mn_5LgwIgVu_m_9dLbrrd301x8cR-VcdOkZ2Dm00
         ">
     </div>
     <div style="
@@ -173,7 +269,7 @@
     var names = document.querySelectorAll(".name");
     for (var i = 0; i < names.length; i++) {
         names[i].style.color = "rgb(195, 195, 195)"
-        names[i].innerHTML = "Master's Thesis for Master's in Information Technology"
+        names[i].innerHTML = "Type-Extensible Object Notation: JSON with Syntax for Types"
     }
 
     var dates = document.querySelectorAll(".date");
