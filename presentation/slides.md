@@ -57,7 +57,7 @@
         justify-content: space-between;
     ">
         <div style="color: rgb(145, 145, 145)">
-            Text
+            Grammatical Notation of the TXON Proposal
         </div>
         <div class="name"></div>
     </div>
@@ -68,7 +68,7 @@
     ">
         <div style="width: 45%">
             <div style="font-size: 2em">
-                Lorem Ipsum
+                Grammatical Notation
             </div>
             <br><br>
             Phasellus aliquet convallis arcu in aliquam. Pellentesque lectus orci, vulputate a blandit eget, pretium vel lectus. Aenean ultricies augue at elit rhoncus, quis hendrerit erat egestas. Sed sit amet efficitur sem. Pellentesque euismod, odio eu imperdiet facilisis, mi tortor mattis arcu, a tincidunt sem mauris id est. Maecenas sollicitudin eros ut bibendum sagittis. Suspendisse mattis, risus et luctus lacinia, nisl neque dictum nibh, non hendrerit orci libero non nibh. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Sed volutpat, ex a sodales semper, turpis mauris accumsan erat, quis malesuada tellus mi non augue.
@@ -85,6 +85,45 @@
     ">
         <i style="color: rgb(195, 195, 195)">
             Source
+        </i>
+        <div class="date"></div>
+    </div>
+</div>
+
+<div style="page-break-after: always">
+</div>
+
+<div style="
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    height: 100vh;
+">
+    <div style="
+        display: flex;
+        justify-content: space-between;
+    ">
+        <div style="color: rgb(145, 145, 145)">
+            Grammatical Notation of the TXON Proposal
+        </div>
+        <div class="name"></div>
+    </div>
+    <div style="
+        display: flex;
+        justify-content: space-between;
+        padding: 1.5cm;
+    ">
+        <img src="
+            http://www.plantuml.com/plantuml/svg/pLJ1JiCm3BtdAwPmhU28X2Oq0H8tJjpO3gR9ja3YL8a3cr3_dMMj8hIvWvv6fLPf_9ptdcjt5Wa29MT5jtgB7eMOHjfQVIlosuE1LG0t-HAJtNK7zVjZy0dLlRS-J2W0nWQ2Hjh7qIlTGpduvzgGBj6rMQtjxgQImMTTB9UglbO5quhksOhfLQzKT2V8kJHeo80rKOUvb3S_ZfQqRNJPERrR8a_W-6XFbp5x7fcBzPpFgdYiCsXSSXcAoRtgC0Y4pT-0IYyXMSh03x1faBa9lj61jeoFCLx6-ndlYVV5Gjjgw9lK43iVBmKnN1CMiX17RE84jzGRqXYDHxR4fPoNN4Vnklv9HvspneVpNecUMm71uMmRZ0HOwoD51SDtEe8hBbdjV1EsrQyaNLfaYyHdZP0uGYel-LmY1Di6J7nHVl9Yfb7bMTWlahFV
+        ">
+    </div>
+    <div style="
+        display: flex;
+        justify-content: space-between;
+    ">
+        <i style="color: rgb(195, 195, 195)">
+            http://www.plantuml.com/
         </i>
         <div class="date"></div>
     </div>
