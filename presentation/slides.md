@@ -108,7 +108,7 @@
         justify-content: space-between;
     ">
         <div style="color: rgb(145, 145, 145)">
-            Grammatical Notation of the TXON Proposal
+            RegEx Type and RegEx Enumeration
         </div>
         <div class="name"></div>
     </div>
@@ -119,7 +119,57 @@
     ">
         <div style="width: 45%">
             <div style="font-size: 2em">
-                Grammatical Notation
+                Regular Expression (RegEx)
+            </div>
+            <br><br>
+            Phasellus aliquet convallis arcu in aliquam. Pellentesque lectus orci, vulputate a blandit eget, pretium vel lectus. Aenean ultricies augue at elit rhoncus, quis hendrerit erat egestas. Sed sit amet efficitur sem. Pellentesque euismod, odio eu imperdiet facilisis, mi tortor mattis arcu, a tincidunt sem mauris id est. Maecenas sollicitudin eros ut bibendum sagittis. Suspendisse mattis, risus et luctus lacinia, nisl neque dictum nibh, non hendrerit orci libero non nibh. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Sed volutpat, ex a sodales semper, turpis mauris accumsan erat, quis malesuada tellus mi non augue.
+            <br><br>
+            In ultrices dictum dui, quis lacinia mauris hendrerit ac. Donec malesuada viverra elementum. Cras erat turpis, euismod eu tempus vel, cursus non neque. Sed semper tellus bibendum mi consectetur aliquet. Suspendisse interdum auctor turpis sed ultrices. Vestibulum sollicitudin nisi at tellus dictum auctor vel sit amet tellus.
+        </div>
+        <pre style="width: 45%">
+            <code>
+                Code
+            </code>
+        </pre>
+    </div>
+    <div style="
+        display: flex;
+        justify-content: space-between;
+    ">
+        <i style="color: rgb(195, 195, 195)">
+            RegEx in Swift 5.7: https://github.com/apple/swift-evolution/blob/main/proposals/0350-regex-type-overview.md
+        </i>
+        <div class="date"></div>
+    </div>
+</div>
+
+<div style="page-break-after: always">
+</div>
+
+<div style="
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    height: 100vh;
+">
+    <div style="
+        display: flex;
+        justify-content: space-between;
+    ">
+        <div style="color: rgb(145, 145, 145)">
+            Type Semantics from the Proposal
+        </div>
+        <div class="name"></div>
+    </div>
+    <div style="
+        display: flex;
+        justify-content: space-between;
+        padding: 1.5cm;
+    ">
+        <div style="width: 45%">
+            <div style="font-size: 2em">
+                Type Semantics
             </div>
             <br><br>
             This project contributes to existing implementations of the JSON specification by proposing a grammar for explicit and extensible typing of values. This proposal is phrased as the <code>Type-Extensibe Object Notation</code> (TXON) which is a format that conforms completely to the JSON specification, and as such it maintains full compatibility with existing JSON encoders and decoders. The TXON format is paired with the <code>TXON.js</code> library written in JavaScript, to validate the functional implementation and its use in a data structure, by checking conformance to its embedded type system.
@@ -401,6 +451,51 @@
         </i>
         <div class="date"></div>
     </div>
+</div>
+
+<div style="page-break-after: always">
+</div>
+
+<div style="
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    height: 100vh;
+">
+    <div style="
+        display: flex;
+        justify-content: space-between;
+    ">
+        <div style="color: rgb(145, 145, 145)">
+            Comparison of untyped JSON data and typed TXON data
+        </div>
+        <div class="name"></div>
+    </div>
+    <div style="
+        display: flex;
+        justify-content: space-between;
+        padding: 1.5cm;
+    ">
+        <img style="width: 45%" src="
+            http://www.plantuml.com/plantuml/svg/xPR1RjD048Rl-nJMdgqaTkAWL1KgJGMgYgeAX3WW3XFlO6zhxrgxuq10UI_kl1XUsm6d6n1H4H9ISzj_PlxvTl-3SsO93DrQhHWxjRGfy2bpfmi9cO4o-CA2vdSEwTqBesibbhhG9Y03obPWK55RLrfWttge_MCk2TlgbctPwRZVmxe93a8Oj9QV1FpgszSLgXpMAWpE2ym4b7QDjy62Xp_SUPg3oV16IqLkwDskudu3Yf_zMYbCIHk_sv_ofw62LDBcxcqpFPk60xzBuPWZtcYqgR0zHltX6afqrMVB0RfdlWOZGT6k-JC_sBeD7mITJ7peU0ywlWTzSGpqfrz0U-fxtvDBqUwxWcWoSKYb5bXqY7lIRXbmvhtCVnx-O_Yhs0lVILxugtySlX_rxr_DUvqD3_ymfkX9ydVIFpvhFzEZg1yUVphrudUI5tzwBtvsm9mxjlqlYVD9TQt8RBfzJiXrRV6wBbTedBXmMikJ90CpQLzfAANANkeKI6hLD92fqJNRrrZAgbuLCXsgpskg3VRAmAfevgaMsAuOpHVpHJGB6xatlXIeceQUi093gY5h6rIs6upYKJAVJsRnm5T1YVvzTOKgdZNw1oYi0wjohGRtZUBfBE5EbwdZVMCA9-T4bJqPZsK96OxgHXnighGbA9QwHU5nr2LakWUwwOXTLDuLB1b4sfK6dtNEjeoTeHBk7yTt
+        ">
+        <img style="width: 45%" src="
+            http://www.plantuml.com/plantuml/svg/vLT1Qniz4Btlhp1xDebtO_iZ8NoaSMWR0cbeA3sK7CQhgIr7AosIDgrR_Bzwxn_hUcKI3IlB0KD9Q4wRqTERfz7CGpup5hIjIv6uhuLHCabEZLqA_3zP_tV1OQQXxFrCUitVEHJtxxIg9PieeNJFQf2c0etIjkjICTn0G_1lSswnNLqbg-JqS9CdSJjIBhbDJxpzAJ2cqHWIR1S4bvWruTHOpUKixRjGxeKUDwpwJuI5Kffn2HP3f63N-sLTJb6tb7Bc1OA4GXKWk07BbUmoCg0QKLA1ORum5sU4wn5voMXSGeb-XB1u5KtLT8659G1IeGY8bp33JrhGpDLSIRnsnTegWA4fDA_S6RVnQmLbi_S6j9MeQHPkFhhLTNYgb42GBlwXGfaFIPZIgWRGR7olQXshm1pq36yKbxP5WTQmfA1M1PRAucGDRZXlwwfIsYBhg7fRsrgZ7oONJxDMwwpnk-zUc9HOMAKziPqC1BYBtuDUAxh0kAa4B2-two7zvpRTVwPZPIf45Xo4nDESCh10f4Q6mowh9gc7w8SEE1fr1-VYgd9Tvi_ErUzVKvHpUA144KSYAZOWifSO5qdH9-vrBd36e3GFkEWTfuHW5HdLY1u236e2wwfpC3uU7sT3p_go_60q7W-6UKm9zOEvjPKvEJniOmUr5W5hoFAZuIZg397ZKC-b9BjTbvuZxZkqFQZrM5qZTPsl80p67UVl7whhPrywt1rLH1bn9aeTzY2Q89ueCAG_0WQKTRmdyyVrpUJHPeP7D0Ujorx2lWU4vHrXkI_iuadOQB1TM73bRakj-SQs81iCjjr7gHWAfsSdx7gZ5TAaMx6NroiaeSUMzbzZSuLFyWgxSPe_gnjZCDADqt-X6vUxkp5oXzb_enVTZliVPOz-B8wUrOyn6Ed78atYmkxs_e7WdXIKfU1sIL-Bhiwrj7hfJkf8Rh7aLJqLl7XwcrJAM10JnR2jVJOOT9xQoIf9pb2oXL6o_QXByGS0
+        ">
+    </div>
+    <div style="
+        display: flex;
+        justify-content: space-between;
+    ">
+        <i style="color: rgb(195, 195, 195)">
+            http://www.plantuml.com/
+        </i>
+        <div class="date"></div>
+    </div>
+</div>
+
+<div style="page-break-after: always">
 </div>
 
 <script>
