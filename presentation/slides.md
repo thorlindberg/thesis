@@ -72,7 +72,7 @@
         align-items: center;
         padding: 1.5cm;
     ">
-        <div style="width: 45%">
+        <div style="width: 47.5%">
             <div style="font-size: 2em">
                 Test-Driven Development
             </div>
@@ -94,9 +94,11 @@
                 </li>
             </ul>
         </div>
-        <img style="width: 45%" src="
-            http://www.plantuml.com/plantuml/svg/ZOzFIyH03CNl-HJv02xUPLdM_oT1zBXu29tG3fqcPP8gY-ntTrgAKgoBSvlaz_BUsvjJzg5B0DP6wIbJXoaA-x5drEoD0cpDZubtK6dNgx3uNQHw13y1oxkXgdtCEaYurQGPFPDOkLJ0QVyjc_arpKSJdQVj2KwmlPmTuNMCXviSwyOtEppWTGX8w6oERx3yucOYNWP1RtWQMe5-JMRkYLf6AcNT4sFLaDHSbbTuUA2OYcwTMBUXcgAicCtpdmRt4aQBPpAxmC3ldBJlM1pDjRU_qowApWVEsFspuJdrckCoSgNYKGOkGM3F4eOkVG40
-        ">
+        <div style="width: 47.5%">
+            <img src="
+                http://www.plantuml.com/plantuml/svg/ZOzFIyH03CNl-HJv02xUPLdM_oT1zBXu29tG3fqcPP8gY-ntTrgAKgoBSvlaz_BUsvjJzg5B0DP6wIbJXoaA-x5drEoD0cpDZubtK6dNgx3uNQHw13y1oxkXgdtCEaYurQGPFPDOkLJ0QVyjc_arpKSJdQVj2KwmlPmTuNMCXviSwyOtEppWTGX8w6oERx3yucOYNWP1RtWQMe5-JMRkYLf6AcNT4sFLaDHSbbTuUA2OYcwTMBUXcgAicCtpdmRt4aQBPpAxmC3ldBJlM1pDjRU_qowApWVEsFspuJdrckCoSgNYKGOkGM3F4eOkVG40
+            ">
+        </div>
     </div>
     <div style="
         display: flex;
@@ -134,7 +136,7 @@
         align-items: center;
         padding: 1.5cm;
     ">
-        <div style="width: 45%">
+        <div style="width: 47.5%">
             <div style="font-size: 2em">
                 Unit and Acceptance Testing
             </div>
@@ -143,7 +145,7 @@
             <br><br>
             In ultrices dictum dui, quis lacinia mauris hendrerit ac. Donec malesuada viverra elementum. Cras erat turpis, euismod eu tempus vel, cursus non neque. Sed semper tellus bibendum mi consectetur aliquet. Suspendisse interdum auctor turpis sed ultrices. Vestibulum sollicitudin nisi at tellus dictum auctor vel sit amet tellus.
         </div>
-        <div style="width: 45%">
+        <div style="width: 47.5%">
 <pre><code>{
     "valid": "true | false",
     "feedback": "string",
@@ -239,7 +241,7 @@
         align-items: center;
         padding: 1.5cm;
     ">
-        <div style="width: 45%">
+        <div style="width: 47.5%">
             <div style="font-size: 2em">
                 Type Semantics
             </div>
@@ -248,7 +250,7 @@
             <br><br>
             A TXON data structure must contain an "init" and "data" property to be validated, but this is not expected to cause issue as JSON structures typically branch from a "data" property at the root node. As such the format is extensibly adding information on types, while maintaining as much of the original structure as possible.
         </div>
-        <div style="width: 45%">
+        <div style="width: 47.5%">
 <pre><code>{
     "init": {
         "required": "string", "optional?": "string",
@@ -338,7 +340,7 @@
         align-items: center;
         padding: 1.5cm;
     ">
-        <div style="width: 45%">
+        <div style="width: 47.5%">
             <div style="font-size: 2em">
                 Relational Type
             </div>
@@ -347,7 +349,7 @@
             <br><br>
             In ultrices dictum dui, quis lacinia mauris hendrerit ac. Donec malesuada viverra elementum. Cras erat turpis, euismod eu tempus vel, cursus non neque. Sed semper tellus bibendum mi consectetur aliquet. Suspendisse interdum auctor turpis sed ultrices. Vestibulum sollicitudin nisi at tellus dictum auctor vel sit amet tellus.
         </div>
-        <div style="width: 45%">
+        <div style="width: 47.5%">
 <pre><code>{
     "init": {
         "required": "object",
@@ -400,7 +402,7 @@
         align-items: center;
         padding: 1.5cm;
     ">
-        <div style="width: 45%">
+        <div style="width: 47.5%">
             <div style="font-size: 2em">
                 Optional Type
             </div>
@@ -409,7 +411,7 @@
             <br><br>
             In ultrices dictum dui, quis lacinia mauris hendrerit ac. Donec malesuada viverra elementum. Cras erat turpis, euismod eu tempus vel, cursus non neque. Sed semper tellus bibendum mi consectetur aliquet. Suspendisse interdum auctor turpis sed ultrices. Vestibulum sollicitudin nisi at tellus dictum auctor vel sit amet tellus.
         </div>
-        <div style="width: 45%">
+        <div style="width: 47.5%">
 <pre><code>{
     "init": {
         "type": {
@@ -462,7 +464,7 @@
         align-items: center;
         padding: 1.5cm;
     ">
-        <div style="width: 45%">
+        <div style="width: 47.5%">
             <div style="font-size: 2em">
                 Regular Expression (RegEx)
             </div>
@@ -471,7 +473,7 @@
             <br><br>
             In ultrices dictum dui, quis lacinia mauris hendrerit ac. Donec malesuada viverra elementum. Cras erat turpis, euismod eu tempus vel, cursus non neque. Sed semper tellus bibendum mi consectetur aliquet. Suspendisse interdum auctor turpis sed ultrices. Vestibulum sollicitudin nisi at tellus dictum auctor vel sit amet tellus.
         </div>
-        <div style="width: 45%">
+        <div style="width: 47.5%">
 <pre><code>{
     "init": {
         "regex": {
@@ -527,7 +529,7 @@
         align-items: center;
         padding: 1.5cm;
     ">
-        <div style="width: 45%">
+        <div style="width: 47.5%">
             <div style="font-size: 2em">
                 Enumerated Type
             </div>
@@ -536,7 +538,7 @@
             <br><br>
             In ultrices dictum dui, quis lacinia mauris hendrerit ac. Donec malesuada viverra elementum. Cras erat turpis, euismod eu tempus vel, cursus non neque. Sed semper tellus bibendum mi consectetur aliquet. Suspendisse interdum auctor turpis sed ultrices. Vestibulum sollicitudin nisi at tellus dictum auctor vel sit amet tellus.
         </div>
-        <div style="width: 45%">
+        <div style="width: 47.5%">
 <pre><code>{
     "init": {
         "date": {
