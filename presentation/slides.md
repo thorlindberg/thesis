@@ -405,6 +405,68 @@
     ">
         <div style="width: 45%">
             <div style="font-size: 2em">
+                Optional Type
+            </div>
+            <br><br>
+            Phasellus aliquet convallis arcu in aliquam. Pellentesque lectus orci, vulputate a blandit eget, pretium vel lectus. Aenean ultricies augue at elit rhoncus, quis hendrerit erat egestas. Sed sit amet efficitur sem. Pellentesque euismod, odio eu imperdiet facilisis, mi tortor mattis arcu, a tincidunt sem mauris id est. Maecenas sollicitudin eros ut bibendum sagittis. Suspendisse mattis, risus et luctus lacinia, nisl neque dictum nibh, non hendrerit orci libero non nibh. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Sed volutpat, ex a sodales semper, turpis mauris accumsan erat, quis malesuada tellus mi non augue.
+            <br><br>
+            In ultrices dictum dui, quis lacinia mauris hendrerit ac. Donec malesuada viverra elementum. Cras erat turpis, euismod eu tempus vel, cursus non neque. Sed semper tellus bibendum mi consectetur aliquet. Suspendisse interdum auctor turpis sed ultrices. Vestibulum sollicitudin nisi at tellus dictum auctor vel sit amet tellus.
+        </div>
+        <div style="width: 45%">
+<pre><code>{
+    "init": {
+        "type": {
+            "required": "string", "optional?": "string"
+        }
+    },
+    "data": {
+        "type": {
+            "required": "Hello, World!"
+        }
+    }
+}</code></pre>
+            <img src="
+                http://www.plantuml.com/plantuml/svg/bP31JiGm34Jl_egGSoNkg88AaE0FE5l4Ae5W5ySLgbRvzssRQjNLxcLpoymRZ-Kk6wfzPs60DjkKw16Mtsl4Nl7N7S3Dxna_VzvKHWulaaITAN8UK8bjzLa2RUWr_Fyh6grkWGBj_TO3DU4ZH_CFkxotQQ2zKbMblp4gXTdnsJHoxvjpGWQBmfYUTiY9A7M36l413MyjVQUKf74VeYdSNGo60j0HX-LyHm00
+            ">
+        </div>
+    </div>
+    <div style="
+        display: flex;
+        justify-content: space-between;
+    ">
+        <i style="color: rgb(195, 195, 195)">
+        </i>
+        <div class="date"></div>
+    </div>
+</div>
+
+<div style="page-break-after: always">
+</div>
+
+<div style="
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    height: 100vh;
+">
+    <div style="
+        display: flex;
+        justify-content: space-between;
+    ">
+        <div style="color: rgb(145, 145, 145)">
+            Type Semantics
+        </div>
+        <div class="name"></div>
+    </div>
+    <div style="
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1.5cm;
+    ">
+        <div style="width: 45%">
+            <div style="font-size: 2em">
                 Regular Expression (RegEx)
             </div>
             <br><br>
@@ -438,68 +500,6 @@
     ">
         <i style="color: rgb(195, 195, 195)">
             RegEx in Swift 5.7: https://github.com/apple/swift-evolution/blob/main/proposals/0350-regex-type-overview.md
-        </i>
-        <div class="date"></div>
-    </div>
-</div>
-
-<div style="page-break-after: always">
-</div>
-
-<div style="
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 100%;
-    height: 100vh;
-">
-    <div style="
-        display: flex;
-        justify-content: space-between;
-    ">
-        <div style="color: rgb(145, 145, 145)">
-            Type Semantics
-        </div>
-        <div class="name"></div>
-    </div>
-    <div style="
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 1.5cm;
-    ">
-        <div style="width: 45%">
-            <div style="font-size: 2em">
-                Optional Type
-            </div>
-            <br><br>
-            Phasellus aliquet convallis arcu in aliquam. Pellentesque lectus orci, vulputate a blandit eget, pretium vel lectus. Aenean ultricies augue at elit rhoncus, quis hendrerit erat egestas. Sed sit amet efficitur sem. Pellentesque euismod, odio eu imperdiet facilisis, mi tortor mattis arcu, a tincidunt sem mauris id est. Maecenas sollicitudin eros ut bibendum sagittis. Suspendisse mattis, risus et luctus lacinia, nisl neque dictum nibh, non hendrerit orci libero non nibh. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Sed volutpat, ex a sodales semper, turpis mauris accumsan erat, quis malesuada tellus mi non augue.
-            <br><br>
-            In ultrices dictum dui, quis lacinia mauris hendrerit ac. Donec malesuada viverra elementum. Cras erat turpis, euismod eu tempus vel, cursus non neque. Sed semper tellus bibendum mi consectetur aliquet. Suspendisse interdum auctor turpis sed ultrices. Vestibulum sollicitudin nisi at tellus dictum auctor vel sit amet tellus.
-        </div>
-        <div style="width: 45%">
-<pre><code>{
-    "init": {
-        "type": {
-            "required": "string", "optional?": "string"
-        }
-    },
-    "data": {
-        "type": {
-            "required": "Hello, World!"
-        }
-    }
-}</code></pre>
-            <img src="
-                http://www.plantuml.com/plantuml/svg/bP31JiGm34Jl_egGSoNkg88AaE0FE5l4Ae5W5ySLgbRvzssRQjNLxcLpoymRZ-Kk6wfzPs60DjkKw16Mtsl4Nl7N7S3Dxna_VzvKHWulaaITAN8UK8bjzLa2RUWr_Fyh6grkWGBj_TO3DU4ZH_CFkxotQQ2zKbMblp4gXTdnsJHoxvjpGWQBmfYUTiY9A7M36l413MyjVQUKf74VeYdSNGo60j0HX-LyHm00
-            ">
-        </div>
-    </div>
-    <div style="
-        display: flex;
-        justify-content: space-between;
-    ">
-        <i style="color: rgb(195, 195, 195)">
         </i>
         <div class="date"></div>
     </div>
