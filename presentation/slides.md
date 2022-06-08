@@ -15,7 +15,7 @@
         justify-content: space-between;
     ">
         <div style="color: rgb(145, 145, 145)">
-            Master's Thesis for Master's in Information Technology
+            Master's in Information Technology
         </div>
         <div class="name"></div>
     </div>
@@ -103,7 +103,7 @@
         justify-content: space-between;
     ">
         <i style="color: rgb(195, 195, 195)">
-            A recursive test-driven development cycle
+            Test cycle: Guernsey, M. (2013). Test-driven Database Development: Unlocking Agility. Addison-Wesley.
         </i>
         <div class="date"></div>
     </div>
@@ -162,7 +162,6 @@
         justify-content: space-between;
     ">
         <i style="color: rgb(195, 195, 195)">
-            Data structure for testing validation feature
         </i>
         <div class="date"></div>
     </div>
@@ -269,7 +268,6 @@
         justify-content: space-between;
     ">
         <i style="color: rgb(195, 195, 195)">
-            Features of the Type Semantics
         </i>
         <div class="date"></div>
     </div>
@@ -309,7 +307,7 @@
         justify-content: space-between;
     ">
         <i style="color: rgb(195, 195, 195)">
-            Type Semantics from the Proposal
+            Current implementation of type semantics from proposal
         </i>
         <div class="date"></div>
     </div>
@@ -372,7 +370,6 @@
         justify-content: space-between;
     ">
         <i style="color: rgb(195, 195, 195)">
-            Relational type references other non-JSON type
         </i>
         <div class="date"></div>
     </div>
