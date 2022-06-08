@@ -237,11 +237,17 @@
             A TXON data structure must contain an "init" and "data" property to be validated, but this is not expected to cause issue as JSON structures typically branch from a "data" property at the root node. As such the format is extensibly adding information on types, while maintaining as much of the original structure as possible.
         </div>
         <div style="width: 45%">
+<pre><code>{
+    "init": {
+        "required": "string", "optional?": "string",
+        "object": { "required": "string", "optional?": "string" },
+        "array": [ { "required": "string", "optional?": "string" } ],
+        "regex": { "type": "string", "start": "ja", "content": "nua", "end": "ry" },
+        "enum": { "type": "string", "case": [ "january", "february", "march" ] }
+    }
+}</code></pre>
             <img src="
-                http://www.plantuml.com/plantuml/svg/RP112i8m44NtSueXQy6DAobILF02Nc1ieeqsIPbCaIAzkqbQHC79vcV-VtoOEWgn3Aw3MTrZy01LbB4pEyY_ewKRayCNO9ezDOyJXy7hG-W2ep3vs1CRByNtGPib-Y_-RAsOuaumGRLUUc0cLEvJsyGhJK95uTSe5xoqQRrP_UwrYGtRNcp1rRarMA8OhkX6l5XEs0UP83-eZTUvi8XqWJS0
-            ">
-            <img src="
-                http://www.plantuml.com/plantuml/svg/TP51JiD034NtFeKrwmeshAeALO341RY0cp5aeB4ZZok8KEvEPrf57PKw6qVlVxrOsMOdyy-i0h39Fktv4ShRIw8Fem5_0O_pHDtNg-b1uhFkrT2D98zaB5wvQEHpzB_uTv-SAvrXXitzsGEdHl0VbR0-zaEIv7N3Ymbo67PiTv6S6xW4Eig5X475-z3m6PPj1KiXajErvxR0fx6GvajMrx6JVuqF3IhYHiEvipHwgbU7jvwn5b7VSPXmb-poY1dA0rkMMFxB7m00
+                http://www.plantuml.com/plantuml/svg/hLBDJiCm3BxdAIgV9t574qo0n4DiEtYjsL9QfpYE849zTzgch05sciWf-Nw-V56yyOgYjNTipDfhREZEZASdYqV1jlWqnR0Ui7nz5XUuUdIDaq85sNSen3hnx2gQfPVaxoUhDB6zwStwPhx790TOjWgtcH-4te8LgWOKl8hb8wmAS9rQnzZSv_1YSeUQoYNeYh2phyzYKGJZ8Dh-G-m-onKwqiVVjZlGsD4EyjZVYkdFagH6M8rGwLY9Pv33Z19N2P5u-N74eRskGua-AROvazWQEQ34iSCB7UHxtwAK9_WXto-jplDXDiJLE8DV
             ">
         </div>
     </div>
@@ -250,7 +256,7 @@
         justify-content: space-between;
     ">
         <i style="color: rgb(195, 195, 195)">
-            Comparison of a TXON data structure and JSON data structure.
+            Features of the Type Semantics
         </i>
         <div class="date"></div>
     </div>
@@ -333,23 +339,18 @@
         <div style="width: 45%">
 <pre><code>{
     "init": {
-        "location": {
-            "chargePoints": [{
-                "id": "string",
-                "connectors": [{
-                    "id": "string",
-                    "connectorNo": "string",
-                    "displayId": "string",
-                    "name": "string",
-                    "kW": "number",
-                    "speed": "string"
-                }]
-            }]
+        "required": "object",
+        "optional?": "enum",
+        "object": {
+            "required": "string", "optional?": "string"
+        },
+        "enum": {
+            "type": "string", "case": [ "january", "february", "march" ]
         }
     }
 }</code></pre>
             <img src="
-                http://www.plantuml.com/plantuml/svg/bPB1IWCn48RlynGXPy6x52agY1Vnva4yZCdGZjsTMIPJfCY-kxjjaQ0Hsxab__Vdos6MnT7ylQW0B8hlEhg6-NJ7k3BimoU4QMumRUvDjv9ljLCBRYXbG2FnVIwQwOYsy8yrE-tJ4KPON1uzS6X45lPuLVLZfmcTLUhRGvBMQ2jwKXOlK_e2uSTKVDtZFD6nkB6iuaMRIIf2oTLQBxSDvvlQnaSzlPIv31tk7ixm2FPqEhrvdbdPzcza_x5b8Ae_yYSzDfDN-CK5Q0FZzmB1aYJFI_e5
+                http://www.plantuml.com/plantuml/svg/RP3FIiH03CRlUOeXvmNlikYYWWyX7h9jt9tQ9ZMJ8aNwxkwiTMgfFNM-FxyFSaXEvarI0TWd7rk-W_nwYdGowi8NXCltGDNxi-aWzQEsQi6D9FLaB7xrHMkUe__5Fy_H-UfECC7-Pjw1dmP6YOwtV_fe_354u_gYeXuRhXntYwkzHnLgxxFDCdIBESVNk0qokKKvuMw5AdBfJGKxpsoWFlQy1bQKil8Ii24PoCOill7HVlyxikgCuNLPAOU10qkTZ_yD
             ">
         </div>
     </div>
@@ -358,7 +359,7 @@
         justify-content: space-between;
     ">
         <i style="color: rgb(195, 195, 195)">
-            Current and alternative implementation of relational type declarations.
+            Relational type references other non-JSON type
         </i>
         <div class="date"></div>
     </div>
@@ -512,10 +513,7 @@
     "init": {
         "date": {
             "month": {
-                "type": "string",
-                "case": [
-                    "january", "february", "march"
-                ]
+                "type": "string", "case": [ "january", "february", "march" ]
             }
         }
     },
