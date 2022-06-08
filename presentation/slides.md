@@ -71,13 +71,18 @@
                 Grammatical Notation
             </div>
             <br><br>
-            Phasellus aliquet convallis arcu in aliquam. Pellentesque lectus orci, vulputate a blandit eget, pretium vel lectus. Aenean ultricies augue at elit rhoncus, quis hendrerit erat egestas. Sed sit amet efficitur sem. Pellentesque euismod, odio eu imperdiet facilisis, mi tortor mattis arcu, a tincidunt sem mauris id est. Maecenas sollicitudin eros ut bibendum sagittis. Suspendisse mattis, risus et luctus lacinia, nisl neque dictum nibh, non hendrerit orci libero non nibh. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Sed volutpat, ex a sodales semper, turpis mauris accumsan erat, quis malesuada tellus mi non augue.
+            This project contributes to existing implementations of the JSON specification by proposing a grammar for explicit and extensible typing of values. This proposal is phrased as the <code>Type-Extensibe Object Notation</code> (TXON) which is a format that conforms completely to the JSON specification, and as such it maintains full compatibility with existing JSON encoders and decoders. The TXON format is paired with the <code>TXON.js</code> library written in JavaScript, to validate the functional implementation and its use in a data structure, by checking conformance to its embedded type system.
             <br><br>
-            In ultrices dictum dui, quis lacinia mauris hendrerit ac. Donec malesuada viverra elementum. Cras erat turpis, euismod eu tempus vel, cursus non neque. Sed semper tellus bibendum mi consectetur aliquet. Suspendisse interdum auctor turpis sed ultrices. Vestibulum sollicitudin nisi at tellus dictum auctor vel sit amet tellus.
+            A TXON data structure must contain an "init" and "data" property to be validated, but this is not expected to cause issue as JSON structures typically branch from a "data" property at the root node. As such the format is extensibly adding information on types, while maintaining as much of the original structure as possible.
         </div>
-        <img style="width: 45%" src="
-            http://www.plantuml.com/plantuml/svg/FSjH2i8m3CRnzvoY5nXUO8oX0rzy4Zn0MBivJ9kIfiWGxsvWctdw_Zz8NnH5QoI0jkXAeOEHi9HXmLamkWyukpEEhwjmJVx2nE9KC9MC4fB25zhJ_WaJisieJDfqpjSOrvljJMMPdt--M-nUyu6Fl8ddTpfii0rzI1Rq0m00
-        ">
+        <div style="width: 45%">
+            <img style="height: 45%" src="
+                http://www.plantuml.com/plantuml/svg/RP112i8m44NtSueXQy6DAobILF02Nc1ieeqsIPbCaIAzkqbQHC79vcV-VtoOEWgn3Aw3MTrZy01LbB4pEyY_ewKRayCNO9ezDOyJXy7hG-W2ep3vs1CRByNtGPib-Y_-RAsOuaumGRLUUc0cLEvJsyGhJK95uTSe5xoqQRrP_UwrYGtRNcp1rRarMA8OhkX6l5XEs0UP83-eZTUvi8XqWJS0
+            ">
+            <img style="height: 45%" src="
+                http://www.plantuml.com/plantuml/svg/TP51JiD034NtFeKrwmeshAeALO341RY0cp5aeB4ZZok8KEvEPrf57PKw6qVlVxrOsMOdyy-i0h39Fktv4ShRIw8Fem5_0O_pHDtNg-b1uhFkrT2D98zaB5wvQEHpzB_uTv-SAvrXXitzsGEdHl0VbR0-zaEIv7N3Ymbo67PiTv6S6xW4Eig5X475-z3m6PPj1KiXajErvxR0fx6GvajMrx6JVuqF3IhYHiEvipHwgbU7jvwn5b7VSPXmb-poY1dA0rkMMFxB7m00
+            ">
+        </div>
     </div>
     <div style="
         display: flex;
@@ -144,7 +149,7 @@
         justify-content: space-between;
     ">
         <div style="color: rgb(145, 145, 145)">
-            Text
+            Implementation
         </div>
         <div class="name"></div>
     </div>
@@ -163,7 +168,7 @@
             In ultrices dictum dui, quis lacinia mauris hendrerit ac. Donec malesuada viverra elementum. Cras erat turpis, euismod eu tempus vel, cursus non neque. Sed semper tellus bibendum mi consectetur aliquet. Suspendisse interdum auctor turpis sed ultrices. Vestibulum sollicitudin nisi at tellus dictum auctor vel sit amet tellus.
         </div>
         <img style="width: 45%" src="
-            http://www.plantuml.com/plantuml/svg/tLF1IiH03BtdAygS5xnBAOiAuaMyUOvjw8uxJKecHOlqtztf5kb0mRteONjAyjxBItdCFXgg3Ls0S_KUXG7AQ6EW2bBtuB5Lx8elA4xV7TR7HvM1cti9eeKfSknHYMt6MHfQg5lqZuCtcj499YXl5XyuAvnz2hlRbTvvzfPDvccG6irdt1LQ7r1RUX7F5ayCXweukemtxM13qYV9zaxVf4tHr7FhTXkUmaorYLxYc0akyLlHdoK76X_xWEFJB_SnTfGBZw-fvw5x8qrzx8dMI_Bh8Q-Mlt5AOGu2mn_5LgwIgVu_m_9dLbrrd301x8cR-VcdOkZ2Dm00
+            http://www.plantuml.com/plantuml/svg/xLPVQzi-57tNfp3wlOOsTkFyI2cZQyj6wIXbO-nXxE76lhNLofAHhhfb8zzhx_jYyv_8gzCu2u5jBpKas3hdtdkEE22TMW93hf2iVRkpMZ5sOcaXyGMhlou4P0QAu1iBgkSCallNHZkLdckfJK06b2t1eA86Lph55NKJ_NCk23iq5rakgn_vYe6g_svlPzNJSPQi_L-oayELKjPsu92c1gtbnm6_-l5zZYg71pKApYHcAHJs0U-26H-rt2G7a-6D5ehgWe--_veQdcYbC25j-godx7uLb908Mjn_gAecHwC1bkzzcTQQGpx0eqM93INSGhY60kikBy-7sZo04Q384x_o9xJbQ2-3yNWtWz5l3KOx6BpOrU2N3GPxAv_wVRX8c_vN48x7V0qhT8gojJ48-y70sTCTVGxMSx3cqTPW3S9-yFmF1cizCdzrHnUUjpKEuV_n_idwvvdPs-5EqKgEjaPh4FRw4ju_OVqWNclhdwZS8zefCejslb_CjRDuxOevcXhmvsshCuxzbtsheH0gUwCJ8A5L1P9nsC7li12bcqkHh2El73c3_LK99CYbs8mucCwcit3YeTM0onHLHLgfBS6GGiCxaifyWp0wYAVJyIHQOGeAtEnVbwYYIONTWhHUIfbhzSX_61rDOkunaTJQtnjPGpbHQOyF3qK16Huu8pkQjWJoN3ToUFJhjE6ctRIRLdsNmNKxbWmYUVZHzOUp9MEdgDBcfbU_k4B-1000
         ">
     </div>
     <div style="
@@ -192,7 +197,7 @@
         justify-content: space-between;
     ">
         <div style="color: rgb(145, 145, 145)">
-            Text
+            Implementation
         </div>
         <div class="name"></div>
     </div>
