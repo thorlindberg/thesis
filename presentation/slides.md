@@ -359,6 +359,50 @@
     </div>
 </div>
 
+<div style="page-break-after: always">
+</div>
+
+<div style="
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    height: 100vh;
+">
+    <div style="
+        display: flex;
+        justify-content: space-between;
+    ">
+        <div style="color: rgb(145, 145, 145)">
+            Unit tests for type declarations and instances
+        </div>
+        <div class="name"></div>
+    </div>
+    <div style="
+        display: flex;
+        justify-content: space-between;
+        padding: 1.5cm;
+    ">
+        <div>
+            <img style="height: 40%" src="
+                http://www.plantuml.com/plantuml/svg/vP5FImCn4CNl-HGXNWksXoAK8aK5mOCUFBezJ3VPRZH_IZ9HY-ntTzCE2zNGaoB5m2xPlD_BpBvPH8I0oHgstpr7xnYRHzmQTSdorus6TG3BFnZlrnNKBxV19oUllV61Om0NDn2Kmvtkl5I4bl2tLgCQr5QlMzC_E3ZAhhEcaVM579YExTyTcvzJfsn_WqXEOnGp_ZJ0XrUBLp1QzW26f4Q7KgEKNFMbUrNWTgDu9IIWgWHl8NBjTbOUMmXAyhl7XtjUPIu3KjK60g3sBhjyMfd-M7mfaECKC-heGD5EOq4XDNT1QddbDZ91bKKHxDYtan4hrOAStvALlUJvoMGfKQaQI0QvRxZLqGBMRNzAUCIWtVel8dN9hbIWkaMI6izm9IRZIfnc_bOxRPCzvVmduoCO_H-DwMId1E__P4hJ8nIbGBES_kemQRTa7MCBvMGESxT9rdm2
+            ">
+            <img style="height: 40%" src="
+                http://www.plantuml.com/plantuml/svg/xL9Dgzim4BphLmZr-g3nUuT2UPJG5leZwXvaQnshrOUHLabDyN_lAdO4AJRfgL0IGOAqEzePZMSVKGPCrh1vzprwnzXhnD701vPFdxKy16dvByPfVPJjZo_19wS-UUC3no1T76G0X-U-ymeMw1hyr6k4qktreJVqmt9Z_TQRhbFjErKm4vl_9_RwTb7AvWaYEOrHlETV2_Xwj3XAenK1EcaYF5ttEW3L43UrXNRaXsk1-uxZE02lXP88jU2zZ7m8Ve208rMjTzXJcN1MHoknxK5ThaGCsXrg8VvWoiOIIz5M5l5gNEtaTPPGkgk8J9prksGR28LtTTPOHcs3e9F9P4NL9d3Q9fdTkKrZwTassKppT0CfVrwGpzkAsArgKRvciIo2D-qb51HpDzuiQb7jQY7Ojf1oAdB-SMfF6djEqrE6xgZGWF4dldmFgbMFyDvbU7V_JMgh5wh8nX-1B_xculCZjtUPs-hbxu9RTj_OnDWUdChnE6-IDRy1
+            ">
+        </div>
+    </div>
+    <div style="
+        display: flex;
+        justify-content: space-between;
+    ">
+        <i style="color: rgb(195, 195, 195)">
+            http://www.plantuml.com/
+        </i>
+        <div class="date"></div>
+    </div>
+</div>
+
 <script>
 
     var names = document.querySelectorAll(".name");
