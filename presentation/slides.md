@@ -22,6 +22,7 @@
     <div style="
         display: flex;
         justify-content: space-between;
+        align-items: center;
         padding: 1.5cm;
     ">
         <div style="
@@ -68,6 +69,7 @@
     <div style="
         display: flex;
         justify-content: space-between;
+        align-items: center;
         padding: 1.5cm;
     ">
         <div style="width: 45%">
@@ -75,12 +77,22 @@
                 Test-Driven Development
             </div>
             <br><br>
-            Development driven by testing has implications not only for the approach to implementation, but also the structure of the code itself and the overall practices surrounding projects. As each feature needs to be developed on a foundation of demonstrable necessity, the process must be divided into small enough steps for testing to be possible. The testing of a smaller component in a large codebase is referred to as `unit tests`, as each component becomes a testable `unit`. They provide a clear and measurable success criteria, which ensures that the requirements for a project are met with confidence. {"cite":"beck2003testdriven"} popularised TDD and his rules for writing unit tests are:
+            Testing has implications not only for the approach to implementation, but also the structure of the code itself and the overall practices surrounding projects. As each feature needs to be developed on a foundation of demonstrable necessity, the process must be divided into small enough steps for testing to be possible. The testing of a smaller component in a large codebase is referred to as <code>unit tests</code>, as each component becomes a testable <code>unit</code>.
             <br><br>
-            - Execution time should be short, resulting in fast testing.
-            - Tests should be executed in isolation from each other, resulting in unordered tests.
-            - Use production data when applicable, and ensure data is readable and understandable.
-            - Each test should represent a component of a larger overall goal with the project.
+            <ul>
+                <li>
+                    Execution time should be short, resulting in fast testing.
+                </li>
+                <li>
+                    Tests should be executed in isolation from each other, resulting in unordered tests.
+                </li>
+                <li>
+                    Use production data when applicable, and ensure data is readable and understandable.
+                </li>
+                <li>
+                    Each test should represent a component of a larger overall goal with the project.
+                </li>
+            </ul>
         </div>
         <img style="width: 45%" src="
             http://www.plantuml.com/plantuml/svg/ZOzFIyH03CNl-HJv02xUPLdM_oT1zBXu29tG3fqcPP8gY-ntTrgAKgoBSvlaz_BUsvjJzg5B0DP6wIbJXoaA-x5drEoD0cpDZubtK6dNgx3uNQHw13y1oxkXgdtCEaYurQGPFPDOkLJ0QVyjc_arpKSJdQVj2KwmlPmTuNMCXviSwyOtEppWTGX8w6oERx3yucOYNWP1RtWQMe5-JMRkYLf6AcNT4sFLaDHSbbTuUA2OYcwTMBUXcgAicCtpdmRt4aQBPpAxmC3ldBJlM1pDjRU_qowApWVEsFspuJdrckCoSgNYKGOkGM3F4eOkVG40
@@ -119,6 +131,7 @@
     <div style="
         display: flex;
         justify-content: space-between;
+        align-items: center;
         padding: 1.5cm;
     ">
         <div style="width: 45%">
@@ -164,6 +177,7 @@
     <div style="
         display: flex;
         justify-content: space-between;
+        align-items: center;
         padding: 1.5cm;
     ">
         <div>
@@ -210,6 +224,7 @@
     <div style="
         display: flex;
         justify-content: space-between;
+        align-items: center;
         padding: 1.5cm;
     ">
         <div style="width: 45%">
@@ -263,6 +278,7 @@
     <div style="
         display: flex;
         justify-content: space-between;
+        align-items: center;
         padding: 1.5cm;
     ">
         <img src="
@@ -302,6 +318,7 @@
     <div style="
         display: flex;
         justify-content: space-between;
+        align-items: center;
         padding: 1.5cm;
     ">
         <div style="width: 45%">
@@ -313,9 +330,28 @@
             <br><br>
             In ultrices dictum dui, quis lacinia mauris hendrerit ac. Donec malesuada viverra elementum. Cras erat turpis, euismod eu tempus vel, cursus non neque. Sed semper tellus bibendum mi consectetur aliquet. Suspendisse interdum auctor turpis sed ultrices. Vestibulum sollicitudin nisi at tellus dictum auctor vel sit amet tellus.
         </div>
-        <img style="width: 45%" src="
-            http://www.plantuml.com/plantuml/svg/tLF1IiH03BtdAygS5xnBAOiAuaMyUOvjw8uxJKecHOlqtztf5kb0mRteONjAyjxBItdCFXgg3Ls0S_KUXG7AQ6EW2bBtuB5Lx8elA4xV7TR7HvM1cti9eeKfSknHYMt6MHfQg5lqZuCtcj499YXl5XyuAvnz2hlRbTvvzfPDvccG6irdt1LQ7r1RUX7F5ayCXweukemtxM13qYV9zaxVf4tHr7FhTXkUmaorYLxYc0akyLlHdoK76X_xWEFJB_SnTfGBZw-fvw5x8qrzx8dMI_Bh8Q-Mlt5AOGu2mn_5LgwIgVu_m_9dLbrrd301x8cR-VcdOkZ2Dm00
-        ">
+        <div style="width: 45%">
+<pre><code>{
+    "init": {
+        "location": {
+            "chargePoints": [{
+                "id": "string",
+                "connectors": [{
+                    "id": "string",
+                    "connectorNo": "string",
+                    "displayId": "string",
+                    "name": "string",
+                    "kW": "number",
+                    "speed": "string"
+                }]
+            }]
+        }
+    }
+}</code></pre>
+            <img src="
+                http://www.plantuml.com/plantuml/svg/bPB1IWCn48RlynGXPy6x52agY1Vnva4yZCdGZjsTMIPJfCY-kxjjaQ0Hsxab__Vdos6MnT7ylQW0B8hlEhg6-NJ7k3BimoU4QMumRUvDjv9ljLCBRYXbG2FnVIwQwOYsy8yrE-tJ4KPON1uzS6X45lPuLVLZfmcTLUhRGvBMQ2jwKXOlK_e2uSTKVDtZFD6nkB6iuaMRIIf2oTLQBxSDvvlQnaSzlPIv31tk7ixm2FPqEhrvdbdPzcza_x5b8Ae_yYSzDfDN-CK5Q0FZzmB1aYJFI_e5
+            ">
+        </div>
     </div>
     <div style="
         display: flex;
@@ -350,6 +386,7 @@
     <div style="
         display: flex;
         justify-content: space-between;
+        align-items: center;
         padding: 1.5cm;
     ">
         <div style="width: 45%">
@@ -361,11 +398,7 @@
             <br><br>
             In ultrices dictum dui, quis lacinia mauris hendrerit ac. Donec malesuada viverra elementum. Cras erat turpis, euismod eu tempus vel, cursus non neque. Sed semper tellus bibendum mi consectetur aliquet. Suspendisse interdum auctor turpis sed ultrices. Vestibulum sollicitudin nisi at tellus dictum auctor vel sit amet tellus.
         </div>
-        <pre style="width: 45%">
-            <code>
-                Code
-            </code>
-        </pre>
+        <img style="width: 45%" src="">
     </div>
     <div style="
         display: flex;
@@ -400,6 +433,7 @@
     <div style="
         display: flex;
         justify-content: space-between;
+        align-items: center;
         padding: 1.5cm;
     ">
         <div style="width: 45%">
@@ -411,7 +445,23 @@
             <br><br>
             In ultrices dictum dui, quis lacinia mauris hendrerit ac. Donec malesuada viverra elementum. Cras erat turpis, euismod eu tempus vel, cursus non neque. Sed semper tellus bibendum mi consectetur aliquet. Suspendisse interdum auctor turpis sed ultrices. Vestibulum sollicitudin nisi at tellus dictum auctor vel sit amet tellus.
         </div>
-        <img style="width: 45%" src="">
+        <div style="width: 45%">
+<pre><code>{
+    "init": {
+        "type": {
+            "required": "string", "optional?": "string"
+        }
+    },
+    "data": {
+        "type": {
+            "required": "Hello, World!"
+        }
+    }
+}</code></pre>
+            <img src="
+                http://www.plantuml.com/plantuml/svg/bP31JiGm34Jl_egGSoNkg88AaE0FE5l4Ae5W5ySLgbRvzssRQjNLxcLpoymRZ-Kk6wfzPs60DjkKw16Mtsl4Nl7N7S3Dxna_VzvKHWulaaITAN8UK8bjzLa2RUWr_Fyh6grkWGBj_TO3DU4ZH_CFkxotQQ2zKbMblp4gXTdnsJHoxvjpGWQBmfYUTiY9A7M36l413MyjVQUKf74VeYdSNGo60j0HX-LyHm00
+            ">
+        </div>
     </div>
     <div style="
         display: flex;
@@ -445,6 +495,7 @@
     <div style="
         display: flex;
         justify-content: space-between;
+        align-items: center;
         padding: 1.5cm;
     ">
         <div style="width: 45%">
@@ -456,7 +507,28 @@
             <br><br>
             In ultrices dictum dui, quis lacinia mauris hendrerit ac. Donec malesuada viverra elementum. Cras erat turpis, euismod eu tempus vel, cursus non neque. Sed semper tellus bibendum mi consectetur aliquet. Suspendisse interdum auctor turpis sed ultrices. Vestibulum sollicitudin nisi at tellus dictum auctor vel sit amet tellus.
         </div>
-        <img style="width: 45%" src="">
+        <div style="width: 45%">
+<pre><code>{
+    "init": {
+        "date": {
+            "month": {
+                "type": "string",
+                "case": [
+                    "january", "february", "march"
+                ]
+            }
+        }
+    },
+    "data": {
+        "date": {
+            "month": "january"
+        }
+    }
+}</code></pre>
+            <img src="
+                http://www.plantuml.com/plantuml/svg/bP5DJiGm38NtFaNaTINsQ8H6WCGX61QcCTCCKsVak48Lojtflrhe1g-SzxwNnF8n6QbTKXI0GxBsoW_Gdvu3dPLgzmskgqSgFryqDkAVuZMgCoL9Dr8M6to9dYTq3_-gWl7WPiXmk9lUWJ61GOBX_IgFdepNogZMKQnQv8rrGcjlVCBEnMGQv8p57bLI6gbNS3k55vA6jCN2uGU_wzpNf6M5Vo9l6oN3jii5pCFGVyPRFl7xFiW0HnRVx-S7
+            ">
+        </div>
     </div>
     <div style="
         display: flex;
