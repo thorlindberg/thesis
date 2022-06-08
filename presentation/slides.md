@@ -68,6 +68,57 @@
     ">
         <div style="width: 45%">
             <div style="font-size: 2em">
+                Test-Driven Development
+            </div>
+            <br><br>
+            Development driven by testing has implications not only for the approach to implementation, but also the structure of the code itself and the overall practices surrounding projects. As each feature needs to be developed on a foundation of demonstrable necessity, the process must be divided into small enough steps for testing to be possible. The testing of a smaller component in a large codebase is referred to as `unit tests`, as each component becomes a testable `unit`. They provide a clear and measurable success criteria, which ensures that the requirements for a project are met with confidence. {"cite":"beck2003testdriven"} popularised TDD and his rules for writing unit tests are:
+            <br><br>
+            - Execution time should be short, resulting in fast testing.
+            - Tests should be executed in isolation from each other, resulting in unordered tests.
+            - Use production data when applicable, and ensure data is readable and understandable.
+            - Each test should represent a component of a larger overall goal with the project.
+        </div>
+        <img style="width: 45%" src="
+            http://www.plantuml.com/plantuml/svg/ZOzFIyH03CNl-HJv02xUPLdM_oT1zBXu29tG3fqcPP8gY-ntTrgAKgoBSvlaz_BUsvjJzg5B0DP6wIbJXoaA-x5drEoD0cpDZubtK6dNgx3uNQHw13y1oxkXgdtCEaYurQGPFPDOkLJ0QVyjc_arpKSJdQVj2KwmlPmTuNMCXviSwyOtEppWTGX8w6oERx3yucOYNWP1RtWQMe5-JMRkYLf6AcNT4sFLaDHSbbTuUA2OYcwTMBUXcgAicCtpdmRt4aQBPpAxmC3ldBJlM1pDjRU_qowApWVEsFspuJdrckCoSgNYKGOkGM3F4eOkVG40
+        ">
+    </div>
+    <div style="
+        display: flex;
+        justify-content: space-between;
+    ">
+        <i style="color: rgb(195, 195, 195)">
+            A recursive test-driven development cycle.
+        </i>
+        <div class="date"></div>
+    </div>
+</div>
+
+<div style="page-break-after: always">
+</div>
+
+<div style="
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    height: 100vh;
+">
+    <div style="
+        display: flex;
+        justify-content: space-between;
+    ">
+        <div style="color: rgb(145, 145, 145)">
+            Grammatical Notation of the TXON Proposal
+        </div>
+        <div class="name"></div>
+    </div>
+    <div style="
+        display: flex;
+        justify-content: space-between;
+        padding: 1.5cm;
+    ">
+        <div style="width: 45%">
+            <div style="font-size: 2em">
                 Grammatical Notation
             </div>
             <br><br>
@@ -89,7 +140,7 @@
         justify-content: space-between;
     ">
         <i style="color: rgb(195, 195, 195)">
-            Source
+            Comparison of a TXON data structure and JSON data structure.
         </i>
         <div class="date"></div>
     </div>
@@ -176,7 +227,7 @@
         justify-content: space-between;
     ">
         <i style="color: rgb(195, 195, 195)">
-            Source
+            Data sample from GitLab provided to me by the company.
         </i>
         <div class="date"></div>
     </div>
@@ -224,7 +275,7 @@
         justify-content: space-between;
     ">
         <i style="color: rgb(195, 195, 195)">
-            Source
+            Current and alternative implementation of relational type declarations.
         </i>
         <div class="date"></div>
     </div>
