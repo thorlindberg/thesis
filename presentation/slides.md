@@ -143,13 +143,26 @@
             <br><br>
             In ultrices dictum dui, quis lacinia mauris hendrerit ac. Donec malesuada viverra elementum. Cras erat turpis, euismod eu tempus vel, cursus non neque. Sed semper tellus bibendum mi consectetur aliquet. Suspendisse interdum auctor turpis sed ultrices. Vestibulum sollicitudin nisi at tellus dictum auctor vel sit amet tellus.
         </div>
-        <img style="width: 45%" src="">
+        <div style="width: 45%">
+<pre><code>{
+    "valid": "true | false",
+    "feedback": "string",
+    "json": {
+        "init": {},
+        "data": {}
+    }
+}</code></pre>
+            <img src="
+                http://www.plantuml.com/plantuml/svg/RO_HIiOm38NlynIbtlxWfI13XWe-HrpIhLfJIJD5TEzkw-Psiq8BFTyvwMbV3DLUIXQ0hjXNuZjejyU8e-AR-mPNrpqEhq-QPw67dB8wKvJoZifYVrmoyMOzitzEqNYdKnodLBVjYVFKLGWqtD3kMM0z5-YkjwQmJl0Vc2BvM-TDPtO_Bc0gx2yh3CpqN6StNaoZZF-aVRIgHmqV9LfJbikX4HesxNWVUXPguLy0
+            ">
+        </div>
     </div>
     <div style="
         display: flex;
         justify-content: space-between;
     ">
         <i style="color: rgb(195, 195, 195)">
+            Data structure for testing validation feature
         </i>
         <div class="date"></div>
     </div>
@@ -242,12 +255,12 @@
         "required": "string", "optional?": "string",
         "object": { "required": "string", "optional?": "string" },
         "array": [ { "required": "string", "optional?": "string" } ],
-        "regex": { "type": "string", "start": "ja", "content": "nua", "end": "ry" },
+        "regex": { "type": "regex", "match": [ "j", { "OneOrMore": "word" }, "y" ] },
         "enum": { "type": "string", "case": [ "january", "february", "march" ] }
     }
 }</code></pre>
             <img src="
-                http://www.plantuml.com/plantuml/svg/hLBDJiCm3BxdAIgV9t574qo0n4DiEtYjsL9QfpYE849zTzgch05sciWf-Nw-V56yyOgYjNTipDfhREZEZASdYqV1jlWqnR0Ui7nz5XUuUdIDaq85sNSen3hnx2gQfPVaxoUhDB6zwStwPhx790TOjWgtcH-4te8LgWOKl8hb8wmAS9rQnzZSv_1YSeUQoYNeYh2phyzYKGJZ8Dh-G-m-onKwqiVVjZlGsD4EyjZVYkdFagH6M8rGwLY9Pv33Z19N2P5u-N74eRskGua-AROvazWQEQ34iSCB7UHxtwAK9_WXto-jplDXDiJLE8DV
+                http://www.plantuml.com/plantuml/svg/bP51JyCm38Nl-HMHpvMuemacGEA4zWFM7RpMj2cjKnnNeqBzxpJj645mMKx9UyzVdkHjK1HjWcTZDa77bkvCV3qvh0Gx-sdiV1wmU7iMFt3vw5ilLWKvz2Z4klZiIpf7_ukVQgUqk9EPpERc_8zP9y2nKxXDva7eVN12vQn2K75SGMR1z-eyOtkVoZz3_jXGiO2k0TWfGQ08ZhEvlvPX3mb5gAAFjKSEElQKGmolSXR53hMe5tLleO4iHdTCEtdnGZ5xybB6QXP6i8TV7Oc7xWyyAPX3WO4kSEG1POp6Antb-zwX5FL2lgp5R8dBkFel
             ">
         </div>
     </div>
@@ -399,7 +412,25 @@
             <br><br>
             In ultrices dictum dui, quis lacinia mauris hendrerit ac. Donec malesuada viverra elementum. Cras erat turpis, euismod eu tempus vel, cursus non neque. Sed semper tellus bibendum mi consectetur aliquet. Suspendisse interdum auctor turpis sed ultrices. Vestibulum sollicitudin nisi at tellus dictum auctor vel sit amet tellus.
         </div>
-        <img style="width: 45%" src="">
+        <div style="width: 45%">
+<pre><code>{
+    "init": {
+        "regex": {
+            "type": "regex",
+            "match": [
+                "My name is",
+                { "OneOrMore": "word" },
+                "and I am",
+                { "OneOrMore": "digit" },
+                "years old"
+            ]
+        }
+    }
+}</code></pre>
+            <img src="
+                http://www.plantuml.com/plantuml/svg/ZP71IWD138RlUOgGi-1TYXGLn4Ff0rWFeHEsexj9oKJgKlRTxQxBeBM7vfPytv_0pB84UxmNKu15YRwLUnYxfyoDSuT7m5CzyFRZsUrJqwErvXZEMlRieZ5njIIpUaa_x7B8H0SOO74xtu6V16NDGNU_ykJIo5STrV66ej_BXavaLcxEXOvZkvkCruegNlMet0dcSXOSwpZ6rofhNvdFHmxcYN3uBnDhmXVaxif5AJSvBc_gXRsWjOd-iBVQ3VNbO2cQnj_v1W00
+            ">
+        </div>
     </div>
     <div style="
         display: flex;
