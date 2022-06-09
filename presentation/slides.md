@@ -77,22 +77,11 @@
                 Test-Driven Development
             </div>
             <br><br>
-            Testing has implications not only for the approach to implementation, but also the structure of the code itself and the overall practices surrounding projects. As each feature needs to be developed on a foundation of demonstrable necessity, the process must be divided into small enough steps for testing to be possible. The testing of a smaller component in a large codebase is referred to as <code>unit tests</code>, as each component becomes a testable <code>unit</code>.
+            "Testing has implications not only for the approach to implementation, but also the structure of the code itself and the overall practices surrounding projects. As each feature needs to be developed on a foundation of demonstrable necessity, the process must be divided into small enough steps for testing to be possible. The testing of a smaller component in a large codebase is referred to as <code>unit tests</code>, as each component becomes a testable <code>unit</code>."
             <br><br>
-            <ul>
-                <li>
-                    Execution time should be short, resulting in fast testing.
-                </li>
-                <li>
-                    Tests should be executed in isolation from each other, resulting in unordered tests.
-                </li>
-                <li>
-                    Use production data when applicable, and ensure data is readable and understandable.
-                </li>
-                <li>
-                    Each test should represent a component of a larger overall goal with the project.
-                </li>
-            </ul>
+            The testing of a unit either aims to demonstrate a flaw in the current system, or demonstrate the functional implementation of a feature that meets the requirements for acceptance.
+            <br><br>
+            A test should ideally be executed in a short amount of time, resulting in fast testing. Tests should be executable in isolation, resulting in unordered testing. Tests should use production data when applicable, and tests should represent a feature or component of an overall project and implementation.
         </div>
         <div style="width: 47.5%">
             <img src="
@@ -141,9 +130,11 @@
                 Unit and Acceptance Testing
             </div>
             <br><br>
-            Phasellus aliquet convallis arcu in aliquam. Pellentesque lectus orci, vulputate a blandit eget, pretium vel lectus. Aenean ultricies augue at elit rhoncus, quis hendrerit erat egestas. Sed sit amet efficitur sem. Pellentesque euismod, odio eu imperdiet facilisis, mi tortor mattis arcu, a tincidunt sem mauris id est. Maecenas sollicitudin eros ut bibendum sagittis. Suspendisse mattis, risus et luctus lacinia, nisl neque dictum nibh, non hendrerit orci libero non nibh. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Sed volutpat, ex a sodales semper, turpis mauris accumsan erat, quis malesuada tellus mi non augue.
+            In this project the units are exclusively validation checks that return an error based on nonconformance to requirements or types in a data structure. A unit is a JSON data structure consisting of a sample nonconforming JSON object, its expected validity or invalidity, and an optional expected feedback string describing the source of nonconformance.
             <br><br>
-            In ultrices dictum dui, quis lacinia mauris hendrerit ac. Donec malesuada viverra elementum. Cras erat turpis, euismod eu tempus vel, cursus non neque. Sed semper tellus bibendum mi consectetur aliquet. Suspendisse interdum auctor turpis sed ultrices. Vestibulum sollicitudin nisi at tellus dictum auctor vel sit amet tellus.
+            These units act as acceptance tests that describe the requirements for successfully implementing a feature through validation. This also results in implementing type semantics, as a feature can be utilised once its correct application can be verified.
+            <br><br>
+            These units do not act as tests demonstrating the necessity for an implementation or evolution of the JSON specification, which I identify as a flaw of the experiment documented in this project.
         </div>
         <div style="width: 47.5%">
 <pre><code>{
