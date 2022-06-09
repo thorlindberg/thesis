@@ -41,7 +41,7 @@
         <i style="color: rgb(195, 195, 195)">
             https://github.com/thorlindberg/thesis
         </i>
-        <div class="date"></div>
+        <div class="page"></div>
     </div>
 </div>
 
@@ -96,7 +96,7 @@
         <i style="color: rgb(195, 195, 195)">
             Test cycle: Guernsey, M. (2013). Test-driven Database Development: Unlocking Agility. Addison-Wesley.
         </i>
-        <div class="date"></div>
+        <div class="page"></div>
     </div>
 </div>
 
@@ -156,7 +156,7 @@
     ">
         <i style="color: rgb(195, 195, 195)">
         </i>
-        <div class="date"></div>
+        <div class="page"></div>
     </div>
 </div>
 
@@ -201,7 +201,7 @@
         <i style="color: rgb(195, 195, 195)">
             Unit tests for type declarations (top) and type instances (bottom)
         </i>
-        <div class="date"></div>
+        <div class="page"></div>
     </div>
 </div>
 
@@ -237,9 +237,11 @@
                 Type Semantics
             </div>
             <br><br>
-            This project contributes to existing implementations of the JSON specification by proposing a grammar for explicit and extensible typing of values. This proposal is phrased as the <code>Type-Extensibe Object Notation</code> (TXON) which is a format that conforms completely to the JSON specification, and as such it maintains full compatibility with existing JSON encoders and decoders. The TXON format is paired with the <code>TXON.js</code> library written in JavaScript, to validate the functional implementation and its use in a data structure, by checking conformance to its embedded type system.
+            The extensible implementation of types through this project meant that nodes in a data structure were only validated once they were explicitly typed. This choice ensures that untyped data structures remain valid JSON data, but has implications for designing the semantics of types.
             <br><br>
-            A TXON data structure must contain an "init" and "data" property to be validated, but this is not expected to cause issue as JSON structures typically branch from a "data" property at the root node. As such the format is extensibly adding information on types, while maintaining as much of the original structure as possible.
+            As a semantic feature was added to the implementation, the possible combinations increased exponentially. As such the validation had to test for all possible cases and combinations of semantics, which in turn informed the design of type semantics.
+            <br><br>
+            In reflecting on this implementation it became evident that it is missing some features, and that there are better grammatical alternatives to the type semantics derived from testing. This includes semantics for <code>single</code> <code>optional</code> <code>arrayrised</code> <code>regex</code> and <code>enumerated</code> values.
         </div>
         <div style="width: 47.5%">
 <pre><code>{
@@ -262,7 +264,7 @@
     ">
         <i style="color: rgb(195, 195, 195)">
         </i>
-        <div class="date"></div>
+        <div class="page"></div>
     </div>
 </div>
 
@@ -302,7 +304,7 @@
         <i style="color: rgb(195, 195, 195)">
             Current implementation of type semantics from proposal
         </i>
-        <div class="date"></div>
+        <div class="page"></div>
     </div>
 </div>
 
@@ -364,7 +366,7 @@
     ">
         <i style="color: rgb(195, 195, 195)">
         </i>
-        <div class="date"></div>
+        <div class="page"></div>
     </div>
 </div>
 
@@ -426,7 +428,7 @@
     ">
         <i style="color: rgb(195, 195, 195)">
         </i>
-        <div class="date"></div>
+        <div class="page"></div>
     </div>
 </div>
 
@@ -491,7 +493,7 @@
         <i style="color: rgb(195, 195, 195)">
             RegEx in Swift 5.7: https://github.com/apple/swift-evolution/blob/main/proposals/0350-regex-type-overview.md
         </i>
-        <div class="date"></div>
+        <div class="page"></div>
     </div>
 </div>
 
@@ -555,7 +557,7 @@
     ">
         <i style="color: rgb(195, 195, 195)">
         </i>
-        <div class="date"></div>
+        <div class="page"></div>
     </div>
 </div>
 
@@ -572,10 +574,10 @@
         names[i].innerHTML = "Type-Extensible Object Notation: JSON with Syntax for Types"
     }
 
-    var dates = document.querySelectorAll(".date");
-    for (var i = 0; i < dates.length; i++) {
-        dates[i].style.color = "rgb(195, 195, 195)"
-        dates[i].innerHTML = `${new Date().toLocaleString('en-US', {month: 'long'})} ${new Date().getDate()}. ${new Date().getFullYear()}`
+    var pages = document.querySelectorAll(".page");
+    for (var i = 0; i < pages.length; i++) {
+        pages[i].style.color = "rgb(195, 195, 195)"
+        pages[i].innerHTML = `${i+1} of ${pages.length}`
     }
 
 </script>
