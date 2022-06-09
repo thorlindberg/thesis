@@ -338,9 +338,11 @@
                 Relational Type
             </div>
             <br><br>
-            Phasellus aliquet convallis arcu in aliquam. Pellentesque lectus orci, vulputate a blandit eget, pretium vel lectus. Aenean ultricies augue at elit rhoncus, quis hendrerit erat egestas. Sed sit amet efficitur sem. Pellentesque euismod, odio eu imperdiet facilisis, mi tortor mattis arcu, a tincidunt sem mauris id est. Maecenas sollicitudin eros ut bibendum sagittis. Suspendisse mattis, risus et luctus lacinia, nisl neque dictum nibh, non hendrerit orci libero non nibh. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Sed volutpat, ex a sodales semper, turpis mauris accumsan erat, quis malesuada tellus mi non augue.
+            As a typed object typically inherits other types in object-oriented programming, there is a necessity for declaring relational types as properties of a typed object. This is evident in the implementation through TypeScript, but is missing from my implementation.
             <br><br>
-            In ultrices dictum dui, quis lacinia mauris hendrerit ac. Donec malesuada viverra elementum. Cras erat turpis, euismod eu tempus vel, cursus non neque. Sed semper tellus bibendum mi consectetur aliquet. Suspendisse interdum auctor turpis sed ultrices. Vestibulum sollicitudin nisi at tellus dictum auctor vel sit amet tellus.
+            As a result types cannot reference each other when declared, but can be nested inside each other when instantiated. This is a suboptimal implementation because it results in the intermediary data structure not reflecting the data structure from which it is derived.
+            <br><br>
+            As an alternative it should be possible to reference not only types from the JSON typeset, but also types that have been declared. Types should be unordered, meaning a type can reference another type before the other type has been declared.
         </div>
         <div style="width: 47.5%">
 <pre><code>{
@@ -400,9 +402,11 @@
                 Optional Type
             </div>
             <br><br>
-            Phasellus aliquet convallis arcu in aliquam. Pellentesque lectus orci, vulputate a blandit eget, pretium vel lectus. Aenean ultricies augue at elit rhoncus, quis hendrerit erat egestas. Sed sit amet efficitur sem. Pellentesque euismod, odio eu imperdiet facilisis, mi tortor mattis arcu, a tincidunt sem mauris id est. Maecenas sollicitudin eros ut bibendum sagittis. Suspendisse mattis, risus et luctus lacinia, nisl neque dictum nibh, non hendrerit orci libero non nibh. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Sed volutpat, ex a sodales semper, turpis mauris accumsan erat, quis malesuada tellus mi non augue.
+            A typed data structure is verified based on its type conformance, as it is crucial to ensure that the data is correctly formatted and contains the necessary contents to be used in an application. However there can be data that is explicitly not necessary, or data that can have no value in a data structure.
             <br><br>
-            In ultrices dictum dui, quis lacinia mauris hendrerit ac. Donec malesuada viverra elementum. Cras erat turpis, euismod eu tempus vel, cursus non neque. Sed semper tellus bibendum mi consectetur aliquet. Suspendisse interdum auctor turpis sed ultrices. Vestibulum sollicitudin nisi at tellus dictum auctor vel sit amet tellus.
+            These nullable types can be considered optional, as opposed to required types. The current implementation facilitates nullable types by providing default values, which is a typical practice in object-oriented programming. This is however not semantically ideal for an intermediary data structure, which would not know or necessitate defaults.
+            <br><br>
+            As an alternative the nullable types could use the <code>null data type</code> from the JSON specification, but this would result in a loss of intended type. Instead I propose using the question mark syntax (?) for optional types.
         </div>
         <div style="width: 47.5%">
 <pre><code>{
