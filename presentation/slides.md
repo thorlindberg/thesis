@@ -77,7 +77,7 @@
                 Test-Driven Development
             </div>
             <br><br>
-            "Testing has implications not only for the approach to implementation, but also the structure of the code itself and the overall practices surrounding projects. As each feature needs to be developed on a foundation of demonstrable necessity, the process must be divided into small enough steps for testing to be possible. The testing of a smaller component in a large codebase is referred to as <code>unit tests</code>, as each component becomes a testable <code>unit</code>."
+            Testing has implications not only for the approach to implementation, but also the structure of the code itself and the overall practices surrounding projects. As each feature needs to be developed on a foundation of demonstrable necessity, the process must be divided into small enough steps for testing to be possible. The testing of a smaller component in a large codebase is referred to as <code>unit tests</code>, as each component becomes a testable <code>unit</code>.
             <br><br>
             The testing of a unit either aims to demonstrate a flaw in the current system, or demonstrate the functional implementation of a feature that meets the requirements for acceptance.
             <br><br>
@@ -402,7 +402,7 @@
                 Optional Type
             </div>
             <br><br>
-            A typed data structure is verified based on its type conformance, as it is crucial to ensure that the data is correctly formatted and contains the necessary contents to be used in an application. However there can be data that is explicitly not necessary, or data that can have no value in a data structure.
+            A typed data structure is verified based on its type conformance, as it is crucial to ensure that the data is correctly formatted and contains the necessary contents to be used in an application. However there can be data that is explicitly not necessary, or data that can have no value.
             <br><br>
             These nullable types can be considered optional, as opposed to required types. The current implementation facilitates nullable types by providing default values, which is a typical practice in object-oriented programming. This is however not semantically ideal for an intermediary data structure, which would not know or necessitate defaults.
             <br><br>
@@ -466,9 +466,11 @@
                 Regular Expression (RegEx)
             </div>
             <br><br>
-            Phasellus aliquet convallis arcu in aliquam. Pellentesque lectus orci, vulputate a blandit eget, pretium vel lectus. Aenean ultricies augue at elit rhoncus, quis hendrerit erat egestas. Sed sit amet efficitur sem. Pellentesque euismod, odio eu imperdiet facilisis, mi tortor mattis arcu, a tincidunt sem mauris id est. Maecenas sollicitudin eros ut bibendum sagittis. Suspendisse mattis, risus et luctus lacinia, nisl neque dictum nibh, non hendrerit orci libero non nibh. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Sed volutpat, ex a sodales semper, turpis mauris accumsan erat, quis malesuada tellus mi non augue.
+            The current implementation only considers binary validation of types and instances, as they either conform or do not conform. However it is typical to expect some degree of syntactical errors in the contents of a data structure, and this is where a <code>regular expression</code> can be applied.
             <br><br>
-            In ultrices dictum dui, quis lacinia mauris hendrerit ac. Donec malesuada viverra elementum. Cras erat turpis, euismod eu tempus vel, cursus non neque. Sed semper tellus bibendum mi consectetur aliquet. Suspendisse interdum auctor turpis sed ultrices. Vestibulum sollicitudin nisi at tellus dictum auctor vel sit amet tellus.
+            The regular expression is a sequence that acts as pattern for finding or filtering a value of type String. This could be quite easily implemented in the current type semantics, by declaring types as objects containing an explicit regex "type" and "match" describing the sequence.
+            <br><br>
+            As an alternative to sequences of type String, the Swift 5.7 implementation of regex provides a grammar for arrayrised sequences. It also extrapolates the appropriate regex syntax from more natural human-readable text.
         </div>
         <div style="width: 47.5%">
 <pre><code>{
@@ -531,9 +533,9 @@
                 Enumerated Type
             </div>
             <br><br>
-            Phasellus aliquet convallis arcu in aliquam. Pellentesque lectus orci, vulputate a blandit eget, pretium vel lectus. Aenean ultricies augue at elit rhoncus, quis hendrerit erat egestas. Sed sit amet efficitur sem. Pellentesque euismod, odio eu imperdiet facilisis, mi tortor mattis arcu, a tincidunt sem mauris id est. Maecenas sollicitudin eros ut bibendum sagittis. Suspendisse mattis, risus et luctus lacinia, nisl neque dictum nibh, non hendrerit orci libero non nibh. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Sed volutpat, ex a sodales semper, turpis mauris accumsan erat, quis malesuada tellus mi non augue.
+            The contents of a type instance can have requirements beyond its type and whether it is required or optional. These requirements in the current implementation are limited to minimum and maximum value ranges, for numbers and string or array lengths. However the TypeScript implementation provides enumerated types, which are the valid cases of a value.
             <br><br>
-            In ultrices dictum dui, quis lacinia mauris hendrerit ac. Donec malesuada viverra elementum. Cras erat turpis, euismod eu tempus vel, cursus non neque. Sed semper tellus bibendum mi consectetur aliquet. Suspendisse interdum auctor turpis sed ultrices. Vestibulum sollicitudin nisi at tellus dictum auctor vel sit amet tellus.
+            This could be quite easily implemented in the current type semantics, by declaring types as objects containing an explicit "type" and arrayrised "case" values. If the validation was implemented in a text editor, this could illustrate nonconformance before data transmission, as is typical of enumerations in statically typed programming languages through compilation.
         </div>
         <div style="width: 47.5%">
 <pre><code>{
